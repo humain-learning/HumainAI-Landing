@@ -66,7 +66,7 @@ const Intro = () => {
             intelligence
           </div>
           <div className="flex w-full flex-col items-center gap-3 pt-4 md:flex-row">
-            <PrimaryButton text="Enroll in Our AI Course" target='courses' />
+            <PrimaryButton text="Enroll" target='courses' />
             {/* <SecondaryButton text="Watch Course Preview" /> */}
           </div>
         </div>

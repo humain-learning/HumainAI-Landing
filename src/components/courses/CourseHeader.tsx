@@ -184,7 +184,7 @@ export const CourseHeader = () => {
       <div className="flex w-full flex-col items-center gap-2 pt-4 md:flex-row">
         <PrimaryButton
           onClick={() => router.push(`https://pages.razorpay.com/humainchamps`)}
-          text="Enroll in Our Course"
+          text="Enroll Now"
           target=''
         />
 

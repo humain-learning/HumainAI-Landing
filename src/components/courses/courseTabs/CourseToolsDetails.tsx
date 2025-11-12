@@ -68,8 +68,9 @@ export const CourseToolsDetails = () => {
           Enroll in Our Course
         </p>
         <PrimaryButton
-          text="Enroll in Our Course"
+          text="Enroll Now"
           buttonClassName="w-fit mx-auto md:mx-0"
+          target=''
         />
       </div>
 
