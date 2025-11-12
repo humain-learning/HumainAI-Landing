@@ -10,7 +10,7 @@ import WhoAreWeCard from './WhoAreWeCard';
 import OurPurpose from './OurPurpose';
 import PillarsOfTheFramework from './PillarsOfTheFramework';
 import Header from '../ui/Header';
-
+// import ProductShowcase from './ProductShowcase';
 const LandingPage = () => {
   return (
     <div className="relative">

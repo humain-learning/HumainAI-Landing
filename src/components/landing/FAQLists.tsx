@@ -209,7 +209,7 @@ const FAQLists = () => {
               </p> */}
             </div>
 
-            <PrimaryButton text="View All Question" />
+            <PrimaryButton text="View All Question" target=''/>
           </div>
           {/* right container */}
           <div className="w-full max-w-xl">

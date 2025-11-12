@@ -26,7 +26,7 @@ const ProductShowcase = () => {
       <div className="flex items-center justify-between py-6">
         <h3 className="w-fit text-5xl font-semibold">Product Showcase</h3>
         <div className="shrink-0">
-          <PrimaryButton text="All Products" />
+          <PrimaryButton text="All Products" target=''/>
         </div>
       </div>
 
