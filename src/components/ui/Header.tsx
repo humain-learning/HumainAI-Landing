@@ -335,10 +335,10 @@ const Header = () => {
   return (
     <>
       <nav className="mx-auto w-full md:max-w-7xl">
-        <div className="flex items-center justify-between px-2 py-2 md:px-0 md:py-4">
+        <div className="flex items-center justify-between px-2 py-2 md:px-4">
           <Link href="/" className="flex items-center gap-2">
             <img
-              className="h-16"
+              className="h-24 md:h-28"
               src="/assets/logo/brain-logo.png"
               alt="Humain AI"
             />

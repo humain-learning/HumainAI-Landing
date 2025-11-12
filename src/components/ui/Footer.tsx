@@ -16,10 +16,10 @@ const Footer = () => {
           {/* left container */}
           <div className="col-span-2 space-y-8">
             <div className="space-y-4">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 -ml-5 -mb-1">
                 <img
-                  className="h-16"
-                  src="/assets/logo/brain-logo.png"
+                  className="h-30"
+                  src="/assets/logo/brain-logo-black.png"
                   alt="Humain AI"
                 />
                 {/* <div className="text-xl font-semibold">HUMAIN AI</div> */}
