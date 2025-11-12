@@ -34,18 +34,18 @@ const EXPERTS_LIST = [
     profileImg: 'e5.png',
     bio: 'DTU graduate \nshaping the future of education by driving AI-powered innovations that empower schools, teachers, and learners.',
   },
-  {
-    name: 'Dr. Sannjay Pandit',
-    role: 'Operations Manager',
-    profileImg: 'e8.jpg',
-    bio: 'A decade of experience in education with both private and public schools. \nExperience ranging from partnership to program design, implementation, and training on existing curricula.',
-  },
-  {
-    name: 'Rashmi Bhaskaran',
-    role: 'Lead - Ai Curriculum and Training',
-    profileImg: 'e8.jpg',
-    bio: 'Engineer turned Educator at the intersection of education, innovation, and technology \n Engineering in Electrical and Electronics, VTU',
-  }
+  // {
+  //   name: 'Dr. Sannjay Pandit',
+  //   role: 'Operations Manager',
+  //   profileImg: 'e8.jpg',
+  //   bio: 'A decade of experience in education with both private and public schools. \nExperience ranging from partnership to program design, implementation, and training on existing curricula.',
+  // },
+  // {
+  //   name: 'Rashmi Bhaskaran',
+  //   role: 'Lead - Ai Curriculum and Training',
+  //   profileImg: 'e8.jpg',
+  //   bio: 'Engineer turned Educator at the intersection of education, innovation, and technology \n Engineering in Electrical and Electronics, VTU',
+  // }
 ];
 
 const ExpertsTeam = () => {
