@@ -220,30 +220,48 @@ const NavbarSidebar = ({
   const isCoursesPage = pathname === '/courses';
   
   // Simulate submit
-  const handleSubmit = async (user: {
-    name: string;
-    email: string;
-    contact: string;
-  }) => {
-    setLoading(true);
-    // Simulate API call
-    // firebase api call
+const handleSubmit = async (user: {
+  name: string;
+  email: string;
+  contact: string;
+}) => {
+  setLoading(true);
+  
+  try {
+    // Primary: Google Sheets
+    await fetch('https://script.google.com/macros/s/AKfycbzfqI3GxgGG9dB0rfcvXOqd_g7VLW4cH7umNcg330ZtnJE6DuKvwsLGRyyNPgWJMVRT/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: user.name,
+        email: user.email,
+        contact: user.contact,
+        createdAt: new Date().toISOString(),
+        pageUrl: window.location.href
+      })
+    });
+    
+    // Backup: Firebase (fire and forget, don't wait)
     try {
       const db = getFirestore(app);
-      await addDoc(collection(db, 'callbackRequests'), {
+      addDoc(collection(db, 'callbackRequests'), {
         name: user.name,
         email: user.email,
         contact: user.contact,
         createdAt: new Date(),
-      });
-    } catch (error) {
-      toast.error('Something went wrong. Please try again.');
-    }
-
-    setLoading(false);
+      }).catch(err => console.log('Firebase backup failed:', err));
+    } catch {}
+    
     setShowModal(false);
     toast.success('Thank you! We will contact you soon.');
-  };
+  } catch (error) {
+    console.error('Error:', error);
+    toast.error('Something went wrong. Please try again.');
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div
@@ -310,27 +328,47 @@ const Header = () => {
   const isCoursesPage = pathname === '/courses';
   const isPrivacyPage = pathname === '/privacy-policy'
   const handleSubmit = async (user: {
-    name: string;
-    email: string;
-    contact: string;
-  }) => {
-    setLoading(true);
+  name: string;
+  email: string;
+  contact: string;
+}) => {
+  setLoading(true);
+  
+  try {
+    // Primary: Google Sheets
+    await fetch('https://script.google.com/macros/s/AKfycbzfqI3GxgGG9dB0rfcvXOqd_g7VLW4cH7umNcg330ZtnJE6DuKvwsLGRyyNPgWJMVRT/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: user.name,
+        email: user.email,
+        contact: user.contact,
+        createdAt: new Date().toISOString(),
+        pageUrl: window.location.href
+      })
+    });
+    
+    // Backup: Firebase
     try {
       const db = getFirestore(app);
-      await addDoc(collection(db, 'callbackRequests'), {
+      addDoc(collection(db, 'callbackRequests'), {
         name: user.name,
         email: user.email,
         contact: user.contact,
         createdAt: new Date(),
-      });
-      setShowModal(false);
-      toast.success('Thank you! We will contact you soon.');
-    } catch (error) {
-      toast.error('Something went wrong. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  };
+      }).catch(err => console.log('Firebase backup failed:', err));
+    } catch {}
+    
+    setShowModal(false);
+    toast.success('Thank you! We will contact you soon.');
+  } catch (error) {
+    console.error('Error:', error);
+    toast.error('Something went wrong. Please try again.');
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <>
