@@ -101,7 +101,7 @@ const Footer = () => {
 
         <div className="pt-8 flex flex-row items-center justify-between">
           <p className="text-base flex font-normal">
-            2025 © HumainAI . All rights reserved.
+            2025 © HumainAI . All rights reserved. Operated by Eduxa Consulting.
           </p>
           <Link href="/privacy-policy" className='font-normal text-base mr-20'>Privacy Policy</Link>
         </div>

@@ -1,0 +1,95 @@
+### App Versions
+```
+{
+	"frappe": "15.88.2",
+	"lms": "2.40.0",
+	"payments": "0.0.1"
+}
+```
+### Route
+```
+Form/Email Account/new-email-account-onxwccpayu
+```
+### Traceback
+```
+Traceback (most recent call last):
+  File "apps/frappe/frappe/app.py", line 115, in application
+    response = frappe.api.handle(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "apps/frappe/frappe/api/__init__.py", line 50, in handle
+    data = endpoint(**arguments)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "apps/frappe/frappe/api/v1.py", line 40, in handle_rpc_call
+    return frappe.handler.handle()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "apps/frappe/frappe/handler.py", line 52, in handle
+    data = execute_cmd(cmd)
+           ^^^^^^^^^^^^^^^^
+  File "apps/frappe/frappe/handler.py", line 85, in execute_cmd
+    return frappe.call(method, **frappe.form_dict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "apps/frappe/frappe/__init__.py", line 1754, in call
+    return fn(*args, **newargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "apps/frappe/frappe/handler.py", line 335, in run_doc_method
+    response = doc.run_method(method)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "apps/frappe/frappe/model/document.py", line 1011, in run_method
+    out = Document.hook(fn)(self, *args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "apps/frappe/frappe/model/document.py", line 1371, in composer
+    return composed(self, method, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "apps/frappe/frappe/model/document.py", line 1353, in runner
+    add_to_return_value(self, fn(self, *args, **kwargs))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "apps/frappe/frappe/model/document.py", line 1008, in fn
+    return method_object(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "apps/frappe/frappe/utils/typing_validations.py", line 32, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "apps/frappe/frappe/integrations/doctype/connected_app/connected_app.py", line 54, in get_openid_configuration
+    return make_get_request(self.openid_configuration)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "apps/frappe/frappe/integrations/utils.py", line 39, in make_get_request
+    return make_request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "apps/frappe/frappe/integrations/utils.py", line 35, in make_request
+    raise exc
+  File "apps/frappe/frappe/integrations/utils.py", line 19, in make_request
+    response = frappe.flags.integration_request = s.request(
+                                                  ^^^^^^^^^^
+  File "env/lib/python3.11/site-packages/requests/sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "env/lib/python3.11/site-packages/requests/sessions.py", line 484, in prepare_request
+    p.prepare(
+  File "env/lib/python3.11/site-packages/requests/models.py", line 367, in prepare
+    self.prepare_url(url, params)
+  File "env/lib/python3.11/site-packages/requests/models.py", line 438, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL '378071397290-9f72int5mdf2q148l50ngnisapq7tqef.apps.googleusercontent.com': No scheme supplied. Perhaps you meant https://378071397290-9f72int5mdf2q148l50ngnisapq7tqef.apps.googleusercontent.com?
+
+```
+### Request Data
+```
+{
+	"type": "POST",
+	"args": {
+		"docs": "{\"docstatus\":0,\"doctype\":\"Connected App\",\"name\":\"new-connected-app-pctcivejvz\",\"__islocal\":1,\"__unsaved\":1,\"owner\":\"Administrator\",\"scopes\":[],\"query_parameters\":[],\"provider_name\":\"\",\"openid_configuration\":\"378071397290-9f72int5mdf2q148l50ngnisapq7tqef.apps.googleusercontent.com\",\"idx\":0,\"authorization_uri\":\"https://accounts.google.com/o/oauth2/v2/auth\",\"token_uri\":\"https://oauth2.googleapis.com/token\",\"userinfo_uri\":\"https://openidconnect.googleapis.com/v1/userinfo\",\"revocation_uri\":\"https://oauth2.googleapis.com/revoke\"}",
+		"method": "get_openid_configuration"
+	},
+	"headers": {},
+	"error_handlers": {},
+	"url": "/api/method/run_doc_method",
+	"request_id": "2d1cdb0e-0a92-44d9-82ee-aeaf1e6ac27a"
+}
+```
+### Response Data
+```
+{
+	"exception": "requests.exceptions.MissingSchema: Invalid URL '378071397290-9f72int5mdf2q148l50ngnisapq7tqef.apps.googleusercontent.com': No scheme supplied. Perhaps you meant https://378071397290-9f72int5mdf2q148l50ngnisapq7tqef.apps.googleusercontent.com?",
+	"exc_type": "MissingSchema"
+}
+```
