@@ -4,13 +4,6 @@ import { useState } from 'react';
 
 const LIST = [
   {
-    name: 'Pavani Singh',
-    class: 'Grade 6',
-    school: '',
-    city: '',
-    desc: `I converted a photo of my parents into a new image, they were amazed and surprised at how I did it! I am very happy that I have joined this training program.`,
-  },
-  {
     name: 'Aniisha',
     class: '11th',
     school: 'The Heritage School',
