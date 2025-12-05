@@ -158,8 +158,8 @@ export const CourseHeader = () => {
             <div>
               <p className="text-primary-color flex items-center gap-1 text-base font-semibold">
                 INR{' '}
-                <span className="align-middle text-3xl font-bold">10,000</span>{' '}
-                + 18% GST
+                <span className="align-middle text-3xl font-bold">11,800</span>{' '}
+                incl. GST
               </p>
             </div>
           </div>

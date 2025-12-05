@@ -1,19 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tomorrow:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
 @import 'tailwindcss';
 
+/* ==================== BRAND COLOR VARIABLES ==================== */
 :root {
+  /* Primary Brand Colors - Humain Learning */
+  --sage-green: #AAC191;
+  --terracotta-orange: #E7A572;
+  
+  /* Secondary Brand Colors */
+  --soft-grey: #E6E6E6;
+  --deep-charcoal: #333333;
+  
+  /* Neutral Colors */
+  --white: #FFFFFF;
+  --black: #000000;
+  
+  /* Light Mode Defaults */
   --background: #ffffff;
   --foreground: #171717;
 }
 
 @theme inline {
+  --color-sage: #aac191;
+  --color-terracotta: #e7a572;
+  --color-grey: #e6e6e6;
+  --color-charcoal: #333333;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
   --color-primary-color: #aac191;
-  --color-secondary-color: #e9a772;
-  --color-bg-color: #ffffff;
+  --color-secondary-color: #e7a572;
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Open Sans', sans-serif;
+  --font-accent: 'Tomorrow', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,18 +43,31 @@
   }
 }
 
+/* ==================== BASE TYPOGRAPHY ==================== */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Funnel Display', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
+button {
+  font-family: 'Tomorrow', sans-serif;
+  font-weight: 600;
+}
+
+/* ==================== CUSTOM BORDER GRADIENT ==================== */
 .border-gradient {
   position: relative;
   border-radius: 12px;
-  overflow: hidden; /* Ensures border and content are rounded */
+  overflow: hidden;
   z-index: 0;
 }
+
 .border-gradient::before {
   content: '';
   position: absolute;
@@ -43,13 +76,11 @@ body {
   padding: 0;
   z-index: 0;
   pointer-events: none;
-  /* Simulate the Figma border gradient with a 0.89px border using a gradient */
   background: linear-gradient(
     176deg,
     #e7e7e8 -3.95%,
     rgba(122, 146, 95, 0) 106.83%
   );
-  /* Create a border effect by shrinking the inner content */
   mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
@@ -58,15 +89,16 @@ body {
     linear-gradient(#fff 0 0);
   mask-composite: exclude;
   -webkit-mask-composite: xor;
-  /* The border thickness: */
   padding: 1.5px;
   box-sizing: border-box;
 }
+
 .border-gradient > * {
   position: relative;
   z-index: 1;
 }
 
+/* ==================== CUSTOM SHADOWS ==================== */
 .shadow-orange {
   box-shadow: 10px 30px 50px 0px #ffe9d7;
 }
@@ -75,10 +107,11 @@ body {
   box-shadow: 10px 30px 50px 0px #aac1913d;
 }
 
+/* ==================== MIRROR REFLECTION EFFECT ==================== */
 .mirror-reflection {
   transform: scaleY(-1);
   opacity: 0.4;
-  margin-top: 0.25rem; /* like mt-1 */
+  margin-top: 0.25rem;
   -webkit-mask-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.8),
@@ -87,13 +120,14 @@ body {
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
 }
 
-/* Smooth scroll */
+/* ==================== SCROLL BEHAVIOR ==================== */
 html {
   scroll-behavior: smooth;
 }
 
+/* ==================== GRADIENT BACKGROUNDS ==================== */
 .gradient-bg {
-  background: linear-gradient(266.83deg, #e9a772 -26.57%, #aac191 100%);
+  background: linear-gradient(266.83deg, #e7a572 -26.57%, #aac191 100%);
 }
 
 .bg-pillars-bg {
@@ -101,30 +135,46 @@ html {
   background-size: cover;
 }
 
+/* ==================== CUSTOM SCROLLBAR ==================== */
 *::-webkit-scrollbar {
   background: transparent;
   width: 0.5rem;
 }
+
 *::-webkit-scrollbar-thumb {
-  background: #e9a772;
+  background: #e7a572;
   border-radius: 0.5rem;
 }
+
 *::-webkit-scrollbar-track {
   background: transparent;
 }
+
 *::-webkit-scrollbar-thumb:hover {
-  background: #e98635;
+  background: #d99050;
 }
 
+/* ==================== TAILWIND LAYERS ==================== */
 @layer base {
   button {
     @apply cursor-pointer;
   }
+  
+  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+  }
 }
 
+/* ==================== CUSTOM SCROLLBAR VARIANT ==================== */
 @layer utilities {
   .scrollbar::-webkit-scrollbar {
-    /* width: px; */
     height: 4px;
   }
 
@@ -134,27 +184,53 @@ html {
   }
 
   .scrollbar::-webkit-scrollbar-thumb {
-    background: #e98635;
+    background: #e7a572;
     border-radius: 100vh;
     border: 5px solid #b1b1b1;
   }
 
   .scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #e98635;
+    background: #d99050;
+  }
+
+  /* Brand Color Utilities */
+  .text-sage {
+    @apply text-[#AAC191];
+  }
+
+  .text-terracotta {
+    @apply text-[#E7A572];
+  }
+
+  .bg-sage {
+    @apply bg-[#AAC191];
+  }
+
+  .bg-terracotta {
+    @apply bg-[#E7A572];
+  }
+
+  .border-sage {
+    @apply border-[#AAC191];
+  }
+
+  .border-terracotta {
+    @apply border-[#E7A572];
   }
 }
 
+/* ==================== COMPONENT STYLES ==================== */
 .custom-bullet {
   width: 10px;
   height: 10px;
-  background: var(--color-secondary-color) !important; /* gray-300 */
+  background: var(--color-secondary-color) !important;
   border-radius: 50%;
   opacity: 0.7;
   transition: all 0.3s ease;
 }
 
 .custom-bullet-active {
-  background: var(--color-primary-color); /* black when active */
+  background: var(--color-primary-color);
   transform: scale(1.2);
   opacity: 1;
 }
@@ -166,16 +242,6 @@ html {
 }
 
 .course-card {
-  /* height: 630px; */
-  /* width: 750px; */
-  /* clip-path: path(
-    'M 0 50 Q 0 0, 50 0 L 700 0 Q 750 0, 750 50 L 750 580 Q 750 630, 700 630 L 380 630 L 350 600 Q 340 590, 330 590 L 280 590 Q 250 590, 230 560 L 200 520 Q 180 490, 150 490 L 50 490 Q 0 490, 0 440 L 0 50 Z'
-  ); */
-
-  /* clip-path: path(
-    'M 0,400 0,450 30,450 L 100,450 L 200,450 L 250,450 A 100,100 0,0,1 280,470 L 300,500 L 320,530 L 380,630 L 450,630 L 500,630 L 550,630 L 600,630 L 650,630 L 700,630 L 720,630 L 750,630 L 750,550 L 750,250 L 750,150 L 750,100 L 750,10 L 750,0 L 600,0 L 500,0 L 400,0 L 300,0 L 200,0 L 100,0 L 0,0 L 0,10 L 0,100 L 0,200 L 0,300 L 0,350 L 0,400  Z'
-  ); */
-
   clip-path: polygon(
     0% 0%,
     100% 0%,
@@ -185,6 +251,4 @@ html {
     26.58% 72%,
     0% 71.5%
   );
-
-  /* background-color: #000000; */
 }
