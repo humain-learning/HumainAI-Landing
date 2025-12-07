@@ -42,7 +42,7 @@ const course_criteria = [
   {
     id: 8,
     icon: '/assets/icons/rupees.svg',
-    title: <div className='flex items-center gap-1'><span className="text-3xl font-bold align-middle">10,000</span> + 18% GST</div>
+    title: <div className='flex items-center gap-1'><span className="text-3xl font-bold align-middle">11,800</span>incl. GST</div>
   },
 ];
 

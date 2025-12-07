@@ -56,7 +56,7 @@ const Intro = () => {
           <div className="h-full min-h-[180px] w-full max-w-[525px]">
             {/* text-[64px] leading-[59.5px] font-semibold tracking-[-1.28px] */}
             <h1 className="max-w-[450px] text-3xl leading-[50px] font-semibold tracking-[-0.8px] sm:text-5xl md:text-[64px] md:leading-[59.5px] md:tracking-[-1.28px]">
-              Where the AI Future Learns to StayHuman
+              Where the AI Future Learns to Stay Human
               {/* <TyperwriterText /> */}
             </h1>
           </div>
