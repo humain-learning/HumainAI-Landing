@@ -29,13 +29,13 @@ export const metadata: Metadata = {
     icon: '/vercel.svg',
   },
   openGraph: {
-    title: 'Humain AI | Empowering Future Innovators', 
-    description: 'Empowering students aged 13+ to harness AI capabilities while preserving human creativity...', 
+    title: 'Humain AI | Human Centered AI Learning for Students', 
+    description: 'Empowering students aged 13+ to harness AI capabilities through our live, interactive courses, to study smarter and becoming future-ready.', 
     url: 'https://humainlearning.ai', 
     siteName: 'Humain AI',
     images: [
       {
-        url: '/assets/logo/brain-logo-small.jpeg',
+        url: '/assets/logo/brain-logo.png',
         width: 1200, 
         height: 630, 
         alt: 'Humain AI Logo',
