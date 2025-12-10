@@ -103,7 +103,7 @@ const RequestCallBackModal = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
       <div
         ref={modalContainerRef}
-        className="animate-fadeIn relative w-full max-w-md rounded-2xl bg-white p-8 shadow-lg"
+        className="animate-fadeIn relative w-full lg:max-w-[30vw] md:max-w-[50vw] max-w-[80vw] rounded-2xl bg-white p-8 shadow-lg"
       >
         <button
           className="absolute top-3 right-3 text-2xl text-gray-400 hover:text-gray-700"
@@ -372,7 +372,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className="mx-auto w-full md:max-w-7xl">
+      <nav className="mx-auto w-full md:max-w-[90vw]">
         <div className="flex items-center justify-between px-2 py-2 md:px-4">
           <Link href="/" className="flex items-center gap-2">
             <img

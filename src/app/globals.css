@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@0,400;0,600;0,700;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+/* REMOVED: @import url('https://fonts.googleapis.com/css2?family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+/* REMOVED: @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap'); */
 @import 'tailwindcss';
 :root {
   --background: #ffffff;
@@ -10,7 +9,11 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  /* --- FINAL FONT DEFINITIONS --- */
+  /* MODIFIED: Map to Next.js variables from layout.tsx */
+  --font-sans: var(--font-tomorrow); /* Tomorrow for ALL body/default text */
+  --font-display: var(--font-open-sans); /* Open Sans for ALL headings */
+  /* --- END FINAL FONT DEFINITIONS --- */
   --font-mono: var(--font-geist-mono);
   --color-primary-color: #aac191;
   --color-secondary-color: #e7a572;
@@ -19,10 +22,7 @@
   --color-terracotta: #e7a572;
   --color-grey: #e6e6e6;
   --color-charcoal: #333333;
-  --color-secondary-color: #e7a572;
-  --font-sans: 'Inter', sans-serif;
-  --font-display: 'Open Sans', sans-serif;
-  --font-accent: 'Tomorrow', sans-serif
+  --font-accent: var(--font-tomorrow); /* MODIFIED: Use the Next.js variable */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,60 +34,15 @@
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: 'Funnel Display', sans-serif;
+  color: var(--color-charcoal);
+  font-family: var(--font-tomorrow, 'Tomorrow', sans-serif) !important;
 }
 
-.courses-page {
-  /* Set base font for body copy to Tomorrow Regular (as per 'Primary Typeface for Copy') */
-  font-family: 'Tomorrow', sans-serif !important; 
-  /* Default body copy color to Dark Charcoal, using your --color-charcoal variable */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-open-sans, 'Open Sans', sans-serif) !important;
   color: var(--color-charcoal);
 }
 
-/* 2. Headline Font - Weight Controlled by Utility Classes */
-.courses-page h1, 
-.courses-page h2, 
-.courses-page h3, 
-.courses-page h4, 
-.courses-page h5, 
-.courses-page h6 {
-  /* Set all titles and headlines to Open Sans (as per 'Primary Headline Typeface') */
-  font-family: 'Open Sans', sans-serif !important;
-  
-  /* IMPORTANT: The font-weight rule is removed here. 
-     This allows you to choose your weight using utility classes:
-     e.g., <h2 class="font-regular">Title</h2> 
-     e.g., <h2 class="font-bold">Title</h2> 
-  */
-  
-  /* Color Preference: Use Dark Charcoal as the default primary color */
-  color: var(--color-charcoal);
-}
-
-/* 3. Section Titles (Tomorrow Semibold) */
-/* Use this class for section titles: <h2 class="section-title">...</h2> */
-.courses-page .section-title {
-  font-family: 'Tomorrow', sans-serif !important;
-  font-weight: 600 !important; /* Tomorrow Semibold */
-  /* Color Preference: Use Dark Charcoal as the default */
-  color: var(--color-charcoal);
-}
-
-/* 4. Quotes (Tomorrow Italic) */
-.courses-page blockquote,
-.courses-page q {
-  font-family: 'Tomorrow', sans-serif !important;
-  font-style: italic !important; /* Tomorrow Italic */
-  /* Using Sage Green to highlight quoted text */
-  color: var(--color-sage);
-}
-
-/* 5. Sage Green Headline Class */
-/* Use this class to apply the Sage Green color preference to any headline: <h2 class="text-sage">...</h2> */
-.courses-page .text-sage {
-  color: var(--color-sage) !important;
-}
 
 .border-gradient {
   position: relative;
@@ -162,6 +117,7 @@ html {
 }
 
 *::-webkit-scrollbar {
+  display: 'none';
   background: transparent;
   width: 0.5rem;
 }

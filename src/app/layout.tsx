@@ -1,12 +1,18 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Tomorrow, Open_Sans, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 import { Toaster } from 'react-hot-toast';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const tomorrowSans = Tomorrow({
+  variable: '--font-tomorrow',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
+});
+
+const openSansDisplay = Open_Sans({
+  variable: '--font-open-sans',
   subsets: ['latin'],
 });
 
@@ -22,6 +28,21 @@ export const metadata: Metadata = {
   icons: {
     icon: '/vercel.svg',
   },
+  openGraph: {
+    title: 'Humain AI | Empowering Future Innovators', 
+    description: 'Empowering students aged 13+ to harness AI capabilities while preserving human creativity...', 
+    url: 'https://humainlearning.ai', 
+    siteName: 'Humain AI',
+    images: [
+      {
+        url: '/assets/logo/brain-logo.png',
+        width: 1200, 
+        height: 630, 
+        alt: 'Humain AI Logo',
+      },
+    ],
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
@@ -32,7 +53,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Meta Pixel Code */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -58,10 +78,9 @@ export default function RootLayout({
             alt=""
           />
         </noscript>
-        {/* End Meta Pixel Code */}
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${tomorrowSans.variable} ${openSansDisplay.variable} antialiased`}
       > 
         <div className="relative top-0 w-full z-50"> 
             <Header />

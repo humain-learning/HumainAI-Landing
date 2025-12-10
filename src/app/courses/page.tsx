@@ -1,5 +1,4 @@
-import { CoursesPage } from '@/components/coursesv2';
-import Header from '@/components/ui/Header';
+import { CoursesPage } from '@/components/courses';
 
 const CoursePage = () => {
   return (
