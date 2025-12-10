@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: 'Humain AI',
     images: [
       {
-        url: '/assets/logo/brain-logo.png',
+        url: '/assets/logo/brain-logo-small.jpeg',
         width: 1200, 
         height: 630, 
         alt: 'Humain AI Logo',
