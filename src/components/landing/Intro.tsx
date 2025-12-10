@@ -2,7 +2,7 @@
 import React from 'react';
 import TyperwriterText from './TyperwriterText';
 import PrimaryButton from '../ui/PrimaryButton';
-import SecondaryButton from '../ui/SecondaryButton';
+import SecondaryButton from '../ui/SkeletalButton';
 import { motion } from 'motion/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';

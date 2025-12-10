@@ -62,8 +62,10 @@ export default function RootLayout({
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Header />
+      > 
+        <div className="relative top-0 w-full z-50"> 
+            <Header />
+        </div>
         <Toaster />
         {children}
         <Footer />

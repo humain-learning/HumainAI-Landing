@@ -1,10 +1,10 @@
-import { CoursesPage } from '@/components/courses';
+import { CoursesPage } from '@/components/coursesv2';
 import Header from '@/components/ui/Header';
 
 const CoursePage = () => {
   return (
     <>
-      <div className="bg-[#EEEEF0] py-10">
+      <div className=" min-h-screen bg-background">
         <CoursesPage />
       </div>
     </>

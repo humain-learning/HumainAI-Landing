@@ -1,36 +1,50 @@
 'use client';
-import { useRouter } from 'next/navigation';
 import React from 'react';
+import { cn } from '@/utils';
+import { useRouter } from 'next/navigation';
 
-type SecondaryButtonProps = {
+type SecondaryButtonSwappedProps = {
   text: string;
+  buttonClassName?: string;
   onClick?: () => void;
+  target: string;
 };
 
-const SecondaryButton = ({ text, onClick }: SecondaryButtonProps) => {
+const SecondaryButton = ({ text, buttonClassName, target, onClick }: SecondaryButtonSwappedProps) => {
+
   const router = useRouter();
+  
+  // Consolidating navigation logic based on your original file
+  const handleNavigation = () => {
+    if (onClick) {
+      onClick();
+    } else if (target) {
+      const destination = target.startsWith('/') ? target : `/${target}`;
+      router.push(destination);
+    } else if (process.env.NODE_ENV !== 'production') {
+      // eslint-disable-next-line no-console
+      console.warn('SecondaryButtonSwapped: no "target" prop or onClick provided — no navigation performed.');
+    }
+  };
 
   return (
     <button
       type="button"
-      onClick={() => {
-        if (onClick) {
-          onClick();
-        } else {
-          router.push('/courses');
-        }
-      }}
-      className="group hover:bg-primary-color flex cursor-pointer items-center gap-2 rounded-full border-2 border-[#EBEDEF] py-1 pr-1 pl-4 transition-all duration-300 ease-in-out"
+      onClick={handleNavigation}
+      className={cn(
+        // SWAPPED: Main button now uses secondary color for background
+        'bg-secondary-color group flex cursor-pointer items-center gap-2 rounded-full py-1 pr-1 pl-4 text-white', 
+        buttonClassName
+      )}
     >
       {text}
-      <div className="bg-primary-color flex h-9 w-9 items-center justify-center rounded-full transition-all duration-300 ease-in-out group-hover:bg-white">
+      {/* SWAPPED: Inner circle hover color now uses primary color.
+        Inner circle background remains white.
+      */}
+      <div className="group-hover:bg-primary-color flex h-9 w-9 items-center justify-center rounded-full bg-white transition-colors duration-300 ease-in-out">
+        {/* ICON remains the dark arrow */}
         <img
-          className="h-5 w-5 text-red-200 group-hover:hidden"
-          src="/assets/icons/arrow-top-right.svg"
-          alt=""
-        />
-        <img
-          className="hidden h-3 w-3 group-hover:inline-block"
+          className="h-3 w-3"
           src="/assets/icons/arrow-top-right-dark.svg"
           alt=""
         />
