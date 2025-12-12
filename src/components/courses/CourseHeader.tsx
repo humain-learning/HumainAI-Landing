@@ -1,6 +1,6 @@
 import { Star } from 'lucide-react';
 import Script from 'next/script';
-import PrimaryButton from '../ui/PrimaryButton';
+import PrimaryButton from '@/components/ui/PrimaryButton';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
