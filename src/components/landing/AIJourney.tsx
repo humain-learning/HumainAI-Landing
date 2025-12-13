@@ -1,5 +1,5 @@
 import React from 'react';
-import AutoScrollAccordion from '@/ui/AutoScrollAccordion';
+import AutoScrollAccordion from '@/components/ui/AutoScrollAccordion';
 
 const AIJourney = () => {
   const Button = () => {

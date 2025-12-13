@@ -9,7 +9,7 @@ import WhyHumain from './WhyHumain';
 import WhoAreWeCard from './WhoAreWeCard';
 import OurPurpose from './OurPurpose';
 import PillarsOfTheFramework from './PillarsOfTheFramework';
-import Header from '@/ui/Header';
+import Header from '@/components/ui/Header';
 // import ProductShowcase from './ProductShowcase';
 const LandingPage = () => {
   return (
