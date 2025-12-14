@@ -30,7 +30,7 @@ export const StudentCreations = () => {
     return (
         <div className="relative flex flex-col items-center justify-center mx-auto py-10">
             <div className="w-[90vw] mx-auto flex flex-col items-start justify-center">
-                <h1 className="text-6xl font-semibold text-start px-6 py-10 mt-20">
+                <h1 className="text-6xl font-semibold text-start px-6 py-10 mt-10">
                     <span className="text-sage">See What</span>
                     <span className="text-black"> Students Created! </span>
                 </h1>
