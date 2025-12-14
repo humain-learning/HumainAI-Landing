@@ -1,4 +1,4 @@
-import { CoursesPage } from '@/components/courses';
+import { CoursesPage } from '@/components/coursesv2';
 
 const CoursePage = () => {
   return (

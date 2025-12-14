@@ -1,3 +1,5 @@
+import { SneakPeek } from "../SneakPeek";
+
 export const studentVideos = [
     { 
         id: 1, 
@@ -64,3 +66,5 @@ export const studentVideos = [
         student: "Mia R." 
     },
 ];
+
+export const sneakpeekLink = "https://player.vimeo.com/video/1143055315";

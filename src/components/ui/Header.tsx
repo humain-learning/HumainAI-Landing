@@ -423,7 +423,7 @@ const Header = () => {
           </button>
           <button
             onClick={() => setIsSidebarOpen(true)}
-            className="m-0 inline-flex rounded-lg border border-gray-400 p-1.5 outline-0 hover:border-black md:hidden"
+            className="m-0 inline-flex rounded-lg border border-black p-1.5 outline-0 hover:border-black md:hidden"
           >
             <MenuIcon />
           </button>

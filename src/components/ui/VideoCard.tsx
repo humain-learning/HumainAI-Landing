@@ -21,7 +21,7 @@ export const VideoCard = ({ video, cardWidth, interactive, index = 0}: VideoCard
         const separator = url.includes('?') ? '&' : '?';
 
         interactive ? (
-            url += `${separator}controls=1&autoplay=1&muted=0&loop=0&title=0&byline=0&portrait=0&badge=0&muted=1&dnt=1background=1`
+            url += `${separator}controls=1&autoplay=0&muted=0&loop=0&title=0&byline=0&portrait=0&badge=0&muted=1&dnt=1background=1`
         ) : (
             url += `${separator}autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0&dnt=1&background=1`
         );

@@ -1,13 +1,11 @@
 import { VideoCard } from "../ui/VideoCard";
-
-
-const sneakpeekLink = "https://player.vimeo.com/video/1143055315";
+import { sneakpeekLink } from "./data/studentVideos";
 
 export const SneakPeek = () => {
     return (
         <div className="py-10">
             <div className="flex flex-col justify-center items-center">
-                <h1 className="text-6xl font-semibold w-[50vw] flex flex-col justify-center text-center py-10">                    
+                <h1 className="text-6xl font-semibold flex flex-col justify-center text-center py-10">                    
                     <span className='text-sage'>A Sneak Peek Into Our Fun,</span>
                     <span className='text-terracotta'>Interactive Live Classes</span>
                 </h1>
@@ -17,7 +15,7 @@ export const SneakPeek = () => {
                 <div className="w-full mx-auto z-0">
                     <VideoCard video={{ id: 1, url: sneakpeekLink }} cardWidth="w-full" interactive={true}/>
                 </div>
-                <div className="z-5 w-full-h-full">
+                <div className=" hidden text-white absolute top-0 left-0 z-5 w-full-h-full">
                     overlay
                 </div>
             </div>

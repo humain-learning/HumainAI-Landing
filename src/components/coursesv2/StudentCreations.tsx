@@ -42,12 +42,7 @@ export const StudentCreations = () => {
                     modules={[Autoplay, FreeMode]}
                     spaceBetween={40}
                     slidesPerView="auto"
-                    loop={true}
-                    freeMode={{
-                        enabled: true,
-                        momentum: true,
-                        momentumRatio: 0.5,
-                    }}
+                    loop={false}
                     speed={600}
                     autoplay={{
                         delay: 3000,
