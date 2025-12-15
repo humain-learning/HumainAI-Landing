@@ -7,10 +7,6 @@ import { aiRoadmapVideos } from "./data/aiRoadmapVideos";
 import { usePxCalculator } from '../hooks/usePxCalculator';
 
 
-// const SLIDE_WIDTH_CLASS = "w-[30vw]";
-
-// const SLIDE_WIDTH_CLASS = "w-[80vw]";
-
 const SLIDE_WIDTH_CLASS = "w-[80vw] md:w-[30vw]";
 
 const renderVideoSlides = () => (

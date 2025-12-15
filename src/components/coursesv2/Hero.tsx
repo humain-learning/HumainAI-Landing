@@ -84,7 +84,7 @@ export const Hero = () => {
                             <div className="flex flex-col md:flex-row items-center md:justify-start justify-center px-5 pt-2 pb-5 gap-4 md:gap-0">
                                 <PrimaryButton text="Enroll Now" target="https://pages.razorpay.com/humainchamps" newTab />
                                 <div className="md:w-5"></div>
-                                                                <SecondaryButton text="Contact Us" target="#contact-us" />
+                                <SecondaryButton text="Contact Us" target="#contact-us" />
                             </div>
                         </div>
                         <div className="w-full md:w-1/2 h-full z-10 flex items-center justify-center">

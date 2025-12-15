@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import { aiRoadmapVideos as parentVideos } from "./data/aiRoadmapVideos";
 import { VideoCard } from "../ui/VideoCard";
-import { usePxCalculator } from "../hooks/usePxCalculator";
 
 
 const SLIDE_WIDTH_CLASS = "w-[80vw] md:w-[30vw]";
