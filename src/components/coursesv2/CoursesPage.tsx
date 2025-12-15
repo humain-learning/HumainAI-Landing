@@ -14,7 +14,7 @@ import { ContactUs } from "./ContactUs";
 
 export const CoursesPage = () => {
   return (
-    <section>
+    <section className="relative">
         <Hero />
         <Band />
         <GameChanger />

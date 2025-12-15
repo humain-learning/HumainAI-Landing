@@ -6,7 +6,7 @@ export const Hero = () => {
         return (
             <div className=" relative w-full flex-row max-w-screen flex items-center z-10">
                 <img 
-                            src='/assets/Website Assets/bubble.svg' 
+                            src='/assets/Website Assets/Bubble.svg' 
                             // Position absolute relative to the section
                             className="absolute bottom-0 right-0 z-1 h-auto w-[43vw] object-contain" 
                         />

@@ -23,6 +23,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Humain AI | Home',
+  metadataBase: new URL('https://yourdomain.com'),
   description:
     'Empowering students aged 13+ to harness AI capabilities while preserving human creativity, critical thinking, and emotional intelligence',
   icons: {
