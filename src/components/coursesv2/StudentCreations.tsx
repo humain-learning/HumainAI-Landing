@@ -7,7 +7,7 @@ import { usePxCalculator } from '../hooks/usePxCalculator';
 import { VideoCard } from '../ui/VideoCard';
 import { studentVideos } from './data/studentVideos';
 
-const SLIDE_WIDTH_CLASS = "w-[30vw]";
+const SLIDE_WIDTH_CLASS = "w-[80vw] md:w-[30vw]";
 
 const renderVideoSlides = () => (
     studentVideos.map((video, index) => (
@@ -28,9 +28,9 @@ const renderVideoSlides = () => (
 export const StudentCreations = () => {
     const pxCount = usePxCalculator(5);
     return (
-        <div className="relative flex flex-col items-center justify-center mx-auto py-10">
+        <div className="relative flex flex-col items-center justify-center mx-auto py-6 md:py-10">
             <div className="w-[90vw] mx-auto flex flex-col items-start justify-center">
-                <h1 className="text-6xl font-semibold text-start px-6 py-10 mt-10">
+                <h1 className="text-4xl md:text-6xl font-semibold text-start px-6 py-6 md:py-10 mt-10">
                     <span className="text-sage">See What</span>
                     <span className="text-black"> Students Created! </span>
                 </h1>
@@ -40,7 +40,7 @@ export const StudentCreations = () => {
             <div className="w-full overflow-hidden py-5">
                 <Swiper
                     modules={[Autoplay, FreeMode]}
-                    spaceBetween={40}
+                    spaceBetween={20}
                     slidesPerView="auto"
                     loop={false}
                     speed={600}

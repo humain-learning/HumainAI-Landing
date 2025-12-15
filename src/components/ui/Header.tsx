@@ -36,30 +36,34 @@ const RequestCallBackModal = ({
 }: {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (user: { name: string; email: string; contact: string }) => void;
+  onSubmit: (user: { firstName: string; lastName: string; email: string; contact: string }) => void;
   loading: boolean;
 }) => {
   const modalContainerRef = useRef<null | HTMLDivElement>(null);
   const [user, setUser] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     contact: '',
   });
 
   const [touched, setTouched] = useState({
-    name: false,
+    firstName: false,
+    lastName: false,
     email: false,
     contact: false,
   });
 
   const handleClose = () => {
     setUser({
-      name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       contact: '',
     });
     setTouched({
-      name: false,
+      firstName: false,
+      lastName: false,
       email: false,
       contact: false,
     });
@@ -93,7 +97,8 @@ const RequestCallBackModal = ({
   const isValidContact = (contact: string) => /^[0-9]{10}$/.test(contact);
 
   const isFormValid =
-    user.name.trim().length > 0 &&
+    user.firstName.trim().length > 0 &&
+    user.lastName.trim().length > 0 &&
     isValidEmail(user.email) &&
     isValidContact(user.contact);
 
@@ -122,25 +127,36 @@ const RequestCallBackModal = ({
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            setTouched({ name: true, email: true, contact: true });
+            setTouched({ firstName: true, lastName: true, email: true, contact: true });
             if (isFormValid) onSubmit(user);
           }}
           className="flex flex-col gap-4"
         >
           <div>
             <label className="mb-1 block text-sm font-medium">Name</label>
-            <input
-              type="text"
-              className={`focus:ring-primary-color w-full rounded-lg border px-3 py-2 focus:ring-2 focus:outline-none ${touched.name && !user.name.trim() ? 'border-red-400' : 'border-gray-300'}`}
-              value={user.name}
-              onChange={(e) => setUser({ ...user, name: e.target.value })}
-              onBlur={() => setTouched((t) => ({ ...t, name: true }))}
-              required
-              placeholder="Your Name"
-            />
-            {touched.name && !user.name.trim() && (
-              <span className="text-xs text-red-500">Name is required.</span>
-            )}
+            <div className="flex gap-3">
+              <input
+                type="text"
+                className={`focus:ring-primary-color w-1/2 rounded-lg border px-3 py-2 focus:ring-2 focus:outline-none ${touched.firstName && !user.firstName.trim() ? 'border-red-400' : 'border-gray-300'}`}
+                value={user.firstName}
+                onChange={(e) => setUser({ ...user, firstName: e.target.value })}
+                onBlur={() => setTouched((t) => ({ ...t, firstName: true }))}
+                required
+                placeholder="First name"
+              />
+              <input
+                type="text"
+                className={`focus:ring-primary-color w-1/2 rounded-lg border px-3 py-2 focus:ring-2 focus:outline-none ${touched.lastName && !user.lastName.trim() ? 'border-red-400' : 'border-gray-300'}`}
+                value={user.lastName}
+                onChange={(e) => setUser({ ...user, lastName: e.target.value })}
+                onBlur={() => setTouched((t) => ({ ...t, lastName: true }))}
+                required
+                placeholder="Last name"
+              />
+            </div>
+            {(touched.firstName && !user.firstName.trim()) || (touched.lastName && !user.lastName.trim()) ? (
+              <span className="text-xs text-red-500">First and last name are required.</span>
+            ) : null}
           </div>
           <div>
             <label className="mb-1 block text-sm font-medium">Email</label>
@@ -219,49 +235,61 @@ const NavbarSidebar = ({
   const pathname = usePathname();
   const isCoursesPage = pathname === '/courses';
   
-  // Simulate submit
-const handleSubmit = async (user: {
-  name: string;
-  email: string;
-  contact: string;
-}) => {
-  setLoading(true);
-  
-  try {
-    // Primary: Google Sheets
-    await fetch('https://script.google.com/macros/s/AKfycbzfqI3GxgGG9dB0rfcvXOqd_g7VLW4cH7umNcg330ZtnJE6DuKvwsLGRyyNPgWJMVRT/exec', {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: user.name,
-        email: user.email,
-        contact: user.contact,
-        createdAt: new Date().toISOString(),
-        pageUrl: window.location.href
-      })
-    });
+  // Submit to Frappe CRM via /api/submit-lead
+  const handleSubmit = async (user: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    contact: string;
+  }) => {
+    setLoading(true);
     
-    // Backup: Firebase (fire and forget, don't wait)
     try {
-      const db = getFirestore(app);
-      addDoc(collection(db, 'callbackRequests'), {
-        name: user.name,
+      const payload = {
+        first_name: user.firstName,
+        last_name: user.lastName,
         email: user.email,
-        contact: user.contact,
-        createdAt: new Date(),
-      }).catch(err => console.log('Firebase backup failed:', err));
-    } catch {}
-    
-    setShowModal(false);
-    toast.success('Thank you! We will contact you soon.');
-  } catch (error) {
-    console.error('Error:', error);
-    toast.error('Something went wrong. Please try again.');
-  } finally {
-    setLoading(false);
-  }
-};
+        mobile_no: user.contact,
+        custom_parent_first_name: '',
+        custom_parent_last_name: '',
+        custom_class: '',
+        custom_city: '',
+        custom_message: '',
+        source: 'Website Form',
+      };
+
+      const res = await fetch('/api/submit-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const error = await res.json().catch(() => ({}));
+        throw new Error(error.message || 'Submission failed');
+      }
+
+      // Backup: Firebase (fire and forget)
+      try {
+        const db = getFirestore(app);
+        addDoc(collection(db, 'callbackRequests'), {
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: user.email,
+          contact: user.contact,
+          createdAt: new Date(),
+        }).catch(err => console.log('Firebase backup failed:', err));
+      } catch {}
+      
+      setShowModal(false);
+      toast.success('Thank you! We will contact you soon.');
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div
@@ -328,47 +356,59 @@ const Header = () => {
   const isCoursesPage = pathname === '/courses';
   const isPrivacyPage = pathname === '/privacy-policy'
   const handleSubmit = async (user: {
-  name: string;
-  email: string;
-  contact: string;
-}) => {
-  setLoading(true);
-  
-  try {
-    // Primary: Google Sheets
-    await fetch('https://script.google.com/macros/s/AKfycbzfqI3GxgGG9dB0rfcvXOqd_g7VLW4cH7umNcg330ZtnJE6DuKvwsLGRyyNPgWJMVRT/exec', {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: user.name,
-        email: user.email,
-        contact: user.contact,
-        createdAt: new Date().toISOString(),
-        pageUrl: window.location.href
-      })
-    });
+    firstName: string;
+    lastName: string;
+    email: string;
+    contact: string;
+  }) => {
+    setLoading(true);
     
-    // Backup: Firebase
     try {
-      const db = getFirestore(app);
-      addDoc(collection(db, 'callbackRequests'), {
-        name: user.name,
+      const payload = {
+        first_name: user.firstName,
+        last_name: user.lastName,
         email: user.email,
-        contact: user.contact,
-        createdAt: new Date(),
-      }).catch(err => console.log('Firebase backup failed:', err));
-    } catch {}
-    
-    setShowModal(false);
-    toast.success('Thank you! We will contact you soon.');
-  } catch (error) {
-    console.error('Error:', error);
-    toast.error('Something went wrong. Please try again.');
-  } finally {
-    setLoading(false);
-  }
-};
+        mobile_no: user.contact,
+        custom_parent_first_name: '',
+        custom_parent_last_name: '',
+        custom_class: '',
+        custom_city: '',
+        custom_message: '',
+        source: 'Website Form',
+      };
+
+      const res = await fetch('/api/submit-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const error = await res.json().catch(() => ({}));
+        throw new Error(error.message || 'Submission failed');
+      }
+
+      // Backup: Firebase
+      try {
+        const db = getFirestore(app);
+        addDoc(collection(db, 'callbackRequests'), {
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: user.email,
+          contact: user.contact,
+          createdAt: new Date(),
+        }).catch(err => console.log('Firebase backup failed:', err));
+      } catch {}
+      
+      setShowModal(false);
+      toast.success('Thank you! We will contact you soon.');
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>

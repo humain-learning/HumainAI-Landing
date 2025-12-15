@@ -85,38 +85,38 @@ export const ContactUs = () => {
 };
 
     return (
-        <div className="flex w-[90vw] bg-white rounded-lg mx-auto py-10 items-start justify-between">
+        <div id='contact-us' className="flex flex-col md:flex-row w-[90vw] bg-white rounded-lg mx-auto py-5 md:py-10 items-start justify-between">
             {/* Left Column */}
-            <div className="flex px-6 flex-col w-[40%]">
-                <h1 className='text-6xl font-semibold text-start px-6 py-10'>
+            <div className="flex px-3 md:px-6 flex-col w-full md:w-[50%]">
+                <h1 className='text-4xl md:text-6xl font-semibold text-start px-3 md:px-6 py-5 md:py-10'>
                     <span className="text-sage">Contact Us</span>
 
                 </h1>
-                <hr className="w-1/4  border-t-4 border-terracotta mx-6 mb-10" />
-                <div className='flex flex-col gap-'>
-                <div className='flex items-center justify-start px-6'>
-                    <img src='/assets/Website Assets/Call.svg' className="scale-70" />
-                    <span className='text-2xl font-medium ml-4'>+91 81300 23688</span>
-                </div>
-                <div className='flex items-center justify-start px-6'>
-                    <img src='/assets/Website Assets/Mail.svg' className="scale-70" />
-                    <span className='text-2xl font-medium ml-4'>hi@humainlearning.ai</span>
-                </div>
+                <hr className="w-full md:w-1/4  border-t-4 border-terracotta mx-3 md:mx-6 mb-5 md:mb-10" />
+                <div className='flex flex-col md:gap-0'>
+                    <div className='flex items-center justify-start px-3 md:px-6'>
+                        <img src='/assets/Website Assets/Call.svg' className="scale-40 md:scale-60" />
+                        <span className='text-lg md:text-2xl font-medium ml-4'>+91 81300 23688</span>
+                    </div>
+                    <div className='flex items-center justify-start px-3 md:px-6'>
+                        <img src='/assets/Website Assets/Mail.svg' className="scale-40 md:scale-60" />
+                        <span className='text-lg md:text-2xl font-medium ml-4'>hi@humainlearning.ai</span>
+                    </div>
                 </div>
             </div>
 
             {/* Right Column */}
-            <div className="flex w-[40%] pr-40">
-                <form onSubmit={handleSubmit} className="space-y-6 w-full">
+            <div className="flex w-full md:w-[50%] pr-0 md:pr-40 mt-5 md:mt-0">
+                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6 w-full px-3 md:px-0">
                     {/* Parent and Child Name Row */}
-                    <div className="flex space-x-4">
+                    <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
                         <input
                             type="text"
                             name="childFirstName"
                             placeholder="Child First Name"
                             value={formData.childFirstName}
                             onChange={handleInputChange}
-                            className="flex-1 p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
+                            className="flex-1 p-3 md:p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
                             required
                         />
                         <input
@@ -125,18 +125,18 @@ export const ContactUs = () => {
                             placeholder="Child Last Name"
                             value={formData.childLastName}
                             onChange={handleInputChange}
-                            className="flex-1 p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
+                            className="flex-1 p-3 md:p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
                             required
                         />
                     </div>
-                    <div className="flex space-x-4">
+                    <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
                         <input
                             type="text"
                             name="parentFirstName"
                             placeholder="Parent First Name"
                             value={formData.parentFirstName}
                             onChange={handleInputChange}
-                            className="flex-1 p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
+                            className="flex-1 p-3 md:p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
                             required
                         />
                         <input
@@ -145,20 +145,20 @@ export const ContactUs = () => {
                             placeholder="Parent Last Name"
                             value={formData.parentLastName}
                             onChange={handleInputChange}
-                            className="flex-1 p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
+                            className="flex-1 p-3 md:p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
                             required
                         />
                     </div>
 
                     {/* Mobile No and Email Row */}
-                    <div className="flex space-x-4">
+                    <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
                         <input
                             type="tel"
                             name="mobileNo"
                             placeholder="Mobile No."
                             value={formData.mobileNo}
                             onChange={handleInputChange}
-                            className="flex-1 p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
+                            className="flex-1 p-3 md:p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
                             required
                         />
                         <input
@@ -167,17 +167,17 @@ export const ContactUs = () => {
                             placeholder="Email"
                             value={formData.email}
                             onChange={handleInputChange}
-                            className="flex-1 p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
+                            className="flex-1 p-3 md:p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
                             required
                         />
                     </div>
 
-                    <div className="flex space-x-4">
+                    <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
                         <select
                             name="childGrade"
                             value={formData.childGrade}
                             onChange={handleInputChange}
-                            className="flex-1 p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
+                            className="flex-1 p-3 md:p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
                             required
                         >
                             <option value="">Select Child's Grade</option>
@@ -189,12 +189,12 @@ export const ContactUs = () => {
                             <option value="12">Grade 12th</option>
                         </select>
                         <input 
-                            type='city'
+                            type='text'
                             name="city"
                             placeholder="City"
                             value={formData.city}
                             onChange={handleInputChange}
-                            className="flex-1 p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
+                            className="flex-1 p-3 md:p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
                             
                         />
                     </div>
@@ -203,15 +203,15 @@ export const ContactUs = () => {
                         placeholder="Message"
                         value={formData.message}
                         onChange={handleInputChange}
-                        className="w-full p-4 border-b-2 focus:outline-none focus:ring-0 h-32 resize-none text-base"
+                        className="w-full p-3 md:p-4 border-b-2 focus:outline-none focus:ring-0 h-24 md:h-32 resize-none text-base"
                         required
                     />
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full p-4 bg-sage text-white rounded-lg font-semibold hover:bg-blue-700 transition text-base disabled:opacity-60"
+                        className="w-full p-3 md:p-4 bg-sage text-white rounded-lg font-semibold hover:bg-[#91af70] hover:text-white transition text-base disabled:opacity-60"
                     >
-                        {loading ? 'Sending...' : 'Send Message'}
+                        {loading ? 'Sending...' : 'Submit'}
                     </button>
                     {statusMessage && (
                         <p className="text-sm mt-2 px-1 text-gray-700">{statusMessage}</p>

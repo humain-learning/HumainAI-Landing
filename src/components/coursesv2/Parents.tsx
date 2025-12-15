@@ -6,38 +6,32 @@ import { VideoCard } from "../ui/VideoCard";
 import { usePxCalculator } from "../hooks/usePxCalculator";
 
 
+const SLIDE_WIDTH_CLASS = "w-[80vw] md:w-[30vw]";
 const renderVideoSlides = () => (
-    parentVideos.map((video, index) => {
-        return (
-        <>
-            <SwiperSlide 
-            key={`${index}`} 
-            className={`rounded-3xl`}>
+    parentVideos.map((video, index) => (
+        <SwiperSlide 
+            key={`${video.id}-${index}`} 
+            className={`!w-auto ${SLIDE_WIDTH_CLASS}`}
+        >
             <VideoCard 
                 video={video} 
+                cardWidth={SLIDE_WIDTH_CLASS}
                 interactive={false}
                 index={index}
-                // cardWidth={SLIDE_WIDTH_CLASS}
             />
-            {/* <div className=" px-6 py-2 gap-1 flex flex-col justify-center items-start">
-                <span className="text-2xl font-semibold">{video.title}</span>
-                <p className="text-xl font-medium">{video.description}</p>
-            </div> */}
-            </SwiperSlide>
-        
-        </>
-        )
-    })
+        </SwiperSlide>
+    ))
 );
 
 
 
 export const Parents = () => {
     return (
-        <div className="relative my-20">
-            <div className="w-[90vw] flex flex-row mx-auto">
-                <div className="w-[70%]">
-                    <h1 className="text-6xl font-semibold text-start px-6 py-10">
+        <div className="relative w-full my-20">
+            <img src='/assets/Website Assets/Parents.png' className="absolute left-0 top-0 h-full w-[30vw] scale-x-[-1] hidden md:block" />
+            <div className="w-[90vw] mx-auto flex flex-col md:flex-row">
+                <div className="w-full md:w-[70%] md:ml-[30vw]">
+                    <h1 className="text-4xl md:text-6xl font-semibold text-start px-6 py-10">
                         <span className="text-sage">What Parents</span>
                         <span className="text-black"> Are Saying</span>
                     </h1>
@@ -45,17 +39,22 @@ export const Parents = () => {
 
                     <div className="overflow-x-show">
                         <Swiper
-                        spaceBetween={30}
-                        slidesPerView={2}
-                        loop={false}
-                        speed={600}
-                        >       
+                            spaceBetween={20}
+                            slidesPerView="auto"
+                            breakpoints={{
+                                768: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 30,
+                                },
+                            }}
+                            loop={false}
+                            speed={600}
+                        >
                             {renderVideoSlides()}
                         </Swiper>
                     </div>
                 </div>
             </div>
-            <img src='/assets/Website Assets/Parents.png' className="absolute bottom-0 right-0 h-full" />
         </div>
     );
  };

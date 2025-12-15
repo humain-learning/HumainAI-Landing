@@ -3,9 +3,9 @@ import { sneakpeekLink } from "./data/studentVideos";
 
 export const SneakPeek = () => {
     return (
-        <div className="py-10">
+        <div className="py-6 md:py-10">
             <div className="flex flex-col justify-center items-center">
-                <h1 className="text-6xl font-semibold flex flex-col justify-center text-center py-10">                    
+                <h1 className="text-4xl md:text-6xl font-semibold flex flex-col justify-center text-center py-6 md:py-10">                    
                     <span className='text-sage'>A Sneak Peek Into Our Fun,</span>
                     <span className='text-terracotta'>Interactive Live Classes</span>
                 </h1>

@@ -38,10 +38,12 @@ export const VideoCard = ({ video, cardWidth, interactive, index = 0}: VideoCard
             </div>
         );
     }
-    let borderClass = 'border-sage';
-    borderClass = index % 2 === 0 ? 'border-sage' : 'border-terracotta';
+    let borderClass = 'md:border-sage';
+    borderClass = index % 2 === 0 ? 'md:border-sage' : 'md:border-terracotta';
+    // No border on mobile, border-4 on md, border-6 on lg
+    const responsiveBorder = 'border-0 md:border-4 lg:border-6';
     return (
-        <div className={`${cardWidth} rounded-3xl overflow-hidden ${borderClass} border-5 bg-white transition duration-300 object-fill`}>
+        <div className={`${cardWidth} rounded-3xl overflow-hidden ${borderClass} ${responsiveBorder} bg-white transition duration-300 object-fill`}>
             {interactive ? (
                 <div className="relative pt-[56.25%]">
                     <iframe

@@ -1,20 +1,17 @@
-// src/app/api/send-lead/route.ts
-// This file defines the POST handler for the /api/send-lead endpoint.
+// src/app/api/submit-lead/route.ts
+// This file defines the POST handler for the /api/submit-lead endpoint.
 
-import { source } from 'framer-motion/client';
 import { NextResponse } from 'next/server';
 
 // App Router uses the standard HTTP method exports (GET, POST, etc.)
 export async function POST(req: Request) {
     
     // --- 1. Access Secret Credentials (Server-Side Only) ---
-    // These variables are correctly accessed here (server-side)
     const baseUrl = process.env.FRAPPE_BASE_URL;
     const apiKey = process.env.FRAPPE_API_KEY;
     const apiSecret = process.env.FRAPPE_API_SECRET;
 
     if (!baseUrl || !apiKey || !apiSecret) {
-        // Return a 500 status if the server is improperly configured (internal error)
         return NextResponse.json({ message: 'Server configuration error: Frappe credentials missing.' }, { status: 500 });
     }
 
@@ -23,21 +20,23 @@ export async function POST(req: Request) {
         const clientData = await req.json();
 
         // 3. Map client-side data to the required Frappe Lead doctype structure
+        // Accepts both direct Frappe field names (first_name, last_name, mobile_no)
+        // AND legacy ContactUs keys (parentFirstName, childFirstName, mobileNo, etc.)
         const frappePayload = {
-            // Note: The Frappe API recognizes the full DocType from this field
-            doctype: 'Lead', 
-            // Map client fields (camelCase) to Frappe fields (snake_case/custom_)
-            custom_parent_first_name: clientData.parentFirstName,
-            custom_parent_last_name: clientData.parentLastName,
-            first_name: clientData.childFirstName, 
-            last_name: clientData.childLastName,
-            mobile_no: clientData.mobileNo,
-            email: clientData.email,
-            custom_class: clientData.childGrade,
-            custom_city: clientData.city,
-            custom_message: clientData.message,
-            source: clientData.source,
-            // Add any other necessary fields (e.g., status, source)
+            doctype: 'Lead',
+            // Primary name fields - prefer direct Frappe names, fall back to legacy keys
+            first_name: clientData.first_name || clientData.childFirstName || '',
+            last_name: clientData.last_name || clientData.childLastName || '',
+            // Contact
+            mobile_no: clientData.mobile_no || clientData.mobileNo || '',
+            email: clientData.email || '',
+            // Custom fields - from ContactUs form
+            custom_parent_first_name: clientData.custom_parent_first_name || clientData.parentFirstName || '',
+            custom_parent_last_name: clientData.custom_parent_last_name || clientData.parentLastName || '',
+            custom_class: clientData.custom_class || clientData.childGrade || '',
+            custom_city: clientData.custom_city || clientData.city || '',
+            custom_message: clientData.custom_message || clientData.message || '',
+            source: clientData.source || 'Website Form',
         };
 
         // 4. Send the request to the external Frappe API

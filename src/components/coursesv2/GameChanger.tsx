@@ -3,9 +3,9 @@ import { whyusFeatures } from './data/whyUs';
 
 export const GameChanger = () => {
     return (
-        <div>
-            <div className="relative w-[90vw] flex flex-col items-start justify-center mx-auto">
-                <h1 className="text-2xl md:text-4xl lg:text-6xl font-semibold text-start md:px-6 py-[1.5rem]">
+        <div className="mt-10 md:mt-20">
+            <div className="relative w-[90vw] flex flex-col items-center md:items-start justify-center mx-auto">
+                <h1 className="text-3xl md:text-6xl font-semibold text-center md:text-start md:px-6 py-[1.5rem]">
                     <span className=" text-terracotta">
                         Why This Program is a
                     </span>
@@ -14,24 +14,33 @@ export const GameChanger = () => {
                         Game Changer for Students
                     </span>
                 </h1>
-                <hr className="w-1/2 md:w-1/4 lg:w-1/8 border-t-4 border-terracotta mx-6 mb-10" />
+                <hr className="w-1/2 md:w-1/4 lg:w-1/8 border-t-4 border-terracotta mx-auto md:mx-6 mb-10" />
           </div>
-          <div className="w-[88vw] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm md:gap-x-30 md:gap-y-20">
+                    <div className="flex justify-center">
+                        <div className="w-[88vw] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-x-10 md:gap-y-10 justify-center justify-items-center">
                 {whyusFeatures.map((feature) => (
-                    <div className="relative bg-terracotta w-auto max-h-[15vh] rounded-tl-full rounded-bl-full rounded-tr-full" key={feature.id}>
-                        <div className="flex w-full h-full items-center justify-start text-white p-10">
-                            <img src={feature.icon} className=" w-[10rem] z-5 mx-2"/>
-                            <div className=" flex flex-col items-center justify-center z-10 mx-2">
-                                <span className="font-semibold text-center p-2">
+                    <div
+                        className="relative bg-terracotta w-full max-w-xs md:max-w-none min-h-[120px] md:min-h-[180px] rounded-tl-full rounded-bl-full rounded-tr-full flex items-center justify-center p-3 md:p-6"
+                        key={feature.id}
+                    >
+                        <div className="flex flex-row items-center justify-center h-full w-full gap-3">
+                            <img
+                                src={feature.icon}
+                                className="w-10 h-10 md:w-14 md:h-14 lg:w-12 lg:h-12 object-contain"
+                                alt={feature.title}
+                            />
+                            <div className="flex flex-col items-start justify-center w-full">
+                                <span className="font-semibold text-white text-left text-base md:text-lg p-0 md:p-2 break-words w-full">
                                     {feature.title}
                                 </span>
-                                <div className="w-full text text-center p-2">
+                                <div className="w-full text-white text-left text-xs md:text-sm p-0 md:p-2 break-words">
                                     {feature.description}
                                 </div>
                             </div>
-                      </div>
+                        </div>
                     </div>
                 ))}
+            </div>
           </div>
         </div>
     );
