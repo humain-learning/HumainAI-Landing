@@ -98,7 +98,6 @@ const RequestCallBackModal = ({
 
   const isFormValid =
     user.firstName.trim().length > 0 &&
-    user.lastName.trim().length > 0 &&
     isValidEmail(user.email) &&
     isValidContact(user.contact);
 
