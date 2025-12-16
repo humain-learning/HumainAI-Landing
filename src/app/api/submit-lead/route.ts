@@ -41,6 +41,9 @@ export async function POST(req: Request) {
 
         // 4. Send the request to the external Frappe API
         const frappeUrl = `${baseUrl.replace(/\/$/, '')}/api/resource/CRM Lead`;
+        console.log('[Frappe Request] URL:', frappeUrl);
+        console.log('[Frappe Request] Payload:', JSON.stringify(frappePayload, null, 2));
+        
         const frappeRes = await fetch(frappeUrl, {
             method: 'POST',
             headers: {
@@ -53,8 +56,16 @@ export async function POST(req: Request) {
 
         // 5. Handle Frappe API Errors
         if (!frappeRes.ok) {
-            const frappeError = await frappeRes.text().catch(() => 'Unknown error');
-            console.error(`[Frappe API Error] Status: ${frappeRes.status}, URL: ${frappeUrl}, Response: ${frappeError}`);
+            let frappeError = '';
+            try {
+                const jsonError = await frappeRes.json();
+                frappeError = JSON.stringify(jsonError, null, 2);
+            } catch {
+                frappeError = await frappeRes.text();
+            }
+            console.error(`[Frappe API Error] Status: ${frappeRes.status}`);
+            console.error(`[Frappe API Error] URL: ${frappeUrl}`);
+            console.error(`[Frappe API Error] Response:`, frappeError);
             // Pass a generic error message to the client
             return NextResponse.json(
                 { 
@@ -66,6 +77,7 @@ export async function POST(req: Request) {
 
         // 6. Success: Send a clean 200 response to the client with redirect URL
         const successData = await frappeRes.json();
+        console.log('[Frappe Success] Response:', JSON.stringify(successData, null, 2));
         return NextResponse.json({
             message: 'Lead successfully created in Frappe.',
             data: successData,
@@ -74,7 +86,10 @@ export async function POST(req: Request) {
 
     } catch (error) {
         // Catch any parsing or network errors and return a generic error message
-        console.error('[Submit Lead Error]', error instanceof Error ? error.message : String(error));
+        const errorMsg = error instanceof Error ? error.message : String(error);
+        const errorStack = error instanceof Error ? error.stack : '';
+        console.error('[Submit Lead Error] Message:', errorMsg);
+        console.error('[Submit Lead Error] Stack:', errorStack);
         return NextResponse.json({ message: 'An unknown error has occurred. Please try again later or reach out to us directly via Phone or Email.' }, { status: 500 });
     }
 }
