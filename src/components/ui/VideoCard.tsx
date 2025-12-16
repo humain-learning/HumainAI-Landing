@@ -121,15 +121,12 @@ export const VideoCard = ({ video, cardWidth = 'w-full', index = 0 }: VideoCardP
         );
     }
 
-    let borderClass = index % 2 === 0 ? 'md:border-sage' : 'md:border-terracotta';
-    const responsiveBorder = 'border-0 md:border-2 lg:border-3';
-
     return (
-        <div className={`${cardWidth} rounded-3xl overflow-hidden ${borderClass} ${responsiveBorder} bg-white transition duration-300 object-fill`}>
+        <div className={`${cardWidth} rounded-4xl bg-white transition duration-300 object-fill overflow-hidden`}>
             <div className="relative pt-[56.25%]">
                 <iframe
                     ref={iframeRef}
-                    className="absolute top-0 left-0 w-full h-full pointer-events-none"
+                    className="absolute top-0 left-0 w-full h-full pointer-events-none "
                     src={enhancedUrl}
                     title={video.title || 'Student Creation Video'}
                     allow="autoplay; fullscreen; picture-in-picture"
