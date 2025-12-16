@@ -181,7 +181,6 @@ export const ContactUs = () => {
                             required
                         >
                             <option value="">Select Child's Grade</option>
-                            <option value="7">Grade 7th</option>
                             <option value="8">Grade 8th</option>
                             <option value="9">Grade 9th</option>
                             <option value="10">Grade 10th</option>
