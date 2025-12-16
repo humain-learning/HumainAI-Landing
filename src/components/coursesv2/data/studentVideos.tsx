@@ -1,9 +1,10 @@
 export const studentVideos = [
     {
         id: 1,
-        url: "https://player.vimeo.com/video/1143056173",
-        name: "Avanindra Kumar Singh"
+        url: "https://player.vimeo.com/video/1146488189",
+        name: "Amayerah"
     },
+   
     {
         id: 2,
         url: "https://player.vimeo.com/video/1143056238",
@@ -16,9 +17,10 @@ export const studentVideos = [
     },
     {
         id: 4,
-        url: "https://player.vimeo.com/video/1146488189",
-        name: "Amayerah"
-    }
+        url: "https://player.vimeo.com/video/1143056173",
+        name: "Avanindra Kumar Singh"
+    },
+    
 ];
 
 export const sneakpeekLink = "https://player.vimeo.com/video/1143055315";

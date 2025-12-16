@@ -122,7 +122,7 @@ export const VideoCard = ({ video, cardWidth = 'w-full', index = 0 }: VideoCardP
     }
 
     let borderClass = index % 2 === 0 ? 'md:border-sage' : 'md:border-terracotta';
-    const responsiveBorder = 'border-0 md:border-4 lg:border-6';
+    const responsiveBorder = 'border-0 md:border-2 lg:border-3';
 
     return (
         <div className={`${cardWidth} rounded-3xl overflow-hidden ${borderClass} ${responsiveBorder} bg-white transition duration-300 object-fill`}>

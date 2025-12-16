@@ -62,9 +62,13 @@ export async function POST(req: Request) {
             );
         }
 
-        // 6. Success: Send a clean 200 response to the client
+        // 6. Success: Send a clean 200 response to the client with redirect URL
         const successData = await frappeRes.json();
-        return NextResponse.json({ message: 'Lead successfully created in Frappe.', data: successData });
+        return NextResponse.json({
+            message: 'Lead successfully created in Frappe.',
+            data: successData,
+            redirect: '/thank-you',
+        });
 
     } catch (error) {
         // Catch any parsing or network errors and return a generic error message

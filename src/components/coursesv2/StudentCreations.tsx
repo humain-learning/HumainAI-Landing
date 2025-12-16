@@ -42,6 +42,7 @@ export const StudentCreations = () => {
                     spaceBetween={20}
                     slidesPerView="auto"
                     loop={false}
+                    freeMode={true}
                     speed={600}
                     slidesOffsetBefore={pxCount} 
                     slidesOffsetAfter={pxCount}
