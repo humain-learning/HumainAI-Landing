@@ -23,7 +23,7 @@ export async function POST(req: Request) {
         // Accepts both direct Frappe field names (first_name, last_name, mobile_no)
         // AND legacy ContactUs keys (parentFirstName, childFirstName, mobileNo, etc.)
         const frappePayload = {
-            doctype: 'Lead',
+            doctype: 'CRM Lead',
             // Primary name fields - prefer direct Frappe names, fall back to legacy keys
             first_name: clientData.first_name || clientData.childFirstName || '',
             last_name: clientData.last_name || clientData.childLastName || '',
@@ -40,8 +40,8 @@ export async function POST(req: Request) {
         };
 
         // 4. Send the request to the external Frappe API
-        // FIX APPLIED HERE: Changed "CRM Lead" to "Lead" in the URL endpoint
-        const frappeRes = await fetch(`${baseUrl.replace(/\/$/, '')}/api/resource/CRM Lead`, {
+        const frappeUrl = `${baseUrl.replace(/\/$/, '')}/api/resource/CRM Lead`;
+        const frappeRes = await fetch(frappeUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -53,6 +53,8 @@ export async function POST(req: Request) {
 
         // 5. Handle Frappe API Errors
         if (!frappeRes.ok) {
+            const frappeError = await frappeRes.text().catch(() => 'Unknown error');
+            console.error(`[Frappe API Error] Status: ${frappeRes.status}, URL: ${frappeUrl}, Response: ${frappeError}`);
             // Pass a generic error message to the client
             return NextResponse.json(
                 { 
@@ -72,6 +74,7 @@ export async function POST(req: Request) {
 
     } catch (error) {
         // Catch any parsing or network errors and return a generic error message
+        console.error('[Submit Lead Error]', error instanceof Error ? error.message : String(error));
         return NextResponse.json({ message: 'An unknown error has occurred. Please try again later or reach out to us directly via Phone or Email.' }, { status: 500 });
     }
 }
