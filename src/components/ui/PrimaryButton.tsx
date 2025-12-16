@@ -27,7 +27,7 @@ const PrimaryButton = ({ text, buttonClassName, target, onClick, newTab }: Prima
         )}
       >
         {text}
-        <div className="group-hover:bg-secondary-color flex h-9 w-9 items-center justify-between rounded-full bg-white transition-colors duration-300 ease-in-out">
+        <div className="group-hover:bg-secondary-color flex h-9 w-9 items-center justify-center rounded-full bg-white transition-colors duration-300 ease-in-out">
           <img
             className="h-3 w-3"
             src="/assets/icons/arrow-top-right-dark.svg"
