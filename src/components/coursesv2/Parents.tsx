@@ -1,7 +1,7 @@
 'use client'
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
-import { aiRoadmapVideos as parentVideos } from "./data/aiRoadmapVideos";
+import { parentVideos } from "./data/parentVideos";
 import { VideoCard } from "../ui/VideoCard";
 import { usePxCalculator } from "../hooks/usePxCalculator";
 
@@ -16,7 +16,6 @@ const renderVideoSlides = () => (
             <VideoCard 
                 video={video} 
                 cardWidth={SLIDE_WIDTH_CLASS}
-                interactive={false}
                 index={index}
             />
         </SwiperSlide>

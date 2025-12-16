@@ -22,7 +22,6 @@ const renderVideoSlides = () => (
             <VideoCard 
                 video={video} 
                 cardWidth={SLIDE_WIDTH_CLASS}
-                interactive={false}
                 index={index}
             />
             <div className=" px-3 md:px-6 py-2 gap-1 flex flex-col justify-center items-start">
@@ -64,6 +63,8 @@ export const Roadmap = () => {
                 }}
                 loop={false}
                 speed={600}
+                slidesOffsetBefore={pxCount} 
+                slidesOffsetAfter={pxCount}
             >
                 {renderVideoSlides()}
             </Swiper>

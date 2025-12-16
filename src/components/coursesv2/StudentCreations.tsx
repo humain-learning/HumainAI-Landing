@@ -12,13 +12,12 @@ const SLIDE_WIDTH_CLASS = "w-[80vw] md:w-[30vw]";
 const renderVideoSlides = () => (
     studentVideos.map((video, index) => (
         <SwiperSlide 
-            key={`${video.id}-${index}`} 
+            key={video.id} 
             className={`!w-auto ${SLIDE_WIDTH_CLASS}`}
         >
             <VideoCard 
                 video={video} 
                 cardWidth={SLIDE_WIDTH_CLASS}
-                interactive={false}
                 index={index}
             />
         </SwiperSlide>
@@ -46,7 +45,7 @@ export const StudentCreations = () => {
                     speed={600}
                     autoplay={{
                         delay: 3000,
-                        disableOnInteraction: false,
+                        disableOnInteraction: true,
                         pauseOnMouseEnter: true,
                     }}
                     slidesOffsetBefore={pxCount} 
