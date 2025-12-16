@@ -43,11 +43,6 @@ export const StudentCreations = () => {
                     slidesPerView="auto"
                     loop={false}
                     speed={600}
-                    autoplay={{
-                        delay: 3000,
-                        disableOnInteraction: true,
-                        pauseOnMouseEnter: true,
-                    }}
                     slidesOffsetBefore={pxCount} 
                     slidesOffsetAfter={pxCount}
                 >

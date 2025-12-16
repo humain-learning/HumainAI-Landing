@@ -39,7 +39,7 @@ export const VideoCard = ({ video, cardWidth = 'w-full', index = 0 }: VideoCardP
         // Ensure paused by default
         playerRef.current.pause().catch(() => {});
         // Reduce default volume to 20%
-        playerRef.current.setVolume && playerRef.current.setVolume(0.2).catch(() => {});
+        playerRef.current.setVolume && playerRef.current.setVolume(1).catch(() => {});
 
         // initialize muted state from player if available
         (async () => {
@@ -77,7 +77,7 @@ export const VideoCard = ({ video, cardWidth = 'w-full', index = 0 }: VideoCardP
         if (!player) return;
         try {
             // ensure a low default volume just before playback
-            player.setVolume && (await player.setVolume(0.2).catch(() => {}));
+            player.setVolume && (await player.setVolume(1).catch(() => {}));
             const paused = await player.getPaused();
             if (paused) {
                 await player.play();
