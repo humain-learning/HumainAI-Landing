@@ -38,8 +38,7 @@ export const StudentCreations = () => {
 
             <div className="w-full overflow-hidden py-5">
                 <Swiper
-                    modules={[Autoplay, FreeMode]}
-                    spaceBetween='20'
+                    spaceBetween={20}
                     slidesPerView="auto"
                     loop={false}
                     slidesOffsetBefore={pxCount} 

@@ -16,10 +16,10 @@ const SLIDE_WIDTH_CLASS = "w-[80vw] md:w-[30vw]";
 const renderVideoSlides = () => (
     aiRoadmapVideos.map((video, index) => (
         <SwiperSlide 
-            key={`${video.id}-${index}`} 
+            key={video.id} 
             className={`!w-auto ${SLIDE_WIDTH_CLASS}`}
         >
-            <div className="w-full">
+            
                 <VideoCard 
                     video={video} 
                     cardWidth={SLIDE_WIDTH_CLASS}
@@ -30,7 +30,7 @@ const renderVideoSlides = () => (
                     <span className="text-lg lg:text-2xl font-semibold">{video.title}</span>
                     <p className="text-base lg:text-xl font-medium">{video.description}</p>
                 </div>
-            </div>
+            
         </SwiperSlide>
     ))
 );
@@ -40,7 +40,7 @@ const renderVideoSlides = () => (
 export const Roadmap = () => {
     const pxCount = usePxCalculator(5);
     return (
-    <div className="flex flex-col mx-auto">
+    <div className="relative flex flex-col items-center justify-center mx-auto py-6 md:py-10">
         <div className="w-full md:w-[90vw] flex flex-col items-start justify-center mx-auto">
             <h1 className="text-4xl md:text-6xl w-full font-semibold px-3 md:px-6 py-5 md:py-10">
                 <span className=" text-sage">AI Learning Roadmap</span>
@@ -54,16 +54,10 @@ export const Roadmap = () => {
             Complete Learning Journey
         </div>
 
-        <div className="w-full overflow-hidden py-5 px-4 md:px-0 flex items-center justify-center mx-auto">
+        <div className="w-full overflow-hidden py-5">
             <Swiper
-                spaceBetween="auto"
-                slidesPerView="auto"
-                breakpoints={{
-                    768: {
-                        slidesPerView: "auto",
-                        spaceBetween: 30,
-                    },
-                }}
+                spaceBetween={20}
+                slidesPerView='auto'
                 loop={false}
                 slidesOffsetBefore={pxCount} 
                 slidesOffsetAfter={pxCount}
