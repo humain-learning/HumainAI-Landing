@@ -1,5 +1,5 @@
 'use client';
-import React, { use } from 'react';
+import React from 'react';
 import { VideoCard } from "../ui/VideoCard";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -19,14 +19,17 @@ const renderVideoSlides = () => (
             key={`${video.id}-${index}`} 
             className={`!w-auto ${SLIDE_WIDTH_CLASS}`}
         >
-            <VideoCard 
-                video={video} 
-                cardWidth={SLIDE_WIDTH_CLASS}
-                index={index}
-            />
-            <div className=" px-3 md:px-6 py-2 gap-1 flex flex-col justify-center items-start">
-                <span className="text-lg md:text-2xl font-semibold">{video.title}</span>
-                <p className="text-base md:text-xl font-medium">{video.description}</p>
+            <div className="w-full">
+                <VideoCard 
+                    video={video} 
+                    cardWidth={SLIDE_WIDTH_CLASS}
+                    index={index}
+                    autoplay={true}
+                />
+                <div className="px-3 w-full md:px-6 py-2 gap-1 flex flex-col justify-center items-start">
+                    <span className="text-lg lg:text-2xl font-semibold">{video.title}</span>
+                    <p className="text-base lg:text-xl font-medium">{video.description}</p>
+                </div>
             </div>
         </SwiperSlide>
     ))
@@ -44,7 +47,7 @@ export const Roadmap = () => {
                 <br />
                 <span className="text-terracotta">Study Smarter with AI</span>
             </h1>
-            <hr className="w-full md:w-1/2 lg:w-1/4 xl:w-1/8 border-t-4 border-terracotta mx-3 md:mx-6 mb-6" />
+            <hr className="w-[90vw] md:w-1/2 lg:w-1/4 xl:w-1/8 border-t-4 border-terracotta mx-3 md:mx-6 mb-6" />
         </div>
         
         <div className="w-full md:w-[90vw] flex items-center justify-start text-xl md:text-3xl font-semibol mx-auto px-3 md:px-6 pb-5 md:pb-10">
@@ -53,16 +56,15 @@ export const Roadmap = () => {
 
         <div className="w-full overflow-hidden py-5 px-4 md:px-0 flex items-center justify-center mx-auto">
             <Swiper
-                spaceBetween={20}
+                spaceBetween="auto"
                 slidesPerView="auto"
                 breakpoints={{
                     768: {
-                        slidesPerView: 4,
+                        slidesPerView: "auto",
                         spaceBetween: 30,
                     },
                 }}
                 loop={false}
-                speed={600}
                 slidesOffsetBefore={pxCount} 
                 slidesOffsetAfter={pxCount}
             >

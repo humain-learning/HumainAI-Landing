@@ -11,9 +11,10 @@ interface VideoCardProps {
     };
     cardWidth?: string;
     index?: number;
+    autoplay?: boolean;
 }
 
-export const VideoCard = ({ video, cardWidth = 'w-full', index = 0 }: VideoCardProps) => {
+export const VideoCard = ({ video, cardWidth = 'w-full', index = 0, autoplay = false }: VideoCardProps) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isMuted, setIsMuted] = useState(false);
     const iframeRef = useRef<HTMLIFrameElement | null>(null);
@@ -23,9 +24,9 @@ export const VideoCard = ({ video, cardWidth = 'w-full', index = 0 }: VideoCardP
         let url = video.url;
         if (!url) return '';
         const separator = url.includes('?') ? '&' : '?';
-        const params = 'autoplay=0&muted=0&loop=1&title=0&byline=0&portrait=0&dnt=1&background=1';
+        const params = `autoplay=${autoplay ? 1 : 0}&muted=${autoplay ? 1 : 0}&loop=1&title=0&byline=0&portrait=0&dnt=1&background=1`;
         return url + separator + params;
-    }, [video.url]);
+    }, [video.url,autoplay]);
 
     useEffect(() => {
         if (!enhancedUrl) return;
@@ -33,26 +34,31 @@ export const VideoCard = ({ video, cardWidth = 'w-full', index = 0 }: VideoCardP
         const iframe = iframeRef.current;
         if (!iframe) return;
 
-        // Initialize Vimeo Player for programmatic control for all videos
         playerRef.current = new Player(iframe);
 
-        // Ensure paused by default
-        playerRef.current.pause().catch(() => {});
-        // Reduce default volume to 20%
-        playerRef.current.setVolume && playerRef.current.setVolume(1).catch(() => {});
-
-        // initialize muted state from player if available
         (async () => {
             try {
-                if (playerRef.current.getMuted) {
-                    const muted = await playerRef.current.getMuted();
-                    setIsMuted(!!muted);
-                } else if (playerRef.current.getVolume) {
-                    const vol = await playerRef.current.getVolume();
-                    setIsMuted(typeof vol === 'number' ? vol === 0 : false);
+                if (autoplay) {
+                    // Ensure muted autoplay is allowed by browsers, then play
+                    playerRef.current.setMuted && await playerRef.current.setMuted(true).catch(() => {});
+                    await playerRef.current.play().catch(() => {});
+                    setIsPlaying(true);
+                    setIsMuted(true);
+                } else {
+                    // Non-autoplay: pause and set a reasonable default volume
+                    await playerRef.current.pause().catch(() => {});
+                    playerRef.current.setVolume && await playerRef.current.setVolume(0.2).catch(() => {});
+                    // initialize muted state from player if available
+                    if (playerRef.current.getMuted) {
+                        const muted = await playerRef.current.getMuted().catch(() => false);
+                        setIsMuted(!!muted);
+                    } else if (playerRef.current.getVolume) {
+                        const vol = await playerRef.current.getVolume().catch(() => 0.2);
+                        setIsMuted(typeof vol === 'number' ? vol === 0 : false);
+                    }
                 }
             } catch (e) {
-                // ignore
+                // ignore initialization errors
             }
         })();
 
@@ -70,7 +76,7 @@ export const VideoCard = ({ video, cardWidth = 'w-full', index = 0 }: VideoCardP
                 playerRef.current = null;
             }
         };
-    }, [enhancedUrl]);
+    }, [enhancedUrl, autoplay]);
 
     const togglePlay = async () => {
         const player = playerRef.current;
@@ -121,7 +127,23 @@ export const VideoCard = ({ video, cardWidth = 'w-full', index = 0 }: VideoCardP
         );
     }
 
+    const borderColor = index % 2 === 0 ? 'border-sage' : 'border-terracotta';
+
     return (
+        autoplay ? (
+            <div className={`${cardWidth} rounded-4xl bg-white transition duration-300 object-fill overflow-hidden ${borderColor} border-2 md:border-3 lg:border-4`}>
+            <div className="relative pt-[56.25%]">
+                <iframe
+                    ref={iframeRef}
+                    className="absolute top-0 left-0 w-full h-full pointer-events-none  "
+                    src={enhancedUrl}
+                    title={video.title || 'Student Creation Video'}
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowFullScreen
+                ></iframe>                
+            </div>
+        </div>
+        ) : (
         <div className={`${cardWidth} rounded-4xl bg-white transition duration-300 object-fill overflow-hidden`}>
             <div className="relative pt-[56.25%]">
                 <iframe
@@ -160,5 +182,6 @@ export const VideoCard = ({ video, cardWidth = 'w-full', index = 0 }: VideoCardP
                 </button>
             </div>
         </div>
+        )
     );
 };
