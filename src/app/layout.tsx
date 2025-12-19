@@ -110,6 +110,7 @@ export default function RootLayout({
         </div>
         <Toaster />
         {children}
+        <Analytics />
         <Footer />
       </body>
     </html>
