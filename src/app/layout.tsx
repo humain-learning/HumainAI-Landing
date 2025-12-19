@@ -4,7 +4,7 @@ import './globals.css';
 import Header from '@/components/ui/Header';
 import Footer from '@/components/ui/Footer';
 import { Toaster } from 'react-hot-toast';
-
+import { Analytics } from "@vercel/analytics/next"
 const tomorrowSans = Tomorrow({
   variable: '--font-tomorrow',
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
