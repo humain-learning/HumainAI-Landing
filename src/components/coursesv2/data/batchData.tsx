@@ -1,35 +1,35 @@
-export const Batches = [
-    {
-        name: "Weekend Batch",
-        startDate: "20th December",
-        limitedSeats: true,
-        itinerary: [
-            {
-                date: '20th-21st Dec',
-                day: 'Saturday, Sunday',
-                timing: '11AM-1PM'
-            },
-            {
-                date: '27th-28th Dec',
-                day: 'Saturday, Sunday',
-                timing: '11AM-1PM'
-            },
-            {
-                date: '3rd-4th Jan',
-                day: 'Saturday, Sunday',
-                timing: '11AM-1PM'
-            },
-            {
-                date: '5th Jan',
-                day: 'Monday',
-                timing: '5PM-7PM'
-            }
-        ]
-    },
+const Batches = [
+    // {
+    //     name: "Weekend Batch",
+    //     startDate: "20th December",
+    //     limitedSeats: true,
+    //     itinerary: [
+    //         {
+    //             date: '20th-21st Dec',
+    //             day: 'Saturday, Sunday',
+    //             timing: '11AM-1PM'
+    //         },
+    //         {
+    //             date: '27th-28th Dec',
+    //             day: 'Saturday, Sunday',
+    //             timing: '11AM-1PM'
+    //         },
+    //         {
+    //             date: '3rd-4th Jan',
+    //             day: 'Saturday, Sunday',
+    //             timing: '11AM-1PM'
+    //         },
+    //         {
+    //             date: '5th Jan',
+    //             day: 'Monday',
+    //             timing: '5PM-7PM'
+    //         }
+    //     ]
+    // },
     {
         name: 'New Year Batch',
         startDate: "3rd January",
-        limitedSeats: false,
+        limitedSeats: true,
         itinerary: [
             {
                 date: '3rd Jan',
@@ -60,3 +60,9 @@ export const Batches = [
         
     }
 ];
+
+if (Batches.length === 1) {
+    Batches[0].limitedSeats = true;
+}
+
+export { Batches };

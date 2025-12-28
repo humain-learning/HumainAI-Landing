@@ -24,7 +24,7 @@ export const Hero = () => {
                                 <li key={index} className="flex font-medium items-center gap-3">
                                     <div className="relative w-10 h-10 flex-shrink-0">
                                         <img src='/assets/icons/bubble-bg.svg' className="absolute inset-0 w-full h-full"/>
-                                        <img src={feature.icon} className="absolute w-3/5 h-3/5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain"/>
+                                        <img src={feature.icon} className="absolute w-3/5 h-3/5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain fill-white"/>
                                     </div> 
                                     {feature.text}
                                 </li>

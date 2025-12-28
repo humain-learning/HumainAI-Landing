@@ -19,4 +19,8 @@ export const heroFeatures = [
       text:'LMS and community access for one year', 
       icon:'/assets/icons/bullet-icon-5.svg'
     },
+    {
+      text: 'Small batch sizes for personalized attention',
+      icon: '/assets/icons/bullet-icon-6.svg'
+    }
   ];
