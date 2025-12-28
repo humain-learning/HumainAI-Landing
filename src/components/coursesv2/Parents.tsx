@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import { parentVideos } from "./data/parentVideos";
 import { VideoCard } from "../ui/VideoCard";
-
+import { usePxCalculator } from "../hooks/usePxCalculator";
 const SLIDE_WIDTH_CLASS = "w-[80vw] md:w-[30vw]";
 const renderVideoSlides = () => (
     parentVideos.map((video, index) => (
@@ -37,7 +37,7 @@ export const Parents = () => {
             </div>
 
             <div className="w-full flex items-center relative justify-end">
-                <img src='/assets/Website Assets/Parents.png' className="absolute left-0 max-w-[40vw] scale-x-[-1] h-auto hidden md:block" />
+                <img src='/assets/Website Assets/Parents.png' className="absolute left-0 max-w-[40vw] scale-x-[-1] h-auto hidden md:inline" />
 
                 <div className="overflow-hidden py-5 w-full md:w-[60vw]">
                     <Swiper
