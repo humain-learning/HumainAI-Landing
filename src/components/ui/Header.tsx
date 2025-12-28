@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { MenuIcon, X } from 'lucide-react';
 import { cn } from '@/utils';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import { app } from '@/app/lib/firebase'; // adjust path as needed
@@ -98,7 +98,6 @@ const RequestCallBackModal = ({
 
   const isFormValid =
     user.firstName.trim().length > 0 &&
-    user.lastName.trim().length > 0 &&
     isValidEmail(user.email) &&
     isValidContact(user.contact);
 
@@ -146,16 +145,15 @@ const RequestCallBackModal = ({
               />
               <input
                 type="text"
-                className={`focus:ring-primary-color w-1/2 rounded-lg border px-3 py-2 focus:ring-2 focus:outline-none ${touched.lastName && !user.lastName.trim() ? 'border-red-400' : 'border-gray-300'}`}
+                className="focus:ring-primary-color w-1/2 rounded-lg border px-3 py-2 focus:ring-2 focus:outline-none border-gray-300"
                 value={user.lastName}
                 onChange={(e) => setUser({ ...user, lastName: e.target.value })}
                 onBlur={() => setTouched((t) => ({ ...t, lastName: true }))}
-                required
                 placeholder="Last name"
               />
             </div>
-            {(touched.firstName && !user.firstName.trim()) || (touched.lastName && !user.lastName.trim()) ? (
-              <span className="text-xs text-red-500">First and last name are required.</span>
+            {touched.firstName && !user.firstName.trim() ? (
+              <span className="text-xs text-red-500">First Name is mandatory.</span>
             ) : null}
           </div>
           <div>
@@ -233,6 +231,7 @@ const NavbarSidebar = ({
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const isCoursesPage = pathname === '/courses';
   
   // Submit to Frappe CRM via /api/submit-lead
@@ -269,6 +268,8 @@ const NavbarSidebar = ({
         throw new Error(error.message || 'Submission failed');
       }
 
+      const data = await res.json();
+
       // Backup: Firebase (fire and forget)
       try {
         const db = getFirestore(app);
@@ -282,7 +283,11 @@ const NavbarSidebar = ({
       } catch {}
       
       setShowModal(false);
-      toast.success('Thank you! We will contact you soon.');
+      if (data.redirect) {
+        router.push(data.redirect);
+      } else {
+        toast.success('Thank you! We will contact you soon.');
+      }
     } catch (error) {
       console.error('Error:', error);
       toast.error('Something went wrong. Please try again.');
@@ -353,6 +358,7 @@ const Header = () => {
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const isCoursesPage = pathname === '/courses';
   const isPrivacyPage = pathname === '/privacy-policy'
   const handleSubmit = async (user: {
@@ -388,6 +394,8 @@ const Header = () => {
         throw new Error(error.message || 'Submission failed');
       }
 
+      const data = await res.json();
+
       // Backup: Firebase
       try {
         const db = getFirestore(app);
@@ -401,7 +409,11 @@ const Header = () => {
       } catch {}
       
       setShowModal(false);
-      toast.success('Thank you! We will contact you soon.');
+      if (data.redirect) {
+        router.push(data.redirect);
+      } else {
+        toast.success('Thank you! We will contact you soon.');
+      }
     } catch (error) {
       console.error('Error:', error);
       toast.error('Something went wrong. Please try again.');

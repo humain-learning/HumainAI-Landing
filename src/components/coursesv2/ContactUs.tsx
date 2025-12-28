@@ -1,7 +1,9 @@
 'use client';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export const ContactUs = () => {
+    const router = useRouter();
     const [formData, setFormData] = useState({
         parentFirstName: '',
         parentLastName: '',
@@ -62,7 +64,13 @@ export const ContactUs = () => {
             throw new Error(error.message || `Submission failed with status ${res.status}`);
         }
 
-        setStatusMessage('Thank you for reaching out! We\'ve received your request and will be in touch with you soon.');
+        const data = await res.json();
+
+        if (data.redirect) {
+            router.push(data.redirect);
+        } else {
+            setStatusMessage('Thank you for reaching out! We\'ve received your request and will be in touch with you soon.');
+        }
         
         // optional: reset form
         setFormData({
@@ -126,7 +134,6 @@ export const ContactUs = () => {
                             value={formData.childLastName}
                             onChange={handleInputChange}
                             className="flex-1 p-3 md:p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
-                            required
                         />
                     </div>
                     <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
@@ -146,7 +153,6 @@ export const ContactUs = () => {
                             value={formData.parentLastName}
                             onChange={handleInputChange}
                             className="flex-1 p-3 md:p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
-                            required
                         />
                     </div>
 
@@ -181,7 +187,6 @@ export const ContactUs = () => {
                             required
                         >
                             <option value="">Select Child's Grade</option>
-                            <option value="7">Grade 7th</option>
                             <option value="8">Grade 8th</option>
                             <option value="9">Grade 9th</option>
                             <option value="10">Grade 10th</option>
@@ -195,7 +200,6 @@ export const ContactUs = () => {
                             value={formData.city}
                             onChange={handleInputChange}
                             className="flex-1 p-3 md:p-4 border-b-2 focus:outline-none focus:ring-0 text-base"
-                            
                         />
                     </div>
                     <textarea
@@ -204,7 +208,6 @@ export const ContactUs = () => {
                         value={formData.message}
                         onChange={handleInputChange}
                         className="w-full p-3 md:p-4 border-b-2 focus:outline-none focus:ring-0 h-24 md:h-32 resize-none text-base"
-                        required
                     />
                     <button
                         type="submit"

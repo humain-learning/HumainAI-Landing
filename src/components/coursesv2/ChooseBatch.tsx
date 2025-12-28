@@ -7,7 +7,7 @@ export const ChooseBatch = () => {
                 <h1 className="text-4xl md:text-6xl font-semibold text-start px-3 md:px-6 py-5 md:py-10">
                     <span className="text-sage">Choose Your Winter Vacation Batch</span>
                 </h1>
-                <hr className="w-full md:w-1/2 lg:w-1/4 xl:w-1/8 border-t-4 border-terracotta mx-3 md:mx-6 mb-5" />
+                <hr className="w-[90vw] md:w-1/2 lg:w-1/4 xl:w-1/8 border-t-4 border-terracotta mx-3 md:mx-6 mb-5" />
 
             </div>
             

@@ -23,7 +23,7 @@ export async function POST(req: Request) {
         // Accepts both direct Frappe field names (first_name, last_name, mobile_no)
         // AND legacy ContactUs keys (parentFirstName, childFirstName, mobileNo, etc.)
         const frappePayload = {
-            doctype: 'Lead',
+            doctype: 'CRM Lead',
             // Primary name fields - prefer direct Frappe names, fall back to legacy keys
             first_name: clientData.first_name || clientData.childFirstName || '',
             last_name: clientData.last_name || clientData.childLastName || '',
@@ -40,8 +40,11 @@ export async function POST(req: Request) {
         };
 
         // 4. Send the request to the external Frappe API
-        // FIX APPLIED HERE: Changed "CRM Lead" to "Lead" in the URL endpoint
-        const frappeRes = await fetch(`${baseUrl.replace(/\/$/, '')}/api/resource/CRM Lead`, {
+        const frappeUrl = `${baseUrl.replace(/\/$/, '')}/api/resource/CRM Lead`;
+        console.log('[Frappe Request] URL:', frappeUrl);
+        console.log('[Frappe Request] Payload:', JSON.stringify(frappePayload, null, 2));
+        
+        const frappeRes = await fetch(frappeUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -53,6 +56,16 @@ export async function POST(req: Request) {
 
         // 5. Handle Frappe API Errors
         if (!frappeRes.ok) {
+            let frappeError = '';
+            try {
+                const jsonError = await frappeRes.json();
+                frappeError = JSON.stringify(jsonError, null, 2);
+            } catch {
+                frappeError = await frappeRes.text();
+            }
+            console.error(`[Frappe API Error] Status: ${frappeRes.status}`);
+            console.error(`[Frappe API Error] URL: ${frappeUrl}`);
+            console.error(`[Frappe API Error] Response:`, frappeError);
             // Pass a generic error message to the client
             return NextResponse.json(
                 { 
@@ -62,12 +75,21 @@ export async function POST(req: Request) {
             );
         }
 
-        // 6. Success: Send a clean 200 response to the client
+        // 6. Success: Send a clean 200 response to the client with redirect URL
         const successData = await frappeRes.json();
-        return NextResponse.json({ message: 'Lead successfully created in Frappe.', data: successData });
+        console.log('[Frappe Success] Response:', JSON.stringify(successData, null, 2));
+        return NextResponse.json({
+            message: 'Lead successfully created in Frappe.',
+            data: successData,
+            redirect: '/thank-you',
+        });
 
     } catch (error) {
         // Catch any parsing or network errors and return a generic error message
+        const errorMsg = error instanceof Error ? error.message : String(error);
+        const errorStack = error instanceof Error ? error.stack : '';
+        console.error('[Submit Lead Error] Message:', errorMsg);
+        console.error('[Submit Lead Error] Stack:', errorStack);
         return NextResponse.json({ message: 'An unknown error has occurred. Please try again later or reach out to us directly via Phone or Email.' }, { status: 500 });
     }
 }
