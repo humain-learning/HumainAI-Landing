@@ -24,3 +24,9 @@ export const heroFeatures = [
       icon: '/assets/icons/bullet-icon-6.svg'
     }
   ];
+
+export const HeroVideo = {
+    title: "Humain Champs - AI Learning for Students",
+    id: 1,
+    url: "https://player.vimeo.com/video/1150266610"
+};

@@ -1,7 +1,7 @@
 import PrimaryButton from "../ui/PrimaryButton";
 import SecondaryButton from "../ui/SecondaryButton";
-import { heroFeatures as features} from "./data/heroFeatures";
-
+import { HeroVideo, heroFeatures as features} from "./data/heroFeatures";
+import { VideoCard } from "../ui/VideoCard";
 export const Hero = () => {
         return (
             <div className="relative w-full max-w-screen flex items-center z-10">
@@ -17,7 +17,11 @@ export const Hero = () => {
                         </h1>
                         <hr className="w-full border-t-4 border-terracotta mt-5 mb-5" />
                         <div className="flex items-center justify-center w-full mb-8">
-                            <img src="/assets/images/humaincamps-temp-hero.svg" className="object-contain w-full h-auto" />
+                            {/* <img src="/assets/images/humaincamps-temp-hero.svg" className="object-contain w-full h-auto" /> */}
+                            <VideoCard 
+                                video={HeroVideo} 
+                                autoplay={false}
+                            />
                         </div>
                         <ul className="space-y-2 pl-5 text-base">
                             {features.map((feature, index) => (
@@ -88,7 +92,11 @@ export const Hero = () => {
                             </div>
                         </div>
                         <div className="w-full md:w-1/2 h-full z-10 flex items-center justify-center">
-                            <img src="/assets/images/humaincamps-temp-hero.svg" className="object-contain w-full h-full" />
+                            {/* <img src="/assets/images/humaincamps-temp-hero.svg" className="object-contain w-full h-full" /> */}
+                            <VideoCard 
+                                video={HeroVideo} 
+                                autoplay={false}
+                            />
                         </div>
                     </div>
                 </div>
