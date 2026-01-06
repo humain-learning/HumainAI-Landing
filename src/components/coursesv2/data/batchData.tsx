@@ -28,7 +28,7 @@ const Batches = [
     // },
     {
         name: 'Republic Day Batch',
-        startDate: "3rd January",
+        startDate: "24th January",
         limitedSeats: true,
         itinerary: [
             {
