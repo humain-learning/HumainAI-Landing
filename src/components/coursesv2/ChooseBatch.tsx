@@ -62,13 +62,13 @@ export const ChooseBatch = () => {
                             </div>
 
                             <div className="flex items-center justify-center m-5 md:m-10 px-3 md:px-6">
-                                                                <a
-                                                                    href="https://pages.razorpay.com/humainchamps"
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                    className={`w-full mx-auto rounded-full text-base md:text-xl font-semibold py-2 px-3 md:py-3 md:px-6 hover:shadow-lg transition-shadow duration-200 ${buttonBg}`}
-                                                                >
-                                    <div className="w-full md:w-[75%] text-base md:text-2xl flex flex-col md:flex-row items-center justify-center md:justify-between mx-auto gap-2 md:gap-0">
+                                <a
+                                    href="https://pages.razorpay.com/humainchamps"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`w-full mx-auto rounded-full text-base md:text-xl font-semibold py-2 px-3 md:py-3 md:px-6 hover:shadow-lg transition-shadow duration-200 ${buttonBg}`}
+                                >
+                                    <div className="w-full md:w-[75%] text-xl md:text-2xl flex flex-row md:flex-row items-center justify-center lg:justify-between mx-auto gap-2 md:gap-0">
                                         <div>Enroll Now</div>
                                         <div><span className="pr-2">&#8377;9440</span><span className="font-normal"><s>&#8377;11,800</s></span></div>
                                     </div>

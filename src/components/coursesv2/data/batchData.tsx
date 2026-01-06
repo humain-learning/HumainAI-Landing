@@ -27,38 +27,39 @@ const Batches = [
     //     ]
     // },
     {
-        name: 'New Year Batch',
+        name: 'Republic Day Batch',
         startDate: "3rd January",
         limitedSeats: true,
         itinerary: [
             {
-                date: '3rd Jan',
+                date: '24th Jan',
                 day: 'Saturday',
                 timing: '11AM-1PM & 2PM-4PM'
             },
             {
-                date: '4th Jan',
+                date: '25th Jan',
                 day: 'Sunday',
                 timing: '11AM-1PM & 2PM-4PM'
             },
             {
-                date: '5th Jan',
+                date: '26th Jan',
                 day: 'Monday',
                 timing: '11AM-1PM & 2PM-4PM'
             },
             {
-                date: '6th Jan',
+                date: '27th Jan',
                 day: 'Tuesday',
-                timing: '11AM'
+                timing: '5PM - Doubt Clearing'
             },
             {
-                date: '7th Jan',
-                day: 'Wednesday',
-                timing: '5PM'
+                date: '31st Jan',
+                day: 'Saturday',
+                timing: '5PM - Graduation'
             }
         ]
         
-    }
+    },
+
 ];
 
 if (Batches.length === 1) {
