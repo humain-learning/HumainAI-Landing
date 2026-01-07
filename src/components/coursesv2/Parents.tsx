@@ -37,14 +37,15 @@ export const Parents = () => {
             </div>
 
             <div className="w-full flex items-center relative justify-end">
-                <img src='/assets/Website Assets/Parents.png' className="absolute left-0 max-w-[40vw] scale-x-[-1] h-auto hidden md:inline" />
-
+                <div className="md:w-[40vw] hidden md:flex object-contain">
+                    <img src='/assets/Website Assets/Parents.png' className="scale-x-[-1]"/>
+                </div>
                 <div className="overflow-hidden py-5 w-full md:w-[60vw]">
                     <Swiper
                         spaceBetween={20}
                         slidesPerView='auto'
                         loop={false}
-                        slidesOffsetBefore={pxCount} 
+                        // slidesOffsetBefore={pxCount} 
                         slidesOffsetAfter={pxCount}
                     >
                         {renderVideoSlides()}

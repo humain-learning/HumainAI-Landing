@@ -54,7 +54,7 @@ export const Hero = () => {
                         className="absolute bottom-0 right-0 z-1 h-auto w-[43vw] object-contain" 
                     />
                     <div className="relative w-full md:w-[90vw] flex flex-col md:flex-row items-center justify-center mx-auto">
-                        <div className="flex flex-col w-full md:w-1/2 px-6 z-10">
+                        <div className="flex flex-col w-full md:w-[45vw] px-6 z-10">
                             <div className="flex flex-col items-center md:items-start gap-6">
                                 <h1 className="text-4xl md:text-6xl font-semibold">
                                     <span className='text-sage'>Give Your Child</span>
@@ -91,11 +91,13 @@ export const Hero = () => {
                                 <SecondaryButton text="Contact Us" target="#contact-us" />
                             </div>
                         </div>
-                        <div className="w-full md:w-1/2 h-full z-10 flex items-center justify-center">
+                        <div className="w-full md:w-[55vw] h-full z-10 flex items-center justify-center">
                             {/* <img src="/assets/images/humaincamps-temp-hero.svg" className="object-contain w-full h-full" /> */}
                             <VideoCard 
                                 video={HeroVideo} 
-                                autoplay={false}
+                                autoplay={true}
+                                mutable={true}
+                                pausable={true}
                             />
                         </div>
                     </div>

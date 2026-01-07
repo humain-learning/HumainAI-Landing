@@ -12,9 +12,11 @@ interface VideoCardProps {
     cardWidth?: string;
     index?: number;
     autoplay?: boolean;
+    pausable?: boolean;
+    mutable?: boolean;
 }
 
-export const VideoCard = ({ video, cardWidth = 'w-full', index = 0, autoplay = false }: VideoCardProps) => {
+export const VideoCard = ({ video, cardWidth = 'w-full', index = 0, autoplay = false, pausable = !autoplay, mutable = !autoplay }: VideoCardProps) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isMuted, setIsMuted] = useState(false);
     const iframeRef = useRef<HTMLIFrameElement | null>(null);
@@ -130,25 +132,11 @@ export const VideoCard = ({ video, cardWidth = 'w-full', index = 0, autoplay = f
     const borderColor = index % 2 === 0 ? 'border-sage' : 'border-terracotta';
 
     return (
-        autoplay ? (
-            <div className={`${cardWidth} rounded-4xl bg-white transition duration-300 object-fill overflow-hidden ${borderColor} border-2 md:border-3 lg:border-4`}>
+        <div className={`${cardWidth} rounded-4xl bg-white transition duration-300 object-fill overflow-hidden ${autoplay ? `${borderColor} border-2 md:border-3 lg:border-4` : ''}`}>
             <div className="relative pt-[56.25%]">
                 <iframe
                     ref={iframeRef}
-                    className="absolute top-0 left-0 w-full h-full pointer-events-none  "
-                    src={enhancedUrl}
-                    title={video.title || 'Student Creation Video'}
-                    allow="autoplay; fullscreen; picture-in-picture"
-                    allowFullScreen
-                ></iframe>                
-            </div>
-        </div>
-        ) : (
-        <div className={`${cardWidth} rounded-4xl bg-white transition duration-300 object-fill overflow-hidden`}>
-            <div className="relative pt-[56.25%]">
-                <iframe
-                    ref={iframeRef}
-                    className="absolute top-0 left-0 w-full h-full pointer-events-none "
+                    className="absolute top-0 left-0 w-full h-full pointer-events-none"
                     src={enhancedUrl}
                     title={video.title || 'Student Creation Video'}
                     allow="autoplay; fullscreen; picture-in-picture"
@@ -156,32 +144,35 @@ export const VideoCard = ({ video, cardWidth = 'w-full', index = 0, autoplay = f
                 ></iframe>
 
                 {/* Mute/unmute button top-right */}
-                <button
-                    aria-label={isMuted ? 'Unmute video' : 'Mute video'}
-                    onClick={toggleMute}
-                    className="absolute top-3 right-2 z-20 bg-transparent p-2 rounded-full flex items-center justify-center transition hover:scale-105 "
-                >
-                    {isMuted ? (
-                        <img src="/assets/icons/muted.svg" alt="Muted" className="h-7 w-7 drop-shadow-[0_0_6px_rgba(0,0,0,0.35)]" />
-                    ) : (
-                        <img src="/assets/icons/unmuted.svg" alt="Unmuted" className="h-7 w-7 drop-shadow-[0_0_6px_rgba(0,0,0,0.35)]" />
-                    )}
-                </button>
+                {mutable && (
+                    <button
+                        aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+                        onClick={toggleMute}
+                        className="absolute top-3 right-2 z-20 bg-transparent p-2 rounded-full flex items-center justify-center transition hover:scale-105"
+                    >
+                        {isMuted ? (
+                            <img src="/assets/icons/muted.svg" alt="Muted" className="h-7 w-7 drop-shadow-[0_0_6px_rgba(0,0,0,0.35)]" />
+                        ) : (
+                            <img src="/assets/icons/unmuted.svg" alt="Unmuted" className="h-7 w-7 drop-shadow-[0_0_6px_rgba(0,0,0,0.35)]" />
+                        )}
+                    </button>
+                )}
 
                 {/* Custom play button bottom-right */}
-                <button
-                    aria-label={isPlaying ? 'Pause video' : 'Play video'}
-                    onClick={togglePlay}
-                    className="absolute bottom-4 right-4 z-20 bg-transparent p-2 rounded-full flex items-center justify-center transition hover:scale-105   "
-                >
-                    {isPlaying ? (
-                        <img src="/assets/icons/pauseButton.svg" alt="Pause" className="h-5 w-5 drop-shadow-[0_0_6px_rgba(0,0,0,0.35)]" />
-                    ) : (
-                        <img src="/assets/icons/playButton.svg" alt="Play" className="h-5 w-5 drop-shadow-[0_0_6px_rgba(0,0,0,0.35)]" />
-                    )}
-                </button>
+                {pausable && (
+                    <button
+                        aria-label={isPlaying ? 'Pause video' : 'Play video'}
+                        onClick={togglePlay}
+                        className="absolute bottom-4 right-4 z-20 bg-transparent p-2 rounded-full flex items-center justify-center transition hover:scale-105"
+                    >
+                        {isPlaying ? (
+                            <img src="/assets/icons/pauseButton.svg" alt="Pause" className="h-5 w-5 drop-shadow-[0_0_6px_rgba(0,0,0,0.35)]" />
+                        ) : (
+                            <img src="/assets/icons/playButton.svg" alt="Play" className="h-5 w-5 drop-shadow-[0_0_6px_rgba(0,0,0,0.35)]" />
+                        )}
+                    </button>
+                )}
             </div>
         </div>
-        )
     );
 };
