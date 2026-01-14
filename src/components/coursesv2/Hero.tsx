@@ -34,6 +34,7 @@ export const Hero = () => {
                                 </li>
                             ))}
                         </ul>
+                        
                         <div className="pt-6 pb-3 px-6 font-medium text-center">
                             Early Bird Offer!
                             <br />
