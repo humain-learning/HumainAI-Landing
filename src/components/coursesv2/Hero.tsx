@@ -36,8 +36,8 @@ export const Hero = () => {
                         </ul>
                         
                         <div className="pt-6 pb-3 px-6 font-medium text-center">
-                            Early Bird Offer!
-                            <br />
+                            {/* Early Bird Offer! */}
+                            {/* <br /> */}
                             <span className="p-1 text-2xl font-bold text-terracotta">&#8377;11,800</span>
                             {/* <span className="p-1 text-lg line-through text-gray-500 pl-3">&#8377;11,800</span> */}
                             <span className="p-1 text-sm text-gray-500">incl. GST</span>
@@ -80,10 +80,10 @@ export const Hero = () => {
                                 </ul>
                             </div>
                             <div className="pt-6 pb-3 px-6 font-medium text-center md:text-left">
-                                Early Bird Offer!
-                                <br />
-                                <span className="p-1 text-2xl md:text-4xl font-bold text-terracotta">&#8377;9440</span>
-                                <span className="p-1 text-lg md:text-2xl line-through text-gray-500 pl-3">&#8377;11,800</span>
+                                {/* Early Bird Offer! */}
+                                {/* <br /> */}
+                                <span className="p-1 text-2xl md:text-4xl font-bold text-terracotta">&#8377;11,800</span>
+                                {/* <span className="p-1 text-lg md:text-2xl line-through text-gray-500 pl-3">&#8377;11,800</span> */}
                                 <span className="p-1 text-sm md:text-base text-gray-500">incl. GST</span>
                             </div>
                             <div className="flex flex-col md:flex-row items-center md:justify-start justify-center px-5 pt-2 pb-5 gap-4 md:gap-0">
