@@ -1,15 +1,34 @@
+import PrimaryButton from "@/components/ui/PrimaryButton";
+import { features } from "./data/whoweare";
+import { FeatureBanner } from "ui/FeatureBanner";
+import Link from "next/link";
+
+
+
+
 export const WhoWeAre = () => {
     return (
         <div className="w-full flex flex-col items-center justify-center px-5 py-10">
-            <div className="relative w-[90vw] flex flex-col items-center md:items-start justify-center mx-auto">
-                <h1 className="text-3xl md:text-6xl font-semibold text-center md:text-start md:px-6 py-[1.5rem]">
-                    <span className=" text-terracotta">
-                        Why Choose
-                    </span>
-                    <br />
-                    <span className="text-sage">hum<span className="text-terracotta">ai</span>n</span>
-                </h1>
-                <hr className="w-1/2 md:w-1/4 lg:w-1/8 border-t-4 border-terracotta mx-auto md:mx-6 mb-10" />
+            <div className=" w-[90vw] flex flex-col items-center md:items-start justify-center mx-auto">
+                <div className="flex justify-between relative w-full ">
+                    <h1 className="text-3xl md:text-6xl font-semibold text-center md:text-start md:px-6 py-[1.5rem]">
+                        <span className=" text-terracotta">
+                            Why Choose
+                        </span>
+                        <br />
+                        <span className="text-sage">hum<span className="text-terracotta">ai</span>n</span>
+                    </h1>
+
+                    <Link href="/#about" passHref>
+                        <PrimaryButton
+                            text="Know More"
+                            target="_self"
+                            buttonClassName="absolute right-10 top-1/2 -translate-y-1/2"
+                        />
+                    </Link>
+                    </div>
+                <hr className="w-1/2 md:w-1/4 lg:w-1/8 border-t-4 border-terracotta mx-auto md:mx-6 pb-10" />
+                
             </div>
 
             <div className="w-full md:w-[90vw] flex flex-col items-center justify-center">
@@ -19,9 +38,21 @@ export const WhoWeAre = () => {
                 </p>
             </div>
 
-            <div className="flex justify-center items-start">
-                
+            <div className="grid md:grid-cols-5 md:grid-rows-1 grid-rows-5 grid-cols-1 w-full md:w-[80vw] gap-5 items-stretch py-10">
+                {features.map((feature, i) => (
+                    <div key={i} className="w-full h-full">
+                        <FeatureBanner 
+                            title={feature.title}
+                            description={feature.description}
+                            icon={feature.icon}
+                            index={i}
+                        />
+                    </div>
+                ))}
             </div>
+            
+            
+
         </div>
     );
 };
