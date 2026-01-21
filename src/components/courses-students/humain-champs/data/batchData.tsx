@@ -90,18 +90,18 @@ const Batches = [
                 timing: '5PM-7PM'
             },
             {
-                date: '21st Mar',
-                day: 'Saturday',
+                date: '22nd Mar',
+                day: 'Sunday',
                 timing: '5PM-7PM'
             },
             {
-                date: '21st Mar',
-                day: 'Saturday',
+                date: '23rd Mar',
+                day: 'Monday',
                 timing: '5PM - Doubt Clearing'
             },
             {
-                date: '21st Mar',
-                day: 'Saturday',
+                date: '27th Mar',
+                day: 'Friday',
                 timing: '5PM - Graduation'
             }
         ]

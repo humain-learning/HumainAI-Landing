@@ -1,5 +1,3 @@
-'use client';
-
 interface TestimonialCardProps {
   index: number;
   name: string;
