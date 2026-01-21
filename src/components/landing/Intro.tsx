@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
 import TyperwriterText from './TyperwriterText';
-import PrimaryButton from '@/components/ui/PrimaryButton';
-import SecondaryButton from '@/components/ui/SkeletalButton';
+import PrimaryButton from 'ui/PrimaryButton';
+import SecondaryButton from 'ui/SkeletalButton';
 import { motion } from 'motion/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
@@ -66,7 +66,7 @@ const Intro = () => {
             intelligence
           </div>
           <div className="flex w-full flex-col items-center gap-3 pt-4 md:flex-row">
-            <PrimaryButton text="Enroll" target='courses' />
+            <PrimaryButton text="Enroll" target='/courses-students/humain-champs' />
             {/* <SecondaryButton text="Watch Course Preview" /> */}
           </div>
         </div>

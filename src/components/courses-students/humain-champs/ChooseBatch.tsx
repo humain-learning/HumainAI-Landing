@@ -32,20 +32,20 @@ export const ChooseBatch = () => {
 
                             <div className="flex flex-col flex-grow">
                                 <div className="flex flex-col items-start w-full px-5 md:px-10 pt-5 md:pt-10 pb-2.5 md:pb-5">
-                                    <h1 className="text-3xl md:text-5xl font-semibold pb-2.5 md:pb-5">
+                                    <h1 className="text-3xl md:text-4xl font-semibold pb-2.5 md:pb-5">
                                         <span className="text-sage">{batch.name}</span> {batch.limitedSeats && <span className="text-xl md:text-xl text-medium"> <i>- Limited seats available!</i></span>}
                                     </h1>
                                     <hr className="w-1/2 md:w-1/6 border-t-3 border-terracotta mb-2.5 md:mb-5" />
                                     <span className="text-lg md:text-2xl">Starting <span className="font-semibold">{batch.startDate}</span></span>
                                 </div>
 
-                                <div className="px-5 md:px-10">
-                                    <table className="w-full table-auto">
+                                <div className="px-5 md:px-10 flex">
+                                    <table className="w-full table-auto text-center ">
                                         <thead className="hidden md:table-header-group">
                                             <tr>
-                                                <th className="text-left font-semibold text-sage py-2">Date</th>
-                                                <th className="text-left py-2">Day</th>
-                                                <th className="text-left py-2">Timing</th>
+                                                <th className="font-semibold text-sage py-2">Date</th>
+                                                <th className="py-2">Day</th>
+                                                <th className="py-2">Timing</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -69,8 +69,8 @@ export const ChooseBatch = () => {
                                     className={`w-full mx-auto rounded-full text-base md:text-xl font-semibold py-2 px-3 md:py-3 md:px-6 hover:shadow-lg transition-shadow duration-200 ${buttonBg}`}
                                 >
                                     <div className="w-full md:w-[75%] text-xl md:text-2xl flex flex-row md:flex-row items-center justify-center lg:justify-between mx-auto gap-2 md:gap-0">
-                                        <div>Enroll Now</div>
-                                        <div><span className="pr-2">&#8377;9440</span><span className="font-normal"><s>&#8377;11,800</s></span></div>
+                                        <div>Enroll Now!</div>
+                                        <div><span className="pr-2">&#8377;11,800</span></div>
                                     </div>
                                 </a>
                             </div>

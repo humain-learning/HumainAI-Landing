@@ -1,5 +1,5 @@
 import React from 'react';
-import TertiaryButton from '@/components/ui/TertiaryButton';
+import TertiaryButton from 'ui/TertiaryButton';
 import Image from 'next/image';
 
 type LearningCardProps = {
@@ -103,7 +103,7 @@ const WhyHumain = () => {
         <div className="space-y-8 rounded-[20px] bg-white px-6 py-6 shadow-[0_0_0_1px_rgba(0,0,0,0.1)_inset] md:space-y-10 md:px-8 lg:py-10">
           <h4 className="text-center text-3xl font-medium">
             Unique value of <span className="text-primary-color">Humain</span>{' '}
-            <span className="text-secondary-color">learning</span>
+            <span className="text-Tertiary-color">learning</span>
           </h4>
 
           <div className="flex flex-col items-start gap-4 lg:flex-row">
@@ -120,7 +120,7 @@ const WhyHumain = () => {
             </div>
 
             <div
-              className="bg-secondary-color flex h-[120px] w-full items-center justify-center rounded-[20px]"
+              className="bg-Tertiary-color flex h-[120px] w-full items-center justify-center rounded-[20px]"
               style={{
                 boxShadow:
                   '0 0 0 1px rgba(0,0,0,0.1) inset, 0 3px 10px 0px rgba(0,0,0,0.0.7)',

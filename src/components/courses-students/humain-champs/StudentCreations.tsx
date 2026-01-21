@@ -3,8 +3,8 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay, FreeMode } from 'swiper/modules';
-import { usePxCalculator } from '../hooks/usePxCalculator';
-import { VideoCard } from '../ui/VideoCard';
+import { usePxCalculator } from '../../hooks/usePxCalculator';
+import { VideoCard } from 'ui/VideoCard';
 import { studentVideos } from './data/studentVideos';
 
 const SLIDE_WIDTH_CLASS = "w-[80vw] md:w-[30vw]";

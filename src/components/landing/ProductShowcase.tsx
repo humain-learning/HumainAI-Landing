@@ -1,5 +1,5 @@
 import { cn } from '@/utils';
-import PrimaryButton from '@/components/ui/PrimaryButton';
+import PrimaryButton from 'ui/PrimaryButton';
 
 const STUDENTS_LIST = [
   {

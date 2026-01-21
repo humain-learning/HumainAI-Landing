@@ -19,7 +19,10 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "ui/*": ["./src/components/ui/*"],
+      "humain-educators/*": ["./src/components/courses-teachers/humain-educators/*"],
+      "hooks/*": ["./src/components/hooks/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

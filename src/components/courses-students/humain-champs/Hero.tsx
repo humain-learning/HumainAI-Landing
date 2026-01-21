@@ -1,7 +1,7 @@
-import PrimaryButton from "../ui/PrimaryButton";
-import SecondaryButton from "../ui/SecondaryButton";
+import PrimaryButton from "ui/PrimaryButton";
+import SecondaryButton from "ui/SecondaryButton";
 import { HeroVideo, heroFeatures as features} from "./data/heroFeatures";
-import { VideoCard } from "../ui/VideoCard";
+import { VideoCard } from "ui/VideoCard";
 export const Hero = () => {
         return (
             <div className="relative w-full max-w-screen flex items-center z-10">
@@ -44,7 +44,7 @@ export const Hero = () => {
                         </div>
                         <div className="flex flex-row items-center justify-center px-5 pt-2 pb-5 gap-4">
                             <PrimaryButton text="Enroll Now" target="https://pages.razorpay.com/humainchamps" newTab />
-                                                        <SecondaryButton text="Contact Us" target="#contact-us" />
+                            <SecondaryButton text="Contact Us" target="#contact-us" />
                         </div>
                     </div>
                 </div>

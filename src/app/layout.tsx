@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Tomorrow, Open_Sans, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import Header from '@/components/ui/Header';
-import Footer from '@/components/ui/Footer';
+import Header from 'ui/Header';
+import Footer from 'ui/Footer';
 import { Toaster } from 'react-hot-toast';
 import { Analytics } from "@vercel/analytics/next"
 const tomorrowSans = Tomorrow({

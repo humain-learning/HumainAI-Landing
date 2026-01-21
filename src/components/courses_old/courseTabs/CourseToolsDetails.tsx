@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import PrimaryButton from '@/components/ui/PrimaryButton';
+import PrimaryButton from 'ui/PrimaryButton';
 import 'swiper/css';
 import { ChevronUp, ChevronDown } from 'lucide-react';
 

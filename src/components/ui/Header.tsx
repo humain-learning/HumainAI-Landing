@@ -232,7 +232,7 @@ const NavbarSidebar = ({
   const [loading, setLoading] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const isCoursesPage = pathname === '/courses';
+  const isCoursesPage = pathname === '/courses-students/humain-champs';
   
   // Submit to Frappe CRM via /api/submit-lead
   const handleSubmit = async (user: {
@@ -359,7 +359,7 @@ const Header = () => {
   const [loading, setLoading] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const isCoursesPage = pathname === '/courses';
+  const isCoursesPage = pathname === '/courses-students/humain-champs';
   const isPrivacyPage = pathname === '/privacy-policy'
   const handleSubmit = async (user: {
     firstName: string;

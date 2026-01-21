@@ -1,5 +1,5 @@
 import { models, tools } from "./data/toolsData";
-import { Marquee } from "../ui/marquee";
+import { Marquee } from "ui/marquee";
 
 export const Tools = () => {
     return (

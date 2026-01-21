@@ -1,8 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import PrimaryButton from '@/components/ui/PrimaryButton';
-import SecondaryButton from '@/components/ui/SecondaryButton';
+import PrimaryButton from 'ui/PrimaryButton';
+import SecondaryButton from 'ui/SecondaryButton';
 
 export default function ThankYouPage() {
   const router = useRouter();
@@ -10,7 +10,7 @@ export default function ThankYouPage() {
 
   useEffect(() => {
     if (countdown <= 0) {
-      router.push('/courses');
+      router.push('/courses-students/humain-champs');
       return;
     }
 

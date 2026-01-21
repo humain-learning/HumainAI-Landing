@@ -17,7 +17,7 @@ const SecondaryButton = ({ text, onClick }: SecondaryButtonProps) => {
         if (onClick) {
           onClick();
         } else {
-          router.push('/courses');
+          router.push('/courses-students/humain-champs');
         }
       }}
       className="group hover:bg-primary-color flex cursor-pointer items-center gap-2 rounded-full border-2 border-[#EBEDEF] py-1 pr-1 pl-4 transition-all duration-300 ease-in-out"

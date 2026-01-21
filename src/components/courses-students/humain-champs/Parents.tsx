@@ -2,8 +2,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/css';
 import { parentVideos } from "./data/parentVideos";
-import { VideoCard } from "../ui/VideoCard";
-import { usePxCalculator } from "../hooks/usePxCalculator";
+import { VideoCard } from "ui/VideoCard";
+import { usePxCalculator } from "../../hooks/usePxCalculator";
 const SLIDE_WIDTH_CLASS = "w-[80vw] md:w-[30vw]";
 const renderVideoSlides = () => (
     parentVideos.map((video, index) => (

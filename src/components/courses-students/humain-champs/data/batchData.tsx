@@ -27,7 +27,7 @@ const Batches = [
     //     ]
     // },
     {
-        name: 'Republic Day Batch',
+        name: 'Marathon Batch',
         startDate: "24th January",
         limitedSeats: true,
         itinerary: [
@@ -59,7 +59,54 @@ const Batches = [
         ]
         
     },
-
+    {
+        name: 'Weekend Batch',
+        startDate: "7th March",
+        limitedSeats: true,
+        itinerary: [
+            {
+                date: '7th Mar',
+                day: 'Saturday',
+                timing: '5PM-7PM'
+            },
+            {
+                date: '8th Mar',
+                day: 'Sunday',
+                timing: '5PM-7PM'
+            },
+            {
+                date: '14th Mar',
+                day: 'Monday',
+                timing: '5PM-7PM'
+            },
+            {
+                date: '15th Mar',
+                day: 'Tuesday',
+                timing: '5PM-7PM'
+            },
+            {
+                date: '21st Mar',
+                day: 'Saturday',
+                timing: '5PM-7PM'
+            },
+            {
+                date: '21st Mar',
+                day: 'Saturday',
+                timing: '5PM-7PM'
+            },
+            {
+                date: '21st Mar',
+                day: 'Saturday',
+                timing: '5PM - Doubt Clearing'
+            },
+            {
+                date: '21st Mar',
+                day: 'Saturday',
+                timing: '5PM - Graduation'
+            }
+        ]
+        
+    },
 ];
 
 if (Batches.length === 1) {

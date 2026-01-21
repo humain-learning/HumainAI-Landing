@@ -1,4 +1,4 @@
-import { VideoCard } from "../ui/VideoCard";
+import { VideoCard } from "ui/VideoCard";
 import { sneakpeekLink } from "./data/studentVideos";
 
 export const SneakPeek = () => {

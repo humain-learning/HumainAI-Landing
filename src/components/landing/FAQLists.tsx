@@ -1,6 +1,6 @@
 'use client';
-import Accordion from '@/components/ui/Accordion';
-import PrimaryButton from '@/components/ui/PrimaryButton';
+import Accordion from 'ui/Accordion';
+import PrimaryButton from 'ui/PrimaryButton';
 
 const Button = () => {
   return (

@@ -1,6 +1,6 @@
-import { CoursesPage } from '@/components/coursesv2';
+import { CoursesPage } from '@/components/courses-students/humain-champs';
 
-const CoursePage = () => {
+export default function CoursePage() {
   return (
     <>
       <div className=" min-h-screen bg-background">
@@ -10,4 +10,4 @@ const CoursePage = () => {
   );
 };
 
-export default CoursePage;
+
