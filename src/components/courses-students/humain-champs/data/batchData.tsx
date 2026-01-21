@@ -26,39 +26,39 @@ const Batches = [
     //         }
     //     ]
     // },
-    {
-        name: 'Marathon Batch',
-        startDate: "24th January",
-        limitedSeats: true,
-        itinerary: [
-            {
-                date: '24th Jan',
-                day: 'Saturday',
-                timing: '11AM-1PM & 2PM-4PM'
-            },
-            {
-                date: '25th Jan',
-                day: 'Sunday',
-                timing: '11AM-1PM & 2PM-4PM'
-            },
-            {
-                date: '26th Jan',
-                day: 'Monday',
-                timing: '11AM-1PM & 2PM-4PM'
-            },
-            {
-                date: '27th Jan',
-                day: 'Tuesday',
-                timing: '5PM - Doubt Clearing'
-            },
-            {
-                date: '31st Jan',
-                day: 'Saturday',
-                timing: '5PM - Graduation'
-            }
-        ]
+    // {
+    //     name: 'Marathon Batch',
+    //     startDate: "24th January",
+    //     limitedSeats: true,
+    //     itinerary: [
+    //         {
+    //             date: '24th Jan',
+    //             day: 'Saturday',
+    //             timing: '11AM-1PM & 2PM-4PM'
+    //         },
+    //         {
+    //             date: '25th Jan',
+    //             day: 'Sunday',
+    //             timing: '11AM-1PM & 2PM-4PM'
+    //         },
+    //         {
+    //             date: '26th Jan',
+    //             day: 'Monday',
+    //             timing: '11AM-1PM & 2PM-4PM'
+    //         },
+    //         {
+    //             date: '27th Jan',
+    //             day: 'Tuesday',
+    //             timing: '5PM - Doubt Clearing'
+    //         },
+    //         {
+    //             date: '31st Jan',
+    //             day: 'Saturday',
+    //             timing: '5PM - Graduation'
+    //         }
+    //     ]
         
-    },
+    // },
     {
         name: 'Weekend Batch',
         startDate: "7th March",
