@@ -6,7 +6,7 @@ import { Certificate } from "humain-educators/Certificate";
 import { Testimonials } from "humain-educators/Testimonials";
 import { AiRoadmap } from "humain-educators/AiRoadmap";
 import { WhoWeAre } from "humain-educators/WhoWeAre";
-
+import { Instructors } from "humain-educators/Instructors";
 
 
 
@@ -21,8 +21,7 @@ export default function HumainEducators() {
         <Testimonials />
         <AiRoadmap />
         <WhoWeAre />
-
-
+        <Instructors />
 
         <Founder />
         <Certificate />

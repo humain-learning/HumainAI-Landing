@@ -18,7 +18,7 @@ export const FeatureBanner = ({ title, description, icon, index }: FeatureBanner
                 <div className="w-full h-full bg-transparent flex flex-col items-center z-10">
                     
                     <img src={icon} className="object-contain w-1/2"/>
-                    <div className="text-lg font-bold py-2 whitespace-nowrap">
+                    <div className="md:text-base lg:text-lg font-bold py-2">
                         {title}
                     </div>
                     <div className="text-sm py-2">
