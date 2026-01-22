@@ -1,38 +1,38 @@
 export const aiRoadmapVideos = [
     {
         id: 1,
-        url: "https://player.vimeo.com/video/1143055547",
+        url: "https://player.vimeo.com/video/1156799992",
         title: "Module 1",
         description: "The AI Revolution"
     },
     {
         id: 2,
-        url: "https://player.vimeo.com/video/1143055585",
+        url: "https://player.vimeo.com/video/1156796118",
         title: "Module 2",
-        description: "Leverage AI to Master Learning"
+        description: "AI for Planning and Assessment"
     },
     {
         id: 3,
-        url: "https://player.vimeo.com/video/1143055608",
+        url: "https://player.vimeo.com/video/1156796232",
         title: "Module 3",
-        description: "How to Study Smarter"
+        description: "AI for Teaching and Learning Materials"
     },
     {
         id: 4,
-        url: "https://player.vimeo.com/video/1143055633",
+        url: "https://player.vimeo.com/video/1156796176",
         title: "Module 4",
-        description: "Leveraging AI for Creativity"
+        description: "AI for Creativity"
     },
     {
         id: 5,
-        url: "https://player.vimeo.com/video/1143055666",
+        url: "https://player.vimeo.com/video/1156796033",
         title: "Module 5",
-        description: "From smart helpers, to workflow wizards"
+        description: "Responsible and Ethical AI Use"
     },
     {
         id: 6,
-        url: "https://player.vimeo.com/video/1143055698",
+        url: "https://player.vimeo.com/video/1156796077",
         title: "Module 6",
-        description: "Build your AI Study Agent"
+        description: "AI forReflection and Feedback"
     }
 ];

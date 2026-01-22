@@ -33,19 +33,20 @@ export const WhoWeAre = () => {
 
             <div className="w-full md:w-[90vw] flex flex-col items-center justify-center">
                 {/* <span className="underline underline-offset-10 text-xl md:text-3xl font-semibold mx-auto px-3 md:px-6 pb-5 md:pb-10">Our Philosophy</span> */}
-                <p className="text-center text-lg md:text-xl mx-auto px-3 md:px-6">
+                <p className="text-center md:block hidden text-lg md:text-xl mx-auto px-3 md:px-6">
                     At Humain Learning, we believe the future of education lies at the intersection of human values and artificial intelligence. Our name reflects our core philosophy: HUMAIN, putting the human at the center of technological transformation. An educator becomes special in this changing world because they are now entrusted to create a world of hybrid intelligent students in their classrooms -one that has high adaptability as well as high emotional Intelligence. Therefore, it is foremost important for the teacher to display their mastery with the tools in the classroom, steering, protecting, and supporting the choices of the students who learn the teacher more than  from the teacher.
                 </p>
             </div>
 
             <div className="grid md:grid-cols-5 md:grid-rows-1 grid-rows-5 grid-cols-1 w-full md:w-[80vw] gap-5 items-stretch py-10">
                 {features.map((feature, i) => (
-                    <div key={i} className="w-full h-full">
+                    <div key={i} className="w-full h-full flex">
                         <FeatureBanner 
                             title={feature.title}
                             description={feature.description}
                             icon={feature.icon}
                             index={i}
+                            // className="flex-1"
                         />
                     </div>
                 ))}
