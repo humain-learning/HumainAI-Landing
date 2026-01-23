@@ -1,6 +1,6 @@
 import PrimaryButton from "ui/PrimaryButton";
 import SecondaryButton from "ui/SecondaryButton";
-import { HeroVideo, features} from "./data/heroFeatures";
+import { HeroVideo, features, price} from "./data/heroFeatures";
 import { VideoCard } from "ui/VideoCard";
 
 
@@ -13,9 +13,9 @@ export const Hero = () => {
                         <h1 className="text-4xl font-semibold text-center">
                             <span className='text-sage'>Reclaim Your Time.</span>
                             <br />
-                            <span className='text-terracotta'>Reduce Your Teaching</span>
+                            <span className='text-terracotta'>Reduce Your Workload</span>
                             <br />
-                            <span className='text-sage'>Workload with AI.</span>
+                            <span className='text-sage'>with AI.</span>
                         </h1>
                         <hr className="w-full border-t-4 border-terracotta mt-5 mb-5" />
                         <div className="flex items-center justify-center w-full mb-8">
@@ -40,7 +40,7 @@ export const Hero = () => {
                         <div className="pt-6 pb-3 px-6 font-medium text-center">
                             {/* Early Bird Offer! */}
                             {/* <br /> */}
-                            <span className="p-1 text-2xl font-bold text-terracotta">&#8377;4999</span>
+                            <span className="p-1 text-2xl font-bold text-terracotta">&#8377;{price}</span>
                             {/* <span className="p-1 text-lg line-through text-gray-500 pl-3">&#8377;11,800</span> */}
                             <span className="p-1 text-sm text-gray-500">+ 18% GST</span>
                         </div>
@@ -76,7 +76,7 @@ export const Hero = () => {
                                                 <img src='/assets/icons/bubble-bg.svg' className="absolute inset-0 w-full h-full"/>
                                                 <img src={feature.icon} className="absolute w-3/5 h-3/5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain"/>
                                             </div> 
-                                            {feature.text}
+                                            <div className="text-left">{feature.text}</div>
                                         </li>
                                     ))}
                                 </ul>
@@ -84,7 +84,7 @@ export const Hero = () => {
                             <div className="pt-6 pb-3 px-6 font-medium text-center md:text-left">
                                 {/* Early Bird Offer! */}
                                 {/* <br /> */}
-                                <span className="p-1 text-2xl md:text-4xl font-bold text-terracotta">&#8377;4999</span>
+                                <span className="p-1 text-2xl md:text-4xl font-bold text-terracotta">&#8377;{price}</span>
                                 {/* <span className="p-1 text-lg md:text-2xl line-through text-gray-500 pl-3">&#8377;11,800</span> */}
                                 <span className="p-1 text-sm md:text-base text-gray-500">+ 18% GST</span>
                             </div>

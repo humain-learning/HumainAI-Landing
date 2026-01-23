@@ -26,7 +26,7 @@ export const Parents = () => {
         
     const pxCount = usePxCalculator(5);
     return (
-        <div className=" w-full my-20 flex flex-col">
+        <div className="w-full my-20 flex flex-col">
             <div className="w-[90vw] mx-auto flex flex-col">
                     <h1 className="text-4xl md:text-6xl font-semibold text-start px-6 py-10">
                         <span className="text-sage">What Parents</span>

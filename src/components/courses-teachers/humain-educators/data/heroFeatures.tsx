@@ -12,13 +12,13 @@ export const features = [
       icon:'/assets/courses-teachers/humain-educators/icons/hero/bullet3.svg'
     },
     {
-      text:'Lifetime Community engagement and support', 
-      icon:'/assets/courses-teachers/humain-educators/icons/hero/bullet4.svg'
-    },
-    {
       text:'Become a Google AI Certified Educator', 
       icon:'/assets/courses-teachers/humain-educators/icons/hero/bullet5.svg'
     },
+    {
+      text:'Lifetime Community engagement and support', 
+      icon:'/assets/courses-teachers/humain-educators/icons/hero/bullet4.svg'
+    }
   ];
 
 export const HeroVideo = {
@@ -26,3 +26,5 @@ export const HeroVideo = {
     id: 1,
     url: "https://player.vimeo.com/video/1150266610"
 };
+
+export const price = 5999;
