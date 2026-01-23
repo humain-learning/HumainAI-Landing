@@ -1,4 +1,4 @@
-import { gamechangerFeatures } from './data/gamechanger';
+import { gamechangerFeatures } from './data/benefits';
 
 
 export const GameChanger = () => {
@@ -7,11 +7,11 @@ export const GameChanger = () => {
             <div className="relative w-[90vw] flex flex-col items-center md:items-start justify-center mx-auto">
                 <h1 className="text-3xl md:text-6xl font-semibold text-center md:text-start md:px-6 py-[1.5rem]">
                     <span className=" text-terracotta">
-                        Why This Program is a
+                        Benefits Across
                     </span>
-                    <br />
+                    <br/>
                     <span className="text-sage">
-                        Game Changer for Teachers
+                        All Boards, Grades and Subjects
                     </span>
                 </h1>
                 <hr className="w-1/2 md:w-1/4 lg:w-1/8 border-t-4 border-terracotta mx-auto md:mx-6 mb-10" />

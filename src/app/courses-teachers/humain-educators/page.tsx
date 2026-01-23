@@ -1,6 +1,6 @@
 import { Hero } from "humain-educators/Hero";
 import { Band } from "humain-educators/Band";
-import { GameChanger } from "humain-educators/GameChanger";
+import { GameChanger } from "humain-educators/Benefits";
 import { Founder }  from "humain-educators/Founder";
 import { Certificate } from "humain-educators/Certificate";
 import { Testimonials } from "humain-educators/Testimonials";
