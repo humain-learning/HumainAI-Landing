@@ -27,4 +27,11 @@ export const HeroVideo = {
     url: "https://player.vimeo.com/video/1150266610"
 };
 
-export const price = 5999;
+export const price = 6499;
+
+export const HeroImages = [
+    '/assets/courses-teachers/humain-educators/Hero/1.png',
+    '/assets/courses-teachers/humain-educators/Hero/2.png',
+    '/assets/courses-teachers/humain-educators/Hero/3.png',
+    '/assets/courses-teachers/humain-educators/Hero/4.jpg'
+];

@@ -7,7 +7,7 @@ import { Testimonials } from "humain-educators/Testimonials";
 import { AiRoadmap } from "humain-educators/AiRoadmap";
 import { WhoWeAre } from "humain-educators/WhoWeAre";
 import { Instructors } from "humain-educators/Instructors";
-
+import { TestimonialsV } from "humain-educators/TestimonialsV";
 
 
 
@@ -22,7 +22,7 @@ export default function HumainEducators() {
         <AiRoadmap />
         <WhoWeAre />
         <Instructors />
-
+        <TestimonialsV />
         <Founder />
         <Certificate />
         </>

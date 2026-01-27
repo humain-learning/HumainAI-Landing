@@ -1,10 +1,22 @@
+'use client';
+import { useEffect, useState } from "react";
 import PrimaryButton from "ui/PrimaryButton";
 import SecondaryButton from "ui/SecondaryButton";
-import { HeroVideo, features, price} from "./data/heroFeatures";
-import { VideoCard } from "ui/VideoCard";
+import { HeroImages, features, price } from "./data/heroFeatures";
 
 
 export const Hero = () => {
+        const [activeIndex, setActiveIndex] = useState(0);
+
+        useEffect(() => {
+            if (!HeroImages?.length) return;
+            const intervalId = setInterval(() => {
+                setActiveIndex((prev) => (prev + 1) % HeroImages.length);
+            }, 3500);
+
+            return () => clearInterval(intervalId);
+        }, []);
+
         return (
             <div className="relative w-full max-w-screen flex items-center z-10">
                 {/* Mobile version */}
@@ -19,11 +31,17 @@ export const Hero = () => {
                         </h1>
                         <hr className="w-full border-t-4 border-terracotta mt-5 mb-5" />
                         <div className="flex items-center justify-center w-full mb-8">
-                            {/* <img src="/assets/images/humaincamps-temp-hero.svg" className="object-contain w-full h-auto" /> */}
-                            <VideoCard 
-                                video={HeroVideo} 
-                                autoplay={false}
-                            />
+                            <div className="relative w-full h-[220px] sm:h-[260px] rounded-3xl overflow-hidden">
+                                {HeroImages.map((image, index) => (
+                                    <img
+                                        key={image}
+                                        src={image}
+                                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+                                            index === activeIndex ? "opacity-100" : "opacity-0"
+                                        }`}
+                                    />
+                                ))}
+                            </div>
                         </div>
                         <ul className="space-y-2 pl-5 text-base">
                             {features.map((feature, index) => (
@@ -62,9 +80,9 @@ export const Hero = () => {
                                 <h1 className="text-4xl md:text-5xl font-semibold">
                                     <span className='text-sage'>Reclaim Your Time.</span>
                                     <br />
-                                    <span className='text-terracotta'>Reduce Your Teaching</span>
+                                    <span className='text-terracotta'>Reduce Your Workload</span>
                                     <br />
-                                    <span className='text-sage'>Workload with AI.</span>
+                                    <span className='text-sage'>with AI.</span>
                                 </h1>
                                 <hr className="w-full md:w-1/4 border-t-4 border-terracotta mb-5" />
                             </div>
@@ -95,13 +113,17 @@ export const Hero = () => {
                             </div>
                         </div>
                         <div className="w-full md:w-[55vw] h-full z-10 flex items-center justify-center">
-                            {/* <img src="/assets/images/humaincamps-temp-hero.svg" className="object-contain w-full h-full" /> */}
-                            <VideoCard 
-                                video={HeroVideo} 
-                                autoplay={true}
-                                mutable={true}
-                                pausable={true}
-                            />
+                            <div className="relative w-full h-[380px] lg:h-[440px] rounded-3xl overflow-hidden">
+                                {HeroImages.map((image, index) => (
+                                    <img
+                                        key={image}
+                                        src={image}
+                                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+                                            index === activeIndex ? "opacity-100" : "opacity-0"
+                                        }`}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
