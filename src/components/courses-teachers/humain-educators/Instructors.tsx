@@ -5,7 +5,7 @@ export const Instructors = () => {
                 <span className="text-sage">Meet Our Instructors</span>
             </h1>
             <hr className="w-1/2 md:w-1/4 lg:w-1/8 border-t-4 border-terracotta mx-6 mb-10" />
-            <img src='/assets/courses-teachers/humain-educators/web image.svg' className="w-[80%] h-auto" />
+            <img src='/assets/courses-teachers/humain-educators/instructors.svg' className="w-[80%] h-auto" />
         </div>
     );
 };
