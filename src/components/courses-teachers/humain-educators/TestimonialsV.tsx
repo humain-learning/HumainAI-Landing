@@ -20,17 +20,16 @@ const renderVideoSlides = () => (
                     video={video} 
                     cardWidth={SLIDE_WIDTH_CLASS}
                     index={index}
-                    autoplay={true}
+                    autoplay={false}
                 />
                 <div className="px-3 w-full md:px-6 py-2 gap-1 flex flex-col justify-center items-start">
                     <span className="text-lg lg:text-2xl font-semibold">{video.title}</span>
-                    <p className="text-base lg:text-xl font-medium">{video.description}</p>
+                    {/* <p className="text-base lg:text-xl font-medium">{video.description}</p> */}
                 </div>
             
         </SwiperSlide>
     ))
 );
-
 
 
 export const TestimonialsV = () => {
