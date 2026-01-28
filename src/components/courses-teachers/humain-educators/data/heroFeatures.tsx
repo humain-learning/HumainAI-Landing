@@ -1,19 +1,19 @@
 export const features = [
     {
-      text:'Live, Guided Sessions with Small Teacher Batches', 
+      text:'Become a Google AI Certified Educator', 
+      icon:'/assets/courses-teachers/humain-educators/icons/hero/bullet5.svg'
+    },
+    {
+      text:'Live, Guided Sessions with Small Batches', 
       icon:'/assets/courses-teachers/humain-educators/icons/hero/bullet1.svg'
     },
     {
-      text:'No prior experience on AI needed', 
+      text:'No prior experience on AI required', 
       icon:'/assets/courses-teachers/humain-educators/icons/hero/bullet2.svg'
     },
     {
       text:'Master 15+ AI tools to use in Real Classrooms', 
       icon:'/assets/courses-teachers/humain-educators/icons/hero/bullet3.svg'
-    },
-    {
-      text:'Become a Google AI Certified Educator', 
-      icon:'/assets/courses-teachers/humain-educators/icons/hero/bullet5.svg'
     },
     {
       text:'Lifetime Community engagement and support', 
