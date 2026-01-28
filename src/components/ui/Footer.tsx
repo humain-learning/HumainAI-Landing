@@ -1,5 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
+import { FaInstagram, FaLinkedin } from 'react-icons/fa';
+
 const OTHER_LINKS = [
   'Mentors',
   'Blog',
@@ -78,6 +80,26 @@ const Footer = () => {
                       hi@humainlearning.ai
                     </p>
                   </div>
+
+                  <a 
+                    href="https://www.instagram.com/humainlearning.ai" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 cursor-pointer text-base font-normal hover:opacity-80"
+                  >
+                    <FaInstagram className="text-xl" />
+                    <span>Instagram</span>
+                  </a>
+
+                  <a 
+                    href="https://www.linkedin.com/company/humain-learning-ai" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 cursor-pointer text-base font-normal hover:opacity-80"
+                  >
+                    <FaLinkedin className="text-xl" />
+                    <span>LinkedIn</span>
+                  </a>
 
                   {/* <div className="flex items-start gap-2">
                     <img className="" src="/assets/icons/location.svg" alt="" />

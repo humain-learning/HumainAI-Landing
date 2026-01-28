@@ -11,7 +11,7 @@ export const WhoWeAre = () => {
         <div className="w-full flex flex-col items-center justify-center px-5 py-10">
             <div className=" w-[90vw] flex flex-col items-center md:items-start justify-center mx-auto">
                 <div className="flex justify-between relative w-full ">
-                    <h1 className="text-3xl md:text-6xl font-semibold text-center md:text-start md:px-6 py-[1.5rem]">
+                    <h1 className="text-3xl md:text-6xl font-semibold md:text-start md:px-6 py-[1.5rem]">
                         <span className=" text-terracotta">
                             Why Choose
                         </span>

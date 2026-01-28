@@ -14,13 +14,13 @@ export const gamechangerFeatures = [
     {
       id: 3,
       title: 'Inclusive Planning',
-      description: 'Easily adapt lessons to different learning levels without extra preparation.',
+      description: 'Easily adapt lessons to different learning needs and varied languages',
       icon: '/assets/courses-teachers/humain-educators/icons/game-changer/3.svg'
     },
     {
       id: 4,
-      title: 'Student Engagement',
-      description: 'Reach all students at their learning levels with more time on task.',
+      title: 'Differentiated Student Engagement',
+      description: 'Cater to every child with differentiated resources',
       icon: '/assets/courses-teachers/humain-educators/icons/game-changer/4.svg'
     },
     {
