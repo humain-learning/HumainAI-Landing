@@ -6,12 +6,12 @@ export const features = [
     },
     {
         title: 'Purpose Over Tools',
-        description: 'The course focuses on real teaching challenges—planning, assessment, engagement, differentiation and meaningfully introducing AI in classrooms to better learning outcomes and classroom experience.',
+        description: 'Focus on real teaching challenges like planning, assessment, engagement, by meaningfully introducing AI in classrooms for better learning outcomes.',
         icon: '/assets/courses-teachers/humain-educators/icons/who-we/2.svg'
     },
     {
         title: 'Thinking Matters',
-        description: 'Critically using AI to support critical thinking, creativity, and understanding to develop faculties rather than encouraging passive learning.',
+        description: 'Use AI to support critical thinking, creativity, and understanding to develop faculties rather than encouraging passive learning.',
         icon: '/assets/courses-teachers/humain-educators/icons/who-we/3.svg'
     },
     {

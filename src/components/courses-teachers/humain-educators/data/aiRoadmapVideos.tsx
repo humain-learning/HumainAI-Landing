@@ -27,12 +27,12 @@ export const aiRoadmapVideos = [
         id: 5,
         url: "https://player.vimeo.com/video/1156796033",
         title: "Module 5",
-        description: "Responsible and Ethical AI Use"
+        description: "Responsible and Ethical Use of AI"
     },
     {
         id: 6,
         url: "https://player.vimeo.com/video/1156796077",
         title: "Module 6",
-        description: "AI forReflection and Feedback"
+        description: "AI for Reflection and Feedback"
     }
 ];

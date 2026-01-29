@@ -10,7 +10,7 @@ export const Certificate = () => {
                     <span className="text-black">For Every Learner</span>
                 </h1>
                 <hr className="w-1/2 md:w-1/6 border-t-3 border-terracotta mb-6" />
-                <span className="text-xl md:text-3xl text-center md:text-start">Official Certificate issues upon course completion.</span>
+                <span className="text-xl md:text-3xl text-center md:text-start">Official Certificate issued upon course completion.</span>
             </div>
 
         </div>

@@ -25,13 +25,13 @@ export const gamechangerFeatures = [
     },
     {
       id: 5,
-      title: 'Responsible AI',
-      description: 'Use AI confidently and ethically while keeping teachers and students in control',
+      title: 'Learn Responsible AI',
+      description: 'Use AI confidently and ethically in varied curricular and pedagogical frameworks.',
       icon: '/assets/courses-teachers/humain-educators/icons/game-changer/5.svg'
     },
     {
       id: 6,
-      title: 'Career Confidence',
+      title: 'Build Career Confidence',
       description: 'Build future-ready skills that strengthen your professional profile in schools.',
       icon: '/assets/courses-teachers/humain-educators/icons/game-changer/6.svg'
     },
