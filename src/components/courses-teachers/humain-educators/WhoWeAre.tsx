@@ -19,14 +19,16 @@ export const WhoWeAre = () => {
                         <span className="text-sage">hum<span className="text-terracotta">ai</span>n</span>
                     </h1>
 
-                    <Link href="/#about" passHref>
-                        <PrimaryButton
-                            text="Know More"
-                            target="_self"
-                            buttonClassName="absolute right-10 top-1/2 -translate-y-1/2"
-                        />
-                    </Link>
+                    <div className="items-center flex">
+                        <Link href="/#about" passHref>
+                            <PrimaryButton
+                                text="Know More"
+                                target="_self"
+                                buttonClassName=""
+                            />
+                        </Link>
                     </div>
+                </div>
                 <hr className="w-1/2 md:w-1/4 lg:w-1/8 border-t-4 border-terracotta mx-auto md:mx-6 pb-10" />
                 
             </div>
