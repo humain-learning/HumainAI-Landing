@@ -32,11 +32,20 @@ function padZero(num: number): string {
 }
 
 export const CountdownTimer = ({ endDate, className = '' }: CountdownTimerProps) => {
-    const [timeRemaining, setTimeRemaining] = useState<TimeRemaining>(() => 
-        calculateTimeRemaining(endDate)
-    );
+    const [mounted, setMounted] = useState(false);
+    const [timeRemaining, setTimeRemaining] = useState<TimeRemaining>({
+        days: 0, hours: 0, minutes: 0, seconds: 0, total: 1
+    });
+
+    // Only start calculating after mount to avoid hydration mismatch
+    useEffect(() => {
+        setMounted(true);
+        setTimeRemaining(calculateTimeRemaining(endDate));
+    }, [endDate]);
 
     useEffect(() => {
+        if (!mounted) return;
+
         const interval = setInterval(() => {
             const remaining = calculateTimeRemaining(endDate);
             setTimeRemaining(remaining);
@@ -47,7 +56,12 @@ export const CountdownTimer = ({ endDate, className = '' }: CountdownTimerProps)
         }, 1000);
 
         return () => clearInterval(interval);
-    }, [endDate]);
+    }, [endDate, mounted]);
+
+    // Don't render anything until mounted (avoids hydration mismatch)
+    if (!mounted) {
+        return null;
+    }
 
     // Don't render if expired
     if (timeRemaining.total <= 0) {

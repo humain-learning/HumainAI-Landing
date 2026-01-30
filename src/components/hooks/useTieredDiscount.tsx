@@ -26,25 +26,49 @@ export interface TieredDiscountResult {
 
 // Convert IST date string to UTC Date object
 function istToUtc(istDateString: string): Date {
-    // IST is UTC+5:30
-    const istDate = new Date(istDateString);
-    // Subtract 5 hours 30 minutes to get UTC
-    return new Date(istDate.getTime() - (5.5 * 60 * 60 * 1000));
+    // Parse the string as UTC by appending 'Z', then subtract 5:30 to convert from IST to UTC
+    // IST is UTC+5:30, so to get UTC we subtract 5 hours 30 minutes
+    const asUtc = new Date(istDateString + 'Z');
+    return new Date(asUtc.getTime() - (5.5 * 60 * 60 * 1000));
 }
 
 export function useTieredDiscount(config: TieredPricingConfig): TieredDiscountResult {
-    const [now, setNow] = useState(() => new Date());
+    const [mounted, setMounted] = useState(false);
+    const [now, setNow] = useState<Date | null>(null);
+
+    // Only set the time after mount to avoid hydration mismatch
+    useEffect(() => {
+        setMounted(true);
+        setNow(new Date());
+    }, []);
 
     // Update current time every second
     useEffect(() => {
+        if (!mounted) return;
+
         const interval = setInterval(() => {
             setNow(new Date());
         }, 1000);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [mounted]);
 
     const result = useMemo(() => {
+        // Return loading state until mounted
+        if (!now) {
+            return {
+                isActive: false,
+                isExpired: false,
+                isNotStarted: true,
+                currentTierIndex: -1,
+                discountPercent: 0,
+                discountedPrice: config.originalPrice,
+                originalPrice: config.originalPrice,
+                tierEndTime: null,
+                timeRemaining: 0,
+            };
+        }
+
         const startTimeUtc = istToUtc(config.startDate);
         const currentTime = now.getTime();
         const startTime = startTimeUtc.getTime();
