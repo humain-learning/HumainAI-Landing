@@ -29,6 +29,19 @@ export const HeroVideo = {
 
 export const price = 6499;
 
+// Tiered pricing configuration
+// startDate is in IST (Indian Standard Time)
+// discountTiers are sequential - tier 1 runs first, then tier 2, etc.
+export const tieredPricing = {
+    originalPrice: 7499,
+    // Format: YYYY-MM-DDTHH:mm:ss (IST)
+    startDate: "2026-01-30T0013:53:00",
+    discountTiers: [
+        { durationHours: 0.25, discountPercent: 50 },  // First 24 hours: 30% off
+        { durationHours: 1, discountPercent: 25 },  // Next 48 hours: 15% off
+    ],
+};
+
 export const HeroImages = [
     '/assets/courses-teachers/humain-educators/Hero/1.png',
     '/assets/courses-teachers/humain-educators/Hero/2.png',

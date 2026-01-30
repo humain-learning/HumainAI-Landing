@@ -57,7 +57,7 @@ const PrimaryButton = ({ text, buttonClassName, target, onClick, newTab }: Prima
         buttonClassName
       )}
     >
-      {text}
+      <div className='whitespace-nowrap'>{text}</div>
       <div className="group-hover:bg-secondary-color flex h-9 w-9 items-center justify-center rounded-full bg-white transition-colors duration-300 ease-in-out">
         <img
           className="h-3 w-3"
