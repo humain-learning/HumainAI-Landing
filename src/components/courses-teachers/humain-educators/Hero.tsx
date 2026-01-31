@@ -41,7 +41,7 @@ export const Hero = () => {
                                     <img
                                         key={image}
                                         src={image}
-                                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+                                        className={`absolute inset-0 w-full h-full ${index === 0 ? 'object-contain' : 'object-cover'} transition-opacity duration-700 ${
                                             index === activeIndex ? "opacity-100" : "opacity-0"
                                         }`}
                                     />
@@ -150,12 +150,12 @@ export const Hero = () => {
                             </div>
                         </div>
                         <div className="w-full md:w-[55vw] h-full z-10 flex items-center justify-center">
-                            <div className="relative w-full h-full rounded-3xl overflow-hidden bg-white">
+                            <div className="relative w-full h-[380px] lg:h-[440px] rounded-3xl overflow-hidden shadow-2xl bg-white">
                                 {HeroImages.map((image, index) => (
                                     <img
                                         key={image}
                                         src={image}
-                                        className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-700 ${
+                                        className={`absolute inset-0 w-full h-full ${index === 0 ? 'object-contain scale-70' : 'object-cover'} bg-white transition-opacity duration-700 ${
                                             index === activeIndex ? "opacity-100" : "opacity-0"
                                         }`}
                                     />
