@@ -2,7 +2,7 @@
 import React from 'react';
 import TyperwriterText from './TyperwriterText';
 import PrimaryButton from 'ui/PrimaryButton';
-import SecondaryButton from 'ui/SkeletalButton';
+import SecondaryButton from 'ui/SecondaryButton';
 import { motion } from 'motion/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
@@ -66,8 +66,8 @@ const Intro = () => {
             intelligence
           </div>
           <div className="flex w-full flex-col items-center gap-3 pt-4 md:flex-row">
-            <PrimaryButton text="Enroll" target='/courses-students/humain-champs' />
-            {/* <SecondaryButton text="Watch Course Preview" /> */}
+            <PrimaryButton text="For Students" target='/courses-students/humain-champs' />
+            <SecondaryButton text="For Teachers" target='/courses-teachers/humain-educators' />
           </div>
         </div>
         {/* Right Container */}

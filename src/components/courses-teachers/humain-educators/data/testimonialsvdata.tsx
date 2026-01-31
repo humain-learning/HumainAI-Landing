@@ -12,12 +12,12 @@ export const testimonialVideos = [
     {
         id: 3,
         url: "https://player.vimeo.com/video/1158712757",
-        title: "Senior",
+        title: "Senior Grades",
     },
     {
         id: 4,
         url: "https://player.vimeo.com/video/1158712575",
-        title: "Junior",
+        title: "Junior Grades",
     },
     {
         id: 5,
