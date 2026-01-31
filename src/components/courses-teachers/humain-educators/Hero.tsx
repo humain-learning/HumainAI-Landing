@@ -84,8 +84,8 @@ export const Hero = () => {
                             )}
                         </div>
                         <div className="flex flex-row items-center justify-center pt-2 pb-5 gap-4">
-                            <PrimaryButton text="Enroll Now" target="https://pages.razorpay.com/humainchamps" newTab />
-                            <SecondaryButton text="Contact Us" target="#contact-us" />
+                            <PrimaryButton text="Enroll Now" target="https://pages.razorpay.com/pl_S9bfhadVrJfafQ/view" newTab />
+                            {/* <SecondaryButton text="Contact Us" target="#contact-us" /> */}
                         </div>
                     </div>
                 </div>
@@ -144,18 +144,18 @@ export const Hero = () => {
                                 )}
                             </div>
                             <div className="flex flex-col md:flex-row items-center md:justify-start justify-center px-5 pt-2 pb-5 gap-4 md:gap-0">
-                                <PrimaryButton text="Enroll Now" target="https://pages.razorpay.com/humainchamps" newTab />
+                                <PrimaryButton text="Enroll Now" target="https://pages.razorpay.com/pl_S9bfhadVrJfafQ/view" newTab />
                                 <div className="md:w-5"></div>
-                                <SecondaryButton text="Contact Us" target="#contact-us" />
+                                {/* <SecondaryButton text="Contact Us" target="#contact-us" /> */}
                             </div>
                         </div>
                         <div className="w-full md:w-[55vw] h-full z-10 flex items-center justify-center">
-                            <div className="relative w-full h-[380px] lg:h-[440px] rounded-3xl overflow-hidden">
+                            <div className="relative w-full h-full rounded-3xl overflow-hidden bg-white">
                                 {HeroImages.map((image, index) => (
                                     <img
                                         key={image}
                                         src={image}
-                                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+                                        className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-700 ${
                                             index === activeIndex ? "opacity-100" : "opacity-0"
                                         }`}
                                     />
