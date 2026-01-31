@@ -1,7 +1,7 @@
 export const testimonialVideos = [
     {
         id: 1,
-        url: "https://player.vimeo.com/video/1158712718",
+        url: "https://player.vimeo.com/video/1158712622",
         title: "Primary School",
     },
     {
