@@ -60,7 +60,7 @@ const Batches = [
         
     // },
     {
-        name: 'Weekend Batch',
+        name: 'March Batch',
         startDate: "7th March",
         limitedSeats: true,
         itinerary: [
@@ -102,6 +102,54 @@ const Batches = [
             {
                 date: '27th Mar',
                 day: 'Friday',
+                timing: '5PM - Graduation'
+            }
+        ]
+        
+    },
+    {
+        name: 'April Batch',
+        startDate: "4th April",
+        limitedSeats: false,
+        itinerary: [
+            {
+                date: '4th Apr',
+                day: 'Saturday',
+                timing: '5PM-7PM'
+            },
+            {
+                date: '5th Apr',
+                day: 'Sunday',
+                timing: '5PM-7PM'
+            },
+            {
+                date: '11th Apr',
+                day: 'Saturday',
+                timing: '5PM-7PM'
+            },
+            {
+                date: '12th Apr',
+                day: 'Sunday',
+                timing: '5PM-7PM'
+            },
+            {
+                date: '18th Apr',
+                day: 'Saturday',
+                timing: '5PM-7PM'
+            },
+            {
+                date: '19th Apr',
+                day: 'Sunday',
+                timing: '5PM-7PM'
+            },
+            {
+                date: '25th Apr',
+                day: 'Saturday',
+                timing: '5PM - Doubt Clearing'
+            },
+            {
+                date: '26th Apr',
+                day: 'Sunday',
                 timing: '5PM - Graduation'
             }
         ]
