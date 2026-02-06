@@ -96,6 +96,27 @@ export function useTieredDiscount(config: TieredPricingConfig): TieredDiscountRe
         let cumulativeHours = 0;
         for (let i = 0; i < config.discountTiers.length; i++) {
             const tier = config.discountTiers[i];
+            
+            // Handle indefinite discounts (durationHours = 0)
+            if (tier.durationHours === 0) {
+                // Indefinite tier - active forever once reached
+                const discountedPrice = Math.round(
+                    config.originalPrice * (1 - tier.discountPercent / 100)
+                );
+
+                return {
+                    isActive: true,
+                    isExpired: false,
+                    isNotStarted: false,
+                    currentTierIndex: i,
+                    discountPercent: tier.discountPercent,
+                    discountedPrice,
+                    originalPrice: config.originalPrice,
+                    tierEndTime: null,  // No end time for indefinite discount
+                    timeRemaining: 0,
+                };
+            }
+
             const tierEndHours = cumulativeHours + tier.durationHours;
 
             if (elapsedHours < tierEndHours) {
