@@ -40,7 +40,6 @@ export const tieredPricing = {
 
     discountTiers: [
         { durationHours: 0.25, discountPercent: 30 },  // First 15 minutes: 30% off
-        { durationHours: 0.25, discountPercent: 30 },  // Next 15 minutes: 30% off
         { durationHours: 0, discountPercent: 20 }   // Next 24 hours: 20% off
     ],
 };
