@@ -3,14 +3,14 @@ import React from 'react';
 import { VideoCard } from "ui/VideoCard";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { testimonialVideos } from "./data/testimonialsvdata";
+import { videoTestimonials } from "./data/videotestimonials";
 import { usePxCalculator } from '../../hooks/usePxCalculator';
 
 
 const SLIDE_WIDTH_CLASS = "w-[80vw] md:w-[30vw]";
 
 const renderVideoSlides = () => (
-    testimonialVideos.map((video, index) => (
+    videoTestimonials.map((video, index) => (
         <SwiperSlide 
             key={video.id} 
             className={`!w-auto ${SLIDE_WIDTH_CLASS}`}
@@ -22,17 +22,17 @@ const renderVideoSlides = () => (
                     index={index}
                     autoplay={false}
                 />
-                <div className="px-3 w-full md:px-6 py-2 gap-1 flex flex-col justify-center items-start">
+                {/* <div className="px-3 w-full md:px-6 py-2 gap-1 flex flex-col justify-center items-start">
                     <span className="text-lg lg:text-2xl font-semibold">{video.title}</span>
-                    {/* <p className="text-base lg:text-xl font-medium">{video.description}</p> */}
-                </div>
+                    <p className="text-base lg:text-xl font-medium">{video.description}</p>
+                </div> */}
             
         </SwiperSlide>
     ))
 );
 
 
-export const TestimonialsV = () => {
+export const VideoTestimonials = () => {
     const pxCount = usePxCalculator(5);
     return (
     <div className="relative flex flex-col items-center justify-center mx-auto py-6 md:py-10">
