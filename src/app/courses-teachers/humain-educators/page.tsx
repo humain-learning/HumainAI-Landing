@@ -22,8 +22,8 @@ export default function HumainEducators() {
         <AiRoadmap />
         <WhoWeAre />
         <Instructors />
-        <TeacherShowcase />
         <VideoTestimonials />
+        <TeacherShowcase />
         <Founder />
         <Certificate />
         </>
