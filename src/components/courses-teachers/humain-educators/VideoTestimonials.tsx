@@ -3,14 +3,14 @@ import React from 'react';
 import { VideoCard } from "ui/VideoCard";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { testimonialVideos } from "./data/testimonialsvdata";
+import { videoTestimonials } from "./data/videotestimonials";
 import { usePxCalculator } from '../../hooks/usePxCalculator';
 
 
 const SLIDE_WIDTH_CLASS = "w-[80vw] md:w-[30vw]";
 
 const renderVideoSlides = () => (
-    testimonialVideos.map((video, index) => (
+    videoTestimonials.map((video, index) => (
         <SwiperSlide 
             key={video.id} 
             className={`!w-auto ${SLIDE_WIDTH_CLASS}`}
@@ -32,7 +32,7 @@ const renderVideoSlides = () => (
 );
 
 
-export const TestimonialsV = () => {
+export const VideoTestimonials = () => {
     const pxCount = usePxCalculator(5);
     return (
     <div className="relative flex flex-col items-center justify-center mx-auto py-6 md:py-10">
