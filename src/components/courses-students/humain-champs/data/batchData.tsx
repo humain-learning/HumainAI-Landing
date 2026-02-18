@@ -76,12 +76,12 @@ const Batches = [
             },
             {
                 date: '14th Mar',
-                day: 'Monday',
+                day: 'Saturday',
                 timing: '5PM-7PM'
             },
             {
                 date: '15th Mar',
-                day: 'Tuesday',
+                day: 'Sunday',
                 timing: '5PM-7PM'
             },
             {
