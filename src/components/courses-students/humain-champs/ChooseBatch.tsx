@@ -5,14 +5,14 @@ export const ChooseBatch = () => {
         <div className="relative flex flex-col items-center justify-center mx-auto my-5 md:my-10">
             <div className="w-full md:w-[90vw] mx-auto flex flex-col items-start justify-center">
                 <h1 className="text-4xl md:text-6xl font-semibold text-start px-3 md:px-6 py-5 md:py-10">
-                    <span className="text-sage">Choose Your Winter Vacation Batch</span>
+                    <span className="text-sage">Choose Your Batch</span>
                 </h1>
                 <hr className="w-[90vw] md:w-1/2 lg:w-1/4 xl:w-1/8 border-t-4 border-terracotta mx-3 md:mx-6 mb-5" />
 
             </div>
             
             <div className="w-full md:w-[90vw] flex flex-col items-start justify-center px-3 md:px-6 mx-auto">
-                <span className="text-lg md:text-2xl">Select the batch that fits your child’s holiday schedule.</span>
+                <span className="text-lg md:text-2xl">Select the batch that fits your child’s schedule.</span>
                 <span className="text-base md:text-xl font-semibold">Limited seats for personalised attention.</span>
             </div>
 
@@ -62,17 +62,27 @@ export const ChooseBatch = () => {
                             </div>
 
                             <div className="flex items-center justify-center m-5 md:m-10 px-3 md:px-6">
-                                <a
-                                    href="https://pages.razorpay.com/humainchamps"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={`w-full mx-auto rounded-full text-base md:text-xl font-semibold py-2 px-3 md:py-3 md:px-6 hover:shadow-lg transition-shadow duration-200 ${buttonBg}`}
-                                >
-                                    <div className="w-full md:w-[75%] text-xl md:text-2xl flex flex-row md:flex-row items-center justify-center lg:justify-between mx-auto gap-2 md:gap-0">
-                                        <div>Enroll Now!</div>
-                                        <div><span className="pr-2">&#8377;11,800</span></div>
+                                {batch.soldOut ? (
+                                    <div
+                                        className="w-full mx-auto rounded-full text-base md:text-xl font-semibold py-2 px-3 md:py-3 md:px-6 bg-gray-400 text-white cursor-not-allowed opacity-70"
+                                    >
+                                        <div className="w-full md:w-[75%] text-xl md:text-2xl flex items-center justify-center mx-auto">
+                                            <div>Sold Out</div>
+                                        </div>
                                     </div>
-                                </a>
+                                ) : (
+                                    <a
+                                        href="https://pages.razorpay.com/humainchamps"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={`w-full mx-auto rounded-full text-base md:text-xl font-semibold py-2 px-3 md:py-3 md:px-6 hover:shadow-lg transition-shadow duration-200 ${buttonBg}`}
+                                    >
+                                        <div className="w-full md:w-[75%] text-xl md:text-2xl flex flex-row md:flex-row items-center justify-center lg:justify-between mx-auto gap-2 md:gap-0">
+                                            <div>Enroll Now!</div>
+                                            <div><span className="pr-2">&#8377;11,800</span></div>
+                                        </div>
+                                    </a>
+                                )}
                             </div>
                         </div>
                     );

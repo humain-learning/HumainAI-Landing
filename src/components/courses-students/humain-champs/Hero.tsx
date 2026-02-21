@@ -1,19 +1,24 @@
+'use client';
 import PrimaryButton from "ui/PrimaryButton";
 import SecondaryButton from "ui/SecondaryButton";
-import { HeroVideo, heroFeatures as features} from "./data/heroFeatures";
+import { HeroVideo, heroFeatures as features, tieredPricing } from "./data/heroFeatures";
 import { VideoCard } from "ui/VideoCard";
+import { useTieredDiscount } from "@/components/hooks/useTieredDiscount";
+import CountdownTimer from "@/components/ui/CountdownTimer";
+
 export const Hero = () => {
+        const discount = useTieredDiscount(tieredPricing);
         return (
             <div className="relative w-full max-w-screen flex items-center z-10">
                 {/* Mobile version */}
                 <div className="md:hidden flex flex-col items-center justify-center">
                     <div className="relative w-full flex flex-col items-center justify-center mx-auto px-6">
                         <h1 className="text-4xl font-semibold text-center">
-                            <span className='text-sage'>Give Your Child</span>
+                            <span className='text-sage'>Future Proof Your</span>
                             <br />
-                            <span className='text-terracotta'>The AI Advantage</span>
+                            <span className='text-terracotta'>Child For an</span>
                             <br />
-                            <span className='text-sage'>This Exam Season</span>
+                            <span className='text-sage'>AI-Driven Career</span>
                         </h1>
                         <hr className="w-full border-t-4 border-terracotta mt-5 mb-5" />
                         <div className="flex items-center justify-center w-full mb-8">
@@ -21,6 +26,9 @@ export const Hero = () => {
                             <VideoCard 
                                 video={HeroVideo} 
                                 autoplay={false}
+                                startTime={7}
+                                mutable={true}
+                                pausable={true}
                             />
                         </div>
                         <ul className="space-y-2 pl-5 text-base">
@@ -36,11 +44,27 @@ export const Hero = () => {
                         </ul>
                         
                         <div className="pt-6 pb-3 px-6 font-medium text-center">
-                            {/* Early Bird Offer! */}
-                            {/* <br /> */}
-                            <span className="p-1 text-2xl font-bold text-terracotta">&#8377;11,800</span>
-                            {/* <span className="p-1 text-lg line-through text-gray-500 pl-3">&#8377;11,800</span> */}
+                            {discount.isActive && (
+                                <div className="mb-2">
+                                    <span className="bg-terracotta text-white px-3 py-1 rounded-full text-sm font-bold">
+                                        {discount.discountPercent}% OFF
+                                    </span>
+                                </div>
+                            )}
+                            {discount.isActive ? (
+                                <>
+                                    <span className="p-1 text-lg line-through text-gray-400">&#8377;{discount.originalPrice}</span>
+                                    <span className="p-1 text-2xl font-bold text-terracotta ml-2">&#8377;{discount.discountedPrice}</span>
+                                </>
+                            ) : (
+                                <span className="p-1 text-2xl font-bold text-terracotta">&#8377;{discount.originalPrice}</span>
+                            )}
                             <span className="p-1 text-sm text-gray-500">incl. GST</span>
+                            {discount.isActive && discount.tierEndTime && (
+                                <div className="mt-3">
+                                    <CountdownTimer endDate={discount.tierEndTime} />
+                                </div>
+                            )}
                         </div>
                         <div className="flex flex-row items-center justify-center px-5 pt-2 pb-5 gap-4">
                             <PrimaryButton text="Enroll Now" target="https://pages.razorpay.com/humainchamps" newTab />
@@ -58,11 +82,11 @@ export const Hero = () => {
                         <div className="flex flex-col w-full md:w-[45vw] px-6 z-10">
                             <div className="flex flex-col items-center md:items-start gap-6">
                                 <h1 className="text-4xl md:text-6xl font-semibold">
-                                    <span className='text-sage'>Give Your Child</span>
+                                    <span className='text-sage'>Future Proof Your</span>
                                     <br />
-                                    <span className='text-terracotta'>The AI Advantage</span>
+                                    <span className='text-terracotta'>Child for an</span>
                                     <br />
-                                    <span className='text-sage'>This Exam Season</span>
+                                    <span className='text-sage'>AI Driven Career</span>
                                 </h1>
                                 <hr className="w-full md:w-1/4 border-t-4 border-terracotta mb-5" />
                             </div>
@@ -80,11 +104,27 @@ export const Hero = () => {
                                 </ul>
                             </div>
                             <div className="pt-6 pb-3 px-6 font-medium text-center md:text-left">
-                                {/* Early Bird Offer! */}
-                                {/* <br /> */}
-                                <span className="p-1 text-2xl md:text-4xl font-bold text-terracotta">&#8377;11,800</span>
-                                {/* <span className="p-1 text-lg md:text-2xl line-through text-gray-500 pl-3">&#8377;11,800</span> */}
+                                {discount.isActive && (
+                                    <div className="mb-2">
+                                        <span className="bg-terracotta text-white px-3 py-1 rounded-full text-sm font-bold">
+                                            {discount.discountPercent}% OFF
+                                        </span>
+                                    </div>
+                                )}
+                                {discount.isActive ? (
+                                    <>
+                                        <span className="p-1 text-lg md:text-2xl line-through text-gray-400">&#8377;{discount.originalPrice}</span>
+                                        <span className="p-1 text-2xl md:text-4xl font-bold text-terracotta ml-2">&#8377;{discount.discountedPrice}</span>
+                                    </>
+                                ) : (
+                                    <span className="p-1 text-2xl md:text-4xl font-bold text-terracotta">&#8377;{discount.originalPrice}</span>
+                                )}
                                 <span className="p-1 text-sm md:text-base text-gray-500">incl. GST</span>
+                                {discount.isActive && discount.tierEndTime && (
+                                    <div className="mt-3">
+                                        <CountdownTimer endDate={discount.tierEndTime} />
+                                    </div>
+                                )}
                             </div>
                             <div className="flex flex-col md:flex-row items-center md:justify-start justify-center px-5 pt-2 pb-5 gap-4 md:gap-0">
                                 <PrimaryButton text="Enroll Now" target="https://pages.razorpay.com/humainchamps" newTab />
@@ -99,6 +139,7 @@ export const Hero = () => {
                                 autoplay={true}
                                 mutable={true}
                                 pausable={true}
+                                startTime={7}
                             />
                         </div>
                     </div>

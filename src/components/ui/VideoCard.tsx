@@ -14,9 +14,11 @@ interface VideoCardProps {
     autoplay?: boolean;
     pausable?: boolean;
     mutable?: boolean;
+    startTime?: number; // in seconds
+    endTime?: number;   // in seconds
 }
 
-export const VideoCard = ({ video, cardWidth = 'w-full', index = 0, autoplay = false, pausable = !autoplay, mutable = !autoplay }: VideoCardProps) => {
+export const VideoCard = ({ video, cardWidth = 'w-full', index = 0, autoplay = false, pausable = !autoplay, mutable = !autoplay, startTime, endTime }: VideoCardProps) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isMuted, setIsMuted] = useState(false);
     const iframeRef = useRef<HTMLIFrameElement | null>(null);
@@ -27,8 +29,15 @@ export const VideoCard = ({ video, cardWidth = 'w-full', index = 0, autoplay = f
         if (!url) return '';
         const separator = url.includes('?') ? '&' : '?';
         const params = `autoplay=${autoplay ? 1 : 0}&muted=${autoplay ? 1 : 0}&loop=1&title=0&byline=0&portrait=0&dnt=1&background=1`;
-        return url + separator + params;
-    }, [video.url,autoplay]);
+        let finalUrl = url + separator + params;
+        // Add time fragment if provided (format: #t=start,end)
+        if (startTime !== undefined || endTime !== undefined) {
+            const start = startTime ?? 0;
+            const end = endTime !== undefined ? `,${endTime}s` : '';
+            finalUrl += `#t=${start}s${end}`;
+        }
+        return finalUrl;
+    }, [video.url, autoplay, startTime, endTime]);
 
     useEffect(() => {
         if (!enhancedUrl) return;
