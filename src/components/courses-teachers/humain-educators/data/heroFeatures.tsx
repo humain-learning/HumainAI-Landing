@@ -39,7 +39,7 @@ export const tieredPricing = {
     startDate: "2026-02-2T00:00:00",
 
     discountTiers: [
-        { durationHours: 0, discountPercent: 50 }   // After that: 20% off until launch
+     // After that: 20% off until launch
     ],
 };
 
