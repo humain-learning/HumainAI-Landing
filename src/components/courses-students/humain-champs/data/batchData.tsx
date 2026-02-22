@@ -159,7 +159,7 @@ const Batches = [
     },
     {
         name: 'Late March Batch',
-        startDate: "4th April",
+        startDate: "21st March",
         limitedSeats: false,
         soldOut:true,
         itinerary: [
