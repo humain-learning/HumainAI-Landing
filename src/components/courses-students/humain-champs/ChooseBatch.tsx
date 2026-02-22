@@ -1,6 +1,9 @@
+'use client';
 import { Batches } from "./data/batchData";
-
+import { tieredPricing } from "./data/heroFeatures";
+import { useTieredDiscount } from "hooks/useTieredDiscount";
 export const ChooseBatch = () => {
+    const discount = useTieredDiscount(tieredPricing);
     return (
         <div className="relative flex flex-col items-center justify-center mx-auto my-5 md:my-10">
             <div className="w-full md:w-[90vw] mx-auto flex flex-col items-start justify-center">
@@ -79,7 +82,13 @@ export const ChooseBatch = () => {
                                     >
                                         <div className="w-full md:w-[75%] text-xl md:text-2xl flex flex-row md:flex-row items-center justify-center lg:justify-between mx-auto gap-2 md:gap-0">
                                             <div>Enroll Now!</div>
-                                            <div><span className="pr-2">&#8377;11,800</span></div>
+                                            {discount.isActive ? (
+                                                <div>
+                                                    <span className="pr-2"><s>&#8377;{discount.originalPrice}</s></span><span>&#8377;{discount.discountedPrice}</span>
+                                                </div>
+                                            ) : (
+                                                <div>&#8377;{discount.originalPrice}</div>
+                                            )}
                                         </div>
                                     </a>
                                 )}
