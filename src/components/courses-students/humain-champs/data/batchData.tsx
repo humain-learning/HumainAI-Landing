@@ -145,13 +145,13 @@ const Batches = [
                 timing: '5PM-7PM'
             },
             {
-                date: '25th Apr',
-                day: 'Saturday',
+                date: '20th Apr',
+                day: 'Monday',
                 timing: '5PM - Doubt Clearing'
             },
             {
-                date: '26th Apr',
-                day: 'Sunday',
+                date: '24th Apr',
+                day: 'Friday',
                 timing: '5PM - Graduation'
             }
         ]
