@@ -174,7 +174,7 @@ const Batches = [
                 timing: '5PM-7PM'
             },
             {
-                date: '28th MAr',
+                date: '28th Mar',
                 day: 'Saturday',
                 timing: '5PM-7PM'
             },
