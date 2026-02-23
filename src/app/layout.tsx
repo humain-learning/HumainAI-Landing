@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   title: 'Humain AI | Home',
   metadataBase: new URL('https://yourdomain.com'),
   description:
-    'Empowering students aged 13+ to harness AI capabilities while preserving human creativity, critical thinking, and emotional intelligence',
+    'Empowering educators and students to leverage AI responsibly and effectively while strengthening creativity, critical thinking, emotional intelligence, and human connection.',
   icons: {
     icon: '/vercel.svg',
   },
