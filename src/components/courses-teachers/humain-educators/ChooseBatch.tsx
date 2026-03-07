@@ -1,5 +1,5 @@
 'use client';
-import { Batches } from "../../courses-teachers/humain-educators/data/batchData";
+import { Batches } from "./data/batchData";
 import { tieredPricing } from "./data/heroFeatures";
 import { useTieredDiscount } from "hooks/useTieredDiscount";
 export const ChooseBatch = () => {

@@ -38,9 +38,9 @@ export const tieredPricing = {
     originalPrice: 11800,
     // Format: YYYY-MM-DDTHH:mm:ss (IST)
 
-    startDate: "2026-02-22T12:00:00",
+    startDate: "2026-03-07T18:00:00",
 
     discountTiers: [
-        { durationHours: 24, discountPercent: 30 },   // Next 24 hours: 30% off
+        { durationHours: 0.25, discountPercent: 40 },   // Next 24 hours: 30% off
     ],
 };
