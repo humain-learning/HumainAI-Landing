@@ -1,8 +1,23 @@
 'use client';
-import { Batches } from "./data/batchData";
-import { tieredPricing } from "./data/heroFeatures";
+import { tieredPricing } from "./heroFeatures";
 import { useTieredDiscount } from "hooks/useTieredDiscount";
-export const ChooseBatch = () => {
+type ItineraryItem = {
+    date: string;
+    day: string;
+    timing: string;
+};
+
+type Batch = {
+    name: string;
+    start_date: string;
+    limited_seats: boolean;
+    sold_out: boolean;
+    itinerary: ItineraryItem[];
+};
+type ChooseBatchProps = {
+    Batches: Batch[];
+}
+export const ChooseBatch = ({ Batches }: ChooseBatchProps) => {
     const discount = useTieredDiscount(tieredPricing);
     return (
         <div className="relative flex flex-col items-center justify-center mx-auto my-5 md:my-10">
@@ -16,7 +31,7 @@ export const ChooseBatch = () => {
             
             <div className="w-full md:w-[90vw] flex flex-col items-start justify-center px-3 md:px-6 mx-auto">
                 <span className="text-lg md:text-2xl">Select the batch that fits your child’s schedule.</span>
-                <span className="text-base md:text-xl font-semibold">Limited seats for personalised attention.</span>
+                <span className="text-base md:text-xl font-semibold">Small class size for personalised attention.</span>
             </div>
 
              
@@ -36,10 +51,10 @@ export const ChooseBatch = () => {
                             <div className="flex flex-col flex-grow">
                                 <div className="flex flex-col items-start w-full px-5 md:px-10 pt-5 md:pt-10 pb-2.5 md:pb-5">
                                     <h1 className="text-3xl md:text-4xl font-semibold pb-2.5 md:pb-5">
-                                        <span className="text-sage">{batch.name}</span> {batch.limitedSeats && <span className="text-xl md:text-xl text-medium"> <i>- Limited seats available!</i></span>}
+                                        <span className="text-sage">{batch.name}</span> {Boolean(batch.limited_seats) && <span className="text-xl md:text-xl text-medium"> <i>- Limited seats available!</i></span>}
                                     </h1>
                                     <hr className="w-1/2 md:w-1/6 border-t-3 border-terracotta mb-2.5 md:mb-5" />
-                                    <span className="text-lg md:text-2xl">Starting <span className="font-semibold">{batch.startDate}</span></span>
+                                    <span className="text-lg md:text-2xl">Starting <span className="font-semibold">{batch.start_date}</span></span>
                                 </div>
 
                                 <div className="px-5 md:px-10 flex">
@@ -65,7 +80,7 @@ export const ChooseBatch = () => {
                             </div>
 
                             <div className="flex items-center justify-center m-5 md:m-10 px-3 md:px-6">
-                                {batch.soldOut ? (
+                                {batch.sold_out ? (
                                     <div
                                         className="w-full mx-auto rounded-full text-base md:text-xl font-semibold py-2 px-3 md:py-3 md:px-6 bg-gray-400 text-white cursor-not-allowed opacity-70"
                                     >

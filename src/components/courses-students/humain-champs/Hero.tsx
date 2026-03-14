@@ -4,7 +4,7 @@ import SecondaryButton from "ui/SecondaryButton";
 import { HeroVideo, heroFeatures as features, tieredPricing } from "./data/heroFeatures";
 import { VideoCard } from "ui/VideoCard";
 import { useTieredDiscount } from "@/components/hooks/useTieredDiscount";
-import CountdownTimer from "@/components/ui/CountdownTimer";
+import CoursePricing from "@/components/ui/CoursePricing";
 
 export const Hero = () => {
         const discount = useTieredDiscount(tieredPricing);
@@ -43,29 +43,20 @@ export const Hero = () => {
                             ))}
                         </ul>
                         
-                        <div className="pt-6 pb-3 px-6 font-medium text-center">
-                            {discount.isActive && (
-                                <div className="mb-2">
-                                    <span className="bg-terracotta text-white px-3 py-1 rounded-full text-sm font-bold">
-                                        {discount.discountPercent}% OFF
-                                    </span>
-                                </div>
-                            )}
-                            {discount.isActive ? (
-                                <>
-                                    <span className="p-1 text-lg line-through text-gray-400">&#8377;{discount.originalPrice}</span>
-                                    <span className="p-1 text-2xl font-bold text-terracotta ml-2">&#8377;{discount.discountedPrice}</span>
-                                </>
-                            ) : (
-                                <span className="p-1 text-2xl font-bold text-terracotta">&#8377;{discount.originalPrice}</span>
-                            )}
-                            <span className="p-1 text-sm text-gray-500">incl. GST</span>
-                            {discount.isActive && discount.tierEndTime && (
-                                <div className="mt-3">
-                                    <CountdownTimer endDate={discount.tierEndTime} />
-                                </div>
-                            )}
-                        </div>
+                        <CoursePricing
+                            isActive={discount.isActive}
+                            discountPercent={discount.discountPercent}
+                            originalPrice={discount.originalPrice}
+                            discountedPrice={discount.discountedPrice}
+                            gstLabel="incl. GST"
+                            containerClassName="pt-6 pb-3 px-6 font-medium text-center"
+                            strikePriceClassName="p-1 text-lg line-through text-gray-400"
+                            priceClassName="p-1 text-2xl font-bold text-terracotta"
+                            discountedPriceClassName="p-1 text-2xl font-bold text-terracotta ml-2"
+                            gstClassName="p-1 text-sm text-gray-500"
+                            showTimer={Boolean(discount.isActive && discount.tierEndTime)}
+                            timerEndDate={discount.tierEndTime || undefined}
+                        />
                         <div className="flex flex-row items-center justify-center px-5 pt-2 pb-5 gap-4">
                             <PrimaryButton text="Enroll Now" target="https://pages.razorpay.com/humainchamps" newTab />
                             <SecondaryButton text="Contact Us" target="#contact-us" />
@@ -103,29 +94,20 @@ export const Hero = () => {
                                     ))}
                                 </ul>
                             </div>
-                            <div className="pt-6 pb-3 px-6 font-medium text-center md:text-left">
-                                {discount.isActive && (
-                                    <div className="mb-2">
-                                        <span className="bg-terracotta text-white px-3 py-1 rounded-full text-sm font-bold">
-                                            {discount.discountPercent}% OFF
-                                        </span>
-                                    </div>
-                                )}
-                                {discount.isActive ? (
-                                    <>
-                                        <span className="p-1 text-lg md:text-2xl line-through text-gray-400">&#8377;{discount.originalPrice}</span>
-                                        <span className="p-1 text-2xl md:text-4xl font-bold text-terracotta ml-2">&#8377;{discount.discountedPrice}</span>
-                                    </>
-                                ) : (
-                                    <span className="p-1 text-2xl md:text-4xl font-bold text-terracotta">&#8377;{discount.originalPrice}</span>
-                                )}
-                                <span className="p-1 text-sm md:text-base text-gray-500">incl. GST</span>
-                                {discount.isActive && discount.tierEndTime && (
-                                    <div className="mt-3">
-                                        <CountdownTimer endDate={discount.tierEndTime} />
-                                    </div>
-                                )}
-                            </div>
+                            <CoursePricing
+                                isActive={discount.isActive}
+                                discountPercent={discount.discountPercent}
+                                originalPrice={discount.originalPrice}
+                                discountedPrice={discount.discountedPrice}
+                                gstLabel="incl. GST"
+                                containerClassName="pt-6 pb-3 px-6 font-medium text-center md:text-left"
+                                strikePriceClassName="p-1 text-lg md:text-2xl line-through text-gray-400"
+                                priceClassName="p-1 text-2xl md:text-4xl font-bold text-terracotta"
+                                discountedPriceClassName="p-1 text-2xl md:text-4xl font-bold text-terracotta ml-2"
+                                gstClassName="p-1 text-sm md:text-base text-gray-500"
+                                showTimer={Boolean(discount.isActive && discount.tierEndTime)}
+                                timerEndDate={discount.tierEndTime || undefined}
+                            />
                             <div className="flex flex-col md:flex-row items-center md:justify-start justify-center px-5 pt-2 pb-5 gap-4 md:gap-0">
                                 <PrimaryButton text="Enroll Now" target="https://pages.razorpay.com/humainchamps" newTab />
                                 <div className="md:w-5"></div>

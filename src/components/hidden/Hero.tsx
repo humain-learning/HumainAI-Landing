@@ -1,52 +1,57 @@
 'use client';
-import { useEffect, useState } from "react";
 import PrimaryButton from "ui/PrimaryButton";
 import SecondaryButton from "ui/SecondaryButton";
-import { HeroImages, features } from "./data/heroFeatures";
-import { useTieredDiscount } from "@/components/hooks/useTieredDiscount";
-import { usePricingConfig } from "@/components/hooks/usePricingConfig";
+import { HeroVideo, heroFeatures as features } from "./heroFeatures";
+import { VideoCard } from "ui/VideoCard";
 import CoursePricing from "@/components/ui/CoursePricing";
 
+type ActiveTier = {
+    event: string;
+    startDate: string;
+    endDate: string;
+    discount_percent: number;
+    final_price: number;
+};
 
-export const Hero = () => {
-        const [activeIndex, setActiveIndex] = useState(0);
-        const { config: pricingConfig, isLoading } = usePricingConfig();
-        const discount = useTieredDiscount(pricingConfig);
+type DiscountMessage = {
+    template_id: string;
+    active: boolean;
+    base_price: number;
+    active_tier: ActiveTier;
+};
 
-        useEffect(() => {
-            if (!HeroImages?.length) return;
-            const intervalId = setInterval(() => {
-                setActiveIndex((prev) => (prev + 1) % HeroImages.length);
-            }, 3500);
+type HeroProps = {
+    discountData?: DiscountMessage;
+};
 
-            return () => clearInterval(intervalId);
-        }, []);
-
+export const Hero = ({ discountData }: HeroProps) => {
+        const isActive = Boolean(discountData?.active);
+        const originalPrice = Number(discountData?.base_price ?? 11800);
+        const discountPercent = Number(discountData?.active_tier?.discount_percent ?? 0);
+        const discountedPrice = Number(discountData?.active_tier?.final_price ?? originalPrice);
+        const timerEndDate = new Date(discountData?.active_tier?.endDate || new Date().toISOString());
         return (
             <div className="relative w-full max-w-screen flex items-center z-10">
                 {/* Mobile version */}
                 <div className="md:hidden flex flex-col items-center justify-center">
                     <div className="relative w-full flex flex-col items-center justify-center mx-auto px-6">
                         <h1 className="text-4xl font-semibold text-center">
-                            <span className='text-sage'>Reclaim Your Time.</span>
+                            <span className='text-sage'>Future Proof Your</span>
                             <br />
-                            <span className='text-terracotta'>Reduce Your Workload</span>
+                            <span className='text-terracotta'>Child For an</span>
                             <br />
-                            <span className='text-sage'>with AI.</span>
+                            <span className='text-sage'>AI-Driven Career</span>
                         </h1>
                         <hr className="w-full border-t-4 border-terracotta mt-5 mb-5" />
                         <div className="flex items-center justify-center w-full mb-8">
-                            <div className="relative w-full h-[220px] sm:h-[260px] rounded-3xl overflow-hidden">
-                                {HeroImages.map((image, index) => (
-                                    <img
-                                        key={image}
-                                        src={image}
-                                        className={`absolute inset-0 w-full h-full ${index === 0 ? 'object-contain' : 'object-cover'} transition-opacity duration-700 ${
-                                            index === activeIndex ? "opacity-100" : "opacity-0"
-                                        }`}
-                                    />
-                                ))}
-                            </div>
+                            {/* <img src="/assets/images/humaincamps-temp-hero.svg" className="object-contain w-full h-auto" /> */}
+                            <VideoCard 
+                                video={HeroVideo} 
+                                autoplay={false}
+                                startTime={7}
+                                mutable={true}
+                                pausable={true}
+                            />
                         </div>
                         <ul className="space-y-2 pl-5 text-base">
                             {features.map((feature, index) => (
@@ -61,22 +66,23 @@ export const Hero = () => {
                         </ul>
                         
                         <CoursePricing
-                            isActive={discount.isActive}
-                            discountPercent={discount.discountPercent}
-                            originalPrice={discount.originalPrice}
-                            discountedPrice={discount.discountedPrice}
-                            gstLabel="+ 18% GST"
+                            isActive={isActive}
+                            discountPercent={discountPercent}
+                            originalPrice={originalPrice}
+                            discountedPrice={discountedPrice}
+                            gstLabel="incl. GST"
                             containerClassName="pt-6 pb-3 px-6 font-medium text-center"
                             strikePriceClassName="p-1 text-lg line-through text-gray-400"
                             priceClassName="p-1 text-2xl font-bold text-terracotta"
                             discountedPriceClassName="p-1 text-2xl font-bold text-terracotta ml-2"
                             gstClassName="p-1 text-sm text-gray-500"
-                            showTimer={Boolean(discount.isActive && discount.tierEndTime)}
-                            timerEndDate={discount.tierEndTime || undefined}
+                            showTimer={true}
+                            timerEndDate={timerEndDate}
+                            formatLocale="en-IN"
                         />
-                        <div className="flex flex-row items-center justify-center pt-2 pb-5 gap-4">
-                            <PrimaryButton text="Enroll Now" target="https://pages.razorpay.com/pl_S9bfhadVrJfafQ/view" newTab />
-                            {/* <SecondaryButton text="Contact Us" target="#contact-us" /> */}
+                        <div className="flex flex-row items-center justify-center px-5 pt-2 pb-5 gap-4">
+                            <PrimaryButton text="Enroll Now" target="https://pages.razorpay.com/humainchamps" newTab />
+                            <SecondaryButton text="Contact Us" target="#contact-us" />
                         </div>
                     </div>
                 </div>
@@ -89,12 +95,12 @@ export const Hero = () => {
                     <div className="relative w-full md:w-[90vw] flex flex-col md:flex-row items-center justify-center mx-auto">
                         <div className="flex flex-col w-full md:w-[45vw] px-6 z-10">
                             <div className="flex flex-col items-center md:items-start gap-6">
-                                <h1 className="text-4xl md:text-5xl font-semibold">
-                                    <span className='text-sage'>Reclaim Your Time.</span>
+                                <h1 className="text-4xl md:text-6xl font-semibold">
+                                    <span className='text-sage'>Future Proof Your</span>
                                     <br />
-                                    <span className='text-terracotta'>Reduce Your Workload</span>
+                                    <span className='text-terracotta'>Child for an</span>
                                     <br />
-                                    <span className='text-sage'>with AI.</span>
+                                    <span className='text-sage'>AI Driven Career</span>
                                 </h1>
                                 <hr className="w-full md:w-1/4 border-t-4 border-terracotta mb-5" />
                             </div>
@@ -106,43 +112,41 @@ export const Hero = () => {
                                                 <img src='/assets/icons/bubble-bg.svg' className="absolute inset-0 w-full h-full"/>
                                                 <img src={feature.icon} className="absolute w-3/5 h-3/5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain"/>
                                             </div> 
-                                            <div className="text-left">{feature.text}</div>
+                                            {feature.text}
                                         </li>
                                     ))}
                                 </ul>
                             </div>
                             <CoursePricing
-                                isActive={discount.isActive}
-                                discountPercent={discount.discountPercent}
-                                originalPrice={discount.originalPrice}
-                                discountedPrice={discount.discountedPrice}
-                                gstLabel="+ 18% GST"
+                                isActive={isActive}
+                                discountPercent={discountPercent}
+                                originalPrice={originalPrice}
+                                discountedPrice={discountedPrice}
+                                gstLabel="incl. GST"
                                 containerClassName="pt-6 pb-3 px-6 font-medium text-center md:text-left"
                                 strikePriceClassName="p-1 text-lg md:text-2xl line-through text-gray-400"
                                 priceClassName="p-1 text-2xl md:text-4xl font-bold text-terracotta"
                                 discountedPriceClassName="p-1 text-2xl md:text-4xl font-bold text-terracotta ml-2"
                                 gstClassName="p-1 text-sm md:text-base text-gray-500"
-                                showTimer={Boolean(discount.isActive && discount.tierEndTime)}
-                                timerEndDate={discount.tierEndTime || undefined}
+                                showTimer={true}
+                                timerEndDate={timerEndDate}
+                                formatLocale="en-IN"
                             />
                             <div className="flex flex-col md:flex-row items-center md:justify-start justify-center px-5 pt-2 pb-5 gap-4 md:gap-0">
-                                <PrimaryButton text="Enroll Now" target="https://pages.razorpay.com/pl_S9bfhadVrJfafQ/view" newTab />
+                                <PrimaryButton text="Enroll Now" target="https://pages.razorpay.com/humainchamps" newTab />
                                 <div className="md:w-5"></div>
-                                {/* <SecondaryButton text="Contact Us" target="#contact-us" /> */}
+                                <SecondaryButton text="Contact Us" target="#contact-us" />
                             </div>
                         </div>
                         <div className="w-full md:w-[55vw] h-full z-10 flex items-center justify-center">
-                            <div className="relative w-full h-[380px] lg:h-[440px] rounded-3xl overflow-hidden shadow-2xl bg-white">
-                                {HeroImages.map((image, index) => (
-                                    <img
-                                        key={image}
-                                        src={image}
-                                        className={`absolute inset-0 w-full h-full ${index === 0 ? 'object-contain scale-70' : 'object-cover'} bg-white transition-opacity duration-700 ${
-                                            index === activeIndex ? "opacity-100" : "opacity-0"
-                                        }`}
-                                    />
-                                ))}
-                            </div>
+                            {/* <img src="/assets/images/humaincamps-temp-hero.svg" className="object-contain w-full h-full" /> */}
+                            <VideoCard 
+                                video={HeroVideo} 
+                                autoplay={true}
+                                mutable={true}
+                                pausable={true}
+                                startTime={7}
+                            />
                         </div>
                     </div>
                 </div>
