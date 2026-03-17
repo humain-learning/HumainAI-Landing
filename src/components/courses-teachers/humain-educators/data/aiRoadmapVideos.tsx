@@ -33,6 +33,6 @@ export const aiRoadmapVideos = [
         id: 6,
         url: "https://player.vimeo.com/video/1156796077",
         title: "Module 6",
-        description: "AI for Reflection and Feedback"
+        description: "AI for Data Analysis and Feedback"
     }
 ];

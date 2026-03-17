@@ -9,6 +9,7 @@ import { WhoWeAre } from "humain-educators/WhoWeAre";
 import { Instructors } from "humain-educators/Instructors";
 import { TeacherShowcase } from "humain-educators/TeacherShowcase";
 import { VideoTestimonials } from "humain-educators/VideoTestimonials";
+import { ChooseBatch } from "humain-educators/ChooseBatch";
 
 
 
@@ -22,6 +23,7 @@ export default function HumainEducators() {
         <AiRoadmap />
         <WhoWeAre />
         <Instructors />
+		<ChooseBatch />
         <VideoTestimonials />
         <TeacherShowcase />
         <Founder />

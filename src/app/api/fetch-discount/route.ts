@@ -1,29 +1,45 @@
-import { URLSearchParams } from 'url';
+// src/app/api/fetch-discount/route.ts
 
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function get_active_discount(template_id: number) {
+export async function GET(req: NextRequest) {
+    const template_id = req.nextUrl.searchParams.get('template_id');
+
+    if (!template_id) {
+        return NextResponse.json(
+            { error: 'template_id is required' },
+            { status: 400 }
+        );
+    }
+
     const baseUrl = process.env.ADMIN_BASE_URL;
     const key = process.env.ADMIN_API_KEY;
     const secret = process.env.ADMIN_API_SECRET;
-        
+
     const params = new URLSearchParams({
-        'template_id': `${template_id}`,
+        template_id: template_id,
     });
-    
+
     const url = `${baseUrl}/method/admin.admin.api.web.current_active_discount?${params}`;
-    
+
     try {
         const response = await fetch(url, {
             method: 'GET',
             headers: {
-                'Authorization': `token ${key}:${secret}`,
+                Authorization: `token ${key}:${secret}`,
             },
         });
-        
-        console.log('Response status:', response.status);
-        return response.json();
+
+        const data = await response.json();
+
+        return NextResponse.json(data, {
+            status: response.status,
+        });
+
     } catch (error) {
-        console.error('Fetch error details:', error);
-        throw error;
+        return NextResponse.json(
+            { error: 'fetch failed' },
+            { status: 500 }
+        );
     }
 }
