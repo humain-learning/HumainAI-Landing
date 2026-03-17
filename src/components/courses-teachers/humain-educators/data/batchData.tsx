@@ -25,6 +25,11 @@ const Batches = [
                 day: 'Sunday',
                 timing: '5PM-7PM'
             },
+			{
+				date: '15th Apr',
+				day: 'Wednesday',
+				timing: '5PM - Doubt Clearing'
+			},
             {
                 date: '18th Apr',
                 day: 'Saturday',
@@ -36,8 +41,8 @@ const Batches = [
                 timing: '5PM-7PM'
             },
             {
-                date: '20th Apr',
-                day: 'Monday',
+                date: '22th Apr',
+                day: 'Wednesday',
                 timing: '5PM - Doubt Clearing'
             },
             {
