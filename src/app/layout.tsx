@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     icon: '/vercel.svg',
   },
   openGraph: {
-    title: 'Humain AI | Human Centered AI Learning for Students', 
-    description: 'Empowering students aged 13+ to harness AI capabilities through our live, interactive courses, to study smarter and becoming future-ready.', 
+    title: 'Humain AI | Human Centered AI Literacy for Educators and Students', 
+    description: 'Empowering educators and students to leverage AI responsibly and effectively while strengthening creativity, critical thinking, emotional intelligence, and human connection.', 
     url: 'https://humainlearning.ai', 
     siteName: 'Humain AI',
     images: [
