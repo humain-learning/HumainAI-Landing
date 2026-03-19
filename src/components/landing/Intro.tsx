@@ -61,9 +61,7 @@ const Intro = () => {
             </h1>
           </div>
           <div className="text-xl text-[#00000099]">
-            Empowering students aged 13+ to harness AI capabilities while
-            preserving human creativity, critical thinking, and emotional
-            intelligence
+            Empowering educators and students to leverage AI responsibly and effectively while strengthening creativity, critical thinking, emotional intelligence, and human connection.
           </div>
           <div className="flex w-full flex-col items-center gap-3 pt-4 md:flex-row">
             <PrimaryButton text="For Students" target='/courses/students/humain-champs' />
