@@ -1,4 +1,3 @@
-import { CoursesPage } from '@/components/courses-students/humain-champs';
 import { Hero } from "humain-champs/Hero";
 import { Band } from "humain-champs/Band";
 import { GameChanger } from "humain-champs/GameChanger";
