@@ -1,6 +1,7 @@
 'use client';
 import { tieredPricing } from "./heroFeatures";
 import { useTieredDiscount } from "hooks/useTieredDiscount";
+
 type ItineraryItem = {
     date: string;
     day: string;
@@ -30,7 +31,7 @@ export const ChooseBatch = ({ Batches }: ChooseBatchProps) => {
             </div>
             
             <div className="w-full md:w-[90vw] flex flex-col items-start justify-center px-3 md:px-6 mx-auto">
-                <span className="text-lg md:text-2xl">Select the batch that fits your child’s schedule.</span>
+                <span className="text-lg md:text-2xl">Select the batch that fits your schedule.</span>
                 <span className="text-base md:text-xl font-semibold">Small class size for personalised attention.</span>
             </div>
 

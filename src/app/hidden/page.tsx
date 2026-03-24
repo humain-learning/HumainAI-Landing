@@ -1,6 +1,4 @@
 import { ChooseBatch } from "components/hidden/ChooseBatch";
-// import { get_batch_details } from "@/app/api/fetch-itinerary/route";
-// import { get_active_discount } from "../api/fetch-discount/route";
 import { Hero } from "@/components/hidden/Hero";
 
 
@@ -14,7 +12,7 @@ export default async function HiddenPage() {
             : 'http://localhost:3000';
 
     const [batchesRes, discountRes] = await Promise.all([
-        fetch(`${baseUrl}/api/fetch-batch-details?template_id=${template_id}`, {
+        fetch(`${baseUrl}/api/fetch-batches?template_id=${template_id}`, {
             cache: 'no-store',
         }),
         fetch(`${baseUrl}/api/fetch-discount?template_id=${template_id}`, {

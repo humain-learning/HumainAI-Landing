@@ -15,7 +15,7 @@ export const ChooseBatch = () => {
             </div>
             
             <div className="w-full md:w-[90vw] flex flex-col items-start justify-center px-3 md:px-6 mx-auto">
-                <span className="text-lg md:text-2xl">Select the batch that fits your child’s schedule.</span>
+                <span className="text-lg md:text-2xl">Select the batch that fits your schedule.</span>
                 <span className="text-base md:text-xl font-semibold">Limited seats for personalised attention.</span>
             </div>
 
