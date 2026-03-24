@@ -2,7 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
     const template_id = req.nextUrl.searchParams.get('template_id');
-    const start_date = req.nextUrl.searchParams.get('start_date') ?? '2025-01-02';
+    const start_date = new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'Asia/Kolkata',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+    }).format(new Date());
 
     if (!template_id) {
         return NextResponse.json(

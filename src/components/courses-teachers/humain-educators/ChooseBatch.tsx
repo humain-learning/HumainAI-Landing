@@ -1,9 +1,42 @@
 'use client';
-import { Batches } from "./data/batchData";
-import { tieredPricing } from "./data/heroFeatures";
-import { useTieredDiscount } from "hooks/useTieredDiscount";
-export const ChooseBatch = () => {
-    const discount = useTieredDiscount(tieredPricing);
+
+type ItineraryItem = {
+    date: string;
+    day: string;
+    timing: string;
+};
+
+type Batch = {
+    name: string;
+    start_date: string;
+    limited_seats: boolean;
+    sold_out: boolean;
+    itinerary: ItineraryItem[];
+};
+
+type ActiveTier = {
+    event: string;
+    startDate: string;
+    endDate: string;
+    discount_percent: number;
+    final_price: number;
+};
+
+type DiscountData = {
+    template_id: string;
+    active: boolean;
+    base_price: number;
+    active_tier: ActiveTier;
+};
+
+type ChooseBatchProps = {
+    Batches: Batch[];
+    discountData?: DiscountData;
+}
+export const ChooseBatch = ({ Batches, discountData }: ChooseBatchProps) => {
+    const isActive = Boolean(discountData?.active);
+    const originalPrice = Number(discountData?.base_price ?? 7499);
+    const discountedPrice = Number(discountData?.active_tier?.final_price ?? originalPrice);
     return (
         <div className="relative flex flex-col items-center justify-center mx-auto my-5 md:my-10">
             <div className="w-full md:w-[90vw] mx-auto flex flex-col items-start justify-center">
@@ -16,7 +49,7 @@ export const ChooseBatch = () => {
             
             <div className="w-full md:w-[90vw] flex flex-col items-start justify-center px-3 md:px-6 mx-auto">
                 <span className="text-lg md:text-2xl">Select the batch that fits your schedule.</span>
-                <span className="text-base md:text-xl font-semibold">Limited seats for personalised attention.</span>
+                <span className="text-base md:text-xl font-semibold">Limited batch size for personalised attention.</span>
             </div>
 
              
@@ -36,10 +69,10 @@ export const ChooseBatch = () => {
                             <div className="flex flex-col flex-grow">
                                 <div className="flex flex-col items-start w-full px-5 md:px-10 pt-5 md:pt-10 pb-2.5 md:pb-5">
                                     <h1 className="text-3xl md:text-4xl font-semibold pb-2.5 md:pb-5">
-                                        <span className="text-sage">{batch.name}</span> {batch.limitedSeats && <span className="text-xl md:text-xl text-medium"> <i>- Limited seats available!</i></span>}
+                                        <span className="text-sage">{batch.name}</span> {Boolean(batch.limited_seats) && <span className="text-xl md:text-xl text-medium"> <i>- Limited seats available!</i></span>}
                                     </h1>
                                     <hr className="w-1/2 md:w-1/6 border-t-3 border-terracotta mb-2.5 md:mb-5" />
-                                    <span className="text-lg md:text-2xl">Starting <span className="font-semibold">{batch.startDate}</span></span>
+                                    <span className="text-lg md:text-2xl">Starting <span className="font-semibold">{batch.start_date}</span></span>
                                 </div>
 
                                 <div className="px-5 md:px-10 flex">
@@ -65,7 +98,7 @@ export const ChooseBatch = () => {
                             </div>
 
                             <div className="flex items-center justify-center m-5 md:m-10 px-3 md:px-6">
-                                {batch.soldOut ? (
+                                {batch.sold_out ? (
                                     <div
                                         className="w-full mx-auto rounded-full text-base md:text-xl font-semibold py-2 px-3 md:py-3 md:px-6 bg-gray-400 text-white cursor-not-allowed opacity-70"
                                     >
@@ -82,12 +115,12 @@ export const ChooseBatch = () => {
                                     >
                                         <div className="w-full md:w-[75%] text-xl md:text-2xl flex flex-row md:flex-row items-center justify-center lg:justify-between mx-auto gap-2 md:gap-0">
                                             <div>Enroll Now!</div>
-                                            {discount.isActive ? (
+                                            {isActive ? (
                                                 <div>
-                                                    <span className="pr-2"><s>&#8377;{discount.originalPrice}</s></span><span>&#8377;{discount.discountedPrice}</span>
+                                                    <span className="pr-2"><s>&#8377;{originalPrice.toLocaleString('en-IN')}</s></span><span>&#8377;{discountedPrice.toLocaleString('en-IN')}</span>
                                                 </div>
                                             ) : (
-                                                <div>&#8377;{discount.originalPrice}</div>
+                                                <div>&#8377;{originalPrice.toLocaleString('en-IN')}</div>
                                             )}
                                         </div>
                                     </a>

@@ -29,7 +29,7 @@ export default async function HiddenPage() {
 	return (
         <>
         <Hero discountData={discountData.message} />
-        <ChooseBatch Batches={batchesData.message}/>
+        <ChooseBatch Batches={batchesData.message} discountData={discountData.message}/>
         </>
     );
 }

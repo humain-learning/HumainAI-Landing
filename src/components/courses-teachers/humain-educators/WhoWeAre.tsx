@@ -16,7 +16,7 @@ export const WhoWeAre = () => {
                             Why Choose
                         </span>
                         <br />
-                        <span className="text-sage">Hum<span className="text-terracotta">AI</span>n</span>Educators
+                        <span className="text-sage">Hum<span className="text-terracotta">AI</span>n Educators</span>
                     </h1>
 
                     <div className="items-center flex">

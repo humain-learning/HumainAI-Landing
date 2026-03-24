@@ -1,6 +1,4 @@
 'use client';
-import { tieredPricing } from "./heroFeatures";
-import { useTieredDiscount } from "hooks/useTieredDiscount";
 
 type ItineraryItem = {
     date: string;
@@ -15,11 +13,30 @@ type Batch = {
     sold_out: boolean;
     itinerary: ItineraryItem[];
 };
+
+type ActiveTier = {
+    event: string;
+    startDate: string;
+    endDate: string;
+    discount_percent: number;
+    final_price: number;
+};
+
+type DiscountData = {
+    template_id: string;
+    active: boolean;
+    base_price: number;
+    active_tier: ActiveTier;
+};
+
 type ChooseBatchProps = {
     Batches: Batch[];
+    discountData?: DiscountData;
 }
-export const ChooseBatch = ({ Batches }: ChooseBatchProps) => {
-    const discount = useTieredDiscount(tieredPricing);
+export const ChooseBatch = ({ Batches, discountData }: ChooseBatchProps) => {
+    const isActive = Boolean(discountData?.active);
+    const originalPrice = Number(discountData?.base_price ?? 11800);
+    const discountedPrice = Number(discountData?.active_tier?.final_price ?? originalPrice);
     return (
         <div className="relative flex flex-col items-center justify-center mx-auto my-5 md:my-10">
             <div className="w-full md:w-[90vw] mx-auto flex flex-col items-start justify-center">
@@ -31,8 +48,8 @@ export const ChooseBatch = ({ Batches }: ChooseBatchProps) => {
             </div>
             
             <div className="w-full md:w-[90vw] flex flex-col items-start justify-center px-3 md:px-6 mx-auto">
-                <span className="text-lg md:text-2xl">Select the batch that fits your schedule.</span>
-                <span className="text-base md:text-xl font-semibold">Small class size for personalised attention.</span>
+                <span className="text-lg md:text-2xl">Select the batch that fits your child's schedule.</span>
+                <span className="text-base md:text-xl font-semibold">Limited batch size for personalised attention.</span>
             </div>
 
              
@@ -98,12 +115,12 @@ export const ChooseBatch = ({ Batches }: ChooseBatchProps) => {
                                     >
                                         <div className="w-full md:w-[75%] text-xl md:text-2xl flex flex-row md:flex-row items-center justify-center lg:justify-between mx-auto gap-2 md:gap-0">
                                             <div>Enroll Now!</div>
-                                            {discount.isActive ? (
+                                            {isActive ? (
                                                 <div>
-                                                    <span className="pr-2"><s>&#8377;{discount.originalPrice}</s></span><span>&#8377;{discount.discountedPrice}</span>
+                                                    <span className="pr-2"><s>&#8377;{originalPrice.toLocaleString('en-IN')}</s></span><span>&#8377;{discountedPrice.toLocaleString('en-IN')}</span>
                                                 </div>
                                             ) : (
-                                                <div>&#8377;{discount.originalPrice}</div>
+                                                <div>&#8377;{originalPrice.toLocaleString('en-IN')}</div>
                                             )}
                                         </div>
                                     </a>

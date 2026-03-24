@@ -32,6 +32,9 @@
       "humain-educators/*": [
         "./src/components/courses-teachers/humain-educators/*"
       ],
+	  "humain-champs/*": [
+		"./src/components/courses-students/humain-champs/*"
+	  ],
       "hooks/*": [
         "./src/components/hooks/*"
       ],
