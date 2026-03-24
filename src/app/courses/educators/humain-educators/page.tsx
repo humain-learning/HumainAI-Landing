@@ -17,6 +17,8 @@ export default async function HumainEducators() {
 
 	const template_id = 2;
 	const raw = process.env.APP_URL;
+	if (!raw) throw new Error('APP_URL is not set');
+
 	const baseUrl = raw.startsWith('http://') || raw.startsWith('https://')
 		? raw
 		: `https://${raw}`;
