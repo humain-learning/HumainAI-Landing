@@ -16,12 +16,12 @@ import { ChooseBatch } from "humain-educators/ChooseBatch";
 export default async function HumainEducators() {
 
 	const template_id = 2;
-	const raw = process.env.VERCEL_URL;
+	const raw = process.env.APP_URL;
 	const baseUrl = raw.startsWith('http://') || raw.startsWith('https://')
 		? raw
 		: `https://${raw}`;
 
-		
+
     const [batchesRes, discountRes] = await Promise.all([
         fetch(`${baseUrl}/api/fetch-batches?template_id=${template_id}`, {
             cache: 'no-store',
