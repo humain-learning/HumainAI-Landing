@@ -1,9 +1,8 @@
 'use client';
 import PrimaryButton from "ui/PrimaryButton";
 import SecondaryButton from "ui/SecondaryButton";
-import { HeroVideo, heroFeatures as features, tieredPricing } from "./data/heroFeatures";
+import { HeroVideo, heroFeatures as features } from "./data/heroFeatures";
 import { VideoCard } from "ui/VideoCard";
-import { useTieredDiscount } from "@/components/hooks/useTieredDiscount";
 import CoursePricing from "@/components/ui/CoursePricing";
 
 type ActiveTier = {

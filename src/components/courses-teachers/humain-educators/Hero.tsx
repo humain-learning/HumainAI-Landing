@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useState } from "react";
 import PrimaryButton from "ui/PrimaryButton";
-import SecondaryButton from "ui/SecondaryButton";
 import { HeroImages, features } from "./data/heroFeatures";
 import CoursePricing from "ui/CoursePricing";
 

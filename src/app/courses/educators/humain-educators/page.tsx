@@ -10,32 +10,19 @@ import { Instructors } from "humain-educators/Instructors";
 import { TeacherShowcase } from "humain-educators/TeacherShowcase";
 import { VideoTestimonials } from "humain-educators/VideoTestimonials";
 import { ChooseBatch } from "humain-educators/ChooseBatch";
+import { getBatchDetailsOfTemplate, getCurrentActiveDiscount } from "@/app/lib/adminApi";
 
 
 
 export default async function HumainEducators() {
 
 	const template_id = 2;
-	const raw = process.env.APP_URL;
-	if (!raw) throw new Error('APP_URL is not set');
-
-	const baseUrl = raw.startsWith('http://') || raw.startsWith('https://')
-		? raw
-		: `https://${raw}`;
-
-
-    const [batchesRes, discountRes] = await Promise.all([
-        fetch(`${baseUrl}/api/fetch-batches?template_id=${template_id}`, {
-            cache: 'no-store',
-        }),
-        fetch(`${baseUrl}/api/fetch-discount?template_id=${template_id}`, {
-            cache: 'no-store',
-        }),
+    const [batchesData, discountData] = await Promise.all([
+        getBatchDetailsOfTemplate(template_id),
+        getCurrentActiveDiscount(template_id),
     ]);
 
-
-    const batchesData = await batchesRes.json();
-    const discountData = await discountRes.json();
+    const batches = Array.isArray(batchesData?.message) ? batchesData.message : [];
 
 	return (
         <>
@@ -46,7 +33,7 @@ export default async function HumainEducators() {
         <AiRoadmap />
         <WhoWeAre />
         <Instructors />
-		<ChooseBatch Batches={batchesData.message} discountData={discountData.message}/>
+		<ChooseBatch Batches={batches} discountData={discountData.message}/>
         <VideoTestimonials />
         <TeacherShowcase />
         <Founder />

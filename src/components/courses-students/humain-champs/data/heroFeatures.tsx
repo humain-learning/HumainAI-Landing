@@ -31,16 +31,3 @@ export const HeroVideo = {
     url: "https://player.vimeo.com/video/1150266610"
 };
 
-// Tiered pricing configuration
-// startDate is in IST (Indian Standard Time)
-// discountTiers are sequential - tier 1 runs first, then tier 2, etc.
-export const tieredPricing = {
-    originalPrice: 11800,
-    // Format: YYYY-MM-DDTHH:mm:ss (IST)
-
-    startDate: "2026-03-07T18:00:00",
-
-    discountTiers: [
-        { durationHours: 0.25, discountPercent: 40 },   // Next 24 hours: 30% off
-    ],
-};

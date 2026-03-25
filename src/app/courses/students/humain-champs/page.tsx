@@ -11,6 +11,7 @@ import { Certificate } from "humain-champs/Certificate";
 import { Founder } from "humain-champs/Founder";
 import { Parents } from "humain-champs/Parents";
 import { ContactUs } from "humain-champs/ContactUs";
+import { getBatchDetailsOfTemplate, getCurrentActiveDiscount } from "@/app/lib/adminApi";
 
 
 
@@ -18,24 +19,12 @@ import { ContactUs } from "humain-champs/ContactUs";
 
 export default async function CoursePage() {
 	const template_id = 1;
-	const raw = process.env.APP_URL;
-	if (!raw) throw new Error('APP_URL is not set');
+	const [batchesData, discountData] = await Promise.all([
+		getBatchDetailsOfTemplate(template_id),
+		getCurrentActiveDiscount(template_id),
+	]);
 
-	const baseUrl = raw.startsWith('http://') || raw.startsWith('https://')
-		? raw
-		: `https://${raw}`;
-
-    const [batchesRes, discountRes] = await Promise.all([
-        fetch(`${baseUrl}/api/fetch-batches?template_id=${template_id}`, {
-            cache: 'no-store',
-        }),
-        fetch(`${baseUrl}/api/fetch-discount?template_id=${template_id}`, {
-            cache: 'no-store',
-        }),
-    ]);
-
-    const batchesData = await batchesRes.json();
-    const discountData = await discountRes.json();
+	const batches = Array.isArray(batchesData?.message) ? batchesData.message : [];
 	return (
 		<>
 			<Hero discountData={discountData.message} />
@@ -44,7 +33,7 @@ export default async function CoursePage() {
 			<StudentCreations />
 			<SneakPeek />
 			<Roadmap />
-			<ChooseBatch Batches={batchesData.message} discountData={discountData.message}/>
+			<ChooseBatch Batches={batches} discountData={discountData.message}/>
 			<Tools />
 			<Instructors />
 			<Certificate />
@@ -54,5 +43,3 @@ export default async function CoursePage() {
 		</>
 	);
 };
-
-

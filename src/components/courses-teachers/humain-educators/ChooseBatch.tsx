@@ -108,7 +108,7 @@ export const ChooseBatch = ({ Batches, discountData }: ChooseBatchProps) => {
                                     </div>
                                 ) : (
                                     <a
-                                        href="https://pages.razorpay.com/humainchamps"
+                                        href="https://pages.razorpay.com/pl_S9bfhadVrJfafQ/view"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className={`w-full mx-auto rounded-full text-base md:text-xl font-semibold py-2 px-3 md:py-3 md:px-6 hover:shadow-lg transition-shadow duration-200 ${buttonBg}`}
