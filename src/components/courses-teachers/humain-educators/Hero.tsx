@@ -25,7 +25,7 @@ type HeroProps = {
 export const Hero = ({ discountData }: HeroProps) => {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const isActive = Boolean(discountData?.active);
-	const originalPrice = Number(discountData?.base_price ?? 7499);
+	const originalPrice = Number(discountData?.base_price ?? 8850);
 	const discountPercent = Number(discountData?.active_tier?.discount_percent ?? 0);
 	const discountedPrice = Number(discountData?.active_tier?.final_price ?? originalPrice);
 	const timerEndDate = new Date(discountData?.active_tier?.endDate || new Date().toISOString());
