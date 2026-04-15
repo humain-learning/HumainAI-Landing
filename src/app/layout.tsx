@@ -105,9 +105,8 @@ export default function RootLayout({
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-        <div className="relative top-0 w-full z-50"> 
-            <Header />
-        </div>
+		
+		<Header />
         <Toaster />
         {children}
         <Analytics />

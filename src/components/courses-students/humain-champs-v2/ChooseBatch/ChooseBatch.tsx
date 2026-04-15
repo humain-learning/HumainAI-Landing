@@ -1,0 +1,134 @@
+'use client';
+
+type ItineraryItem = {
+    date: string;
+    day: string;
+    timing: string;
+};
+
+type Batch = {
+    name: string;
+    start_date: string;
+    limited_seats: boolean;
+    sold_out: boolean;
+    itinerary: ItineraryItem[];
+};
+
+type ActiveTier = {
+    event: string;
+    startDate: string;
+    endDate: string;
+    discount_percent: number;
+    final_price: number;
+};
+
+type DiscountData = {
+    template_id: string;
+    active: boolean;
+    base_price: number;
+    active_tier: ActiveTier;
+};
+
+type ChooseBatchProps = {
+    Batches: Batch[];
+    discountData?: DiscountData;
+}
+export const ChooseBatch = ({ Batches, discountData }: ChooseBatchProps) => {
+    const isActive = Boolean(discountData?.active);
+    const originalPrice = Number(discountData?.base_price ?? 11800);
+    const discountedPrice = Number(discountData?.active_tier?.final_price ?? originalPrice);
+    return (
+        <div className="relative flex flex-col items-center justify-center my-5 md:my-10">
+            <div className="w-full md:w-[90vw] flex flex-col items-start justify-center">
+                <h1 className="text-4xl md:text-6xl font-semibold text-start py-5 md:py-10">
+                    <span className="text-sage">Choose Your Batch</span>
+                </h1>
+                <hr className="w-1/2 md:w-1/4 lg:w-1/8 border-t-4 border-terracotta mb-10" />
+            </div>
+            
+            <div className="w-full md:w-[90vw] flex flex-col items-start justify-center">
+                <span className="text-lg md:text-2xl">Select the batch that fits your child's schedule.</span>
+                <span className="text-base md:text-xl font-semibold">Limited batch size for personalised attention.</span>
+            </div>
+
+             
+            <div className="grid md:grid-cols-2 grid-cols-1 gap-5 md:gap-10 mx-auto w-full md:w-[90vw] px-3 md:px-6 mt-5 md:mt-10">
+                {Batches.map((batch, index) => {
+                    const cardBg = index % 2 === 0 ? 'bg-[#fcf5f0]' : 'bg-[#f8faf5]';
+                    const buttonBg = index % 2 === 0 ? 'bg-terracotta text-white' : 'bg-sage text-white';
+                    return (
+                        <div className={`relative flex flex-col justify-start w-auto rounded-[2rem] md:rounded-[4rem] ${cardBg}`} key={index}>
+
+                            {/* {batch.limitedSeats && (
+                                <div className="absolute top-0 right-0 text-white text-lg font-bold z-10 object-fill w-[15%]">
+                                    <img src='/assets/Website Assets/Bubble.svg' className="" />
+                                </div>
+                            )} */}
+
+                            <div className="flex flex-col flex-grow">
+                                <div className="flex flex-col items-start w-full px-5 md:px-10 pt-5 md:pt-10 pb-2.5 md:pb-5">
+                                    <h1 className="text-3xl md:text-4xl font-semibold pb-2.5 md:pb-5">
+                                        <span className="text-sage">{batch.name}</span> {Boolean(batch.limited_seats) && <span className="text-xl md:text-xl text-medium"> <i>- Limited seats available!</i></span>}
+                                    </h1>
+                                    <hr className="w-1/2 md:w-1/6 border-t-3 border-terracotta mb-2.5 md:mb-5" />
+                                    <span className="text-lg md:text-2xl">Starting <span className="font-semibold">{batch.start_date}</span></span>
+                                </div>
+
+                                <div className="px-5 md:px-10 flex">
+                                    <table className="w-full table-auto text-center ">
+                                        <thead className="hidden md:table-header-group">
+                                            <tr>
+                                                <th className="font-semibold text-sage py-2">Date</th>
+                                                <th className="py-2">Day</th>
+                                                <th className="py-2">Timing</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {batch.itinerary.map((item, i) => (
+                                                <tr key={i} className="border-b border-gray-200 md:border-none">
+                                                    <td className="font-semibold text-sage py-1 md:py-2">{item.date}</td>
+                                                    <td className="py-1 md:py-2">{item.day}</td>
+                                                    <td className="py-1 md:py-2">{item.timing}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div className="flex items-center justify-center m-5 md:m-10 px-3 md:px-6">
+                                {batch.sold_out ? (
+                                    <div
+                                        className="w-full mx-auto rounded-full text-base md:text-xl font-semibold py-2 px-3 md:py-3 md:px-6 bg-gray-400 text-white cursor-not-allowed opacity-70"
+                                    >
+                                        <div className="w-full md:w-[75%] text-xl md:text-2xl flex items-center justify-center mx-auto">
+                                            <div>Sold Out</div>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <a
+                                        href="https://pages.razorpay.com/humainchamps"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={`w-full mx-auto rounded-full text-base md:text-xl font-semibold py-2 px-3 md:py-3 md:px-6 hover:shadow-lg transition-shadow duration-200 ${buttonBg}`}
+                                    >
+                                        <div className="w-full md:w-[75%] text-xl md:text-2xl flex flex-row md:flex-row items-center justify-center lg:justify-between mx-auto gap-2 md:gap-0">
+                                            <div>Enroll Now!</div>
+                                            {isActive ? (
+                                                <div>
+                                                    <span className="pr-2"><s>&#8377;{originalPrice.toLocaleString('en-IN')}</s></span><span>&#8377;{discountedPrice.toLocaleString('en-IN')}</span>
+                                                </div>
+                                            ) : (
+                                                <div>&#8377;{originalPrice.toLocaleString('en-IN')}</div>
+                                            )}
+                                        </div>
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    );
+};

@@ -423,8 +423,8 @@ const Header = () => {
   };
 
   return (
-    <>
-      <nav className="mx-auto w-full md:max-w-[90vw]">
+    <div className='z-0'>
+      <nav className="mx-auto w-full md:max-w-[90vw] bg-transparent">
         <div className="flex items-center justify-between px-2 py-2 md:px-4">
           <Link href="/" className="flex items-center gap-2">
             <img
@@ -492,7 +492,7 @@ const Header = () => {
         onSubmit={handleSubmit}
         loading={loading}
       />
-    </>
+    </div>
   );
 };
 

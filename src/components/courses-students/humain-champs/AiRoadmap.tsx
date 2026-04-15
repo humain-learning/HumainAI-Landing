@@ -2,7 +2,7 @@
 import React from 'react';
 import { VideoCard } from "ui/VideoCard";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+import 'swiper/swiper.css';
 import { aiRoadmapVideos } from "./data/aiRoadmapVideos";
 import { usePxCalculator } from '../../hooks/usePxCalculator';
 
@@ -34,7 +34,7 @@ const renderVideoSlides = () => (
 
 
 export const Roadmap = () => {
-    const pxCount = usePxCalculator(5);
+	const pxCount = usePxCalculator(5);
     return (
     <div className="relative flex flex-col items-center justify-center mx-auto py-6 md:py-10">
         <div className="w-full md:w-[90vw] flex flex-col items-start justify-center mx-auto">
