@@ -58,8 +58,8 @@ export const ChooseBatch = ({ Batches, discountData }: ChooseBatchProps) => {
                     const buttonBg = index % 2 === 0 ? 'bg-terracotta text-white' : 'bg-sage text-white';
                     return (
                         <div className={`relative flex flex-col justify-start w-auto rounded-[2rem] md:rounded-[4rem] ${cardBg}`} key={index}>
-
-                            {/* {batch.limitedSeats && (
+							{/* 
+                            {batch.limited_seats && (
                                 <div className="absolute top-0 right-0 text-white text-lg font-bold z-10 object-fill w-[15%]">
                                     <img src='/assets/Website Assets/Bubble.svg' className="" />
                                 </div>
