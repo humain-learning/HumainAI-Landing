@@ -21,7 +21,6 @@ const renderInstructorDetailsSlides = () => (
 				</div>
 				<div className="w-fit text-center flex flex-col py-5 gap-1">
 					<span className="font-bold text-xl">{instructor.name}</span>
-					<span className="font-normal textlgl">{instructor.designation}</span>
 				</div>
 			</div>
         </SwiperSlide>

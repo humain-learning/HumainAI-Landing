@@ -40,12 +40,23 @@ export const Parents = () => {
                 <div className="md:w-[40vw] hidden md:flex object-contain">
                     <img src='/assets/Website Assets/Parents.png' className="scale-x-[-1]"/>
                 </div>
-                <div className="overflow-hidden w-full md:w-[60vw]">
+                <div className="overflow-hidden w-full md:w-[60vw] hidden md:block">
                     <Swiper
                         spaceBetween={20}
                         slidesPerView='auto'
                         loop={false}
                         // slidesOffsetBefore={pxCount}
+                        slidesOffsetAfter={pxCount}
+                    >
+                        {renderVideoSlides()}
+                    </Swiper>
+                </div>
+				<div className="overflow-hidden w-full md:w-[60vw] md:hidden">
+                    <Swiper
+                        spaceBetween={20}
+                        slidesPerView='auto'
+                        loop={false}
+                        slidesOffsetBefore={pxCount}
                         slidesOffsetAfter={pxCount}
                     >
                         {renderVideoSlides()}
