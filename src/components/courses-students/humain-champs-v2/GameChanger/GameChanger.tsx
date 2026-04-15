@@ -63,7 +63,7 @@ export const GameChanger = () => {
 			>
 				{renderFeatureSlides()}
 			</Swiper>
-			<SwipeProgress totalSlides={features.length} activeIndex={activeIndex} />
+			<SwipeProgress totalSlides={features.length} activeIndex={activeIndex} visibleOnLarge={false}/>
 		</div>
 	)
 }
