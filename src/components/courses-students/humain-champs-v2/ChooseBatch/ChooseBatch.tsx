@@ -39,14 +39,14 @@ export const ChooseBatch = ({ Batches, discountData }: ChooseBatchProps) => {
     const discountedPrice = Number(discountData?.active_tier?.final_price ?? originalPrice);
     return (
         <div className="relative flex flex-col items-center justify-center my-5 md:my-10">
-            <div className="w-full md:w-[90vw] flex flex-col items-start justify-center">
-                <h1 className="text-4xl md:text-6xl font-semibold text-start py-5 md:py-10">
+            <div className="w-[90vw] flex flex-col items-start justify-center">
+                <h1 className="text-4xl md:text-6xl font-semibold text-start py-10">
                     <span className="text-sage">Choose Your Batch</span>
                 </h1>
                 <hr className="w-1/2 md:w-1/4 lg:w-1/8 border-t-4 border-terracotta mb-10" />
             </div>
             
-            <div className="w-full md:w-[90vw] flex flex-col items-start justify-center">
+            <div className="w-[90vw] flex flex-col items-start justify-center">
                 <span className="text-lg md:text-2xl">Select the batch that fits your child's schedule.</span>
                 <span className="text-base md:text-xl font-semibold">Limited batch size for personalised attention.</span>
             </div>
