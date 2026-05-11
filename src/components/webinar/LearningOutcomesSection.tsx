@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 const pillarItems = [
   {
@@ -56,7 +56,27 @@ const panelThemeClasses = {
 } as const;
 
 export default function LearningOutcomesSection() {
-  const [openId, setOpenId] = useState(2);
+  const mobileAccordionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const defaultOutcome = mobileAccordionRef.current?.querySelector<HTMLDetailsElement>(
+      '[data-outcome-id="2"]',
+    );
+
+    if (defaultOutcome) {
+      defaultOutcome.open = true;
+    }
+  }, []);
+
+  const closeOtherOutcomes = (currentDetails: HTMLDetailsElement) => {
+    mobileAccordionRef.current
+      ?.querySelectorAll<HTMLDetailsElement>('[data-learning-outcome]')
+      .forEach((details) => {
+        if (details !== currentDetails) {
+          details.open = false;
+        }
+      });
+  };
 
   return (
     <section className="bg-white px-4 py-8 sm:px-6 sm:py-10 lg:px-10 lg:py-12 xl:px-12">
@@ -152,22 +172,37 @@ export default function LearningOutcomesSection() {
           })}
         </div>
 
-        <div className="mt-6 space-y-3 min-[1176px]:hidden">
+        <div
+          ref={mobileAccordionRef}
+          className="mt-6 space-y-3 min-[1176px]:hidden"
+        >
           {pillarItems.map((item) => {
-            const isOpen = openId === item.id;
             const theme = panelThemeClasses[item.theme];
 
             return (
-              <div
+              <details
                 key={item.id}
-                className={`overflow-hidden rounded-[16px] border bg-white ${theme.shell}`}
-              >
-                <button
-                  type="button"
-                  onClick={() =>
-                    setOpenId((prev) => (prev === item.id ? 0 : item.id))
+                name="learning-outcomes"
+                data-learning-outcome
+                data-outcome-id={item.id}
+                onToggle={(event) => {
+                  if (event.currentTarget.open) {
+                    closeOtherOutcomes(event.currentTarget);
                   }
-                  className={`flex w-full items-center justify-between px-4 py-3 text-left ${theme.tab}`}
+                }}
+                className={`group overflow-hidden rounded-[16px] border bg-white ${theme.shell}`}
+              >
+                <summary
+                  onClick={(event) => {
+                    const details = event.currentTarget.parentElement;
+
+                    if (details instanceof HTMLDetailsElement) {
+                      window.requestAnimationFrame(() =>
+                        closeOtherOutcomes(details),
+                      );
+                    }
+                  }}
+                  className={`flex w-full cursor-pointer touch-manipulation list-none select-none items-center justify-between px-4 py-3 text-left [&::-webkit-details-marker]:hidden ${theme.tab}`}
                 >
                   <span className="text-[10px] leading-[1.2] font-semibold tracking-[0.08em] uppercase">
                     {item.label}
@@ -175,33 +210,31 @@ export default function LearningOutcomesSection() {
                   <img
                     src="/assets/icons/down-arrow.svg"
                     alt=""
-                    className={`h-3.5 w-3.5 shrink-0 object-contain transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+                    className="h-3.5 w-3.5 shrink-0 rotate-0 object-contain transition-transform duration-300 group-open:rotate-180"
                   />
-                </button>
+                </summary>
 
-                {isOpen && (
-                  <div
-                    className={`rounded-t-[16px] rounded-b-[16px] border bg-white px-4 py-4 ${
-                      item.theme === 'green'
-                        ? 'border-sage/90'
-                        : 'border-terracotta/90'
-                    }`}
-                  >
-                    <h3 className="text-charcoal max-w-[260px] text-[20px] leading-[1.12] font-bold">
-                      {item.title}
-                    </h3>
+                <div
+                  className={`rounded-t-[16px] rounded-b-[16px] border bg-white px-4 py-4 ${
+                    item.theme === 'green'
+                      ? 'border-sage/90'
+                      : 'border-terracotta/90'
+                  }`}
+                >
+                  <h3 className="text-charcoal max-w-[260px] text-[20px] leading-[1.12] font-bold">
+                    {item.title}
+                  </h3>
 
-                    <ul className="mt-4 space-y-2.5 text-[12px] leading-[1.35] text-[#575757]">
-                      {item.points.map((point) => (
-                        <li key={point} className="flex gap-2">
-                          <span className="bg-sage mt-[6px] h-[5px] w-[5px] shrink-0 rounded-full" />
-                          <span>{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
+                  <ul className="mt-4 space-y-2.5 text-[12px] leading-[1.35] text-[#575757]">
+                    {item.points.map((point) => (
+                      <li key={point} className="flex gap-2">
+                        <span className="bg-sage mt-[6px] h-[5px] w-[5px] shrink-0 rounded-full" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </details>
             );
           })}
         </div>

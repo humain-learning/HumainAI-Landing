@@ -1,6 +1,10 @@
 import { ArrowUpRight } from 'lucide-react';
 
-export default function ReserveSeatCTASection() {
+type ReserveSeatCTASectionProps = {
+  onReserveClick?: () => void;
+};
+
+export default function ReserveSeatCTASection({ onReserveClick }: ReserveSeatCTASectionProps) {
   return (
     <section className="bg-white px-4 pt-8 pb-20 sm:px-6 sm:py-10 lg:px-10 lg:py-12 xl:px-12">
       <div className="mx-auto w-full max-w-[1240px]">
@@ -18,15 +22,20 @@ export default function ReserveSeatCTASection() {
           </span>
         </h2>
 
-        <a
-          href="#"
+        <button
+          type="button"
+          onPointerDown={(event) => {
+            event.preventDefault();
+            onReserveClick?.();
+          }}
+          onClick={() => onReserveClick?.()}
           className="bg-sage mt-8 inline-flex h-9 items-center gap-3 rounded-full px-5 text-[12px] font-bold text-white transition-opacity hover:opacity-90"
         >
           Reserve Your Free Seat
           <span className="text-sage flex h-6 w-6 items-center justify-center rounded-full bg-white">
             <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
           </span>
-        </a>
+        </button>
 
         <p className="mt-8 text-[13px] leading-5 text-[#404040] sm:text-[15px]">
           200 seats per session&nbsp; • &nbsp;Live on Zoom&nbsp; •

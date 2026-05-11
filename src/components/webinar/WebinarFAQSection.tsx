@@ -1,6 +1,3 @@
-'use client';
-
-import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 const faqs = [
@@ -43,8 +40,6 @@ const faqs = [
 ] as const;
 
 export default function WebinarFAQSection() {
-  const [openId, setOpenId] = useState<number | null>(null);
-
   return (
     <section className="bg-white px-4 py-8 sm:px-6 sm:py-10 lg:px-10 lg:py-12 xl:px-12">
       <div className="mx-auto grid w-full max-w-[1240px] gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-16">
@@ -59,42 +54,29 @@ export default function WebinarFAQSection() {
         </div>
 
         <div className="w-full">
-          {faqs.map((faq) => {
-            const isOpen = openId === faq.id;
-
-            return (
-              <div key={faq.id} className="border-sage/80 border-b">
-                <button
-                  type="button"
-                  aria-expanded={isOpen}
-                  onClick={() =>
-                    setOpenId((currentId) =>
-                      currentId === faq.id ? null : faq.id
-                    )
-                  }
-                  className="flex w-full items-center justify-between gap-4 py-4 text-left"
-                >
+          {faqs.map((faq) => (
+              <details
+                key={faq.id}
+                name="webinar-faq"
+                className="group border-sage/80 border-b"
+              >
+                <summary className="flex w-full cursor-pointer touch-manipulation list-none select-none items-center justify-between gap-4 py-4 text-left [&::-webkit-details-marker]:hidden">
                   <span className="text-charcoal text-[14px] leading-[1.25] font-semibold sm:text-[15px] lg:text-[16px]">
                     Q{faq.id}: {faq.question}
                   </span>
 
                   <ChevronDown
                     aria-hidden="true"
-                    className={`text-sage h-4 w-4 shrink-0 transition-transform ${
-                      isOpen ? 'rotate-180' : ''
-                    }`}
+                    className="text-sage h-4 w-4 shrink-0 transition-transform group-open:rotate-180"
                     strokeWidth={2.2}
                   />
-                </button>
+                </summary>
 
-                {isOpen ? (
-                  <p className="pb-4 text-[12px] leading-5 text-[#575757] sm:text-[13px]">
-                    {faq.answer}
-                  </p>
-                ) : null}
-              </div>
-            );
-          })}
+                <p className="pb-4 text-[12px] leading-5 text-[#575757] sm:text-[13px]">
+                  {faq.answer}
+                </p>
+              </details>
+          ))}
         </div>
       </div>
     </section>

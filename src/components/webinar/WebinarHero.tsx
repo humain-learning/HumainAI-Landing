@@ -4,7 +4,11 @@ import { ArrowUpRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import PrimaryButton from 'ui/PrimaryButton';
 
-export default function WebinarHero() {
+type WebinarHeroProps = {
+  onReserveClick?: () => void;
+};
+
+export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
   const [stickyBottom, setStickyBottom] = useState(0);
 
   useEffect(() => {
@@ -48,15 +52,16 @@ export default function WebinarHero() {
             <p className="text-center text-[9px] font-medium tracking-[0.08em] text-white sm:text-[10px]">
               Free Live Session â€¢ Fri, 16th May â€¢ 11 AM IST
             </p>
-            <a
-              href="#reserve-seat"
+            <button
+              type="button"
+              onClick={onReserveClick}
               className="text-sage hidden items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[9px] font-semibold shadow-sm sm:inline-flex"
             >
               <span>Reserve Your Free Seat</span>
               <span className="bg-sage flex h-4 w-4 items-center justify-center rounded-full text-white">
                 <ArrowUpRight aria-hidden="true" className="h-2.5 w-2.5" />
               </span>
-            </a>
+            </button>
           </div>
         </div>
 
@@ -247,7 +252,8 @@ export default function WebinarHero() {
           >
             <PrimaryButton
               text="Reserve Your Free Seat"
-              target="/courses/students/humain-champs"
+              target=""
+              onClick={onReserveClick}
               buttonClassName="shadow-green py-1 pl-5 text-[11px]"
             />
             <p className="mt-2 text-center text-[7px] leading-3 text-[#8b8b8b]">
@@ -270,15 +276,16 @@ export default function WebinarHero() {
                 Fri 16th May • 11 AM IST
               </p>
             </div>
-            <a
-              href="#reserve-seat-mobile"
+            <button
+              type="button"
+              onClick={onReserveClick}
               className="text-sage inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[8px] font-semibold"
             >
               <span>Reserve Your Free Seat</span>
               <span className="bg-sage flex h-3.5 w-3.5 items-center justify-center rounded-full text-white">
                 <ArrowUpRight aria-hidden="true" className="h-2 w-2" />
               </span>
-            </a>
+            </button>
           </div>
         </div>
 
@@ -381,7 +388,8 @@ export default function WebinarHero() {
               <div id="reserve-seat-tablet" className="mt-5 md:mt-6">
                 <PrimaryButton
                   text="Reserve Your Free Seat"
-                  target="/courses/students/humain-champs"
+                  target=""
+                  onClick={onReserveClick}
                   buttonClassName="shadow-green py-1 pl-5 text-[10px] md:text-sm"
                 />
                 <p className="mt-2 text-[7px] leading-3 text-[#8b8b8b] md:mt-3 md:text-[9px] md:leading-4">
@@ -517,7 +525,8 @@ export default function WebinarHero() {
               <div id="reserve-seat" className="mt-7">
                 <PrimaryButton
                   text="Reserve Your Free Seat"
-                  target="/courses/students/humain-champs"
+                  target=""
+                  onClick={onReserveClick}
                   buttonClassName="shadow-green py-1 pl-5 text-xs sm:text-sm"
                 />
                 <p className="mt-3 text-[9px] leading-4 text-[#8b8b8b]">

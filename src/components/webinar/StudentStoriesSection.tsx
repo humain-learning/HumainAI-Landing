@@ -1,95 +1,14 @@
 'use client';
 
-import { useState } from 'react';
-import type { Swiper as SwiperType } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper.css';
-
-import { SwipeProgress } from '@/components/ui/SwipeProgress';
+import { type CSSProperties } from 'react';
 import { usePxCalculator } from 'hooks/usePxCalculator';
+import { VideoCard } from '@/components/ui/VideoCard';
+import { studentVideos } from '@/components/courses-students/humain-champs-v2/StudentCreations/data';
 
-const stories = [
-  {
-    title: 'I feel confident about AI',
-    body: `"After attending all the sessions, I now understand how to use AI to my advantage instead of just following the crowd. I feel confident about using it now."`,
-    name: 'Anisha, Grade 11, New Delhi',
-  },
-  {
-    title: 'This shifted my perspective',
-    body: `"The most interesting part for me was using AI for learning. I actually use tools beyond ChatGPT to do my work - I revise for my exams. This experience really shifted my perspective on how AI can support learning."`,
-    name: 'Karan Gupta, Grade 11, Lucknow',
-  },
-  {
-    title: 'This course gave me clarity',
-    body: `"I knew AI was powerful, but I wasn't sure how to use it for my benefit. This course gave me clarity - how to leverage AI without using my own thinking ability."`,
-    name: 'Aaradhya Kirna, Grade 8, New Delhi',
-  },
-  {
-    title: 'My child built her own study buddy agent',
-    body: `"My child's learning style has changed. She now uses NotebookLM and other AI tools confidently to study better. She even built her own study buddy agent during the program - and now looks forward to reading emails from her AI buddy every day."`,
-    name: 'Mr. Rajesh Malhotra, Parent, New Delhi',
-  },
-  {
-    title: 'Very reassuring as a parent.',
-    body: `"What I really appreciate about Humain Learning trainers is that they didn't just focus on the tools, but also on how and how not to use AI. The emphasis on responsible use was very reassuring as a parent."`,
-    name: 'Mrs. Meenakshi Rao, Parent, Bengaluru',
-  },
-];
-
-const StoryCard = ({
-  story,
-  className = '',
-  wide = false,
-}: {
-  story: (typeof stories)[number];
-  className?: string;
-  wide?: boolean;
-}) => (
-  <article
-    className={`w-full ${wide ? 'max-w-none' : 'max-w-[300px]'} ${className}`}
-  >
-    <div className="flex items-start gap-3">
-      <div className="relative flex h-[46px] w-[46px] shrink-0 items-center justify-center">
-        <img
-          src="/assets/Website Assets/bubbel-up.svg"
-          alt=""
-          className="absolute inset-0 h-full w-full object-contain"
-        />
-        <img
-          src="/assets/icons/quotes-white.svg"
-          alt=""
-          className="relative z-10 h-5 w-5 object-contain"
-        />
-      </div>
-
-      <div>
-        <h3
-          className={`text-charcoal text-[28px] leading-[0.98] font-bold sm:text-[30px] ${
-            wide ? 'max-w-[260px]' : 'max-w-[210px]'
-          }`}
-        >
-          {story.title}
-        </h3>
-      </div>
-    </div>
-
-    <p
-      className={`mt-4 text-sm leading-[1.45] text-[#575757] sm:text-[15px] ${
-        wide ? 'max-w-[560px]' : 'max-w-[290px]'
-      }`}
-    >
-      {story.body}
-    </p>
-
-    <p className="mt-4 text-[18px] leading-[1.08] font-semibold text-[#AAC191] italic sm:text-[20px]">
-      {story.name}
-    </p>
-  </article>
-);
+const VIDEO_CARD_WIDTH_CLASS = 'w-[78vw] sm:w-[320px] lg:w-full';
 
 export default function StudentStoriesSection() {
   const pxCount = usePxCalculator(5);
-  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <section className="bg-white px-4 py-8 sm:px-6 sm:py-10 lg:px-10 lg:py-12 xl:px-12">
@@ -120,58 +39,47 @@ export default function StudentStoriesSection() {
           </div>
         </div>
 
-        <div className="mt-10 hidden lg:grid lg:grid-cols-3 lg:justify-between lg:gap-x-8 lg:gap-y-12 xl:mt-12 xl:gap-x-10">
-          {stories.map((story, index) => (
-            <StoryCard
-              key={story.title}
-              story={story}
-              wide={index === 3}
-              className={
-                index === 3
-                  ? 'lg:col-span-2 lg:max-w-none'
-                  : index === 4
-                    ? 'lg:col-start-3'
-                    : ''
-              }
+        <div className="mt-10 hidden lg:grid lg:grid-cols-4 lg:gap-5 xl:mt-12 xl:gap-6">
+          {studentVideos.map((video, index) => (
+            <VideoCard
+              key={video.id}
+              video={video}
+              cardWidth="w-full"
+              index={index}
             />
           ))}
         </div>
 
         <div className="mt-10 lg:hidden">
-          <Swiper
-            spaceBetween={14}
-            breakpoints={{
-              500: { spaceBetween: 16 },
-              768: { spaceBetween: 20 },
-              1024: { spaceBetween: 24 },
-            }}
-            slidesPerView="auto"
-            loop={false}
-            slidesOffsetBefore={pxCount}
-            slidesOffsetAfter={pxCount}
-            resistanceRatio={0}
-            watchOverflow
-            onSwiper={(swiper: SwiperType) =>
-              setActiveIndex(swiper.activeIndex)
-            }
-            onSlideChange={(swiper: SwiperType) =>
-              setActiveIndex(swiper.activeIndex)
-            }
+          <div
+            className="learn-scrollbar flex snap-x snap-mandatory gap-3.5 overflow-x-auto overscroll-x-contain pb-2 sm:gap-4 md:gap-5"
+            style={{
+              paddingLeft: pxCount,
+              paddingRight: pxCount,
+              scrollPaddingLeft: pxCount,
+              scrollPaddingRight: pxCount,
+              WebkitOverflowScrolling: 'touch',
+            } as CSSProperties}
           >
-            {stories.map((story) => (
-              <SwiperSlide key={story.title} className="!w-auto">
-                <div className="w-[270px] sm:w-[290px]">
-                  <StoryCard story={story} />
-                </div>
-              </SwiperSlide>
+            {studentVideos.map((video, index) => (
+              <div
+                key={video.id}
+                className="w-[78vw] shrink-0 snap-start sm:w-[320px]"
+              >
+                <VideoCard
+                  video={video}
+                  cardWidth={VIDEO_CARD_WIDTH_CLASS}
+                  index={index}
+                />
+              </div>
             ))}
-          </Swiper>
+          </div>
 
-          <SwipeProgress
-            totalSlides={stories.length}
-            activeIndex={activeIndex}
-            visibleOnLarge={false}
-          />
+          <div className="mx-auto mt-3 flex w-[70vw] items-center">
+            <div className="h-1 w-full overflow-hidden rounded-full bg-terracotta/25">
+              <div className="h-full w-1/5 rounded-full bg-terracotta" />
+            </div>
+          </div>
         </div>
       </div>
     </section>

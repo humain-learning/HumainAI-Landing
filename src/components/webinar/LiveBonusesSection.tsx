@@ -1,6 +1,3 @@
-'use client';
-
-import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 const bonuses = [
@@ -54,8 +51,6 @@ const themeClasses = {
 } as const;
 
 export default function LiveBonusesSection() {
-  const [openBonusId, setOpenBonusId] = useState<number | null>(null);
-
   return (
     <section className="bg-white px-4 py-8 sm:px-6 sm:py-10 lg:px-10 lg:py-12 xl:px-12">
       <div className="mx-auto w-full max-w-[1240px]">
@@ -78,26 +73,19 @@ export default function LiveBonusesSection() {
 
         <div className="mt-7 grid gap-2 sm:mt-12 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-5">
           {bonuses.map((bonus) => {
-            const isOpen = openBonusId === bonus.id;
             const title =
               bonus.id === 5
                 ? "The AI Parent's Guide - By The Humain Learning Team"
                 : bonus.title;
 
             return (
-              <article
+              <details
                 key={bonus.id}
-                className={`rounded-[18px] px-4 py-3 sm:min-h-[210px] sm:px-5 sm:py-5 lg:min-h-[228px] ${themeClasses[bonus.theme]}`}
+                name="live-bonuses"
+                className={`group rounded-[18px] px-4 py-3 sm:min-h-[210px] sm:px-5 sm:py-5 lg:min-h-[228px] ${themeClasses[bonus.theme]}`}
               >
-                <button
-                  type="button"
-                  aria-expanded={isOpen}
-                  onClick={() =>
-                    setOpenBonusId((currentId) =>
-                      currentId === bonus.id ? null : bonus.id
-                    )
-                  }
-                  className="flex w-full items-center justify-between gap-3 text-left sm:block sm:cursor-default"
+                <summary
+                  className="flex w-full cursor-pointer touch-manipulation list-none select-none items-center justify-between gap-3 text-left [&::-webkit-details-marker]:hidden sm:block sm:cursor-default"
                 >
                   <div className="min-w-0">
                     <p className="font-tomorrow text-[9px] font-semibold tracking-[0.08em] text-white/90 uppercase sm:text-[11px]">
@@ -114,23 +102,17 @@ export default function LiveBonusesSection() {
 
                   <ChevronDown
                     aria-hidden="true"
-                    className={`h-5 w-5 shrink-0 text-white transition-transform sm:hidden ${
-                      isOpen ? 'rotate-180' : ''
-                    }`}
+                    className="h-5 w-5 shrink-0 text-white transition-transform group-open:rotate-180 sm:hidden"
                     strokeWidth={2.4}
                   />
-                </button>
+                </summary>
 
                 <div className="mt-3 hidden h-[2px] w-10 bg-white/90 sm:block sm:w-12" />
 
-                <p
-                  className={`mt-3 text-[11px] leading-[1.35] text-white/95 sm:block sm:text-[12px] ${
-                    isOpen ? 'block' : 'hidden'
-                  }`}
-                >
+                <p className="mt-3 hidden text-[11px] leading-[1.35] text-white/95 group-open:block sm:block sm:text-[12px]">
                   {bonus.body}
                 </p>
-              </article>
+              </details>
             );
           })}
         </div>

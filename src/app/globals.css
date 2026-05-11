@@ -43,7 +43,7 @@
 body {
   color: var(--color-charcoal);
   font-family: var(--font-tomorrow, 'Tomorrow', sans-serif) !important;
-  overflow-x: scroll;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -58,6 +58,27 @@ h1, h2, h3, h4, h5, h6 {
 /* Hide scrollbar for IE and Edge */
 .example {
   -ms-overflow-style: none;
+}
+
+.learn-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.learn-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.webinar-tools-marquee > div {
+  background: transparent !important;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.webinar-tools-marquee > div > div:first-child {
+  display: none;
 }
 
 .border-gradient {
