@@ -7,7 +7,7 @@ import WhatYouWillLearnSection from '@/components/webinar/WhatYouWillLearnSectio
 import LearningOutcomesSection from '@/components/webinar/LearningOutcomesSection';
 import MeetTheEducatorsSection from '@/components/webinar/MeetTheEducatorsSection';
 import WhyNowMattersSection from '@/components/webinar/WhyNowMattersSection';
-import StudentStoriesSection from '@/components/webinar/StudentStoriesSection';
+import { StudentStoriesSection } from '@/components/webinar/StudentStoriesSection';
 import LiveBonusesSection from '@/components/webinar/LiveBonusesSection';
 import WebinarFAQSection from '@/components/webinar/WebinarFAQSection';
 import ReserveSeatCTASection from '@/components/webinar/ReserveSeatCTASection';

@@ -1,7 +1,11 @@
 'use client';
 
-import { type CSSProperties, useEffect, useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper';
+import 'swiper/swiper.css';
+import { useState } from 'react';
 import { usePxCalculator } from 'hooks/usePxCalculator';
+import { SwipeProgress } from '@/components/ui/SwipeProgress';
 
 const learnItems = [
   {
@@ -46,6 +50,8 @@ const learnItems = [
   },
 ];
 
+const SLIDE_WIDTH_CLASS = 'w-[230px] sm:w-[250px] lg:w-[220px]';
+
 function LearnCard({
   bubble,
   icon,
@@ -75,97 +81,16 @@ function LearnCard({
   );
 }
 
+const renderLearnSlides = () =>
+  learnItems.map((item) => (
+    <SwiperSlide key={item.id} className={`!w-auto ${SLIDE_WIDTH_CLASS}`}>
+      <LearnCard {...item} />
+    </SwiperSlide>
+  ));
+
 export default function WhatYouWillLearnSection() {
   const pxCount = usePxCalculator(5);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const progressTrackRef = useRef<HTMLDivElement>(null);
-  const progressThumbRef = useRef<HTMLDivElement>(null);
-  const trackingFrameRef = useRef<number | null>(null);
-  const trackingStopTimeoutRef = useRef<number | null>(null);
-
-  const updateProgress = () => {
-    const scrollElement = scrollRef.current;
-    const track = progressTrackRef.current;
-    const thumb = progressThumbRef.current;
-
-    if (!scrollElement || !track || !thumb) return;
-
-    const maxScroll = scrollElement.scrollWidth - scrollElement.clientWidth;
-    const maxThumbMove = track.clientWidth - thumb.clientWidth;
-    const progress = maxScroll > 0 ? scrollElement.scrollLeft / maxScroll : 0;
-
-    thumb.style.transform = `translateX(${progress * maxThumbMove}px)`;
-  };
-
-  const startProgressTracking = () => {
-    if (trackingStopTimeoutRef.current !== null) {
-      window.clearTimeout(trackingStopTimeoutRef.current);
-      trackingStopTimeoutRef.current = null;
-    }
-
-    if (trackingFrameRef.current !== null) return;
-
-    const track = () => {
-      updateProgress();
-      trackingFrameRef.current = window.requestAnimationFrame(track);
-    };
-
-    trackingFrameRef.current = window.requestAnimationFrame(track);
-  };
-
-  const stopProgressTracking = () => {
-    if (trackingStopTimeoutRef.current !== null) {
-      window.clearTimeout(trackingStopTimeoutRef.current);
-    }
-
-    trackingStopTimeoutRef.current = window.setTimeout(() => {
-      if (trackingFrameRef.current !== null) {
-        window.cancelAnimationFrame(trackingFrameRef.current);
-        trackingFrameRef.current = null;
-      }
-
-      updateProgress();
-      trackingStopTimeoutRef.current = null;
-    }, 700);
-  };
-
-  useEffect(() => {
-    const scrollElement = scrollRef.current;
-
-    if (!scrollElement) return;
-
-    let frameId: number | null = null;
-
-    const scheduleUpdate = () => {
-      if (frameId !== null) return;
-
-      frameId = window.requestAnimationFrame(() => {
-        frameId = null;
-        updateProgress();
-      });
-    };
-
-    updateProgress();
-    scrollElement.addEventListener('scroll', scheduleUpdate, { passive: true });
-    window.addEventListener('resize', scheduleUpdate);
-
-    return () => {
-      scrollElement.removeEventListener('scroll', scheduleUpdate);
-      window.removeEventListener('resize', scheduleUpdate);
-
-      if (frameId !== null) {
-        window.cancelAnimationFrame(frameId);
-      }
-
-      if (trackingFrameRef.current !== null) {
-        window.cancelAnimationFrame(trackingFrameRef.current);
-      }
-
-      if (trackingStopTimeoutRef.current !== null) {
-        window.clearTimeout(trackingStopTimeoutRef.current);
-      }
-    };
-  }, []);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <section className="bg-white px-4 py-8 sm:px-6 sm:py-10 lg:px-10 lg:py-12 xl:px-12">
@@ -194,43 +119,26 @@ export default function WhatYouWillLearnSection() {
         </div>
 
         <div className="mt-8 xl:hidden">
-          <div
-            id="what-you-will-learn-scroll"
-            ref={scrollRef}
-            onTouchStart={startProgressTracking}
-            onTouchMove={updateProgress}
-            onTouchEnd={stopProgressTracking}
-            onTouchCancel={stopProgressTracking}
-            className="learn-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain pb-2 sm:gap-3.5 md:gap-[18px] lg:gap-5"
-            style={{
-              paddingLeft: pxCount,
-              paddingRight: pxCount,
-              scrollPaddingLeft: pxCount,
-              scrollPaddingRight: pxCount,
-              WebkitOverflowScrolling: 'touch',
-            } as CSSProperties}
-          >
-            {learnItems.map((item) => (
-              <div
-                key={item.id}
-                className="w-[230px] shrink-0 snap-start sm:w-[250px] lg:w-[220px]"
-              >
-                <LearnCard {...item} />
-              </div>
-            ))}
-          </div>
-
-          <div className="mx-auto mt-3 flex w-[70vw] items-center">
-            <div
-              ref={progressTrackRef}
-              className="h-1 w-full overflow-hidden rounded-full bg-terracotta/25"
+          <div className="w-full overflow-hidden py-1">
+            <Swiper
+              spaceBetween={20}
+              slidesPerView="auto"
+              loop={false}
+              slidesOffsetBefore={pxCount}
+              slidesOffsetAfter={pxCount}
+              onSwiper={(swiper: SwiperType) => setActiveIndex(swiper.activeIndex)}
+              onSlideChange={(swiper: SwiperType) =>
+                setActiveIndex(swiper.activeIndex)
+              }
             >
-              <div
-                ref={progressThumbRef}
-                className="h-full w-1/5 rounded-full bg-terracotta"
-              />
-            </div>
+              {renderLearnSlides()}
+            </Swiper>
           </div>
+          <SwipeProgress
+            totalSlides={learnItems.length}
+            activeIndex={activeIndex}
+            visibleOnLarge={false}
+          />
         </div>
 
         <div className="mt-8 flex items-start gap-3 text-[#575757] sm:mt-10">
