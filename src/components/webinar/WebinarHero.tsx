@@ -1,7 +1,7 @@
 'use client';
 
 import { ArrowUpRight } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import PrimaryButton from 'ui/PrimaryButton';
 
 type WebinarHeroProps = {
@@ -9,28 +9,22 @@ type WebinarHeroProps = {
 };
 
 export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
-  const [stickyBottom, setStickyBottom] = useState(0);
+  const stickyBarRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    let frameId = 0;
-
+  useLayoutEffect(() => {
     const updateStickyBottom = () => {
-      cancelAnimationFrame(frameId);
+      const stickyBar = stickyBarRef.current;
+      const footer = document.querySelector<HTMLElement>('[data-site-footer]');
 
-      frameId = requestAnimationFrame(() => {
-        const footer =
-          document.querySelector<HTMLElement>('[data-site-footer]');
+      if (!stickyBar) return;
 
-        if (!footer || window.innerWidth >= 768) {
-          setStickyBottom(0);
-          return;
-        }
+      if (!footer || window.innerWidth >= 768) {
+        stickyBar.style.bottom = '0px';
+        return;
+      }
 
-        const footerTop = footer.getBoundingClientRect().top;
-        setStickyBottom(
-          Math.max(0, Math.round(window.innerHeight - footerTop))
-        );
-      });
+      const footerTop = footer.getBoundingClientRect().top;
+      stickyBar.style.bottom = `${Math.max(0, window.innerHeight - footerTop)}px`;
     };
 
     updateStickyBottom();
@@ -38,7 +32,6 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
     window.addEventListener('resize', updateStickyBottom);
 
     return () => {
-      cancelAnimationFrame(frameId);
       window.removeEventListener('scroll', updateStickyBottom);
       window.removeEventListener('resize', updateStickyBottom);
     };
@@ -266,8 +259,9 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
         </div>
 
         <div
-          className="bg-sage fixed right-0 left-0 z-40 px-3 py-2 text-white shadow-[0_-6px_18px_rgba(0,0,0,0.12)] transition-[bottom] duration-150 md:hidden"
-          style={{ bottom: stickyBottom }}
+          ref={stickyBarRef}
+          className="bg-sage fixed right-0 left-0 z-40 px-3 py-2 text-white shadow-[0_-6px_18px_rgba(0,0,0,0.12)] md:hidden"
+          style={{ bottom: 0 }}
         >
           <div className="mx-auto flex max-w-[640px] items-center justify-between gap-3">
             <div className="min-w-0">

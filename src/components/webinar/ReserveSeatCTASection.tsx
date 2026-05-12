@@ -6,7 +6,7 @@ type ReserveSeatCTASectionProps = {
 
 export default function ReserveSeatCTASection({ onReserveClick }: ReserveSeatCTASectionProps) {
   return (
-    <section className="bg-white px-4 pt-8 pb-20 sm:px-6 sm:py-10 lg:px-10 lg:py-12 xl:px-12">
+    <section className="bg-white px-4 pt-8 pb-36 sm:px-6 sm:py-10 lg:px-10 lg:py-12 xl:px-12">
       <div className="mx-auto w-full max-w-[1240px]">
         <p className="text-charcoal text-[14px] leading-5 font-semibold sm:text-[15px]">
           Reserve your seat now.
