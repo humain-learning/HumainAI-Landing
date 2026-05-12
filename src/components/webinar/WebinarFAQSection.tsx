@@ -42,6 +42,15 @@ const faqs = [
 export default function WebinarFAQSection() {
   return (
     <section className="bg-white px-4 py-8 sm:px-6 sm:py-10 lg:px-10 lg:py-12 xl:px-12">
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes faq-slide-down {
+          0% { opacity: 0; transform: translateY(-8px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        details[open] .faq-content {
+          animation: faq-slide-down 0.3s ease-out forwards;
+        }
+      `}} />
       <div className="mx-auto grid w-full max-w-[1240px] gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-16">
         <div>
           <h2 className="text-[28px] leading-[1.05] font-bold sm:text-[36px] lg:text-[44px]">
@@ -67,14 +76,16 @@ export default function WebinarFAQSection() {
 
                   <ChevronDown
                     aria-hidden="true"
-                    className="text-sage h-4 w-4 shrink-0 transition-transform group-open:rotate-180"
+                    className="text-sage h-4 w-4 shrink-0 transition-transform duration-300 group-open:rotate-180"
                     strokeWidth={2.2}
                   />
                 </summary>
 
-                <p className="pb-4 text-[12px] leading-5 text-[#575757] sm:text-[13px]">
-                  {faq.answer}
-                </p>
+                <div className="faq-content">
+                  <p className="pb-4 text-[12px] leading-5 text-[#575757] sm:text-[13px]">
+                    {faq.answer}
+                  </p>
+                </div>
               </details>
           ))}
         </div>

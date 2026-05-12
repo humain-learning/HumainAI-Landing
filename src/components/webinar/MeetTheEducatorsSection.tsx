@@ -53,7 +53,7 @@ export default function MeetTheEducatorsSection() {
               <div className="flex items-end gap-2 min-[360px]:gap-3 sm:gap-3.5 lg:gap-4">
                 <div className="relative shrink-0">
                   <span
-                    className={`font-tomorrow absolute top-1 -left-4 z-10 rounded-full px-2.5 py-1 text-[9px] font-semibold tracking-[0.08em] text-white uppercase ${educator.badgeTheme}`}
+                    className={`font-tomorrow mb-1 inline-block rounded-full px-2.5 py-1 text-[9px] font-semibold tracking-[0.08em] text-white uppercase sm:absolute sm:top-1 sm:-left-2 sm:z-10 sm:mb-0 lg:-left-4 ${educator.badgeTheme}`}
                   >
                     {educator.badge}
                   </span>
@@ -102,28 +102,26 @@ export default function MeetTheEducatorsSection() {
         </div>
 
         <div className="mt-6 pt-2 sm:mt-8 sm:pt-4 lg:mt-10 lg:pt-6">
-          <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
-            <div className="max-w-[560px] self-center">
-              <p className="font-tomorrow text-charcoal text-[10px] font-semibold tracking-[0.12em] uppercase">
-                Meet The Founder
-              </p>
-
+          <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-12">
+            <div className="max-w-[720px] self-center">
               <h3
-                className="mt-4 max-w-[520px] text-[28px] leading-[1.06] font-bold !text-[#AAC191] sm:text-[34px] lg:text-[40px]"
-                style={{ color: '#AAC191' }}
+                className="mt-4 max-w-none text-[28px] leading-[1.06] font-bold sm:text-[34px] lg:text-[40px]"
               >
-                About Humain Learning.
+                <span className="text-[#AAC191]" style={{ color: '#AAC191' }}>Meet</span> <br />
+                <span className="text-black">Our Founder</span>
               </h3>
+
+              <div className="bg-terracotta/90 mt-4 h-[2px] w-24 sm:w-32" />
 
               <p
                 className="mt-5 text-sm leading-[1.5] font-normal text-[#404040] sm:text-[15px]"
                 style={{ fontWeight: 400 }}
               >
-                Humain Learning was co-founded by <strong>Manit Jain</strong>,
-                Harvard M.Ed and the founder of The Heritage Xperiential
-                Learning Schools, ranked #1 in India. Our pedagogy is two
-                international researcher Tom Loveless, CRED, and the European
-                Commission.
+                Harvard Alumnus with over <span className="font-semibold">25 years of experience</span> in education,
+                our founder, Mr. Manit Jain, has worked with schools, teachers,
+                and students across India. He has founded The Heritage
+                Xperiential Learning Schools - which have been ranked #1
+                consistently in the country. <br /> <br /> His expertise in combining <span className="font-semibold">pedagogy with technology</span> enables us to design learning journeys that prepare students for the <span className="font-semibold">AI-first future</span> while staying grounded in values that matter
               </p>
             </div>
 
@@ -135,39 +133,6 @@ export default function MeetTheEducatorsSection() {
                 className="relative z-20 ml-auto h-[190px] w-auto object-contain min-[360px]:h-[250px] sm:h-[300px] lg:h-[340px]"
               />
             </div>
-          </div>
-
-          <div className="mt-5 pt-2 sm:mt-6 sm:pt-3">
-            <div className="grid items-center gap-5 min-[360px]:gap-7 sm:grid-cols-[162px_1fr] sm:gap-10">
-              <img
-                src="/assets/images/Rashmieducator.png"
-                alt="Dr. Tapaswini Sahu"
-                className="h-[112px] w-[112px] object-contain min-[360px]:h-[142px] min-[360px]:w-[142px] sm:h-[154px] sm:w-[154px]"
-              />
-
-              <div>
-                <h4 className="text-charcoal text-[22px] leading-[1] font-bold min-[360px]:text-[26px] sm:text-[30px]">
-                  Dr. Tapaswini Sahu
-                </h4>
-                <p
-                  className="mt-2 text-[15px] leading-[1.06] font-semibold !text-[#AAC191] min-[360px]:text-[18px] sm:text-[22px]"
-                  style={{ color: '#AAC191' }}
-                >
-                  Academic Director,
-                  <br />
-                  Ph.D Cambridge, Ph.D JNU
-                </p>
-                <div className="bg-terracotta/90 mt-3 h-[2px] w-16" />
-                <p className="mt-3 text-[11px] leading-[1.4] text-[#404040] sm:text-[12px]">
-                  Backed by C-ELI, IIT Kharagpur.
-                </p>
-              </div>
-            </div>
-
-            <p className="mt-6 text-[11px] leading-[1.45] text-[#404040] sm:text-[12px]">
-              A pedagogy-first team. Not product-first by hackers. Not corporate
-              trainers. Educators.
-            </p>
           </div>
         </div>
       </div>

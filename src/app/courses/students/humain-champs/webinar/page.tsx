@@ -23,8 +23,8 @@ export default function WebinarPage() {
       <ParentQuestionsSection />
       <WhatYouWillLearnSection />
       <LearningOutcomesSection />
-      <section className="bg-terracotta px-4 py-8 text-white sm:px-6 sm:py-10 lg:px-10 lg:py-12 xl:px-12">
-        <div className="mx-auto w-full max-w-[1240px] text-center">
+      <section className="bg-terracotta py-8 text-white sm:py-10 lg:py-12">
+        <div className="mx-auto w-full max-w-[1240px] px-4 text-center sm:px-6 lg:px-10 xl:px-12">
           <h2
             className="mx-auto max-w-[820px] text-[28px] leading-[1.12] font-bold !text-white sm:text-[34px] lg:text-[42px]"
             style={{ color: '#ffffff' }}
@@ -47,7 +47,7 @@ export default function WebinarPage() {
           <Tools />
         </div>
 
-        <p className="mt-10 text-center text-sm leading-6 text-white/95 sm:mt-12 sm:text-[15px]">
+        <p className="mt-10 px-4 text-center text-sm leading-6 text-white/95 sm:mt-12 sm:px-6 sm:text-[15px] lg:px-10 xl:px-12">
           15+ tools. One unified framework. Live demonstrations during the
           session.
         </p>

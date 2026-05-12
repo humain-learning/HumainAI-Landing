@@ -1,6 +1,6 @@
 'use client';
 
-import { type CSSProperties } from 'react';
+import { type CSSProperties, useEffect, useRef } from 'react';
 import { usePxCalculator } from 'hooks/usePxCalculator';
 import { VideoCard } from '@/components/ui/VideoCard';
 import { studentVideos } from '@/components/courses-students/humain-champs-v2/StudentCreations/data';
@@ -9,6 +9,95 @@ const VIDEO_CARD_WIDTH_CLASS = 'w-[78vw] sm:w-[320px] lg:w-full';
 
 export default function StudentStoriesSection() {
   const pxCount = usePxCalculator(5);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const progressTrackRef = useRef<HTMLDivElement>(null);
+  const progressThumbRef = useRef<HTMLDivElement>(null);
+  const trackingFrameRef = useRef<number | null>(null);
+  const trackingStopTimeoutRef = useRef<number | null>(null);
+
+  const updateProgress = () => {
+    const scrollElement = scrollRef.current;
+    const track = progressTrackRef.current;
+    const thumb = progressThumbRef.current;
+
+    if (!scrollElement || !track || !thumb) return;
+
+    const maxScroll = scrollElement.scrollWidth - scrollElement.clientWidth;
+    const maxThumbMove = track.clientWidth - thumb.clientWidth;
+    const progress = maxScroll > 0 ? scrollElement.scrollLeft / maxScroll : 0;
+
+    thumb.style.transform = `translateX(${progress * maxThumbMove}px)`;
+  };
+
+  const startProgressTracking = () => {
+    if (trackingStopTimeoutRef.current !== null) {
+      window.clearTimeout(trackingStopTimeoutRef.current);
+      trackingStopTimeoutRef.current = null;
+    }
+
+    if (trackingFrameRef.current !== null) return;
+
+    const track = () => {
+      updateProgress();
+      trackingFrameRef.current = window.requestAnimationFrame(track);
+    };
+
+    trackingFrameRef.current = window.requestAnimationFrame(track);
+  };
+
+  const stopProgressTracking = () => {
+    if (trackingStopTimeoutRef.current !== null) {
+      window.clearTimeout(trackingStopTimeoutRef.current);
+    }
+
+    trackingStopTimeoutRef.current = window.setTimeout(() => {
+      if (trackingFrameRef.current !== null) {
+        window.cancelAnimationFrame(trackingFrameRef.current);
+        trackingFrameRef.current = null;
+      }
+
+      updateProgress();
+      trackingStopTimeoutRef.current = null;
+    }, 700);
+  };
+
+  useEffect(() => {
+    const scrollElement = scrollRef.current;
+
+    if (!scrollElement) return;
+
+    let frameId: number | null = null;
+
+    const scheduleUpdate = () => {
+      if (frameId !== null) return;
+
+      frameId = window.requestAnimationFrame(() => {
+        frameId = null;
+        updateProgress();
+      });
+    };
+
+    updateProgress();
+    scrollElement.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate);
+
+    return () => {
+      scrollElement.removeEventListener('scroll', scheduleUpdate);
+      window.removeEventListener('resize', scheduleUpdate);
+
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
+
+      if (trackingFrameRef.current !== null) {
+        window.cancelAnimationFrame(trackingFrameRef.current);
+      }
+
+      if (trackingStopTimeoutRef.current !== null) {
+        window.clearTimeout(trackingStopTimeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <section className="bg-white px-4 py-8 sm:px-6 sm:py-10 lg:px-10 lg:py-12 xl:px-12">
@@ -52,6 +141,11 @@ export default function StudentStoriesSection() {
 
         <div className="mt-10 lg:hidden">
           <div
+            ref={scrollRef}
+            onTouchStart={startProgressTracking}
+            onTouchMove={updateProgress}
+            onTouchEnd={stopProgressTracking}
+            onTouchCancel={stopProgressTracking}
             className="learn-scrollbar flex snap-x snap-mandatory gap-3.5 overflow-x-auto overscroll-x-contain pb-2 sm:gap-4 md:gap-5"
             style={{
               paddingLeft: pxCount,
@@ -76,8 +170,14 @@ export default function StudentStoriesSection() {
           </div>
 
           <div className="mx-auto mt-3 flex w-[70vw] items-center">
-            <div className="h-1 w-full overflow-hidden rounded-full bg-terracotta/25">
-              <div className="h-full w-1/5 rounded-full bg-terracotta" />
+            <div
+              ref={progressTrackRef}
+              className="h-1 w-full overflow-hidden rounded-full bg-terracotta/25"
+            >
+              <div
+                ref={progressThumbRef}
+                className="h-full w-1/5 rounded-full bg-terracotta"
+              />
             </div>
           </div>
         </div>

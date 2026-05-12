@@ -80,6 +80,15 @@ export default function LearningOutcomesSection() {
 
   return (
     <section className="bg-white px-4 py-8 sm:px-6 sm:py-10 lg:px-10 lg:py-12 xl:px-12">
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes outcomes-slide-down {
+          0% { opacity: 0; transform: translateY(-8px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        details[open] .outcomes-content {
+          animation: outcomes-slide-down 0.3s ease-out forwards;
+        }
+      `}} />
       <div className="mx-auto w-full max-w-[1220px]">
         <div className="max-w-[1120px]">
           <h2 className="text-[28px] leading-[1.05] font-bold sm:text-[36px] lg:text-[48px]">
@@ -202,7 +211,7 @@ export default function LearningOutcomesSection() {
                       );
                     }
                   }}
-                  className={`flex w-full cursor-pointer touch-manipulation list-none select-none items-center justify-between px-4 py-3 text-left [&::-webkit-details-marker]:hidden ${theme.tab}`}
+                  className={`flex w-full cursor-pointer touch-manipulation list-none select-none items-center justify-between outline-none px-4 py-3 text-left [&::-webkit-details-marker]:hidden ${theme.tab}`}
                 >
                   <span className="text-[10px] leading-[1.2] font-semibold tracking-[0.08em] uppercase">
                     {item.label}
@@ -214,25 +223,27 @@ export default function LearningOutcomesSection() {
                   />
                 </summary>
 
-                <div
-                  className={`rounded-t-[16px] rounded-b-[16px] border bg-white px-4 py-4 ${
-                    item.theme === 'green'
-                      ? 'border-sage/90'
-                      : 'border-terracotta/90'
-                  }`}
-                >
-                  <h3 className="text-charcoal max-w-[260px] text-[20px] leading-[1.12] font-bold">
-                    {item.title}
-                  </h3>
+                <div className="outcomes-content">
+                  <div
+                    className={`rounded-t-[16px] rounded-b-[16px] border bg-white px-4 py-4 ${
+                      item.theme === 'green'
+                        ? 'border-sage/90'
+                        : 'border-terracotta/90'
+                    }`}
+                  >
+                    <h3 className="text-charcoal max-w-[260px] text-[20px] leading-[1.12] font-bold">
+                      {item.title}
+                    </h3>
 
-                  <ul className="mt-4 space-y-2.5 text-[12px] leading-[1.35] text-[#575757]">
-                    {item.points.map((point) => (
-                      <li key={point} className="flex gap-2">
-                        <span className="bg-sage mt-[6px] h-[5px] w-[5px] shrink-0 rounded-full" />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
+                    <ul className="mt-4 space-y-2.5 text-[12px] leading-[1.35] text-[#575757]">
+                      {item.points.map((point) => (
+                        <li key={point} className="flex gap-2">
+                          <span className="bg-sage mt-[6px] h-[5px] w-[5px] shrink-0 rounded-full" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </details>
             );

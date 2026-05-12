@@ -1,4 +1,5 @@
 import { ChevronDown } from 'lucide-react';
+import { Fragment } from 'react';
 
 const bonuses = [
   {
@@ -54,6 +55,15 @@ export default function LiveBonusesSection() {
   return (
     <section className="bg-white px-4 py-8 sm:px-6 sm:py-10 lg:px-10 lg:py-12 xl:px-12">
       <div className="mx-auto w-full max-w-[1240px]">
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes details-slide-down {
+            0% { opacity: 0; transform: translateY(-8px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+          details[open] .details-content {
+            animation: details-slide-down 0.3s ease-out forwards;
+          }
+        `}} />
         <div className="max-w-[760px]">
           <h2 className="text-[22px] leading-[1.04] font-bold sm:text-[36px] lg:text-[44px]">
             <span className="text-terracotta">
@@ -79,40 +89,68 @@ export default function LiveBonusesSection() {
                 : bonus.title;
 
             return (
-              <details
-                key={bonus.id}
-                name="live-bonuses"
-                className={`group rounded-[18px] px-4 py-3 sm:min-h-[210px] sm:px-5 sm:py-5 lg:min-h-[228px] ${themeClasses[bonus.theme]}`}
-              >
-                <summary
-                  className="flex w-full cursor-pointer touch-manipulation list-none select-none items-center justify-between gap-3 text-left [&::-webkit-details-marker]:hidden sm:block sm:cursor-default"
+              <Fragment key={bonus.id}>
+                {/* Mobile Accordion View */}
+                <details
+                  name="live-bonuses"
+                  className={`group rounded-[18px] px-4 py-3 sm:hidden ${themeClasses[bonus.theme]}`}
+                >
+                  <summary
+                    className="flex w-full cursor-pointer touch-manipulation list-none select-none items-center justify-between gap-3 text-left outline-none [&::-webkit-details-marker]:hidden"
+                  >
+                    <div className="min-w-0">
+                      <p className="font-tomorrow text-[10px] font-semibold tracking-[0.08em] text-white/90 uppercase">
+                        {bonus.label}
+                      </p>
+
+                      <h3
+                        className="mt-1 max-w-[240px] text-[10px] leading-[1.1] font-bold !text-white"
+                        style={{ color: '#ffffff' }}
+                      >
+                        {title}
+                      </h3>
+                    </div>
+
+                    <ChevronDown
+                      aria-hidden="true"
+                      className="h-5 w-5 shrink-0 text-white transition-transform duration-300 group-open:rotate-180"
+                      strokeWidth={2.4}
+                    />
+                  </summary>
+
+                  {/* Collapsible content with smooth CSS animation */}
+                  <div className="details-content overflow-hidden">
+                    <div className="mt-3 h-[2px] w-10 bg-white/90" />
+                    <p className="mt-3 text-[11px] leading-[1.35] text-white/95">
+                      {bonus.body}
+                    </p>
+                  </div>
+                </details>
+
+                {/* Desktop Static Card View */}
+                <div
+                  className={`hidden sm:flex sm:flex-col rounded-[18px] px-5 py-5 min-h-[210px] lg:min-h-[228px] ${themeClasses[bonus.theme]}`}
                 >
                   <div className="min-w-0">
-                    <p className="font-tomorrow text-[9px] font-semibold tracking-[0.08em] text-white/90 uppercase sm:text-[11px]">
+                    <p className="font-tomorrow text-[11px] font-semibold tracking-[0.08em] text-white/90 uppercase">
                       {bonus.label}
                     </p>
 
                     <h3
-                      className="mt-1 max-w-[240px] text-[10px] leading-[1.1] font-bold !text-white sm:mt-2 sm:max-w-[280px] sm:text-[26px] sm:leading-[0.98]"
+                      className="mt-2 max-w-[280px] text-[26px] leading-[0.98] font-bold !text-white"
                       style={{ color: '#ffffff' }}
                     >
                       {title}
                     </h3>
                   </div>
 
-                  <ChevronDown
-                    aria-hidden="true"
-                    className="h-5 w-5 shrink-0 text-white transition-transform group-open:rotate-180 sm:hidden"
-                    strokeWidth={2.4}
-                  />
-                </summary>
+                  <div className="mt-3 h-[2px] w-12 bg-white/90" />
 
-                <div className="mt-3 hidden h-[2px] w-10 bg-white/90 sm:block sm:w-12" />
-
-                <p className="mt-3 hidden text-[11px] leading-[1.35] text-white/95 group-open:block sm:block sm:text-[12px]">
-                  {bonus.body}
-                </p>
-              </details>
+                  <p className="mt-3 text-[12px] leading-[1.35] text-white/95">
+                    {bonus.body}
+                  </p>
+                </div>
+              </Fragment>
             );
           })}
         </div>
