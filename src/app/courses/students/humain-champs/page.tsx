@@ -25,7 +25,7 @@ export default async function HumainChampsV2() {
 
 	const batches = Array.isArray(batchesData?.message) ? batchesData.message : [];
 	return (
-		<div className="z-10">
+		<>
 		<Hero />
 		<GameChanger/>
 		<Hackathon/>
@@ -41,6 +41,6 @@ export default async function HumainChampsV2() {
 		<Parents />
 		<ContactUs />
 		<Band />
-		</div>
+		</>
 	)
 }
