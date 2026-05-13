@@ -6,7 +6,7 @@ export const Hero = () => {
 				<img src="/assets/HCV2/images/hero-girl.png" className="absolute inset-0 object-contain object-right w-full h-full hidden lg:block" alt="hero-bg" />
 				<div className="absolute bottom-0 w-full h-1/4 bg-gradient-to-b from-transparent to-white hidden lg:block " />
 			</div>
-			<h1 className="mx-auto w-[90vw] inline-flex flex-col gap-2 items-start justify-start text-3xl md:text-5xl text-start font-bold z-100">
+			<h1 className="mx-auto w-[90vw] inline-flex flex-col gap-2 items-start justify-start text-3xl md:text-5xl text-start font-bold z-10">
 				<span className="text-sage">Gen AI & Agentic AI </span>
 				<span className="">Online Summer Camp for</span>
 				<span className="text-terracotta">8<sup>th</sup> to 12<sup>th</sup> Grade Kids</span>

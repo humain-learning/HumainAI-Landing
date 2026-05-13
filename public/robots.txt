@@ -1,0 +1,12 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /testing/
+Disallow: /thank-you
+
+# Host
+Host: https://humainlearning.ai
+
+# Sitemaps
+Sitemap: https://humainlearning.ai/sitemap.xml
