@@ -12,13 +12,13 @@ const OTHER_LINKS = [
 
 const Footer = () => {
   return (
-    <div className="text-[#011813]">
+    <div data-site-footer className="text-[#011813]">
       <div className="mx-auto w-full max-w-7xl px-8 pt-10 pb-5 md:px-10 md:pt-16">
         <div className="grid grid-cols-1 gap-4 pb-10 md:grid-cols-5">
           {/* left container */}
           <div className="col-span-2 space-y-8">
             <div className="space-y-4">
-              <div className="flex items-center gap-2 -ml-5 -mb-1">
+              <div className="-mb-1 -ml-5 flex items-center gap-2">
                 <img
                   className="h-30"
                   src="/assets/logo/brain-logo-black.png"
@@ -81,21 +81,21 @@ const Footer = () => {
                     </p>
                   </div>
 
-                  <a 
-                    href="https://www.instagram.com/humainlearning.ai" 
-                    target="_blank" 
+                  <a
+                    href="https://www.instagram.com/humainlearning.ai"
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 cursor-pointer text-base font-normal hover:opacity-80"
+                    className="flex cursor-pointer items-center gap-2 text-base font-normal hover:opacity-80"
                   >
                     <FaInstagram className="text-xl" />
                     <span>Instagram</span>
                   </a>
 
-                  <a 
-                    href="https://www.linkedin.com/company/humain-learning-ai" 
-                    target="_blank" 
+                  <a
+                    href="https://www.linkedin.com/company/humain-learning-ai"
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 cursor-pointer text-base font-normal hover:opacity-80"
+                    className="flex cursor-pointer items-center gap-2 text-base font-normal hover:opacity-80"
                   >
                     <FaLinkedin className="text-xl" />
                     <span>LinkedIn</span>
@@ -121,11 +121,14 @@ const Footer = () => {
           }}
         />
 
-        <div className="pt-8 flex flex-row items-center justify-between">
-          <p className="text-base flex font-normal">
-            2025 © HumainAI . All rights reserved. Operated by Eduxa Consulting.
+        <div className="flex flex-row items-center justify-between pt-8">
+          <p className="flex text-base font-normal">
+            2025 © HumainAI . All rights reserved. Operated by Eduxa
+            Consulting.
           </p>
-          <Link href="/privacy-policy" className='font-normal text-base mr-20'>Privacy Policy</Link>
+          <Link href="/privacy-policy" className="mr-20 text-base font-normal">
+            Privacy Policy
+          </Link>
         </div>
       </div>
     </div>
