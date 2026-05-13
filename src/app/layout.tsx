@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   title: 'Humain AI | Home',
   metadataBase: new URL('https://www.humainlearning.ai'),
   alternates: {
-	canonical: '/',
+	canonical: './',
   },
   description: 
     'Empowering educators and students to leverage AI responsibly and effectively while strengthening creativity, critical thinking, emotional intelligence, and human connection.',
