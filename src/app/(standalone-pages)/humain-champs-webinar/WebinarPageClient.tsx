@@ -14,14 +14,26 @@ import ReserveSeatCTASection from '@/components/webinar/ReserveSeatCTASection';
 import { Tools } from '@/components/courses-students/humain-champs-v2/Tools/Tools';
 import WebinarPageClientForm from '@/components/webinar/webinarpageclientform';
 import { Band } from '@/components/webinar/Band';
+import type { WebinarLeadState } from '../lib/crmClient';
 
-interface WebinarDetails {
+type WebinarDetails = {
 	date: string;
 	startTime: string;
 	endTime: string;
-}
+};
 
-export default function WebinarPageClient({ webinarDetails }: { webinarDetails: WebinarDetails }) {
+type WebinarLeadAction = (
+	prevState: WebinarLeadState,
+	formData: FormData
+) => Promise<WebinarLeadState>;
+
+export default function WebinarPageClient({
+	webinarDetails,
+	onSubmitLead,
+}: {
+	webinarDetails: WebinarDetails;
+	onSubmitLead: WebinarLeadAction;
+}) {
 	const [isReserveFormOpen, setIsReserveFormOpen] = useState(false);
 
 	return (
@@ -71,6 +83,7 @@ export default function WebinarPageClient({ webinarDetails }: { webinarDetails: 
 			<WebinarPageClientForm
 				open={isReserveFormOpen}
 				onClose={() => setIsReserveFormOpen(false)}
+				onSubmitLead={onSubmitLead}
 			/>
 			<Band onReserveClick={() => setIsReserveFormOpen(true)} />
 		</>

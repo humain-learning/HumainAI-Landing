@@ -1,4 +1,4 @@
-import { getWebinarDetails } from '../lib/crmClient';
+import { getWebinarDetails, submitWebinarLead } from '../lib/crmClient';
 import WebinarPageClient from './WebinarPageClient';
 
 export const dynamic = 'force-dynamic';
@@ -49,6 +49,11 @@ export default async function WebinarPage() {
 		);
 	}
 
-	return <WebinarPageClient webinarDetails={webinarDetails} />;
+	return (
+		<WebinarPageClient
+			webinarDetails={webinarDetails}
+			onSubmitLead={submitWebinarLead}
+		/>
+	);
 }
 

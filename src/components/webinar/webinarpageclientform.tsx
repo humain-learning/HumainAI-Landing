@@ -1,21 +1,142 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useActionState, useEffect, useState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { X } from 'lucide-react';
+import type { WebinarLeadState } from '@/app/(standalone-pages)/lib/crmClient';
 
 type WebinarPageClientFormProps = {
   open: boolean;
   onClose: () => void;
+  onSubmitLead: (
+    prevState: WebinarLeadState,
+    formData: FormData
+  ) => Promise<WebinarLeadState>;
 };
+
+const initialState: WebinarLeadState = {
+  ok: false,
+  message: null,
+};
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phoneRegex = /^\d{10}$/;
+const simpleTextRegex = /^[a-zA-Z0-9 ]+$/;
+const gradeOptions = new Set(['8', '9', '10', '11', '12']);
+
+type FieldName =
+  | 'firstname'
+  | 'lastname'
+  | 'email'
+  | 'mobile'
+  | 'role'
+  | 'childGrade'
+  | 'school'
+  | 'city';
+
+type FieldValues = Record<FieldName, string>;
+type FieldErrors = Partial<Record<FieldName, string>>;
+
+const initialValues: FieldValues = {
+  firstname: '',
+  lastname: '',
+  email: '',
+  mobile: '',
+  role: '',
+  childGrade: '',
+  school: '',
+  city: '',
+};
+
+const initialTouched: Record<FieldName, boolean> = {
+  firstname: false,
+  lastname: false,
+  email: false,
+  mobile: false,
+  role: false,
+  childGrade: false,
+  school: false,
+  city: false,
+};
+
+function validateField(name: FieldName, value: string): string | undefined {
+  if (!value) {
+    return 'This field is required.';
+  }
+
+  switch (name) {
+    case 'firstname':
+    case 'lastname':
+    case 'school':
+    case 'city':
+      return simpleTextRegex.test(value)
+        ? undefined
+        : 'Only letters, numbers, and spaces are allowed.';
+    case 'email':
+      return emailRegex.test(value) ? undefined : 'Enter a valid email.';
+    case 'mobile':
+      return phoneRegex.test(value)
+        ? undefined
+        : 'Enter a 10 digit mobile number.';
+    case 'role':
+      return value === 'parent' || value === 'student'
+        ? undefined
+        : 'Select Parent or Child.';
+    case 'childGrade':
+      return gradeOptions.has(value)
+        ? undefined
+        : 'Select a grade between 8 and 12.';
+    default:
+      return undefined;
+  }
+}
+
+function validateAll(values: FieldValues): FieldErrors {
+  return Object.keys(values).reduce<FieldErrors>((errors, key) => {
+    const name = key as FieldName;
+    const error = validateField(name, values[name]);
+    if (error) {
+      errors[name] = error;
+    }
+    return errors;
+  }, {});
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <button
+      type="submit"
+      className="mt-2 h-11 rounded-full bg-sage px-5 text-sm font-bold text-white transition hover:bg-sage/90 disabled:cursor-not-allowed disabled:opacity-70"
+      disabled={pending}
+    >
+      {pending ? 'Submitting...' : 'Submit'}
+    </button>
+  );
+}
 
 export default function WebinarPageClientForm({
   open,
   onClose,
+  onSubmitLead,
 }: WebinarPageClientFormProps) {
-  const [submitted, setSubmitted] = useState(false);
+  const [state, formAction] = useActionState(onSubmitLead, initialState);
+  const [values, setValues] = useState<FieldValues>(initialValues);
+  const [touched, setTouched] = useState<Record<FieldName, boolean>>(
+    initialTouched
+  );
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
 
   useEffect(() => {
     if (!open) return;
+
+    setValues(initialValues);
+    setTouched(initialTouched);
+    setErrors({});
+    setHasSubmitted(false);
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -32,13 +153,25 @@ export default function WebinarPageClientForm({
     };
   }, [open, onClose]);
 
-  useEffect(() => {
-    if (open) {
-      setSubmitted(false);
-    }
-  }, [open]);
-
   if (!open) return null;
+
+  const handleChange = (name: FieldName, value: string) => {
+    setValues((prev) => ({ ...prev, [name]: value }));
+    if (touched[name]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: validateField(name, value),
+      }));
+    }
+  };
+
+  const handleBlur = (name: FieldName, value: string) => {
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    setErrors((prev) => ({
+      ...prev,
+      [name]: validateField(name, value),
+    }));
+  };
 
   return (
     <div
@@ -62,31 +195,47 @@ export default function WebinarPageClientForm({
           <X aria-hidden="true" className="h-4 w-4" />
         </button>
 
-        <p className="text-[10px] font-semibold tracking-[0.14em] text-sage uppercase">
-          Free live webinar
-        </p>
+        {!state.ok && (
+          <>
+            <p className="text-[10px] font-semibold tracking-[0.14em] text-sage uppercase">
+              Free live webinar
+            </p>
 
-        <h2
-          id="reserve-seat-form-title"
-          className="mt-2 max-w-[360px] text-[26px] leading-[1.05] font-bold text-charcoal sm:text-[32px]"
-        >
-          Reserve Your Free Seat
-        </h2>
+            <h2
+              id="reserve-seat-form-title"
+              className="mt-2 max-w-[360px] text-[26px] leading-[1.05] font-bold text-charcoal sm:text-[32px]"
+            >
+              Reserve Your Free Seat
+            </h2>
 
-        <p className="mt-3 max-w-[360px] text-sm leading-6 text-[#666666]">
-          Share your details and our team will confirm your webinar seat.
-        </p>
+            <p className="mt-3 max-w-[360px] text-sm leading-6 text-[#666666]">
+              Share your details and our team will confirm your webinar seat.
+            </p>
+          </>
+        )}
 
-        {submitted ? (
+        {state.ok ? (
           <div className="mt-6 rounded-[14px] bg-sage/15 px-4 py-4 text-sm leading-6 text-charcoal">
-            Thanks. Your seat request has been received.
+            Your response has reached us and we will be in touch soon!
           </div>
         ) : (
           <form
             className="mt-6 grid gap-4"
+            action={formAction}
             onSubmit={(event) => {
-              event.preventDefault();
-              setSubmitted(true);
+              setHasSubmitted(true);
+              const nextTouched = Object.keys(touched).reduce(
+                (acc, key) => ({ ...acc, [key]: true }),
+                {} as Record<FieldName, boolean>
+              );
+              setTouched(nextTouched);
+
+              const nextErrors = validateAll(values);
+              setErrors(nextErrors);
+
+              if (Object.values(nextErrors).some(Boolean)) {
+                event.preventDefault();
+              }
             }}
           >
             <div className="grid gap-4 sm:grid-cols-2">
@@ -94,22 +243,38 @@ export default function WebinarPageClientForm({
                 First Name
                 <input
                   required
-                  name="firstName"
+                  name="firstname"
                   autoComplete="given-name"
                   placeholder="First name"
+                  value={values.firstname}
+                  onChange={(event) => handleChange('firstname', event.target.value)}
+                  onBlur={(event) => handleBlur('firstname', event.target.value)}
                   className="h-11 rounded-[10px] border border-[#dddddd] px-3 text-sm font-normal outline-none transition focus:border-sage focus:ring-2 focus:ring-sage/20"
                 />
+                {touched.firstname && errors.firstname && (
+                  <span className="text-[11px] text-red-600">
+                    {errors.firstname}
+                  </span>
+                )}
               </label>
 
               <label className="grid gap-1.5 text-[12px] font-semibold text-charcoal">
                 Last Name
                 <input
                   required
-                  name="lastName"
+                  name="lastname"
                   autoComplete="family-name"
                   placeholder="Last name"
+                  value={values.lastname}
+                  onChange={(event) => handleChange('lastname', event.target.value)}
+                  onBlur={(event) => handleBlur('lastname', event.target.value)}
                   className="h-11 rounded-[10px] border border-[#dddddd] px-3 text-sm font-normal outline-none transition focus:border-sage focus:ring-2 focus:ring-sage/20"
                 />
+                {touched.lastname && errors.lastname && (
+                  <span className="text-[11px] text-red-600">
+                    {errors.lastname}
+                  </span>
+                )}
               </label>
             </div>
 
@@ -121,8 +286,14 @@ export default function WebinarPageClientForm({
                 name="email"
                 autoComplete="email"
                 placeholder="you@example.com"
+                value={values.email}
+                onChange={(event) => handleChange('email', event.target.value)}
+                onBlur={(event) => handleBlur('email', event.target.value)}
                 className="h-11 rounded-[10px] border border-[#dddddd] px-3 text-sm font-normal outline-none transition focus:border-sage focus:ring-2 focus:ring-sage/20"
               />
+              {touched.email && errors.email && (
+                <span className="text-[11px] text-red-600">{errors.email}</span>
+              )}
             </label>
 
             <label className="grid gap-1.5 text-[12px] font-semibold text-charcoal">
@@ -134,16 +305,104 @@ export default function WebinarPageClientForm({
                 autoComplete="tel"
                 inputMode="tel"
                 placeholder="Mobile number"
+                value={values.mobile}
+                onChange={(event) => handleChange('mobile', event.target.value)}
+                onBlur={(event) => handleBlur('mobile', event.target.value)}
                 className="h-11 rounded-[10px] border border-[#dddddd] px-3 text-sm font-normal outline-none transition focus:border-sage focus:ring-2 focus:ring-sage/20"
               />
+              {touched.mobile && errors.mobile && (
+                <span className="text-[11px] text-red-600">{errors.mobile}</span>
+              )}
             </label>
 
-            <button
-              type="submit"
-              className="mt-2 h-11 rounded-full bg-sage px-5 text-sm font-bold text-white transition hover:bg-sage/90"
-            >
-              Submit
-            </button>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="grid gap-1.5 text-[12px] font-semibold text-charcoal">
+                I am a
+                <select
+                  required
+                  name="role"
+                  value={values.role}
+                  onChange={(event) => handleChange('role', event.target.value)}
+                  onBlur={(event) => handleBlur('role', event.target.value)}
+                  className="h-11 rounded-[10px] border border-[#dddddd] bg-white px-3 text-sm font-normal outline-none transition focus:border-sage focus:ring-2 focus:ring-sage/20"
+                >
+                  <option value="" disabled>
+                    Select
+                  </option>
+                  <option value="parent">Parent</option>
+                  <option value="student">Child</option>
+                </select>
+                {touched.role && errors.role && (
+                  <span className="text-[11px] text-red-600">{errors.role}</span>
+                )}
+              </label>
+
+              <label className="grid gap-1.5 text-[12px] font-semibold text-charcoal">
+                Grade of child
+                <select
+                  required
+                  name="childGrade"
+                  value={values.childGrade}
+                  onChange={(event) => handleChange('childGrade', event.target.value)}
+                  onBlur={(event) => handleBlur('childGrade', event.target.value)}
+                  className="h-11 rounded-[10px] border border-[#dddddd] bg-white px-3 text-sm font-normal outline-none transition focus:border-sage focus:ring-2 focus:ring-sage/20"
+                >
+                  <option value="" disabled>
+                    Select
+                  </option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+                {touched.childGrade && errors.childGrade && (
+                  <span className="text-[11px] text-red-600">
+                    {errors.childGrade}
+                  </span>
+                )}
+              </label>
+            </div>
+
+            <label className="grid gap-1.5 text-[12px] font-semibold text-charcoal">
+              School
+              <input
+                required
+                name="school"
+                placeholder="School name"
+                value={values.school}
+                onChange={(event) => handleChange('school', event.target.value)}
+                onBlur={(event) => handleBlur('school', event.target.value)}
+                className="h-11 rounded-[10px] border border-[#dddddd] px-3 text-sm font-normal outline-none transition focus:border-sage focus:ring-2 focus:ring-sage/20"
+              />
+              {touched.school && errors.school && (
+                <span className="text-[11px] text-red-600">{errors.school}</span>
+              )}
+            </label>
+
+            <label className="grid gap-1.5 text-[12px] font-semibold text-charcoal">
+              City
+              <input
+                required
+                name="city"
+                placeholder="City"
+                value={values.city}
+                onChange={(event) => handleChange('city', event.target.value)}
+                onBlur={(event) => handleBlur('city', event.target.value)}
+                className="h-11 rounded-[10px] border border-[#dddddd] px-3 text-sm font-normal outline-none transition focus:border-sage focus:ring-2 focus:ring-sage/20"
+              />
+              {touched.city && errors.city && (
+                <span className="text-[11px] text-red-600">{errors.city}</span>
+              )}
+            </label>
+
+            {hasSubmitted && state.message && !state.ok && (
+              <div className="rounded-[10px] bg-red-50 px-3 py-2 text-xs text-red-700">
+                {state.message}
+              </div>
+            )}
+
+            <SubmitButton />
           </form>
         )}
       </div>
