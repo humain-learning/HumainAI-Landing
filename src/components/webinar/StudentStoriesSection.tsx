@@ -33,8 +33,8 @@ export const StudentStoriesSection = () => {
 	
     return (
         <div className="relative flex flex-col items-center justify-center mx-auto">
-            <div className="w-[90vw] mx-auto flex flex-col items-start justify-center">
-                <h1 className="text-4xl md:text-6xl font-semibold text-start py-[1.5rem] md:py-10">
+            <div className="w-[92vw] lg:w-[80vw] mx-auto flex flex-col items-start justify-center">
+                <h1 className="text-3xl md:text-5xl font-semibold text-start py-[1.5rem] md:py-10">
                     <span className="text-sage">Stories From Students</span>
 					<br/>
                     <span className="text-black">Who Have Taken This Journey</span>

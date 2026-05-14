@@ -73,7 +73,7 @@ function LearnCard({
         <h3 className="text-charcoal text-[18px] leading-[1.12] font-bold">
           {title}
         </h3>
-        <p className="text-[12px] leading-[1.28] text-[#575757]">
+        <p className="text-sm leading-[1.28] text-[#575757]">
           {description}
         </p>
       </div>
@@ -122,7 +122,7 @@ export default function WhatYouWillLearnSection() {
           <div className="w-full overflow-hidden py-1">
             <Swiper
               spaceBetween={20}
-              slidesPerView="auto"
+              slidesPerView='auto'
               loop={false}
               slidesOffsetBefore={pxCount}
               slidesOffsetAfter={pxCount}
@@ -147,11 +147,11 @@ export default function WhatYouWillLearnSection() {
             alt=""
             className="mt-0.5 h-6 w-6 shrink-0 object-contain"
           />
-          <p className="text-sm leading-6 sm:text-[15px]">
+          <p className="text-normal leading-6 ">
             <span className="text-terracotta font-semibold">
               No fluff. No theory.
             </span>{' '}
-            You&apos;ll leave with something your child can use the same day.
+            You'll leave with something your child can use the same day.
           </p>
         </div>
       </div>

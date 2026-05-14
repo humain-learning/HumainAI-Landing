@@ -142,7 +142,7 @@ export default function WebinarPageClientForm({
               type="submit"
               className="mt-2 h-11 rounded-full bg-sage px-5 text-sm font-bold text-white transition hover:bg-sage/90"
             >
-              Reserve My Seat
+              Submit
             </button>
           </form>
         )}

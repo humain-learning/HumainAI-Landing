@@ -6,9 +6,17 @@ import PrimaryButton from 'ui/PrimaryButton';
 
 type WebinarHeroProps = {
   onReserveClick?: () => void;
+  webinarDetails: {
+    date: string;
+    startTime: string;
+	endTime: string;
+  };
 };
 
-export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
+export default function WebinarHero({
+  onReserveClick,
+  webinarDetails,
+}: WebinarHeroProps) {
   const stickyBarRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -39,30 +47,13 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
 
   return (
     <section className="bg-white">
-      <div className="bg-sage hidden items-center justify-center px-3 py-1.5 md:flex lg:px-4 lg:py-2">
-        <div className="flex w-full max-w-[1220px] items-center justify-center gap-8 sm:gap-12">
-          <p className="text-center text-[9px] font-medium tracking-[0.08em] text-white sm:text-[10px]">
-            Free Live Session Fri, 16th May 11 AM IST
-          </p>
-          <button
-            type="button"
-            onClick={onReserveClick}
-            className="text-sage hidden items-center gap-1.5 rounded-full bg-white px-3 py-1 text-[9px] font-semibold shadow-sm sm:inline-flex"
-          >
-            <span>Reserve Your Free Seat</span>
-            <span className="bg-sage flex h-4 w-4 items-center justify-center rounded-full text-white">
-              <ArrowUpRight aria-hidden="true" className="h-2.5 w-2.5" />
-            </span>
-          </button>
-        </div>
-      </div>
-      <div className="mx-auto w-full max-w-[1440px] bg-white">
+      <div className="mx-auto w-full max-w-screen bg-white">
 
         <div className="overflow-hidden px-3 pt-3 pb-8 min-[500px]:hidden">
           <img
             src="/assets/logo/webinarhumanlogo.png"
             alt="Humain Learning"
-            className="h-auto w-[96px] object-contain"
+            className="h-auto w-[150px] object-contain"
           />
 
           <div className="relative min-h-[336px] min-[390px]:min-h-[374px] min-[450px]:min-h-[414px]">
@@ -85,7 +76,7 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
               </div>
 
               <p className="absolute top-full left-[18px] z-10 mt-4 max-w-[128px] text-[17px] leading-[1.02] font-bold text-terracotta min-[390px]:left-[22px] min-[390px]:max-w-[154px] min-[390px]:text-[20px] min-[450px]:left-[26px] min-[450px]:max-w-[180px] min-[450px]:text-[23px]">
-                The Ones Who Don&apos;t Will Struggle To Catch Up.
+                The Ones Who Don't Will Struggle To Catch Up.
               </p>
             </div>
 
@@ -145,10 +136,10 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
 
             <div className="h-full rounded-[18px] bg-[#eef6df] px-3 py-3 shadow-[0_8px_18px_rgba(0,0,0,0.04)]">
               <p className="text-sage text-[11px] leading-[1.15] font-bold">
-                Friday, 16th May 2026
+                    {webinarDetails.date}
               </p>
               <p className="text-sage/80 mt-1 text-[10px] leading-[1.15]">
-                11:00 AM - 12:00 PM IST
+                  {webinarDetails.startTime} - {webinarDetails.endTime} IST
               </p>
 
               <div className="mt-4 grid grid-cols-2 gap-2">
@@ -203,12 +194,10 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
               <div className="grid grid-cols-[0.95fr_1.05fr] items-start gap-3">
                 <div>
                   <p className="text-sage text-[11px] leading-[1.15] font-bold">
-                    Friday,
-                    <br />
-                    16 May 2026
+                    {webinarDetails.date}
                   </p>
                   <p className="text-sage/85 mt-1 text-[10px] leading-[1.15] font-bold">
-                    11:00 AM-12:00 PM IST
+                    {webinarDetails.startTime} - {webinarDetails.endTime} IST
                   </p>
                 </div>
 
@@ -258,34 +247,8 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
           </div>
         </div>
 
-        <div
-          ref={stickyBarRef}
-          className="bg-sage fixed right-0 left-0 z-40 px-3 py-2 text-white shadow-[0_-6px_18px_rgba(0,0,0,0.12)] md:hidden"
-          style={{ bottom: 0 }}
-        >
-          <div className="mx-auto flex max-w-[640px] items-center justify-between gap-3">
-            <div className="min-w-0">
-              <p className="text-[8px] tracking-[0.12em] text-white/80 uppercase">
-                Free Live Session
-              </p>
-              <p className="text-[11px] leading-tight font-semibold sm:text-[12px]">
-                Fri 16th May • 11 AM IST
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={onReserveClick}
-              className="text-sage inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-[10px] font-semibold"
-            >
-              <span>Reserve Your Free Seat</span>
-              <span className="bg-sage flex h-3.5 w-3.5 items-center justify-center rounded-full text-white">
-                <ArrowUpRight aria-hidden="true" className="h-2 w-2" />
-              </span>
-            </button>
-          </div>
-        </div>
 
-        <div className="hidden px-4 pt-5 pb-10 min-[500px]:block md:px-8 lg:hidden">
+        <div className="hidden px-5 pt-6 pb-12 min-[500px]:block md:px-10 lg:hidden">
           <div className="grid items-start gap-4 min-[500px]:grid-cols-[minmax(0,1fr)_minmax(170px,0.72fr)] sm:grid-cols-[minmax(0,1fr)_minmax(220px,0.84fr)] md:grid-cols-[minmax(0,1fr)_minmax(280px,0.82fr)] md:gap-6">
             <div className="min-w-0">
               <img
@@ -298,7 +261,7 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
                 For parents & students of grade 8-12
               </p>
 
-              <h1 className="max-w-[620px] text-[18px] leading-[1.02] font-bold text-balance md:text-[28px]">
+              <h1 className="max-w-[680px] text-xl leading-[1.06] font-bold text-balance sm:text-2xl md:text-3xl">
                 <span className="text-terracotta">
                   The Kids Who Learn AI Today Will Lead.
                 </span>
@@ -308,9 +271,9 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
                 </span>
               </h1>
 
-              <div className="bg-terracotta/90 mt-3 h-[2px] w-14 md:mt-4 md:w-20" />
+              <div className="bg-terracotta/90 mt-4 h-[2px] w-16 md:mt-5 md:w-20" />
 
-              <p className="mt-4 max-w-[620px] text-[10px] leading-[1.34] text-[#575757] md:mt-5 md:text-[12px]">
+              <p className="mt-5 max-w-[700px] text-sm leading-[1.45] text-[#575757] md:mt-6 md:text-base">
                 Give your child a real head start in the AI age.
                 <br />
                 Join Humain Learning, led by IIT-harvard trained educators, for
@@ -318,16 +281,16 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
                 students.
               </p>
 
-              <div className="mt-5 grid max-w-[560px] grid-cols-2 items-stretch gap-2 md:mt-6 md:gap-3">
-                <div className="h-full rounded-[18px] bg-[#fbf4ec] px-3 py-3 shadow-[0_8px_18px_rgba(0,0,0,0.04)] md:rounded-[20px] md:px-4 md:py-4">
-                  <div className="space-y-4">
+              <div className="mt-6 grid max-w-[680px] grid-cols-2 items-stretch gap-3 md:mt-7 md:gap-4">
+                <div className="h-full rounded-[20px] bg-[#fbf4ec] px-4 py-4 shadow-[0_8px_18px_rgba(0,0,0,0.04)] md:rounded-[24px] md:px-5 md:py-5">
+                  <div className="space-y-4 md:space-y-5">
                     <div>
-                      <p className="text-charcoal text-[8px] leading-[1.15] font-bold md:text-[11px]">
+                      <p className="text-charcoal text-xs leading-[1.15] font-bold md:text-sm">
                         Hosted live by
                         <br />
                         Rashmi Bhaskaran
                       </p>
-                      <p className="mt-1 text-[7px] leading-[1.14] text-[#646464] md:text-[10px]">
+                      <p className="mt-1 text-[10px] leading-[1.14] text-[#646464] md:text-[11px]">
                         Lead, Curriculum & Training at
                         <br />
                         Humain Learning
@@ -335,34 +298,34 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
                     </div>
 
                     <div>
-                      <p className="text-charcoal text-[8px] leading-[1.15] font-bold md:text-[11px]">
+                      <p className="text-charcoal text-xs leading-[1.15] font-bold md:text-sm">
                         Q&A by
                         <br />
                         Ankur Dahiya
                       </p>
-                      <p className="mt-1 text-[7px] leading-[1.14] text-[#646464] md:text-[10px]">
+                      <p className="mt-1 text-[10px] leading-[1.14] text-[#646464] md:text-[11px]">
                         Program Director.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="h-full rounded-[18px] bg-[#eef6df] px-3 py-3 shadow-[0_8px_18px_rgba(0,0,0,0.04)] md:rounded-[20px] md:px-4 md:py-4">
-                  <p className="text-sage text-[8px] leading-[1.1] font-bold md:text-[11px]">
-                    Friday, 16th May 2026
+                <div className="h-full rounded-[20px] bg-[#eef6df] px-4 py-4 shadow-[0_8px_18px_rgba(0,0,0,0.04)] md:rounded-[24px] md:px-5 md:py-5">
+                  <p className="text-sage text-xs leading-[1.1] font-bold md:text-sm">
+                    {webinarDetails.date}
                   </p>
-                  <p className="text-sage/80 mt-1 text-[8px] leading-[1.1] md:text-[11px]">
-                    11:00 AM - 12:00 PM IST
+                  <p className="text-sage/80 mt-1 text-[10px] leading-[1.1] md:text-[11px]">
+                    {webinarDetails.startTime} - {webinarDetails.endTime} IST
                   </p>
 
-                  <div className="mt-3 grid grid-cols-2 gap-2 md:mt-4 md:gap-3">
+                  <div className="mt-4 grid grid-cols-2 gap-3 md:mt-5 md:gap-4">
                     <div className="flex flex-col gap-1">
                       <img
                         src="/assets/icons/live-zoom-icon.svg"
                         alt="Live on Zoom"
-                        className="h-4 w-4 object-contain md:h-6 md:w-6"
+                        className="h-5 w-5 object-contain md:h-6 md:w-6"
                       />
-                      <p className="text-[7px] leading-[1.12] text-[#5e5e5e] md:text-[9px]">
+                      <p className="text-[9px] leading-[1.12] text-[#5e5e5e] md:text-[10px]">
                         Live on Zoom
                       </p>
                     </div>
@@ -371,9 +334,9 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
                       <img
                         src="/assets/icons/live-recoding-icon.svg"
                         alt="Recording shared with registrants only"
-                        className="h-4 w-4 object-contain md:h-6 md:w-6"
+                        className="h-5 w-5 object-contain md:h-6 md:w-6"
                       />
-                      <p className="text-[7px] leading-[1.12] text-[#5e5e5e] md:text-[9px]">
+                      <p className="text-[9px] leading-[1.12] text-[#5e5e5e] md:text-[10px]">
                         Recording shared with registrants only
                       </p>
                     </div>
@@ -381,14 +344,14 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
                 </div>
               </div>
 
-          <div id="reserve-seat-tablet" className="mt-5 hidden md:block md:mt-6">
+          <div id="reserve-seat-tablet" className="mt-6 hidden md:block md:mt-7">
                 <PrimaryButton
                   text="Reserve Your Free Seat"
                   target=""
                   onClick={onReserveClick}
-                  buttonClassName="shadow-green py-1 pl-5 text-[10px] md:text-sm"
+                  buttonClassName="shadow-green py-1.5 pl-5 text-sm md:text-base"
                 />
-                <p className="mt-2 text-[7px] leading-3 text-[#8b8b8b] md:mt-3 md:text-[9px] md:leading-4">
+                <p className="mt-3 text-[9px] leading-4 text-[#8b8b8b] md:mt-4 md:text-[10px] md:leading-4">
                   Limited to 200 seats. Registration closes 24 hours before the
                   session.
                 </p>
@@ -422,7 +385,7 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
           </div>
         </div>
 
-        <div className="hidden overflow-hidden pt-4 pr-0 pb-12 pl-4 lg:block lg:pr-0 lg:pl-10 xl:pr-0 xl:pl-12">
+        <div className="hidden overflow-hidden pt-6 pr-0 pb-14 pl-6 lg:block lg:pr-0 lg:pl-12 xl:pr-0 xl:pl-16">
           <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.12fr)_minmax(340px,0.88fr)] xl:gap-2">
             <div className="order-2 max-w-[680px] pt-2 lg:order-1 lg:pt-6">
               <img
@@ -435,7 +398,7 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
                 For parents & students of grade 8-12
               </p>
 
-              <h1 className="max-w-[680px] text-[24px] leading-[1.02] font-bold sm:text-[28px] lg:text-[28px] xl:text-[30px]">
+              <h1 className="max-w-[760px] text-2xl leading-[1.06] font-bold sm:text-3xl lg:text-4xl xl:text-[2.8rem]">
                 <span className="text-terracotta lg:whitespace-nowrap">
                   The Kids Who Learn AI Today Will Lead.
                 </span>
@@ -445,9 +408,9 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
                 </span>
               </h1>
 
-              <div className="bg-terracotta/90 mt-4 h-[2px] w-20" />
+              <div className="bg-terracotta/90 mt-5 h-[2px] w-20 lg:mt-6" />
 
-              <p className="mt-5 max-w-[520px] text-[11px] leading-[1.42] text-[#575757] sm:text-xs lg:text-[12px]">
+              <p className="mt-6 max-w-[620px] text-sm leading-[1.5] text-[#575757] sm:text-base lg:text-lg">
                 Give your child a real head start in the AI age.
                 <br />
                 Join Humain Learning, led by IIT-harvard trained educators, for
@@ -455,16 +418,16 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
                 students.
               </p>
 
-              <div className="mt-6 grid max-w-[460px] gap-3 sm:grid-cols-[0.95fr_1.05fr]">
-                <div className="rounded-[22px] bg-[#fbf4ec] px-4 py-4 shadow-[0_8px_18px_rgba(0,0,0,0.04)]">
-                  <div className="space-y-4">
+              <div className="mt-7 grid max-w-[560px] gap-4 sm:grid-cols-[0.95fr_1.05fr]">
+                <div className="rounded-[24px] bg-[#fbf4ec] px-5 py-5 shadow-[0_8px_18px_rgba(0,0,0,0.04)]">
+                  <div className="space-y-5">
                     <div>
-                      <p className="text-charcoal text-[11px] leading-[1.25] font-bold">
+                      <p className="text-charcoal text-sm leading-[1.25] font-bold lg:text-base">
                         Hosted live by
                         <br />
                         Rashmi Bhaskaran
                       </p>
-                      <p className="mt-1 text-[10px] leading-[1.2] text-[#646464]">
+                      <p className="mt-1 text-xs leading-[1.2] text-[#646464] lg:text-sm">
                         Lead, Curriculum & Training at
                         <br />
                         Humain Learning
@@ -472,34 +435,34 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
                     </div>
 
                     <div>
-                      <p className="text-charcoal text-[11px] leading-[1.25] font-bold">
+                      <p className="text-charcoal text-sm leading-[1.25] font-bold lg:text-base">
                         Q&A by
                         <br />
                         Ankur Dahiya
                       </p>
-                      <p className="mt-1 text-[10px] leading-[1.2] text-[#646464]">
+                      <p className="mt-1 text-xs leading-[1.2] text-[#646464] lg:text-sm">
                         Program Director.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="rounded-[22px] bg-[#eef6df] px-4 py-4 shadow-[0_8px_18px_rgba(0,0,0,0.04)]">
-                  <p className="text-sage text-[11px] leading-[1.2] font-bold">
-                    Friday, 16th May 2026
+                <div className="rounded-[24px] bg-[#eef6df] px-5 py-5 shadow-[0_8px_18px_rgba(0,0,0,0.04)]">
+                  <p className="text-sage text-sm leading-[1.2] font-bold lg:text-base">
+                    {webinarDetails.date}
                   </p>
-                  <p className="text-sage/80 mt-1 text-[11px] leading-[1.2]">
-                    11:00 AM - 12:00 PM IST
+                  <p className="text-sage/80 mt-1 text-xs leading-[1.2] lg:text-sm">
+                    {webinarDetails.startTime} - {webinarDetails.endTime} IST
                   </p>
 
-                  <div className="mt-5 grid grid-cols-2 gap-3">
+                  <div className="mt-6 grid grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1">
                       <img
                         src="/assets/icons/live-zoom-icon.svg"
                         alt="Live on Zoom"
-                        className="h-6 w-6 object-contain"
+                        className="h-7 w-7 object-contain"
                       />
-                      <p className="text-[10px] leading-[1.2] text-[#5e5e5e]">
+                      <p className="text-xs leading-[1.2] text-[#5e5e5e] lg:text-sm">
                         Live on Zoom
                       </p>
                     </div>
@@ -508,9 +471,9 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
                       <img
                         src="/assets/icons/live-recoding-icon.svg"
                         alt="Recording shared with registrants only"
-                        className="h-6 w-6 object-contain"
+                        className="h-7 w-7 object-contain"
                       />
-                      <p className="text-[10px] leading-[1.2] text-[#5e5e5e]">
+                      <p className="text-xs leading-[1.2] text-[#5e5e5e] lg:text-sm">
                         Recording shared with registrants only
                       </p>
                     </div>
@@ -518,14 +481,14 @@ export default function WebinarHero({ onReserveClick }: WebinarHeroProps) {
                 </div>
               </div>
 
-              <div id="reserve-seat" className="mt-7">
+              <div id="reserve-seat" className="mt-8">
                 <PrimaryButton
                   text="Reserve Your Free Seat"
                   target=""
                   onClick={onReserveClick}
-                  buttonClassName="shadow-green py-1 pl-5 text-xs sm:text-sm"
+                  buttonClassName="shadow-green py-1.5 pl-5 text-sm sm:text-base"
                 />
-                <p className="mt-3 text-[9px] leading-4 text-[#8b8b8b]">
+                <p className="mt-4 text-xs leading-4 text-[#8b8b8b] lg:text-sm">
                   Limited to 200 seats. Registration closes 24 hours before the
                   session.
                 </p>

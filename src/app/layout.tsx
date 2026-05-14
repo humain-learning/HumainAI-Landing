@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { Tomorrow, Open_Sans, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import Header from 'ui/Header';
-import Footer from 'ui/Footer';
 import { Toaster } from 'react-hot-toast';
 import { Analytics } from "@vercel/analytics/next"
 const tomorrowSans = Tomorrow({
@@ -108,12 +106,10 @@ export default function RootLayout({
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-		
-		<Header />
+
         <Toaster />
         {children}
         <Analytics />
-        <Footer />
       </body>
     </html>
   );

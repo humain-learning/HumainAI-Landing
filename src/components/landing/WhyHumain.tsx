@@ -87,7 +87,7 @@ const WhyHumain = () => {
               Why Humain Learning?
             </h3>
 
-            <TertiaryButton text="All Products" />
+            {/* <TertiaryButton text="All Products" target="/courses-students/humain-champs" /> */}
           </div>
 
           {/* grid */}
