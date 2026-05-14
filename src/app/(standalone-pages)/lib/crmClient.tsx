@@ -1,7 +1,7 @@
 import 'server-only';
 
 
-type TemplateId = string | number;
+type TemplateId = number;
 
 function getCRMCredentials() {
 	const baseUrl = process.env.FRAPPE_BASE_URL;
@@ -34,7 +34,7 @@ export async function getWebinarDetails(templateId: TemplateId) {
 		template_id: String(templateId),
 	});
 
-	const url = `${baseUrl}/method/humain_learning.zoom_autoregistration.api.latest_webinar_details?${params}`;
+	const url = `${baseUrl}/api/method/humain_learning.zoom_autoregistration.api.latest_webinar_details?${params}`;
 
 	const response = await fetch(url, {
 		method: 'GET',
