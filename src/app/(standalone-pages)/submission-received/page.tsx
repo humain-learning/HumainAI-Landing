@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import PrimaryButton from 'ui/PrimaryButton';
-import SecondaryButton from 'ui/SecondaryButton';
 import Header from '@/components/ui/Header';
 
 function getSafeReturnTo(value: string | null) {
@@ -49,7 +48,7 @@ export default function ThankYouPage() {
        	 	</p>
 
         <div className="flex items-center justify-center gap-4">
-          <PrimaryButton text='Back to Home' target="/" buttonClassName="whitespace-nowrap" />
+          <PrimaryButton text='Go Back' target={destination} buttonClassName="whitespace-nowrap" />
         </div>
 
         <p className="mt-6 text-sm text-gray-500">If you don't hear from us within 48 hours, please check your spam folder or contact us at hi@humainlearning.ai</p>
