@@ -50,7 +50,6 @@ export default function ThankYouPage() {
 
         <div className="flex items-center justify-center gap-4">
           <PrimaryButton text='Back to Home' target="/" buttonClassName="whitespace-nowrap" />
-          <SecondaryButton text="Browse Courses" target="/courses" buttonClassName="" />
         </div>
 
         <p className="mt-6 text-sm text-gray-500">If you don't hear from us within 48 hours, please check your spam folder or contact us at hi@humainlearning.ai</p>
