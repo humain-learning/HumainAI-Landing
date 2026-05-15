@@ -22,9 +22,9 @@ const Footer = () => {
                 <img
                   className="h-30"
                   src="/assets/logo/brain-logo-black.png"
-                  alt="Humain AI"
+                  alt="Humain Learning"
                 />
-                {/* <div className="text-xl font-semibold">HUMAIN AI</div> */}
+                {/* <div className="text-xl font-semibold">HUMAIN LEARNING</div> */}
               </div>
               <p className="w-full max-w-3xs text-base font-normal text-[#4E5255]">
                 Unlock knowledge with expert-led online courses.
@@ -123,7 +123,7 @@ const Footer = () => {
 
         <div className="flex flex-row items-center justify-between pt-8">
           <p className="flex text-base font-normal">
-            2025 © HumainAI . All rights reserved. Operated by Eduxa
+            2026 © Humain Learning. All rights reserved. Operated by Eduxa
             Consulting.
           </p>
           <Link href="/privacy-policy" className="mr-20 text-base font-normal">
