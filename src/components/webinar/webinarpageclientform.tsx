@@ -2,6 +2,7 @@
 
 import { useActionState, useEffect, useState } from 'react';
 import { useFormStatus } from 'react-dom';
+import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
 import type { WebinarLeadState } from '@/app/(standalone-pages)/lib/crmClient';
 
@@ -121,6 +122,7 @@ export default function WebinarPageClientForm({
   onClose,
   onSubmitLead,
 }: WebinarPageClientFormProps) {
+  const router = useRouter();
   const [state, formAction] = useActionState(onSubmitLead, initialState);
   const [values, setValues] = useState<FieldValues>(initialValues);
   const [touched, setTouched] = useState<Record<FieldName, boolean>>(
@@ -128,6 +130,14 @@ export default function WebinarPageClientForm({
   );
   const [errors, setErrors] = useState<FieldErrors>({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [attribution, setAttribution] = useState({
+    fbclid: '',
+    utm_source: '',
+    utm_medium: '',
+    utm_campaign: '',
+    utm_term: '',
+    utm_content: '',
+  });
 
 
   useEffect(() => {
@@ -137,6 +147,16 @@ export default function WebinarPageClientForm({
     setTouched(initialTouched);
     setErrors({});
     setHasSubmitted(false);
+
+    const params = new URLSearchParams(window.location.search);
+    setAttribution({
+      fbclid: params.get('fbclid') ?? '',
+      utm_source: params.get('utm_source') ?? '',
+      utm_medium: params.get('utm_medium') ?? '',
+      utm_campaign: params.get('utm_campaign') ?? '',
+      utm_term: params.get('utm_term') ?? '',
+      utm_content: params.get('utm_content') ?? '',
+    });
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -152,6 +172,15 @@ export default function WebinarPageClientForm({
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [open, onClose]);
+
+  useEffect(() => {
+    if (state.ok) {
+      const returnTo = `${window.location.pathname}${window.location.search}`;
+      router.push(
+        `/submission-received?returnTo=${encodeURIComponent(returnTo)}`
+      );
+    }
+  }, [state.ok, router]);
 
   if (!open) return null;
 
@@ -238,6 +267,13 @@ export default function WebinarPageClientForm({
               }
             }}
           >
+            <input type="hidden" name="fbclid" value={attribution.fbclid} />
+            <input type="hidden" name="utm_source" value={attribution.utm_source} />
+            <input type="hidden" name="utm_medium" value={attribution.utm_medium} />
+            <input type="hidden" name="utm_campaign" value={attribution.utm_campaign} />
+            <input type="hidden" name="utm_term" value={attribution.utm_term} />
+            <input type="hidden" name="utm_content" value={attribution.utm_content} />
+
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="grid gap-1.5 text-[12px] font-semibold text-charcoal">
                 First Name

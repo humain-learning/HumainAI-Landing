@@ -1,4 +1,5 @@
 import 'server-only';
+import { cookies } from 'next/headers';
 
 
 type TemplateId = number;
@@ -12,6 +13,12 @@ type WebinarLeadPayload = {
 	childGrade: string;
 	school: string;
 	city: string;
+	fbclid: string;
+	utmSource: string;
+	utmMedium: string;
+	utmCampaign: string;
+	utmTerm: string;
+	utmContent: string;
 };
 
 export type WebinarLeadState = {
@@ -19,11 +26,6 @@ export type WebinarLeadState = {
 	message: string | null;
 	errors?: string[];
 };
-
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phoneRegex = /^\d{10}$/;
-const simpleTextRegex = /^[a-zA-Z0-9 ]+$/;
-const allowedRoles = new Set(['parent', 'student']);
 
 function getCRMCredentials() {
 	// const baseUrl = process.env.LOCAL_APP_URL;
@@ -77,40 +79,6 @@ function normalize(value: FormDataEntryValue | null) {
 	return typeof value === 'string' ? value.trim() : '';
 }
 
-function isValidGrade(value: string) {
-	return ['8', '9', '10', '11', '12'].includes(value);
-}
-
-function validateLead(payload: WebinarLeadPayload) {
-	const errors: string[] = [];
-
-	if (!simpleTextRegex.test(payload.firstname)) {
-		errors.push('First name is invalid.');
-	}
-	if (!simpleTextRegex.test(payload.lastname)) {
-		errors.push('Last name is invalid.');
-	}
-	if (!emailRegex.test(payload.email)) {
-		errors.push('Email is invalid.');
-	}
-	if (!phoneRegex.test(payload.mobile)) {
-		errors.push('Mobile number must be 10 digits.');
-	}
-	if (!allowedRoles.has(payload.role)) {
-		errors.push('Role is invalid.');
-	}
-	if (!isValidGrade(payload.childGrade)) {
-		errors.push('Grade must be between 8 and 12.');
-	}
-	if (!simpleTextRegex.test(payload.school)) {
-		errors.push('School is invalid.');
-	}
-	if (!simpleTextRegex.test(payload.city)) {
-		errors.push('City is invalid.');
-	}
-
-	return errors;
-}
 
 export async function submitWebinarLead(
 	_prevState: WebinarLeadState,
@@ -127,14 +95,20 @@ export async function submitWebinarLead(
 		childGrade: normalize(formData.get('childGrade')),
 		school: normalize(formData.get('school')),
 		city: normalize(formData.get('city')),
+		fbclid: normalize(formData.get('fbclid')),
+		utmSource: normalize(formData.get('utm_source')),
+		utmMedium: normalize(formData.get('utm_medium')),
+		utmCampaign: normalize(formData.get('utm_campaign')),
+		utmTerm: normalize(formData.get('utm_term')),
+		utmContent: normalize(formData.get('utm_content')),
 	};
 
-	const errors = validateLead(payload);
-	if (errors.length > 0) {
-		return { ok: false, message: 'Validation failed.', errors };
-	}
-
 	try {
+		const cookieStore = await cookies();
+		const fbp = cookieStore.get('_fbp')?.value ?? '';
+		const fbcCookie = cookieStore.get('_fbc')?.value ?? '';
+		const fbc = fbcCookie || (payload.fbclid ? `fb.1.${Date.now()}.${payload.fbclid}` : '');
+
 		const { baseUrl, authHeader } = getCRMCredentials();
 		const url = `${baseUrl.replace(/\/$/, '')}/api/resource/CRM Lead`;
 
@@ -148,6 +122,15 @@ export async function submitWebinarLead(
 			custom_grade: payload.childGrade,
 			custom_school: payload.school,
 			custom_city: payload.city,
+			custom_actionable: "Webinar",
+			custom_fbp: fbp || undefined,
+			custom_fbc: fbc || undefined,
+			custom_fbclid: payload.fbclid || undefined,
+			custom_utm_source: payload.utmSource || undefined,
+			custom_utm_medium: payload.utmMedium || undefined,
+			custom_utm_campaign: payload.utmCampaign || undefined,
+			custom_utm_term: payload.utmTerm || undefined,
+			custom_utm_content: payload.utmContent || undefined,
 		};
 
 		const response = await fetch(url, {
@@ -171,6 +154,6 @@ export async function submitWebinarLead(
 			'Webinar lead submit error:',
 			error instanceof Error ? error.message : String(error)
 		);
-		return { ok: false, message: 'Server error while submitting lead.' };
+		return { ok: false, message: 'Error while submitting lead.' };
 	}
 }
