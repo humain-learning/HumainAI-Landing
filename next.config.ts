@@ -37,9 +37,9 @@ const ContentSecurityPolicy = `
 
 const securityHeaders = [
   {
-    // Report-only — does NOT block; logs violations to console.
-    // Flip key to "Content-Security-Policy" to enforce (follow-up PR).
-    key: "Content-Security-Policy-Report-Only",
+    // ENFORCING — blocks violations. Promoted from report-only after
+    // ~48h soak with no unexpected console violations.
+    key: "Content-Security-Policy",
     value: ContentSecurityPolicy,
   },
   {
