@@ -12,7 +12,7 @@ import 'swiper/css/autoplay';
 
 const SLIDER = [
   {
-    title: 'Harness AI for Enhanced Learning',
+    title: 'Use AI to Accelerate Learning',
     img: 'ai.svg',
     description:
       'Discover how to use AI tools to accelerate your learning, research, and creative projects while developing critical thinking skills',
@@ -61,7 +61,7 @@ const Intro = () => {
             </h1>
           </div>
           <div className="text-xl text-[#00000099]">
-            Empowering educators and students to leverage AI responsibly and effectively while strengthening creativity, critical thinking, emotional intelligence, and human connection.
+            Empowering educators and students to use AI responsibly and effectively while strengthening creativity, critical thinking, emotional intelligence, and human connection.
           </div>
           <div className="flex w-full flex-col items-center gap-3 pt-4 md:flex-row">
             <PrimaryButton text="For Students" target='/courses/students/humain-champs' />

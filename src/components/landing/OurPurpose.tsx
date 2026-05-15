@@ -7,7 +7,7 @@ const OurPurpose = () => {
         <h2 className="text-center text-4xl font-semibold">Our Purpose</h2>
         <p className="text-center text-lg">
           “We exist to put humanity at the heart of the AI age, nurturing
-          self-aware learners who harness technology while staying rooted in
+          self-aware learners who draw on technology while staying rooted in
           their deepest human essence.”
         </p>
       </div>
