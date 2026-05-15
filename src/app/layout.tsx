@@ -3,6 +3,7 @@ import { Tomorrow, Open_Sans, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
 import { Analytics } from "@vercel/analytics/next"
+import { organizationSchema, websiteSchema } from '@/lib/schema-bundle';
 const tomorrowSans = Tomorrow({
   variable: '--font-tomorrow',
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -20,27 +21,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Humain AI | Home',
+  title: 'Humain Learning — AI Literacy for Indian Students and Teachers',
   metadataBase: new URL('https://www.humainlearning.ai'),
   alternates: {
-	canonical: './',
+    canonical: './',
   },
-  description: 
-    'Empowering educators and students to leverage AI responsibly and effectively while strengthening creativity, critical thinking, emotional intelligence, and human connection.',
+  description:
+    'Humain Learning runs a 16-hour AI literacy course for Indian students (age 13+) and teachers — live small-batch sessions, six modules, IIT Kharagpur certification.',
   icons: {
-    icon: '/vercel.svg',
+    icon: '/assets/logo/brain-logo.png',
   },
   openGraph: {
-    title: 'Humain AI | Human Centered AI Literacy for Educators and Students', 
-    description: 'Empowering educators and students to leverage AI responsibly and effectively while strengthening creativity, critical thinking, emotional intelligence, and human connection.', 
-    url: 'https://humainlearning.ai', 
-    siteName: 'Humain AI',
+    title: 'Humain Learning — AI Literacy for Indian Students and Teachers',
+    description:
+      'Humain Learning runs a 16-hour AI literacy course for Indian students (age 13+) and teachers — live small-batch sessions, six modules, IIT Kharagpur certification.',
+    url: 'https://www.humainlearning.ai/',
+    siteName: 'Humain Learning',
     images: [
       {
         url: '/assets/logo/brain-logo.png',
-        width: 1200, 
-        height: 630, 
-        alt: 'Humain AI Logo',
+        width: 1200,
+        height: 630,
+        alt: 'Humain Learning logo',
       },
     ],
     type: 'website',
@@ -54,7 +56,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head />
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+      </head>
       <body
         className={`${tomorrowSans.variable} ${openSansDisplay.variable} antialiased`}
       >

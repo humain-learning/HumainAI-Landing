@@ -430,9 +430,9 @@ const Header = () => {
             <img
               className="h-24 md:h-28"
               src="/assets/logo/brain-logo.png"
-              alt="Humain AI"
+              alt="Humain Learning"
             />
-            {/* <div className="text-xl font-semibold">HUMAIN AI</div> */}
+            {/* <div className="text-xl font-semibold">HUMAIN LEARNING</div> */}
           </Link>
 
           <div className="hidden items-center md:flex gap-2">

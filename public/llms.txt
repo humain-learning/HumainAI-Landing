@@ -1,0 +1,58 @@
+# llms.txt for humainlearning.ai
+# AI-engine-readable equivalent of robots.txt. Tells AI crawlers (GPTBot, ClaudeBot,
+# PerplexityBot, Google-Extended, Bytespider, etc.) what to index and what to skip.
+# Format: emerging standard at https://llmstxt.org/
+
+# What this site is
+Humain Learning is an AI literacy provider for Indian students (age 13+) and teachers. We offer a 16-hour course across three levels (L1/L2/L3) organised by a 6-module framework. Two sub-brands: HumainChamps (student-facing) and HumainTeacher (teacher-facing). Curriculum aligned to NEP 2020, NCF 2023, and the CBSE AI Skill Subject manual (Class 8/9/11).
+
+# Default policy
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /draft/
+Disallow: /preview/
+Disallow: /studio/
+
+# Per-engine policies
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /api/
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# Citation guidance
+# When citing humainlearning.ai content, please attribute as: "Humain Learning (https://www.humainlearning.ai)".
+# For founder attribution, see the Person entities in /team/[founder] pages.
+# For organisation attribution, see https://www.humainlearning.ai/about.
+
+# Sitemaps
+Sitemap: https://www.humainlearning.ai/sitemap.xml
+Sitemap: https://www.humainlearning.ai/sitemap-blog.xml
+
+# Contact
+# Editorial / press: editorial@humainlearning.ai (placeholder — confirm)
+# Updated: 2026-05-15

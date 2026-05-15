@@ -9,7 +9,7 @@ export const aiRoadmapVideos = [
         id: 2,
         url: "https://player.vimeo.com/video/1143055585",
         title: "Module 2",
-        description: "Leverage AI to Master Learning"
+        description: "Use AI to Master Learning"
     },
     {
         id: 3,
@@ -21,7 +21,7 @@ export const aiRoadmapVideos = [
         id: 4,
         url: "https://player.vimeo.com/video/1143055633",
         title: "Module 4",
-        description: "Leveraging AI for Creativity"
+        description: "Using AI for Creativity"
     },
     {
         id: 5,

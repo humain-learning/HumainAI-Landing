@@ -19,7 +19,7 @@ const bonuses = [
   {
     id: 3,
     label: 'Bonus 3',
-    title: 'The Humain AI Study Pack - Custom GPT + Claude Skills',
+    title: 'The Humain Learning Study Pack - Custom GPT + Claude Skills',
     body: 'A pack of pre-built AI study tools - Custom GPTs + Claude skills - just for Grade 8-12 mentors. Including the 6-D student lifecycle: AI Chat GPA, Problem Finder, Essay Coach, Note Partner, and student-specific reflection tools. Project Research Assistant, Plug-and-play, and not generic access links sent to live attendees after the webinar.',
     theme: 'orange',
   },
