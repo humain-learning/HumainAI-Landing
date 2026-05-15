@@ -20,7 +20,7 @@ const educators = [
     id: 'ankur',
     badge: 'Q&A Host',
     badgeTheme: 'bg-sage',
-    image: '/assets/images/Rashmieducator.png',
+    image: '/assets/images/AnkurWebinar.png',
     name: 'Ankur Dahiya',
     quote:
       '"We\'re not here to teach kids more tools. We\'re here to teach them how to think with AI as their study partner, not their crutch."',

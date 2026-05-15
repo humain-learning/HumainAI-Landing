@@ -4,9 +4,7 @@ import './globals.css';
 import { Toaster } from 'react-hot-toast';
 import { Analytics } from "@vercel/analytics/next"
 import { organizationSchema, websiteSchema } from '@/lib/schema-bundle';
-import dynamic from 'next/dynamic';
-
-const FacebookPixel = dynamic(import('components/meta/FacebookPixel'));
+import FacebookPixel from '@/components/meta/FacebookPixel';
 
 const tomorrowSans = Tomorrow({
   variable: '--font-tomorrow',
@@ -69,7 +67,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
-
+		<FacebookPixel />
       </head>
       <body
         className={`${tomorrowSans.variable} ${openSansDisplay.variable} antialiased`}
@@ -85,7 +83,7 @@ export default function RootLayout({
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-		<FacebookPixel />
+
         <Toaster />
         {children}
         <Analytics />
