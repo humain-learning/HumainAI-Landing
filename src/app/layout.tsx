@@ -3,6 +3,7 @@ import { Tomorrow, Open_Sans, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
 import { Analytics } from "@vercel/analytics/next"
+import { organizationSchema, websiteSchema } from '@/lib/schema-bundle';
 const tomorrowSans = Tomorrow({
   variable: '--font-tomorrow',
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -55,7 +56,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head />
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+      </head>
       <body
         className={`${tomorrowSans.variable} ${openSansDisplay.variable} antialiased`}
       >
