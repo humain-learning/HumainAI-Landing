@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useSearchParams } from 'next/navigation';
 import PrimaryButton from 'ui/PrimaryButton';
 import SecondaryButton from 'ui/SecondaryButton';
 import Header from '@/components/ui/Header';
@@ -15,16 +14,16 @@ function getSafeReturnTo(value: string | null) {
 
 export default function ThankYouPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [destination, setDestination] = useState('/');
   const [countdown, setCountdown] = useState(20);
 
   useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
     const returnTo = getSafeReturnTo(searchParams.get('returnTo'));
     if (returnTo) {
       setDestination(returnTo);
     }
-  }, [searchParams]);
+  }, []);
 
   useEffect(() => {
     if (countdown <= 0) {
