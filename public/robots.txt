@@ -2,11 +2,19 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /admin/
+Disallow: /draft/
+Disallow: /preview/
+Disallow: /studio/
 Disallow: /testing/
 Disallow: /thank-you
+Disallow: /_next/
+Disallow: /.well-known/
+Disallow: /404
+Disallow: /500
 
 # Host
-Host: https://humainlearning.ai
+Host: https://www.humainlearning.ai
 
 # Sitemaps
-Sitemap: https://humainlearning.ai/sitemap.xml
+Sitemap: https://www.humainlearning.ai/sitemap.xml
