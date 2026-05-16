@@ -76,7 +76,7 @@ export default function WebinarHero({
               </div>
 
               <p className="absolute top-full left-[18px] z-10 mt-4 max-w-[128px] text-[17px] leading-[1.02] font-bold text-terracotta min-[390px]:left-[22px] min-[390px]:max-w-[154px] min-[390px]:text-[20px] min-[450px]:left-[26px] min-[450px]:max-w-[180px] min-[450px]:text-[23px]">
-                The Ones Who Don't Will Struggle To Catch Up.
+                Think, Create, and Learn with AI
               </p>
             </div>
 
@@ -84,13 +84,9 @@ export default function WebinarHero({
               className="absolute top-[84px] left-[24px] z-10 max-w-[132px] text-right text-[17px] leading-[1.02] font-bold min-[390px]:top-[96px] min-[390px]:left-[28px] min-[390px]:max-w-[154px] min-[390px]:text-[20px] min-[450px]:top-[112px] min-[450px]:left-[32px] min-[450px]:max-w-[180px] min-[450px]:text-[23px]"
               style={{ color: '#9CB977' }}
             >
-              The Kids
+              Tomorrow&apos;s Leaders
               <br />
-              Who Learn
-              <br />
-              AI Today
-              <br />
-              Will Lead.
+              will Know How to
             </h1>
 
           </div>
@@ -263,11 +259,11 @@ export default function WebinarHero({
 
               <h1 className="max-w-[680px] text-xl leading-[1.06] font-bold text-balance sm:text-2xl md:text-3xl">
                 <span className="text-terracotta">
-                  The Kids Who Learn AI Today Will Lead.
+                  Tomorrow&apos;s Leaders will Know How to
                 </span>
                 <br />
                 <span className="text-sage">
-                  The Ones Who Don&apos;t Will Struggle
+                  Think, Create, and Learn with AI
                 </span>
               </h1>
 
@@ -400,11 +396,11 @@ export default function WebinarHero({
 
               <h1 className="max-w-[760px] text-2xl leading-[1.06] font-bold sm:text-3xl lg:text-4xl xl:text-[2.8rem]">
                 <span className="text-terracotta lg:whitespace-nowrap">
-                  The Kids Who Learn AI Today Will Lead.
+                  Tomorrow&apos;s Leaders will Know How to
                 </span>
                 <br />
                 <span className="text-sage lg:whitespace-nowrap">
-                  The Ones Who Don&apos;t Will Struggle
+                  Think, Create, and Learn with AI
                 </span>
               </h1>
 

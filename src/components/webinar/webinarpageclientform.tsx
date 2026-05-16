@@ -207,14 +207,14 @@ export default function WebinarPageClientForm({
       role="dialog"
       aria-modal="true"
       aria-labelledby="reserve-seat-form-title"
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/45 px-4 py-6"
+      className="learn-scrollbar fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/45 px-4 py-6 sm:items-center"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
           onClose();
         }
       }}
     >
-      <div className="relative w-full max-w-[460px] rounded-[20px] bg-white px-5 py-6 shadow-[0_24px_80px_rgba(0,0,0,0.22)] sm:px-7 sm:py-7">
+      <div className="learn-scrollbar relative my-2 max-h-[calc(100dvh-1rem)] w-full max-w-[460px] overflow-y-auto rounded-[20px] bg-white px-5 py-6 shadow-[0_24px_80px_rgba(0,0,0,0.22)] sm:my-6 sm:max-h-[calc(100dvh-3rem)] sm:px-7 sm:py-7">
         <button
           type="button"
           aria-label="Close form"
