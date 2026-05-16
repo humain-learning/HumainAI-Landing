@@ -75,7 +75,7 @@ export default function WebinarPageClient({
 				</p>
 			</section>
 			<MeetTheEducatorsSection />
-			<WhyNowMattersSection />
+			{/* <WhyNowMattersSection /> */}
 			<StudentStoriesSection />
 			<LiveBonusesSection />
 			<WebinarFAQSection />
