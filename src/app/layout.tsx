@@ -5,6 +5,7 @@ import { Toaster } from 'react-hot-toast';
 import { Analytics } from "@vercel/analytics/next"
 import { organizationSchema, websiteSchema } from '@/lib/schema-bundle';
 import FacebookPixel from '@/components/meta/FacebookPixel';
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const tomorrowSans = Tomorrow({
   variable: '--font-tomorrow',
@@ -68,21 +69,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
 		<FacebookPixel />
+		<GoogleTagManager gtmId='GTM-TMLZCXPP' />
       </head>
       <body
         className={`${tomorrowSans.variable} ${openSansDisplay.variable} antialiased`}
       >
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-TMLZCXPP"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-            title="Google Tag Manager"
-          />
-        </noscript>
-        {/* End Google Tag Manager (noscript) */}
 
         <Toaster />
         {children}

@@ -6,10 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-	"postbuild": "next-sitemap",
+    "postbuild": "next-sitemap",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\""
   },
   "dependencies": {
+    "@next/third-parties": "^16.2.6",
     "@vercel/analytics": "^1.6.1",
     "@vimeo/player": "^2.30.1",
     "analytics": "^0.8.19",
