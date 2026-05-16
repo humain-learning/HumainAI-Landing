@@ -139,6 +139,7 @@ export async function submitWebinarLead(
 			custom_utm_campaign: payload.utmCampaign || undefined,
 			custom_utm_term: payload.utmTerm || undefined,
 			custom_utm_content: payload.utmContent || undefined,
+			source: "Webinar Landing"
 		};
 
 		const response = await fetch(url, {
