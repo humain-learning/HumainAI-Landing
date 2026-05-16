@@ -56,39 +56,50 @@ export default function WebinarHero({
             className="h-auto w-[150px] object-contain"
           />
 
-          <div className="relative min-h-[336px] min-[390px]:min-h-[374px] min-[450px]:min-h-[414px]">
-            <div className="absolute top-[-4px] right-[-18px] w-[clamp(176px,52vw,258px)] min-[390px]:right-[-12px] min-[450px]:right-[-4px]">
+          <div className="mt-3 grid grid-cols-2">
+            {/* Top-left: Line 1 heading — centered within cell */}
+            <div className="flex items-center justify-center pr-2">
+              <h1
+                className="text-center text-[clamp(14px,4.4vw,20px)] leading-[1.1] font-bold"
+                style={{ color: '#9CB977' }}
+              >
+                Tomorrow&apos;s Leaders
+                <br />
+                will Know How to
+              </h1>
+            </div>
+
+            {/* Top-right: Hero image — bottom-left corner sits at grid center */}
+            <div className="flex items-end justify-start">
               <img
                 src="/assets/images/webinar-hero-mobile-img.png"
                 alt="Students learning together during the webinar"
                 className="h-auto w-full object-contain"
               />
+            </div>
 
-              <div className="absolute top-full left-0 h-[96px] w-[96px] -translate-x-full min-[390px]:h-[108px] min-[390px]:w-[108px] min-[450px]:h-[120px] min-[450px]:w-[120px]">
+            {/* Bottom-left: Bubble — top-right corner sits at grid center, touching image corner */}
+            <div className="flex items-start justify-end">
+              <div className="relative h-[clamp(88px,26vw,112px)] w-[clamp(88px,26vw,112px)]">
                 <img
                   src="/assets/Website Assets/bubbel-up.svg"
                   alt=""
                   className="h-full w-full object-contain"
                 />
-                <p className="absolute top-1/2 left-1/2 w-[66px] -translate-x-1/2 -translate-y-1/2 text-left text-[7px] leading-[1.25] font-bold tracking-[0.08em] text-white uppercase min-[390px]:w-[74px] min-[390px]:text-[7.5px] min-[450px]:w-[82px] min-[450px]:text-[8px]">
+                <p className="absolute top-1/2 left-1/2 w-[66px] -translate-x-1/2 -translate-y-1/2 text-left text-[7px] leading-[1.25] font-bold tracking-[0.08em] text-white uppercase min-[390px]:w-[74px] min-[390px]:text-[7.5px]">
                   For parents &amp; students of grade 8-12
                 </p>
               </div>
-
-              <p className="absolute top-full left-[18px] z-10 mt-4 max-w-[128px] text-[17px] leading-[1.02] font-bold text-terracotta min-[390px]:left-[22px] min-[390px]:max-w-[154px] min-[390px]:text-[20px] min-[450px]:left-[26px] min-[450px]:max-w-[180px] min-[450px]:text-[23px]">
-                Think, Create, and Learn with AI
-              </p>
             </div>
 
-            <h1
-              className="absolute top-[84px] left-[24px] z-10 max-w-[132px] text-right text-[17px] leading-[1.02] font-bold min-[390px]:top-[96px] min-[390px]:left-[28px] min-[390px]:max-w-[154px] min-[390px]:text-[20px] min-[450px]:top-[112px] min-[450px]:left-[32px] min-[450px]:max-w-[180px] min-[450px]:text-[23px]"
-              style={{ color: '#9CB977' }}
-            >
-              Tomorrow&apos;s Leaders
-              <br />
-              will Know How to
-            </h1>
-
+            {/* Bottom-right: Line 2 heading — centered within cell */}
+            <div className="flex items-center justify-center pl-2">
+              <p className="text-center text-[clamp(14px,4.4vw,20px)] leading-[1.08] font-bold text-terracotta">
+                Think, Create, and
+                <br />
+                Learn with AI
+              </p>
+            </div>
           </div>
 
           <div className="bg-terracotta/90 mt-2 mb-3 h-[2px] w-9" />
