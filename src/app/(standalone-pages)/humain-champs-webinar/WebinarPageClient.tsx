@@ -85,7 +85,10 @@ export default function WebinarPageClient({
 				onClose={() => setIsReserveFormOpen(false)}
 				onSubmitLead={onSubmitLead}
 			/>
-			<Band onReserveClick={() => setIsReserveFormOpen(true)} />
+			<Band
+				onReserveClick={() => setIsReserveFormOpen(true)}
+				webinarDetails={webinarDetails}
+			/>
 		</>
 	);
 }

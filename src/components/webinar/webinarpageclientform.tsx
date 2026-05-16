@@ -60,6 +60,19 @@ const initialTouched: Record<FieldName, boolean> = {
   city: false,
 };
 
+function getCookieValue(name: string) {
+  const cookie = document.cookie
+    .split('; ')
+    .find((entry) => entry.startsWith(`${name}=`));
+  return cookie ? decodeURIComponent(cookie.split('=').slice(1).join('=')) : '';
+}
+
+function extractFbclidFromFbc(fbc: string) {
+  if (!fbc) return '';
+  const parts = fbc.split('.');
+  return parts.length >= 4 ? parts.slice(3).join('.') : '';
+}
+
 function validateField(name: FieldName, value: string): string | undefined {
   if (!value) {
     return 'This field is required.';
@@ -149,8 +162,28 @@ export default function WebinarPageClientForm({
     setHasSubmitted(false);
 
     const params = new URLSearchParams(window.location.search);
+    const fbclidFromUrl = params.get('fbclid') ?? '';
+    const fbclidFromFbc = extractFbclidFromFbc(getCookieValue('_fbc'));
+    let fbclidFromSession = '';
+
+    try {
+      fbclidFromSession = window.sessionStorage.getItem('fbclid') ?? '';
+    } catch {
+      fbclidFromSession = '';
+    }
+
+    const resolvedFbclid = fbclidFromUrl || fbclidFromSession || fbclidFromFbc;
+
+    try {
+      if (resolvedFbclid) {
+        window.sessionStorage.setItem('fbclid', resolvedFbclid);
+      }
+    } catch {
+      // Ignore storage errors and continue with in-memory resolved value.
+    }
+
     setAttribution({
-      fbclid: params.get('fbclid') ?? '',
+      fbclid: resolvedFbclid,
       utm_source: params.get('utm_source') ?? '',
       utm_medium: params.get('utm_medium') ?? '',
       utm_campaign: params.get('utm_campaign') ?? '',

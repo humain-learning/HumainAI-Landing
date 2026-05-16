@@ -79,6 +79,13 @@ function normalize(value: FormDataEntryValue | null) {
 	return typeof value === 'string' ? value.trim() : '';
 }
 
+function extractFbclidFromFbc(fbc: string) {
+	if (!fbc) return '';
+	const parts = fbc.split('.');
+	// Expected format: fb.1.<timestamp>.<fbclid>
+	return parts.length >= 4 ? parts.slice(3).join('.') : '';
+}
+
 
 export async function submitWebinarLead(
 	_prevState: WebinarLeadState,
@@ -108,6 +115,7 @@ export async function submitWebinarLead(
 		const fbp = cookieStore.get('_fbp')?.value ?? '';
 		const fbcCookie = cookieStore.get('_fbc')?.value ?? '';
 		const fbc = fbcCookie || (payload.fbclid ? `fb.1.${Date.now()}.${payload.fbclid}` : '');
+		const effectiveFbclid = payload.fbclid || extractFbclidFromFbc(fbcCookie);
 
 		const { baseUrl, authHeader } = getCRMCredentials();
 		const url = `${baseUrl.replace(/\/$/, '')}/api/resource/CRM Lead`;
@@ -125,7 +133,7 @@ export async function submitWebinarLead(
 			custom_actionable: "Webinar",
 			custom_fbp: fbp || undefined,
 			custom_fbc: fbc || undefined,
-			custom_fbclid: payload.fbclid || undefined,
+			custom_fbclid: effectiveFbclid || undefined,
 			custom_utm_source: payload.utmSource || undefined,
 			custom_utm_medium: payload.utmMedium || undefined,
 			custom_utm_campaign: payload.utmCampaign || undefined,
