@@ -10,16 +10,16 @@ function getSafeReturnTo(value: string | null) {
   return value;
 }
 
-useEffect(() => {
-    if (typeof window !== 'undefined' && window.fbq) {
-      window.fbq('track', 'Lead', {
-        content_name: 'Webinar Signup'
-      });
-    }
-}, []);
-
 export default function ThankYouPage() {
   const [destination, setDestination] = useState('/');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'Lead', {
+        content_name: 'Webinar Signup',
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);

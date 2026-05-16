@@ -123,9 +123,9 @@ export async function submitWebinarLead(
 
 	try {
 		const cookieStore = await cookies();
-		const fbp = cookieStore.get('_fbp')?.value ?? '';
+		const fbpCookie = cookieStore.get('_fbp')?.value ?? '';
 		const fbcCookie = cookieStore.get('_fbc')?.value ?? '';
-		const fbc = fbcCookie || (payload.fbclid ? `fb.1.${Date.now()}.${payload.fbclid}` : '');
+		const fbc = fbcCookie;
 		const effectiveFbclid = payload.fbclid || extractFbclidFromFbc(fbcCookie);
 
 		const { baseUrl, authHeader } = getCRMCredentials();
@@ -142,7 +142,7 @@ export async function submitWebinarLead(
 			custom_school: payload.school,
 			custom_city: payload.city,
 			custom_actionable: "Webinar",
-			custom_fbp: fbp || undefined,
+			custom_fbp: fbpCookie || undefined,
 			custom_fbc: fbc || undefined,
 			custom_fbclid: effectiveFbclid || undefined,
 			custom_utm_source: payload.utmSource || undefined,
