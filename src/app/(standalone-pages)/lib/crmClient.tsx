@@ -27,6 +27,8 @@ export type WebinarLeadState = {
 	errors?: string[];
 };
 
+const allowedLeadTypes = new Set(['teacher', 'child', 'parent']);
+
 function getCRMCredentials() {
 	// const baseUrl = process.env.LOCAL_APP_URL;
 	// const key = process.env.LOCAL_CRM_KEY;
@@ -86,6 +88,11 @@ function extractFbclidFromFbc(fbc: string) {
 	return parts.length >= 4 ? parts.slice(3).join('.') : '';
 }
 
+function normalizeLeadType(value: string) {
+	if (!value) return '';
+	return allowedLeadTypes.has(value) ? value : '';
+}
+
 
 export async function submitWebinarLead(
 	_prevState: WebinarLeadState,
@@ -98,7 +105,7 @@ export async function submitWebinarLead(
 		lastname: normalize(formData.get('lastname')),
 		email: normalize(formData.get('email')),
 		mobile: normalize(formData.get('mobile')),
-		role: normalize(formData.get('role')).toLowerCase(),
+		role: normalizeLeadType(normalize(formData.get('role')).toLowerCase()),
 		childGrade: normalize(formData.get('childGrade')),
 		school: normalize(formData.get('school')),
 		city: normalize(formData.get('city')),
@@ -109,6 +116,10 @@ export async function submitWebinarLead(
 		utmTerm: normalize(formData.get('utm_term')),
 		utmContent: normalize(formData.get('utm_content')),
 	};
+
+	if (!payload.role) {
+		return { ok: false, message: 'Invalid role selected.' };
+	}
 
 	try {
 		const cookieStore = await cookies();
