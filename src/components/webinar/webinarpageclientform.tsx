@@ -399,7 +399,7 @@ export default function WebinarPageClientForm({
                     Select
                   </option>
                   <option value="parent">Parent</option>
-                  <option value="student">Child</option>
+                  <option value="child">Child</option>
                 </select>
                 {touched.role && errors.role && (
                   <span className="text-[11px] text-red-600">{errors.role}</span>
