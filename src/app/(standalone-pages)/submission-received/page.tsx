@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import PrimaryButton from 'ui/PrimaryButton';
 import Header from '@/components/ui/Header';
 
@@ -12,9 +11,7 @@ function getSafeReturnTo(value: string | null) {
 }
 
 export default function ThankYouPage() {
-  const router = useRouter();
   const [destination, setDestination] = useState('/');
-  const [countdown, setCountdown] = useState(20);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -23,19 +20,6 @@ export default function ThankYouPage() {
       setDestination(returnTo);
     }
   }, []);
-
-  useEffect(() => {
-    if (countdown <= 0) {
-      router.push(destination);
-      return;
-    }
-
-    const timer = setTimeout(() => {
-      setCountdown((prev) => prev - 1);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [countdown, router, destination]);
 
   return (
 	<>
@@ -52,7 +36,6 @@ export default function ThankYouPage() {
         </div>
 
         <p className="mt-6 text-sm text-gray-500">If you don't hear from us within 48 hours, please check your spam folder or contact us at hi@humainlearning.ai</p>
-        <p className="mt-4 text-sm text-gray-500">Redirecting back in {countdown} seconds...</p>
       </div>
     </div>
 	</>
