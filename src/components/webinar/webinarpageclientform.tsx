@@ -93,7 +93,7 @@ function validateField(name: FieldName, value: string): string | undefined {
         ? undefined
         : 'Enter a 10 digit mobile number.';
     case 'role':
-      return value === 'parent' || value === 'student'
+      return value === 'parent' || value === 'child'
         ? undefined
         : 'Select Parent or Child.';
     case 'childGrade':
