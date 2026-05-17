@@ -19,12 +19,12 @@ import type { NextConfig } from "next";
  */
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://googletagmanager.com https://*.googletagmanager.com https://google-analytics.com https://*.google-analytics.com https://va.vercel-scripts.com https://cdn.sanity.io https://*.sanity.io https://www.youtube.com https://www.instagram.com https://player.vimeo.com;
-  script-src-elem 'self' 'unsafe-inline' https://googletagmanager.com https://*.googletagmanager.com https://google-analytics.com https://*.google-analytics.com https://va.vercel-scripts.com https://cdn.sanity.io https://*.sanity.io https://www.youtube.com https://www.instagram.com https://player.vimeo.com;
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https://googletagmanager.com https://*.googletagmanager.com https://google-analytics.com https://*.google-analytics.com https://va.vercel-scripts.com https://cdn.sanity.io https://*.sanity.io https://www.youtube.com https://www.instagram.com https://player.vimeo.com https://connect.facebook.net https://googleads.g.doubleclick.net https://scripts.clarity.ms https://www.clarity.ms;
+  script-src-elem 'self' 'unsafe-inline' https://googletagmanager.com https://*.googletagmanager.com https://google-analytics.com https://*.google-analytics.com https://va.vercel-scripts.com https://cdn.sanity.io https://*.sanity.io https://www.youtube.com https://www.instagram.com https://player.vimeo.com https://connect.facebook.net https://googleads.g.doubleclick.net https://scripts.clarity.ms https://www.clarity.ms;
   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
   img-src 'self' data: https: blob: https://googletagmanager.com https://*.googletagmanager.com https://google-analytics.com https://*.google-analytics.com https://stats.g.doubleclick.net;
   font-src 'self' data: https://fonts.gstatic.com;
-  connect-src 'self' https://googletagmanager.com https://*.googletagmanager.com https://google-analytics.com https://*.google-analytics.com https://region1.google-analytics.com https://stats.g.doubleclick.net https://vitals.vercel-insights.com https://*.sanity.io https://api.sanity.io https://*.vimeo.com;
+  connect-src 'self' https://googletagmanager.com https://*.googletagmanager.com https://google-analytics.com https://*.google-analytics.com https://region1.google-analytics.com https://stats.g.doubleclick.net https://vitals.vercel-insights.com https://*.sanity.io https://api.sanity.io https://*.vimeo.com https://www.facebook.com https://connect.facebook.net https://analytics.google.com https://www.google.com https://l.clarity.ms;
   frame-src 'self' https://www.youtube.com https://www.instagram.com https://*.sanity.io https://player.vimeo.com;
   object-src 'none';
   base-uri 'self';
