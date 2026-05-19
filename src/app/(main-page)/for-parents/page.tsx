@@ -18,10 +18,11 @@ export const metadata: Metadata = {
     type: 'article',
     images: [
       {
-        url: '/assets/logo/brain-logo.png',
+        url: '/og/for-parents-1200x630.webp',
         width: 1200,
         height: 630,
         alt: 'Humain Learning, parent guide to AI courses for Indian students.',
+        type: 'image/webp',
       },
     ],
   },
@@ -301,9 +302,12 @@ export default function ForParentsPage() {
             </div>
             <div className="flex w-full justify-center md:w-auto">
               <img
-                className="h-full w-full max-w-[360px] object-contain md:max-w-[420px]"
-                src="/assets/images/parents-img.png"
-                alt="A parent and their teenage child sitting together at a laptop, working through an AI tool."
+                className="h-full w-full max-w-[400px] rounded-2xl object-contain shadow-sm md:max-w-[480px]"
+                src="/assets/images/for-parents-hero.webp"
+                alt="An Indian parent and their teenage child sitting together at a home study desk with a laptop."
+                loading="eager"
+                width={1800}
+                height={1200}
               />
             </div>
           </div>
@@ -431,7 +435,17 @@ export default function ForParentsPage() {
               </a>
               .
             </p>
-            <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
+            <div className="mt-8 flex justify-center">
+              <img
+                className="h-auto w-full max-w-[520px]"
+                src="/assets/images/framework-six-pillar-wheel.webp"
+                alt="The Humain AI Literacy Framework: six-pillar wheel with AI Foundations, Learning with AI, Studying with AI, Creating with AI, Agents and Automation, and Ethics, Safety and Responsibility."
+                loading="lazy"
+                width={1200}
+                height={1200}
+              />
+            </div>
+            <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
               {PILLARS.map((p, i) => (
                 <div key={p.name} className="flex gap-4 rounded-2xl border border-[#E6E6E6] bg-white p-5 md:p-6">
                   <div className="bg-primary-color/15 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl">

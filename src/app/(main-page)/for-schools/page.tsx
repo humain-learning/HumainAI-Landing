@@ -19,10 +19,11 @@ export const metadata: Metadata = {
     type: 'article',
     images: [
       {
-        url: '/assets/logo/brain-logo.png',
+        url: '/og/for-schools-1200x630.webp',
         width: 1200,
         height: 630,
         alt: 'Humain Learning, CBSE AI curriculum partnership model for Indian schools.',
+        type: 'image/webp',
       },
     ],
   },
@@ -297,9 +298,12 @@ export default function ForSchoolsPage() {
             </div>
             <div className="flex w-full justify-center md:w-auto">
               <img
-                className="h-full w-full max-w-[340px] object-contain md:max-w-[400px]"
-                src="/assets/images/human-ai.png"
-                alt="Humain Learning brand illustration: human-AI collaboration mark."
+                className="h-full w-full max-w-[400px] rounded-2xl object-contain shadow-sm md:max-w-[480px]"
+                src="/assets/images/for-schools-hero.webp"
+                alt="An Indian school academic-team meeting in a staff-room, with a 3-step rollout (discovery, delivery, assessment) on a whiteboard."
+                loading="eager"
+                width={1800}
+                height={1200}
               />
             </div>
           </div>
@@ -420,7 +424,17 @@ export default function ForSchoolsPage() {
               </a>
               . Pillar-by-pillar mapping to NCF 2023 outcomes:
             </p>
-            <div className="overflow-x-auto rounded-2xl border border-[#E6E6E6] bg-white">
+            <div className="mt-6 flex justify-center">
+              <img
+                className="h-auto w-full max-w-[480px]"
+                src="/assets/images/framework-six-pillar-wheel.webp"
+                alt="The Humain AI Literacy Framework: six-pillar wheel with AI Foundations, Learning with AI, Studying with AI, Creating with AI, Agents and Automation, and Ethics, Safety and Responsibility."
+                loading="lazy"
+                width={1200}
+                height={1200}
+              />
+            </div>
+            <div className="mt-8 overflow-x-auto rounded-2xl border border-[#E6E6E6] bg-white">
               <table className="w-full min-w-[760px] border-collapse text-left text-sm md:text-base">
                 <thead className="bg-[#FBFAF6]">
                   <tr>
@@ -452,7 +466,17 @@ export default function ForSchoolsPage() {
             The shape below is the standard rollout. Specific dates, session counts, and academic-team responsibilities
             are aligned with your school at the discovery call.
           </p>
-          <ol className="mt-8 space-y-5">
+          <div className="mt-8 flex justify-center">
+            <img
+              className="h-auto w-full max-w-[900px]"
+              src="/assets/images/rollout-3-step-timeline.webp"
+              alt="3-step rollout timeline: Discovery and design (Week 0 to 2, DESIGN), Cohort delivery (Week 3 to 10, DELIVER), Assessment and capability transfer (Week 11 to 12, TRANSFER)."
+              loading="lazy"
+              width={1800}
+              height={600}
+            />
+          </div>
+          <ol className="mt-10 space-y-5">
             {ROLLOUT_STEPS.map((s) => (
               <li
                 key={s.n}

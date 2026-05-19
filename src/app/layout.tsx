@@ -43,10 +43,11 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     images: [
       {
-        url: '/assets/logo/brain-logo.png',
+        url: '/og/homepage-1200x630.webp',
         width: 1200,
         height: 630,
-        alt: 'Humain Learning logo',
+        alt: 'Humain Learning: AI literacy course for Class 8-12 students and teachers in India.',
+        type: 'image/webp',
       },
     ],
     type: 'website',
