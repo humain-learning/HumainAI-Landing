@@ -30,12 +30,12 @@ export type WebinarLeadState = {
 const allowedLeadTypes = new Set(['teacher', 'child', 'parent']);
 
 function getCRMCredentials() {
-	const baseUrl = process.env.LOCAL_APP_URL;
-	const key = process.env.LOCAL_CRM_KEY;
-	const secret = process.env.LOCAL_CRM_SECRET;
-	// const baseUrl = process.env.FRAPPE_BASE_URL;
-	// const key = process.env.FRAPPE_API_KEY;
-	// const secret = process.env.FRAPPE_API_SECRET;
+	// const baseUrl = process.env.LOCAL_APP_URL;
+	// const key = process.env.LOCAL_CRM_KEY;
+	// const secret = process.env.LOCAL_CRM_SECRET;
+	const baseUrl = process.env.FRAPPE_BASE_URL;
+	const key = process.env.FRAPPE_API_KEY;
+	const secret = process.env.FRAPPE_API_SECRET;
 
 	if (!baseUrl || !key || !secret) {
 		throw new Error('Missing admin API environment variables');
