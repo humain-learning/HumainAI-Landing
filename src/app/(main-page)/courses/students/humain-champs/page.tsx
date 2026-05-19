@@ -13,15 +13,28 @@ import { Parents } from "components/courses-students/humain-champs-v2/Parents/Pa
 import { ContactUs } from "components/courses-students/humain-champs-v2/ContactUs/ContactUs";
 import { Founder } from "components/courses-students/humain-champs-v2/Founder/Founder";
 
-
-
+// Force dynamic rendering: batches + discount data are fetched per-request from the
+// admin API. Static prerendering breaks `npm run build` in environments where the
+// admin API env vars (ADMIN_BASE_URL / ADMIN_API_KEY / ADMIN_API_SECRET) are not set,
+// and we want the live batch list anyway.
+export const dynamic = 'force-dynamic';
 
 export default async function HumainChampsV2() {
 	const template_id = 1;
-	const [batchesData, discountData] = await Promise.all([
-		getBatchDetailsOfTemplate(template_id),
-		getCurrentActiveDiscount(template_id),
-	]);
+	let batchesData: any = null;
+	let discountData: any = null;
+	try {
+		[batchesData, discountData] = await Promise.all([
+			getBatchDetailsOfTemplate(template_id),
+			getCurrentActiveDiscount(template_id),
+		]);
+	} catch (err) {
+		// Build-safe + runtime-safe fallback: if the admin API is unavailable or
+		// env vars are missing, render the page without the dynamic batch picker
+		// instead of crashing. The static sections (Hero, Hackathon, Tools, etc.)
+		// continue to render so the page is still discoverable and usable.
+		console.warn('humain-champs: admin API unavailable, rendering without batch picker', err);
+	}
 
 	const batches = Array.isArray(batchesData?.message) ? batchesData.message : [];
 	return (
@@ -32,11 +45,11 @@ export default async function HumainChampsV2() {
 		<AiRoadmap/>
 		<SneakPeek/>
 		<Tools/>
-		<StudentCreations/>
-		<Instructors/>
-		{batches.length > 0 && (
-			<ChooseBatch Batches={batches} discountData={discountData.message} />
-		)}
+			<StudentCreations/>
+			<Instructors/>
+			{batches.length > 0 && (
+				<ChooseBatch Batches={batches} discountData={discountData.message} />
+			)}
 		<Founder />
 		<Parents />
 		<ContactUs />

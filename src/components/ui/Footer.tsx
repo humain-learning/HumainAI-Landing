@@ -121,14 +121,28 @@ const Footer = () => {
           }}
         />
 
-        <div className="flex flex-row items-center justify-between pt-8">
-          <p className="flex text-base font-normal">
+        <div className="flex flex-col gap-4 pt-8 md:flex-row md:items-center md:justify-between">
+          <p className="text-base font-normal">
             2026 © Humain Learning. All rights reserved. Operated by Eduxa
             Consulting.
           </p>
-          <Link href="/privacy-policy" className="mr-20 text-base font-normal">
-            Privacy Policy
-          </Link>
+          <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2 text-base font-normal md:mr-20">
+            <Link href="/for-parents" className="hover:text-[#e8a772]">
+              For Parents
+            </Link>
+            <Link href="/for-schools" className="hover:text-[#e8a772]">
+              For Schools
+            </Link>
+            <Link href="/courses/students/humain-champs" className="hover:text-[#e8a772]">
+              HumainChamps
+            </Link>
+            <Link href="/courses/educators/humain-educators" className="hover:text-[#e8a772]">
+              HumainEducators
+            </Link>
+            <Link href="/privacy-policy" className="hover:text-[#e8a772]">
+              Privacy Policy
+            </Link>
+          </nav>
         </div>
       </div>
     </div>
