@@ -94,14 +94,10 @@ export default function Credential() {
 
             </div>
 
-            {/* Terracotta CTA Button */}
-            <button
-              onClick={() => {
-                const element = document.getElementById('enroll-form');
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
+            <a
+              href="https://pages.razorpay.com/humainchamps"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-terracotta text-white rounded-full font-semibold px-6 py-3.5 shadow-md hover:shadow-lg transition duration-200 hover:scale-[1.02] active:scale-[0.98] mt-8 flex items-center gap-2 select-none cursor-pointer"
             >
               <span>Enroll to Earn the Certificate</span>
@@ -117,7 +113,7 @@ export default function Credential() {
                   d="M14 5l7 7m0 0l-7 7m7-7H3"
                 />
               </svg>
-            </button>
+            </a>
 
           </div>
 

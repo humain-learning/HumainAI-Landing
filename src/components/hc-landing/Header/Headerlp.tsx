@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 
 export default function Headerlp() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-charcoal/5 bg-[#FAFAF9]/90 backdrop-blur-md transition-all duration-300">
+    <header className="sticky top-0 z-50 w-full border-b border-charcoal/5 bg-white backdrop-blur-md transition-all duration-300">
       <div className="mx-auto w-full max-w-7xl px-6 py-3 md:px-12 md:py-4 lg:px-16">
         <div className="flex items-center justify-between">
           {/* Left: Logo */}
@@ -21,7 +21,6 @@ export default function Headerlp() {
           <div className="flex items-center gap-4 md:gap-6">
             {/* Seat Limit Badge (Hidden on mobile, shown on md and larger) */}
             <div className="hidden md:flex items-center gap-2 rounded-full border border-terracotta/30 bg-[#ffe9d7]/30 px-4 py-2 text-xs font-semibold text-terracotta shadow-sm select-none">
-              <span className="animate-pulse">🔥</span>
               <span>Only 4 seats left in May 12 batch</span>
             </div>
 
