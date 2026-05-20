@@ -1,3 +1,4 @@
+import Headerlp from "@/components/hc-landing/Header/Headerlp";
 import Herolp from "@/components/hc-landing/Hero/Herolp";
 import GapSolution from "@/components/hc-landing/GapSolution/GapSolution";
 import Toolkit from "@/components/hc-landing/Toolkit/Toolkit";
@@ -16,6 +17,7 @@ import { Batches } from "@/components/courses-teachers/humain-educators/data/bat
 export default function HumainChampsLanding() {
 	return (
 		<>
+			<Headerlp />
 			<Herolp />
 			<GapSolution />
 			<Toolkit />
