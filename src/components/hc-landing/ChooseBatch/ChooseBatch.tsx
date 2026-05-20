@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 type ItineraryItem = {
     date: string;
@@ -36,6 +36,51 @@ type ChooseBatchProps = {
     discountData?: DiscountData;
 }
 
+const RazorpayButton = () => {
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        container.innerHTML = '';
+        const form = document.createElement('form');
+        const script = document.createElement('script');
+        script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
+        script.setAttribute('data-payment_button_id', 'pl_SrYD9PAHtLTEOD');
+        script.async = true;
+
+        const style = document.createElement('style');
+        style.textContent = `
+            .razorpay-payment-button,
+            .razorpay-btn-container button,
+            .razorpay-btn-container form button {
+                border-radius: 9999px !important;
+            }
+        `;
+
+        form.appendChild(script);
+        form.appendChild(style);
+        container.appendChild(form);
+
+        return () => {
+            container.innerHTML = '';
+        };
+    }, []);
+
+    return (
+        <div ref={containerRef} className="w-full flex justify-center razorpay-btn-container">
+            <style>{`
+                .razorpay-payment-button,
+                .razorpay-btn-container button,
+                .razorpay-btn-container form button {
+                    border-radius: 9999px !important;
+                }
+            `}</style>
+        </div>
+    );
+};
+
 export const ChooseBatch = ({ Batches, discountData }: ChooseBatchProps) => {
     const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
     const isActive = Boolean(discountData?.active);
@@ -60,7 +105,6 @@ export const ChooseBatch = ({ Batches, discountData }: ChooseBatchProps) => {
                 {Batches.map((batch, index) => {
                     const isExpanded = expandedIndex === index;
                     const cardBg = index % 2 === 0 ? 'bg-[#fcf5f0]' : 'bg-[#f8faf5]';
-                    const buttonBg = index % 2 === 0 ? 'bg-terracotta text-white' : 'bg-sage text-white';
                     
                     return (
                         <div 
@@ -126,23 +170,7 @@ export const ChooseBatch = ({ Batches, discountData }: ChooseBatchProps) => {
                                                 </div>
                                             </div>
                                         ) : (
-                                            <a
-                                                href="https://pages.razorpay.com/humainchamps"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className={`w-full mx-auto rounded-full text-base md:text-xl font-semibold py-2 px-3 md:py-3 md:px-6 hover:shadow-lg transition-shadow duration-200 ${buttonBg}`}
-                                            >
-                                                <div className="w-full md:w-[75%] text-xl md:text-2xl flex flex-row md:flex-row items-center justify-center lg:justify-between mx-auto gap-2 md:gap-0">
-                                                    <div>Enroll Now!</div>
-                                                    {isActive ? (
-                                                        <div>
-                                                            <span className="pr-2"><s>&#8377;{originalPrice.toLocaleString('en-IN')}</s></span><span>&#8377;{discountedPrice.toLocaleString('en-IN')}</span>
-                                                        </div>
-                                                    ) : (
-                                                        <div>&#8377;{originalPrice.toLocaleString('en-IN')}</div>
-                                                    )}
-                                                </div>
-                                            </a>
+                                            <RazorpayButton />
                                         )}
                                     </div>
                                 </div>

@@ -38,7 +38,7 @@ export default function Credential() {
 
             {/* Subtitle description */}
             <p className="font-sans text-sm md:text-base text-charcoal/80 mb-8 max-w-xl leading-relaxed">
-              The IIT Kharagpur certificate isn't participation ribbon — It's earned by
+              The E- Cell IIT Kharagpur certificate isn't participation ribbon — It's earned by
               submitting a real AI project to the E-Cell IIT Kharagpur Hackathon,
               judged by one of India's premier engineering institutions.
             </p>
@@ -50,7 +50,7 @@ export default function Credential() {
               <div className="flex items-start gap-3.5">
                 <GreenCheckCircle />
                 <p className="font-sans text-sm md:text-[15px] leading-relaxed text-charcoal/80">
-                  <span className="font-bold text-charcoal">E-Cell, IIT Kharagpur</span> issued
+                  <span className="font-bold text-charcoal">E-Cell IIT Kharagpur</span> issued
                   by the entrepreneurship cell of India's oldest IIT, a nationally recognised
                   institution.
                 </p>
@@ -78,7 +78,7 @@ export default function Credential() {
               <div className="flex items-start gap-3.5">
                 <GreenCheckCircle />
                 <p className="font-sans text-sm md:text-[15px] leading-relaxed text-charcoal/80">
-                  <span className="font-bold text-charcoal">IIT Kharagpur certificate</span> LinkedIn-shareable,
+                  <span className="font-bold text-charcoal">E-Cell IIT Kharagpur certificate</span> LinkedIn-shareable,
                   nationally recognised.
                 </p>
               </div>
@@ -132,7 +132,7 @@ export default function Credential() {
               <div className="relative border-[12px] border-[#1d1d1f] bg-[#1d1d1f] rounded-2xl shadow-2xl overflow-hidden hover:scale-[1.01] transition duration-300 w-full h-full flex items-center justify-center">
                 <img
                   src="/assets/Website Assets/Certificate.png"
-                  alt="IIT Kharagpur AI Hackathon Certificate Mockup"
+                  alt="E- Cell IIT Kharagpur AI Hackathon Certificate Mockup"
                   className="w-full h-full object-cover rounded-[2px]"
                 />
               </div>

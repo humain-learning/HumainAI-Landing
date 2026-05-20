@@ -69,8 +69,8 @@ const CURRICULUM_DETAILS = [
     level: 'Advanced',
     format: 'Hackathon Pitch',
     tools: ['ALL TOOLKITS'],
-    outcome: 'IIT Kharagpur Nationally Recognized Certification',
-    longDescription: 'Polishing the personalized AI Study Agent, compiling the roadmap documentation, and pitching their final project to the IIT Kharagpur panel.'
+    outcome: 'E-Cell IIT Kharagpur Nationally Recognized Certification',
+    longDescription: 'Polishing the personalized AI Study Agent, compiling the roadmap documentation, and pitching their final project to the E-Cell IIT Kharagpur panel.'
   }
 ];
 
@@ -143,7 +143,7 @@ export default function Curriculum() {
           </h2>
           <p className="font-sans text-sm md:text-base text-charcoal/80 max-w-2xl">
             Every module builds toward a single capstone: your child's personalised AI
-            Study Agent, submitted to the IIT Kharagpur Hackathon.
+            Study Agent, submitted to the E- Cell IIT Kharagpur Hackathon.
           </p>
         </div>
 

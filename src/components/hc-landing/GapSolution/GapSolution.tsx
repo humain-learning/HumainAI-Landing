@@ -121,7 +121,7 @@ export default function GapSolution() {
                     <span className="font-sans text-sm font-normal text-charcoal/60">not just theory.</span>
                   </span>
                   <span className="mt-0.5 font-sans text-sm text-charcoal/70 leading-normal">
-                    Every student submits a real AI project to the IIT Kharagpur Hackathon.
+                    Every student submits a real AI project to the E- Cell IIT Kharagpur Hackathon.
                   </span>
                 </div>
               </div>
@@ -157,7 +157,7 @@ export default function GapSolution() {
                 <CheckCircleIcon />
                 <div className="flex flex-col">
                   <span className="font-display text-base font-bold text-charcoal">
-                    IIT Kharagpur certificate{' '}
+                    E- Cell IIT Kharagpur certificate{' '}
                     <span className="font-sans text-sm font-normal text-charcoal/60">
                       LinkedIn-shareable, nationally recognised.
                     </span>

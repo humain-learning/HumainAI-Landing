@@ -104,7 +104,10 @@ export default function Herolp() {
             {/* Buttons Group */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
               {/* Enroll Now Button */}
-              <motion.button
+              <motion.a
+                href="https://pages.razorpay.com/humainchamps"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="group flex cursor-pointer items-center justify-between gap-3 rounded-full bg-terracotta py-2 pr-2 pl-6 text-white shadow-md shadow-terracotta/20 transition-all duration-300 hover:bg-[#df935c] hover:shadow-lg hover:shadow-terracotta/30"
@@ -113,7 +116,7 @@ export default function Herolp() {
                 <span className="rounded-full bg-white px-4 py-2 font-display text-sm font-extrabold text-terracotta border border-terracotta/10">
                   ₹11,800
                 </span>
-              </motion.button>
+              </motion.a>
 
               {/* Request Callback Button */}
               <motion.button
