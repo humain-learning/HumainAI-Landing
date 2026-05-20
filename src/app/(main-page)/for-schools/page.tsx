@@ -112,20 +112,32 @@ const MODELS = [
   {
     code: 'A',
     title: 'Full curriculum partnership',
-    body:
-      "HumainChamps runs as a cohort programme inside the school. Sixteen hours of live instruction over eight weeks, slotted into the timetable on the day the school chooses. Senior Humain instructors deliver; school teachers co-observe each session. Pre- and post-cohort assessments map to the six-pillar Humain framework, and the curriculum is aligned to the school's board (CBSE, ICSE, IB, or state).",
+    lead: 'HumainChamps runs as a cohort programme inside the school.',
+    bullets: [
+      'Sixteen hours of live instruction over eight weeks, on the day the school chooses.',
+      'Senior Humain instructors deliver; school teachers co-observe each session.',
+      'Pre- and post-cohort assessment mapped to the six-pillar framework; aligned to CBSE, ICSE, IB, or state board.',
+    ],
   },
   {
     code: 'B',
     title: 'Supplementary modules',
-    body:
-      "The school's existing IT team handles foundational digital-systems work. Humain adds four to eight hours on the layers most IT teachers are not equipped to deliver: ethics, agents and automation, and creating with AI. Sessions slot into the existing computer-lab period, and senior teachers co-observe.",
+    lead: "The school's IT team handles foundational digital-systems work; Humain adds the layers most IT teachers cannot deliver.",
+    bullets: [
+      'Four to eight hours on ethics, agents and automation, and creating with AI.',
+      'Slots into the existing computer-lab period.',
+      'Senior teachers co-observe each session.',
+    ],
   },
   {
     code: 'C',
     title: 'Teacher-training-only',
-    body:
-      "The school's teachers go through HumainEducators (₹8,850 per teacher) and then run the AI literacy curriculum themselves, using the Humain framework, lesson templates, and assessment rubrics. An institutional discount applies at six-plus teachers, and a quarterly review runs in year one.",
+    lead: "The school's teachers go through HumainEducators (₹8,850 per teacher) and run the curriculum themselves.",
+    bullets: [
+      'Humain framework, lesson templates, and assessment rubrics included.',
+      'Institutional discount applies at six-plus teachers.',
+      'Quarterly review runs in year one.',
+    ],
   },
 ];
 
@@ -167,7 +179,7 @@ const DUE_DILIGENCE = [
     q: 'How is bias and the DPDP Act 2023 handled in the curriculum?',
     good: "Specific consent flows and data rules, not 'we cover ethics'.",
     humain:
-      "Module 6 (Ethics, Safety and Responsibility) covers bias and privacy as classroom content. The partnership memo template proposes DPDP-aligned consent forms and an approved-tools list as a template the school operationalises (per the What's included section, not Humain's own operating evidence).",
+      'Module 6 (Ethics, Safety and Responsibility) covers bias and privacy as classroom content. The partnership memo proposes DPDP-aligned consent forms and an approved-tools list as a template the school operationalises (template provision, not operating evidence from a live Humain cohort).',
   },
   {
     q: 'What happens to our teachers\' role?',
@@ -316,46 +328,70 @@ export default function ForSchoolsPage() {
               The CBSE AI curriculum regulatory context for Indian schools
             </h2>
             <p className="max-w-3xl text-base text-[#011813] md:text-lg">
-              Three policy instruments converge on the same operational question. CBSE offers Artificial Intelligence
-              as a Class IX{' '}
-              <a
-                className="underline underline-offset-4"
-                href="https://cbseacademic.nic.in/skill-education.html"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Skill Subject
-              </a>
-              ; schools that adopt it need teaching capacity, classroom-ready content, and an assessment shape that
-              satisfies the board. The{' '}
-              <a
-                className="underline underline-offset-4"
-                href="https://www.education.gov.in/nep/about-nep"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                National Education Policy 2020
-              </a>{' '}
-              calls for coding and computational thinking from middle school onward. The{' '}
-              <a
-                className="underline underline-offset-4"
-                href="https://ncert.nic.in/pdf/NCFSE-2023-August_2023.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                National Curriculum Framework 2023
-              </a>{' '}
-              is the implementation framework under NEP and carries stage-wise outcomes that include digital systems
-              literacy at the middle and secondary stage.
+              Three policy instruments converge on the same operational question for Indian schools.
             </p>
+            <div className="overflow-x-auto rounded-2xl border border-[#E6E6E6] bg-white">
+              <table className="w-full min-w-[760px] border-collapse text-left text-sm md:text-base">
+                <thead className="bg-[#FBFAF6]">
+                  <tr>
+                    <th className="px-5 py-4 font-semibold">Policy instrument</th>
+                    <th className="px-5 py-4 font-semibold">What it sets out</th>
+                    <th className="px-5 py-4 font-semibold">Implication for your school</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-t border-[#E6E6E6] align-top">
+                    <td className="px-5 py-4 font-semibold">
+                      <a
+                        className="underline underline-offset-4"
+                        href="https://cbseacademic.nic.in/skill-education.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        CBSE Skill Subject
+                      </a>
+                    </td>
+                    <td className="px-5 py-4">Artificial Intelligence offered as a Class IX Skill Subject.</td>
+                    <td className="px-5 py-4">Need teaching capacity, classroom-ready content, and a board-satisfying assessment shape.</td>
+                  </tr>
+                  <tr className="border-t border-[#E6E6E6] align-top">
+                    <td className="px-5 py-4 font-semibold">
+                      <a
+                        className="underline underline-offset-4"
+                        href="https://www.education.gov.in/nep/about-nep"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        NEP 2020
+                      </a>
+                    </td>
+                    <td className="px-5 py-4">Coding and computational thinking from middle school onward.</td>
+                    <td className="px-5 py-4">Middle-school AI literacy moves from optional enrichment to expected baseline.</td>
+                  </tr>
+                  <tr className="border-t border-[#E6E6E6] align-top">
+                    <td className="px-5 py-4 font-semibold">
+                      <a
+                        className="underline underline-offset-4"
+                        href="https://ncert.nic.in/pdf/NCFSE-2023-August_2023.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        NCF 2023
+                      </a>
+                    </td>
+                    <td className="px-5 py-4">Stage-wise outcomes covering digital systems literacy at middle and secondary stage.</td>
+                    <td className="px-5 py-4">Implementation framework under NEP; pillar mapping is in the section below.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <p className="max-w-3xl text-base text-[#011813] md:text-lg">
               For ICSE, IB, and state-board schools, the CBSE framework is a reference point rather than a requirement.
-              Parent and college-application expectations converge anyway: a Class 12 student in an ICSE or IB school
-              applying to Indian or international universities in 2027 will be assessed on the same AI-literate
-              baseline as a CBSE graduate.
+              Parent and college-application expectations converge anyway: a Class 12 student applying to Indian or
+              international universities in 2027 is assessed on the same AI-literate baseline as a CBSE graduate.
             </p>
             <p className="max-w-3xl text-base text-[#011813] md:text-lg">
-              The operational question that follows from all three is the same: how do we add AI literacy without
+              The operational question that follows is the same across all three: how do we add AI literacy without
               overloading our teachers or breaking the existing timetable? That is what this page answers.
             </p>
           </div>
@@ -378,7 +414,12 @@ export default function ForSchoolsPage() {
               >
                 <p className="text-secondary-color text-sm font-semibold uppercase tracking-wider">Model {m.code}</p>
                 <h3 className="text-xl font-semibold">{m.title}</h3>
-                <p className="text-sm text-[#011813] md:text-base">{m.body}</p>
+                <p className="text-sm text-[#011813] md:text-base">{m.lead}</p>
+                <ul className="mt-1 list-disc space-y-1.5 pl-5 text-sm text-[#011813] md:text-base">
+                  {m.bullets.map((b) => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
@@ -504,21 +545,26 @@ export default function ForSchoolsPage() {
             <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6">
               <div className="bg-primary-color/15 rounded-2xl p-6">
                 <h3 className="text-lg font-semibold">Included</h3>
-                <p className="mt-2 text-sm text-[#011813] md:text-base">
-                  Live instruction by the senior Humain instructor team; full curriculum documentation, lesson plans,
-                  assessment rubrics, and parent communication templates; pre- and post-cohort assessment; consent
-                  forms and data-handling guidance designed against the{' '}
-                  <a
-                    className="underline underline-offset-4"
-                    href="https://www.meity.gov.in/content/digital-personal-data-protection-act-2023"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Digital Personal Data Protection Act 2023
-                  </a>{' '}
-                  framework; a weekly parent note; one academic-team review meeting per term; and access to the
-                  partner-school community.
-                </p>
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-[#011813] md:text-base">
+                  <li>Live instruction by the senior Humain instructor team.</li>
+                  <li>Full curriculum documentation, lesson plans, and assessment rubrics.</li>
+                  <li>Parent communication templates and a weekly parent note.</li>
+                  <li>Pre- and post-cohort assessment.</li>
+                  <li>
+                    Consent forms and data-handling guidance designed against the{' '}
+                    <a
+                      className="underline underline-offset-4"
+                      href="https://www.meity.gov.in/content/digital-personal-data-protection-act-2023"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Digital Personal Data Protection Act 2023
+                    </a>{' '}
+                    framework.
+                  </li>
+                  <li>One academic-team review meeting per term.</li>
+                  <li>Access to the partner-school community.</li>
+                </ul>
               </div>
               <div className="bg-secondary-color/15 rounded-2xl p-6">
                 <h3 className="text-lg font-semibold">Not included (add-ons)</h3>
@@ -551,15 +597,8 @@ export default function ForSchoolsPage() {
             academic research (Manit and Smriti Jain, M.Ed Harvard; Dr Tapaswini Sahu, PhD JNU plus M.Phil Cambridge),
             and operations management (Rambabu Kondru, PGDM IIM Calcutta).
           </p>
-          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-5">
-            <div className="rounded-2xl bg-[#FBFAF6] p-5 text-center">
-              <p className="text-base font-semibold">Manit Jain</p>
-              <p className="mt-1 text-xs text-[#4E5255]">Co-founder</p>
-            </div>
-            {/* Founder cards 2-5 render once W1-EE-01 packets land */}
-          </div>
           <p className="mt-4 text-xs text-[#4E5255]">
-            The full team appears on the team page when it ships.
+            Full team profiles appear on the team page when it ships.
           </p>
         </section>
 

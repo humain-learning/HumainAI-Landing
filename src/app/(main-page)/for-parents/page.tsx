@@ -158,22 +158,35 @@ const AGE_BANDS = [
   {
     band: '11-12',
     stage: 'Late primary, early middle school',
-    outcomes:
-      'Explain in their own words what a chatbot is and is not; identify three things AI got wrong in a single conversation; use AI for ideation before output; recognise "I\'m not sure" as more useful than confident wrong.',
+    outcomes: [
+      'Explain in their own words what a chatbot is and is not.',
+      'Identify three things AI got wrong in a single conversation.',
+      'Use AI for ideation before output.',
+      'Recognise "I\'m not sure" as more useful than confident wrong.',
+    ],
     fit: 'Pre-nurture only. HumainChamps does not enrol 11-12-year-olds. This band is what to read with your child to prepare for enrolment at 13.',
   },
   {
     band: '13-15',
     stage: 'Middle school (Class 8-10)',
-    outcomes:
-      'Hold a multi-turn conversation with AI that surfaces gaps in their own question; use AI to generate ICSE, CBSE, or state-board practice quizzes; spot a hallucinated source or biased dataset; build a personal study agent tuned to one subject; explain to a sibling or parent why a particular AI answer is wrong.',
+    outcomes: [
+      'Hold a multi-turn AI conversation that surfaces gaps in their own question.',
+      'Generate ICSE, CBSE, or state-board practice quizzes.',
+      'Spot a hallucinated source or biased dataset.',
+      'Build a personal study agent tuned to one subject.',
+      'Explain to a parent why a particular AI answer is wrong.',
+    ],
     fit: 'Main cohort. HumainChamps Level 1 spans this band.',
   },
   {
     band: '16-17',
     stage: 'Senior school (Class 11-12)',
-    outcomes:
-      'Research a topic deeply enough to argue with a domain expert; build automation workflows across school and extracurriculars; recognise where AI use needs disclosure (assignments, board prep, college essays); understand the ethics of AI use in entrance exams, internships, and college applications.',
+    outcomes: [
+      'Research a topic deeply enough to argue with a domain expert.',
+      'Build automation workflows across school and extracurriculars.',
+      'Recognise where AI use needs disclosure (assignments, board prep, college essays).',
+      'Understand the ethics of AI use in entrance exams, internships, and college applications.',
+    ],
     fit: 'Main and advanced cohorts. HumainChamps Level 2 and Level 3 extend the framework with project-heavy applications.',
   },
 ];
@@ -390,7 +403,13 @@ export default function ForParentsPage() {
                   <tr key={row.band} className="border-t border-[#E6E6E6] align-top">
                     <td className="px-5 py-4 font-semibold">{row.band}</td>
                     <td className="px-5 py-4">{row.stage}</td>
-                    <td className="px-5 py-4">{row.outcomes}</td>
+                    <td className="px-5 py-4">
+                      <ul className="list-disc space-y-1 pl-4">
+                        {row.outcomes.map((o) => (
+                          <li key={o}>{o}</li>
+                        ))}
+                      </ul>
+                    </td>
                     <td className="px-5 py-4">{row.fit}</td>
                   </tr>
                 ))}
@@ -501,7 +520,10 @@ export default function ForParentsPage() {
               <li><strong>Tools covered:</strong> 15+ AI tools across ChatGPT, Gemini, Perplexity, Claude, NotebookLM, n8n, Runway, Krea, and Suno.</li>
               <li><strong>Cost:</strong> ₹11,800 per student for Level 1, one-time fee.</li>
               <li>
-                <strong>Partnership:</strong> HumainChamps runs in collaboration with E-Cell at IIT Kharagpur, including an AI Hackathon organised by E-Cell that HumainChamps students participate in. Specific certification details (issuer, certificate name, public verification URL) are confirmed on the discovery call.
+                <strong>Partnership:</strong> in collaboration with E-Cell at IIT Kharagpur, including the AI Hackathon organised by E-Cell.
+              </li>
+              <li>
+                <strong>Recognition:</strong> specific certification details (issuer, certificate name, public verification URL) are confirmed on the discovery call.
               </li>
               <li><strong>Lead instructors:</strong> Rashmi Bhaskaran, Manika Jolly, and Ami Bhansali.</li>
             </ul>
@@ -524,20 +546,24 @@ export default function ForParentsPage() {
             What you get from a live AI course that you don&rsquo;t get from free
           </h2>
           <p className="mt-4 max-w-3xl text-base text-[#011813] md:text-lg">
-            The dominant pattern with free online learning is sampling, not finishing. Parents who default to free
-            YouTube plus ad-hoc ChatGPT for their teen&rsquo;s AI literacy report the same thing: the child gets
-            exposed, but does not form a sustained habit.{' '}
-            <a
-              className="underline underline-offset-4"
-              href="https://www.science.org/doi/10.1126/science.aav7958"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Research on massive open online courses
-            </a>{' '}
-            puts median completion rates in the low single digits; free YouTube plus ChatGPT is structurally similar.
-            No commitment, no feedback, no completion.
+            The dominant pattern with free online learning is sampling, not finishing. The child gets exposed, but does
+            not form a sustained habit.
           </p>
+          <div className="bg-secondary-color/10 border-secondary-color/40 mt-5 max-w-3xl rounded-2xl border-l-4 p-5 md:p-6">
+            <p className="text-sm text-[#011813] md:text-base">
+              <strong>The completion gap:</strong>{' '}
+              <a
+                className="underline underline-offset-4"
+                href="https://www.science.org/doi/10.1126/science.aav7958"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                research on massive open online courses
+              </a>{' '}
+              puts median completion rates in the low single digits. Free YouTube plus ad-hoc ChatGPT is structurally
+              similar: no commitment, no feedback, no completion.
+            </p>
+          </div>
           <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
             <div className="rounded-2xl border border-[#E6E6E6] bg-white p-5">
               <h3 className="text-lg font-semibold">Free YouTube plus ad-hoc ChatGPT</h3>
