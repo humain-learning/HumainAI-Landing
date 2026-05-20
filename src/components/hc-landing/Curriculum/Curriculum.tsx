@@ -20,7 +20,7 @@ const OutcomeIcon = () => (
   </svg>
 );
 
-import { aiRoadmapVideos } from '@/components/courses-students/humain-champs-v2/AiRoadmap/data';
+import { aiRoadmapVideos } from './data';
 
 // Curriculum static details to be combined with the imported aiRoadmapVideos
 const CURRICULUM_DETAILS = [

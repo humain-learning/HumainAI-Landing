@@ -195,10 +195,13 @@ export default function GapSolution() {
 
             {/* CTA Button */}
             <div className="pt-4">
-              <motion.button
+              <motion.a
+                href="https://pages.razorpay.com/humainchamps"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover="hover"
                 whileTap={{ scale: 0.98 }}
-                className="group flex cursor-pointer items-center justify-between gap-6 rounded-full bg-terracotta py-2.5 pr-2.5 pl-7 text-white shadow-sm transition-all duration-300 hover:bg-[#df935c] hover:shadow-md"
+                className="group flex cursor-pointer items-center justify-between gap-6 rounded-full bg-terracotta py-2.5 pr-2.5 pl-7 text-white shadow-sm transition-all duration-300 hover:bg-[#df935c] hover:shadow-md w-fit"
               >
                 <span className="font-display text-base font-bold tracking-wide">
                   Reserve Your Child's Seat
@@ -223,7 +226,7 @@ export default function GapSolution() {
                     />
                   </svg>
                 </motion.div>
-              </motion.button>
+              </motion.a>
             </div>
 
           </div>
