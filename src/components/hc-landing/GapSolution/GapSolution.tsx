@@ -55,10 +55,10 @@ export default function GapSolution() {
               <div className="flex border-l-[3px] border-sage/60 pl-5">
                 <div className="flex flex-col">
                   <span className="font-display text-4xl font-extrabold leading-none text-terracotta sm:text-5xl">
-                    85%
+                    59%
                   </span>
                   <span className="mt-2 font-sans text-sm text-charcoal/60 leading-normal max-w-md">
-                    of jobs by 2030 will require AI literacy{' '}
+                    of the global workforce will require upskilling by 2030 according to{' '}
                     <span className="text-charcoal/40 font-medium font-sans">World Economic Forum</span>
                   </span>
                 </div>
@@ -68,10 +68,10 @@ export default function GapSolution() {
               <div className="flex border-l-[3px] border-sage/60 pl-5">
                 <div className="flex flex-col">
                   <span className="font-display text-4xl font-extrabold leading-none text-terracotta sm:text-5xl">
-                    &lt; 3%
+                     92M
                   </span>
                   <span className="mt-2 font-sans text-sm text-charcoal/60 leading-normal max-w-md">
-                    of Indian school students have received any structured AI education
+                    Roles are expected to be displaced  by technology and automation.
                   </span>
                 </div>
               </div>
@@ -80,7 +80,7 @@ export default function GapSolution() {
               <div className="flex border-l-[3px] border-sage/60 pl-5">
                 <div className="flex flex-col">
                   <span className="font-display text-4xl font-extrabold leading-none text-terracotta sm:text-5xl">
-                    6 wks
+                    15 Hours
                   </span>
                   <span className="mt-2 font-sans text-sm text-charcoal/60 leading-normal max-w-md">
                     is all it takes to go from zero AI knowledge to building your own AI agent
@@ -133,7 +133,7 @@ export default function GapSolution() {
                   <span className="font-display text-base font-bold text-charcoal">
                     15+ real tools mastered{' '}
                     <span className="font-sans text-sm font-normal text-charcoal/60">
-                      ChatGPT, Gemini, Midjourney, Canva AI, ElevenLabs, and more.
+                      ChatGPT, Gemini, NoteBook LM, Canva AI, Heygen, N8N and more.
                     </span>
                   </span>
                 </div>

@@ -42,7 +42,7 @@ const LOGOS_ROW_1 = [
   { name: 'Perplexity', src: '/assets/images/tools/perplexity.svg' },
   { name: 'ChatGPT', src: '/assets/images/tools/chatgpt.svg' },
   { name: 'Grok', src: '/assets/images/tools/grok.svg' },
-  { name: 'Claude', src: '/assets/images/tools/claude.svg' },
+  
 ];
 
 const LOGOS_ROW_2 = [
@@ -100,15 +100,15 @@ export default function Toolkit() {
         <div className="space-y-8 md:space-y-12">
           
           {/* Row 1: Left sliding banner */}
-          <div className="relative w-full">
+          <div className="relative w-full overflow-hidden">
             <Marquee
               gradient={true}
               gradientColor="#e7a572"
               gradientWidth={80}
               speed={45}
-              className="py-1"
+              className="py-1 overflow-hidden"
             >
-              <div className="flex items-center">
+              <div className="flex items-center overflow-hidden">
                 {LOGOS_ROW_1.map((logo) => (
                   <div key={logo.name} className="mx-10 flex items-center justify-center select-none">
                     <img
@@ -123,16 +123,16 @@ export default function Toolkit() {
           </div>
 
           {/* Row 2: Right sliding banner */}
-          <div className="relative w-full">
+          <div className="relative w-full overflow-hidden">
             <Marquee
               gradient={true}
               gradientColor="#e7a572"
               gradientWidth={80}
               speed={40}
               direction="right"
-              className="py-1"
+              className="py-1 overflow-hidden"
             >
-              <div className="flex items-center">
+              <div className="flex items-center overflow-hidden">
                 {LOGOS_ROW_2.map((logo) => (
                   <div key={logo.name} className="mx-10 flex items-center justify-center select-none">
                     <img

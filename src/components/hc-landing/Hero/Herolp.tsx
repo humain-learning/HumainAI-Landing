@@ -305,19 +305,19 @@ export default function Herolp() {
             {/* Main Heading */}
             <div className="space-y-4">
               <h1 className="font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-charcoal sm:text-5xl md:text-[58px]">
-                Your child builds a{' '}
+                Enable your child to{' '}
                 <span className="relative inline-block text-terracotta">
-                  working AI agent
+                  Learn, Create & Think
                   <span className="absolute bottom-1 left-0 h-[4px] w-full rounded-full bg-terracotta/40" />
                 </span>{' '}
-                in 6 weeks.
+                using AI.
               </h1>
             </div>
 
             {/* Subheading Description */}
             <p className="font-sans text-base md:text-lg leading-relaxed text-charcoal/80 max-w-2xl">
-              Humain Champs is India's most credible AI summer camp. Live online classes with E-Cell 
-              IIT Kharagpur certification, real AI tools like ChatGPT & Gemini, and a Harvard-pedigree 
+              Humain Champs is India's most credible AI learning course. Live online classes with a hackathon certified by E-Cell 
+              IIT Kharagpur, real AI tools like ChatGPT & Gemini, and a Harvard-pedigree 
               founder. No coding needed.
             </p>
 
@@ -353,7 +353,7 @@ export default function Herolp() {
             <div className="space-y-3 pt-2">
               <div className="flex items-start gap-2.5 text-sm md:text-base text-charcoal/70">
                 <CheckIcon />
-                <span>Full refund after first 2 sessions If not satisfied, zero questions asked</span>
+                <span>Full refund after first session if not satisfied, zero questions asked</span>
               </div>
               <div className="flex items-start gap-2.5 text-sm md:text-base text-charcoal/70">
                 <CheckIcon />
@@ -362,7 +362,7 @@ export default function Herolp() {
             </div>
 
             {/* Testimonial Popup Card */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
@@ -377,7 +377,7 @@ export default function Herolp() {
                   Just enrolled in the Morning Batch · Mumbai
                 </span>
               </div>
-            </motion.div>
+            </motion.div> */}
 
           </div>
 
@@ -387,47 +387,100 @@ export default function Herolp() {
             {/* The Image Container */}
             <div className="relative w-full max-w-[480px]">
               
-              {/* Asymmetrical leaf shape frame */}
-              <div className="relative overflow-hidden rounded-[160px_60px_160px_60px] border-[6px] border-white shadow-xl shadow-sage/10">
-                <img
-                  src="/assets/images/parents-img.png"
-                  alt="Family studying AI together"
-                  className="h-full w-full object-cover aspect-[4/5] object-center scale-105 hover:scale-110 transition-transform duration-700 ease-out"
-                />
-              </div>
-
-              {/* Floating Leaf Brain Logo Badge (Top-Right) */}
+              {/* Main Parents Image */}
               <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.5, type: 'spring', stiffness: 120 }}
-                className="absolute -top-3 -right-3 z-10 flex h-20 w-20 items-center justify-center rounded-[40px_0px_40px_40px] bg-sage shadow-md"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+                className="relative w-full"
               >
-                <BrainChipIcon />
+                <img
+                  src="/assets/images/parentslp.png"
+                  alt="Family studying AI together"
+                  className="w-full h-auto object-contain drop-shadow-xl"
+                />
               </motion.div>
 
-              {/* Floating green text badges (Left Edge) */}
-              <div className="absolute top-[40%] -left-6 z-10 flex flex-col gap-3">
-                {[
-                  { text: 'NO CODING NEEDED', delay: 0.6 },
-                  { text: 'LIVE CLASSES', delay: 0.7 },
-                  { text: 'IIT CERTIFICATE', delay: 0.8 },
-                ].map((badge, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: badge.delay, type: 'spring', stiffness: 80 }}
-                    whileHover={{ scale: 1.05, x: 5 }}
-                    className="flex items-center gap-1.5 rounded-full border border-sage/20 bg-white/95 px-4 py-2 shadow-md shadow-sage/5 backdrop-blur-sm cursor-default"
-                  >
-                    <CheckIcon />
-                    <span className="font-display text-[10px] font-extrabold tracking-wider text-[#5e714e]">
-                      {badge.text}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
+              {/* Floating Leaf Brain Logo Badge (Top-Right) */}
+              <motion.img
+                src="/assets/images/leaflp.png"
+                alt="AI Leaf Badge"
+                initial={{ scale: 0, rotate: -15 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 0.5, type: 'spring', stiffness: 120, damping: 15 }}
+                whileHover={{ scale: 1.05 }}
+                className="absolute -top-[1%] -right-[1%] w-[32%] z-10 drop-shadow-lg cursor-pointer"
+              />
+
+              {/* SVG Connecting Line */}
+              <svg 
+                className="absolute inset-0 w-full h-full pointer-events-none z-10" 
+                viewBox="0 0 100 100" 
+                preserveAspectRatio="none"
+              >
+                <motion.path
+                  d="M -2.8 63.3 L -2.8 80.3"
+                  fill="none"
+                  stroke="#5e714e"
+                  strokeWidth="1.2"
+                  strokeOpacity="0.45"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+                />
+              </svg>
+
+              {/* Floating green text badges */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6, type: 'spring', stiffness: 100 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                className="absolute top-[61%] left-[-7%] z-20 flex items-center gap-1.5 rounded-full border border-[#aac191]/50 bg-white/95 px-3 py-1.5 shadow-md shadow-sage/5 backdrop-blur-sm cursor-default"
+              >
+                <div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#5e714e]">
+                  <svg className="h-2.5 w-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span className="font-display text-[9.5px] font-extrabold tracking-wider text-[#5e714e] whitespace-nowrap">
+                  NO CODING NEEDED
+                </span>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.7, type: 'spring', stiffness: 100 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                className="absolute top-[69.5%] left-[-7%] z-20 flex items-center gap-1.5 rounded-full border border-[#aac191]/50 bg-white/95 px-3 py-1.5 shadow-md shadow-sage/5 backdrop-blur-sm cursor-default"
+              >
+                <div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#5e714e]">
+                  <svg className="h-2.5 w-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span className="font-display text-[9.5px] font-extrabold tracking-wider text-[#5e714e] whitespace-nowrap">
+                  LIVE CLASSES
+                </span>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8, type: 'spring', stiffness: 100 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                className="absolute top-[78%] left-[-7%] z-20 flex items-center gap-1.5 rounded-full border border-[#aac191]/50 bg-white/95 px-3 py-1.5 shadow-md shadow-sage/5 backdrop-blur-sm cursor-default"
+              >
+                <div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#5e714e]">
+                  <svg className="h-2.5 w-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span className="font-display text-[9.5px] font-extrabold tracking-wider text-[#5e714e] whitespace-nowrap">
+                  IIT CERTIFICATE
+                </span>
+              </motion.div>
 
             </div>
           </div>
