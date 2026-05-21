@@ -13,6 +13,7 @@ import { ChooseBatch } from "@/components/hc-landing/ChooseBatch/ChooseBatch";
 import ParentQuestionsSection from "@/components/hc-landing/Questions/ParentQuestionsSection";
 import BottomCTA from "@/components/hc-landing/BottomCTA/BottomCTA";
 import { Batches } from "@/components/courses-teachers/humain-educators/data/batchData";
+import { Tools } from "@/components/hc-landing/Tools/Tools";
 
 export default function HumainChampsLanding() {
 	return (
@@ -20,10 +21,11 @@ export default function HumainChampsLanding() {
 			<Headerlp />
 			<Herolp />
 			<GapSolution />
-			<Toolkit />
+			<Tools />
 			<Curriculum />
 			<StudentWork />
 			<Credential />
+			{/* <Tools /> */}
 			<InstructorsCollage />
 			<Founder />
 			<ParentsSaying />

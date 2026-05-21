@@ -5,5 +5,9 @@ export default function StandalonePagesLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	return <>{children}<Footer /></>;
+	return (
+		<div className='overflow-x-clip'>
+			{children}
+			<Footer />
+		</div>);
 }

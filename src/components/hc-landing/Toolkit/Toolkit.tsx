@@ -83,7 +83,7 @@ export default function Toolkit() {
         {/* Translucent Banner Card (Zero Coding) */}
         <div className="mx-auto max-w-4xl rounded-2xl border border-white/20 bg-white/[0.07] p-6 md:p-8 text-left backdrop-blur-md mb-16">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-5">
-            <PresenterIcon />
+            <img src='/assets/icons/presenter-icon.svg' alt="Presenter Icon" className="h-12 w-12 shrink-0 opacity-90" />
             <div className="flex flex-col space-y-1">
               <h3 className="font-display text-lg md:text-xl font-extrabold !text-white">
                 No coding. No maths. No technical background needed.
