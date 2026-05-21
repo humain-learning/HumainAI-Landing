@@ -305,11 +305,10 @@ export default function Herolp() {
             {/* Main Heading */}
             <div className="space-y-4">
               <h1 className="font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-charcoal sm:text-5xl md:text-[58px]">
-                Enable your child to{' '}
-                <span className="relative inline-block text-terracotta">
+                Enable your child to
+                <span className="relative inline-block text-terracotta underline decoration-4">
                   Learn, Create & Think
-                  <span className="absolute bottom-1 left-0 h-[4px] w-full rounded-full bg-terracotta/40" />
-                </span>{' '}
+                </span>
                 using AI.
               </h1>
             </div>
