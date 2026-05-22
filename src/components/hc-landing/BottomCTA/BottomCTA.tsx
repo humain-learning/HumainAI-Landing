@@ -1,9 +1,11 @@
 'use client';
 
 import React from 'react';
+import { RequestCallbackModal } from './RequestCallbackModal';
 
 export default function BottomCTA() {
   const [timeLeft, setTimeLeft] = React.useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   React.useEffect(() => {
     // Sync with the exact same timer as Band.tsx
@@ -134,6 +136,7 @@ export default function BottomCTA() {
           {/* Request a Callback Secondary Outline Button */}
           <button
             type="button"
+            onClick={() => setIsModalOpen(true)}
             className="w-full sm:w-auto flex items-center justify-center border-2 border-white/90 bg-transparent hover:bg-white/10 rounded-full px-8 py-3.5 transition-all duration-300 group"
           >
             <span className="font-display text-[15px] sm:text-base font-extrabold text-white group-hover:scale-105 transition-transform duration-300">
@@ -166,6 +169,11 @@ export default function BottomCTA() {
         </div>
 
       </div>
+      
+      <RequestCallbackModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </section>
   );
 }

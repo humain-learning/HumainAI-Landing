@@ -72,9 +72,11 @@ export default function ParentsSaying() {
                   
                   {/* Testimonial Quote Indicator & Title */}
                   <div className="flex items-center gap-3">
-                    <div className="h-8 w-8 bg-terracotta/15 text-terracotta rounded-full flex items-center justify-center font-display text-lg font-bold select-none shrink-0">
-                      “
-                    </div>
+                    <img 
+                      src="/assets/images/Group%20427.png" 
+                      alt="Quote" 
+                      className="h-8 w-8 object-contain shrink-0 select-none" 
+                    />
                     <h3 className="font-display text-sm sm:text-base font-extrabold text-charcoal tracking-tight leading-snug">
                       {review.reviewTitle}
                     </h3>

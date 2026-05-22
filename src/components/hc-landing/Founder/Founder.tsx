@@ -41,46 +41,12 @@ export default function Founder() {
               </p>
             </div>
 
-            {/* Bottom outline stats: 3 leaf outline cards */}
-            <div className="grid grid-cols-3 gap-3.5 sm:gap-5 mt-10 w-full max-w-[480px]">
-
-              {/* Stat 1: #1 school ranking */}
-              <div className="flex flex-col items-center justify-center text-center p-3 sm:p-4 rounded-[32px_10px_32px_32px] border border-[#e7a572]/25 bg-white shadow-sm min-h-[96px] sm:min-h-[110px] select-none hover:border-[#e7a572]/45 transition duration-200">
-                <span className="font-display text-lg sm:text-xl font-extrabold text-terracotta leading-none">
-                  #1
-                </span>
-                <span className="font-sans text-[9px] sm:text-[10px] leading-tight text-charcoal/70 mt-1">
-                  Heritage Schools
-                  <br />
-                  Ranking
-                </span>
-              </div>
-
-              {/* Stat 2: 1,000+ Students */}
-              <div className="flex flex-col items-center justify-center text-center p-3 sm:p-4 rounded-[32px_10px_32px_32px] border border-[#e7a572]/25 bg-white shadow-sm min-h-[96px] sm:min-h-[110px] select-none hover:border-[#e7a572]/45 transition duration-200">
-                <span className="font-display text-lg sm:text-xl font-extrabold text-terracotta leading-none">
-                  1,000+
-                </span>
-                <span className="font-sans text-[9px] sm:text-[10px] leading-tight text-charcoal/70 mt-1">
-                  Students
-                  <br />
-                  trained in AI
-                </span>
-              </div>
-
-              {/* Stat 3: Harvard background */}
-              <div className="flex flex-col items-center justify-center text-center p-3 sm:p-4 rounded-[32px_10px_32px_32px] border border-[#e7a572]/25 bg-white shadow-sm min-h-[96px] sm:min-h-[110px] select-none hover:border-[#e7a572]/45 transition duration-200">
-                <span className="font-display text-lg sm:text-xl font-extrabold text-terracotta leading-none">
-                  Harvard
-                </span>
-                <span className="font-sans text-[9px] sm:text-[10px] leading-tight text-charcoal/70 mt-1">
-                  Education
-                  <br />
-                  background
-                </span>
-              </div>
-
-            </div>
+            {/* Bottom outline stats image */}
+            <img
+              src="/assets/images/manitjainframe.png"
+              alt="Manit Jain Stats"
+              className="mt-10 w-full max-w-[480px] h-auto object-contain"
+            />
 
           </div>
 
