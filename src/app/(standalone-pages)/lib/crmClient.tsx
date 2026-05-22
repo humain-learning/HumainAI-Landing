@@ -174,6 +174,6 @@ export async function submitWebinarLead(
 			'Webinar lead submit error:',
 			error instanceof Error ? error.message : String(error)
 		);
-		return { ok: false, message: 'Error while submitting lead.' };
+		return { ok: false, message: 'An error occured, please try again. If issue persists, call us at +918130023688' };
 	}
 }
