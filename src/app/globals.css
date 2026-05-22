@@ -81,6 +81,18 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
+/* Prevent any scrollbars or scroll buttons in marquees */
+.rfm-marquee-container, .rfm-marquee {
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+.rfm-marquee-container::-webkit-scrollbar, .rfm-marquee::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
 .border-gradient {
   position: relative;
   border-radius: 12px;

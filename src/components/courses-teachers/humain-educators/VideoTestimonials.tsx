@@ -2,7 +2,7 @@
 import React from 'react';
 import { VideoCard } from "ui/VideoCard";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+import 'swiper/swiper.css';
 import { videoTestimonials } from "./data/videotestimonials";
 import { usePxCalculator } from '../../hooks/usePxCalculator';
 

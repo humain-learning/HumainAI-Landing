@@ -1,0 +1,190 @@
+'use client';
+
+import React, { useRef, useState } from 'react';
+import { VideoCard } from '@/components/ui/VideoCard';
+import { studentVideos } from './data'
+
+// Custom Graduation Cap / Badge Icon for professional student creations
+const SuccessBadgeIcon = () => (
+  <svg
+    className="h-4.5 w-4.5 text-white/95 shrink-0 mt-0.5"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth="2.5"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+    />
+  </svg>
+);
+
+// High-fidelity description mappings for each student creation
+const CREATION_DESCRIPTIONS: Record<string, string> = {
+  'Amayerah': 'Built a personalized AI Study Companion that generates CBSE Grade 9 mock papers, summarizes textbook chapters, and quizzes her on active recall.',
+  'Diya Gosain': 'Built an interactive AI History Tutor that conducts gamified mock quizzes and explains ancient civilizations through immersive storytelling.',
+  'Tanay Mohan': 'Designed an automated AI Essay writing assistant that helps high schoolers structure, proofread, and elevate their analytical writing.',
+  'Avanindra Kumar Singh': 'Created a high-fidelity AI Chemistry Assistant capable of balancing equations, explaining reaction mechanisms, and drawing 3D formulas.',
+};
+
+export default function StudentWork() {
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // Monitor horizontal scroll position to dynamically update the active segment index
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const scrollLeft = scrollRef.current.scrollLeft;
+      // Card width (350px) + gap (24px)
+      const cardWidth = 374;
+      const index = Math.round(scrollLeft / cardWidth);
+      setActiveIndex(Math.min(Math.max(index, 0), studentVideos.length - 1));
+    }
+  };
+
+  // Programmatically scroll the snapping carousel by one card width
+  const scrollNext = () => {
+    if (scrollRef.current) {
+      const container = scrollRef.current;
+      const cardWidth = 374;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+
+      // If at the end, wrap smoothly back to the beginning
+      if (container.scrollLeft >= maxScroll - 10) {
+        container.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      }
+    }
+  };
+
+  return (
+    <section className="w-full bg-sage py-16 md:py-24 relative overflow-hidden">
+      {/* Decorative background grid/dots in white with low opacity */}
+      <div className="absolute inset-0 -z-10 opacity-[0.05]"
+        style={{
+          backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+          backgroundSize: '24px 24px'
+        }}
+      />
+
+      <div className="mx-auto w-full max-w-7xl px-6 md:px-12 lg:px-16">
+
+        {/* Centered Title Area */}
+        <div className="flex flex-col items-center space-y-3.5 mb-16 text-center">
+          <div className="h-[3px] w-12 bg-white rounded-full" />
+          <span className="font-display text-xs font-extrabold tracking-widest !text-white/90">
+            STUDENT CREATIONS
+          </span>
+          <h2 className="font-display text-3xl font-extrabold leading-tight !text-white sm:text-4xl md:text-5xl max-w-4xl">
+            Hear from our Champs!
+          </h2>
+          <p className="font-sans text-sm md:text-base !text-white/85 max-w-2xl">
+            See real, working AI projects built by students just like your child.
+            No complex coding, just pure practical creativity.
+          </p>
+        </div>
+
+        {/* Carousel Snapping Viewport */}
+        <div className="relative">
+          <div
+            ref={scrollRef}
+            onScroll={handleScroll}
+            className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 learn-scrollbar scroll-smooth"
+          >
+            {studentVideos.map((video, idx) => (
+              <div
+                key={video.id}
+                className="w-[325px] md:w-[350px] shrink-0 snap-start flex flex-col space-y-5 bg-white/[0.08] backdrop-blur-md rounded-3xl p-4 border border-white/15 select-none"
+              >
+
+                {/* 1. Vimeo Video Media using existing VideoCard */}
+                <div className="w-full rounded-2xl overflow-hidden shadow-sm bg-white/10">
+                  <VideoCard
+                    video={{
+                      id: video.id,
+                      url: video.url,
+                      title: video.name + "'s AI Project",
+                    }}
+                    cardWidth="w-full"
+                    index={idx}
+                    autoplay={false}
+                  />
+                </div>
+
+                {/* 2. Badge & Title */}
+                <div className="space-y-1 pt-1 px-1">
+                  <span className="block font-display text-[11px] font-extrabold tracking-wider text-[#ffd3b4] uppercase">
+                    E- Cell IIT HACKATHON SUBMISSION
+                  </span>
+                  <h3 className="font-display text-xl font-extrabold !text-white tracking-tight">
+                    {video.name}
+                  </h3>
+                </div>
+
+                {/* 3. Description */}
+                <p className="font-sans text-[13.5px] leading-relaxed !text-white/80 px-1 min-h-[64px]">
+                  {CREATION_DESCRIPTIONS[video.name] || 'Built an advanced AI study companion to automate note-taking, active recall testing, and exam preparation.'}
+                </p>
+
+                {/* 4. Outcome Badge Info */}
+                <div className="flex items-start gap-2.5 pt-4 pb-1 px-1 mt-auto border-t border-white/10">
+                  <SuccessBadgeIcon />
+                  <span className="font-sans text-[12.5px] font-semibold !text-white/90">
+                    ✓ E-CELL IIT KHARAGPUR HACKATHON PITCHED
+                  </span>
+                </div>
+
+              </div>
+            ))}
+
+            {/* Next Button floating card integrated at the very right of scrolling carousel */}
+            <div className="w-[100px] shrink-0 snap-start flex items-center justify-start pl-4 select-none">
+              <button
+                onClick={scrollNext}
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-terracotta border border-gray-150 shadow-md hover:scale-105 hover:shadow-lg transition duration-200 cursor-pointer"
+                aria-label="Next project"
+              >
+                <svg
+                  className="h-5 w-5 stroke-[2.5]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Dynamic bottom pagination segment bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-12 mt-4 border-t border-white/20">
+          <span className="font-display text-base font-extrabold !text-white select-none">
+            Explore Student Projects
+          </span>
+          <div className="flex items-center gap-1.5 select-none">
+            {studentVideos.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => {
+                  if (scrollRef.current) {
+                    const cardWidth = 374;
+                    scrollRef.current.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
+                  }
+                }}
+                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${i === activeIndex ? 'w-14 bg-white' : 'w-7 bg-white/30 hover:bg-white/50'
+                  }`}
+                aria-label={`Go to project ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
