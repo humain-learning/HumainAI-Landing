@@ -3,7 +3,13 @@ export const aiRoadmapVideos = [
         id: 1,
         url: "https://player.vimeo.com/video/1143055547",
         title: "Module 1",
-        description: "The AI Revolution"
+        description: "The AI Revolution",
+		duration: '56 days',
+		level: 'Beginner',
+		format: 'Beginner',
+		tools: ['CHATGPT', 'GEMINI', 'PERPLEXITY'],
+		outcome: 'Students can explain how AI works to their classmates',
+		longDescription: 'Students learn what AI actually is, how it works, and how to think about it critically not just use it blindly. Sets the foundation for every module ahead.'
     },
     {
         id: 2,

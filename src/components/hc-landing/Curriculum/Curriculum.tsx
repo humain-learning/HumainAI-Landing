@@ -2,6 +2,11 @@
 
 import React, { useRef, useState } from 'react';
 import { VideoCard } from '@/components/ui/VideoCard';
+import { usePxCalculator } from 'hooks/usePxCalculator';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper';
+import "swiper/swiper.css";
+import { SwipeProgress } from "@/components/ui/SwipeProgress";
 
 // A high-quality icon for the key learning outcome
 const OutcomeIcon = () => (
@@ -97,36 +102,120 @@ const MODULES_DATA = aiRoadmapVideos.map((video, idx) => {
   };
 });
 
+const render_modules_slides = () => (
+	MODULES_DATA.map((mod, idx) => (
+		<SwiperSlide 
+            key={idx} 
+			className="!w-auto"
+        >
+		<div
+		key={mod.code}
+		className="w-[325px] md:w-[350px] shrink-0 snap-start flex flex-col space-y-5 bg-white rounded-3xl p-1 select-none"
+		>
+		
+		{/* 1. Vimeo Video Media using existing VideoCard */}
+		<div className="w-full rounded-2xl overflow-hidden shadow-sm">
+			<VideoCard
+			video={mod.video}
+			cardWidth="w-full"
+			index={idx}
+			autoplay={false}
+			/>
+		</div>
+
+		{/* 2. Badge & Title */}
+		<div className="space-y-1 pt-1">
+			<span className="block font-display text-[11px] font-extrabold tracking-wider text-terracotta uppercase">
+			{mod.code}
+			</span>
+			<h3 className="font-display text-xl font-extrabold text-charcoal tracking-tight">
+			{mod.title}
+			</h3>
+		</div>
+
+		{/* 3. Description */}
+		<p className="font-sans text-[13.5px] leading-relaxed text-charcoal/70 min-h-[64px]">
+			{mod.description}
+		</p>
+
+		{/* 4. Orange Bullet Specs */}
+		<div className="flex flex-col space-y-1.5 font-sans text-sm text-charcoal/80">
+			<div className="flex items-center gap-2">
+			<span className="h-1.5 w-1.5 rounded-full bg-terracotta shrink-0" />
+			<span>
+				<span className="font-bold text-charcoal">Duration:</span> {mod.duration}
+			</span>
+			</div>
+			<div className="flex items-center gap-2">
+			<span className="h-1.5 w-1.5 rounded-full bg-terracotta shrink-0" />
+			<span>
+				<span className="font-bold text-charcoal">Level:</span> {mod.level}
+			</span>
+			</div>
+			<div className="flex items-center gap-2">
+			<span className="h-1.5 w-1.5 rounded-full bg-terracotta shrink-0" />
+			<span>
+				<span className="font-bold text-charcoal">Format:</span> {mod.format}
+			</span>
+			</div>
+		</div>
+
+		{/* 5. Tools Tag Row */}
+		<div className="flex flex-wrap gap-2.5 pt-1">
+			{mod.tools.map((tool) => (
+			<span
+				key={tool}
+				className="px-3 py-1 text-[10px] font-display font-extrabold tracking-wider bg-[#f8f9fa] border border-sage/30 text-[#5e714e] rounded-full"
+			>
+				{tool}
+			</span>
+			))}
+		</div>
+
+		{/* 6. Outcome Row */}
+		<div className="flex items-start gap-2.5 pt-3 border-t border-gray-100">
+			<OutcomeIcon />
+			<span className="font-sans text-[12.5px] leading-normal text-charcoal/60">
+			{mod.outcome}
+			</span>
+		</div>
+
+		</div>
+		</SwiperSlide>
+	))
+);
+
 export default function Curriculum() {
-  const scrollRef = useRef<HTMLDivElement | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+//   const scrollRef = useRef<HTMLDivElement | null>(null);
+  	const [activeIndex, setActiveIndex] = useState(0);
+	const pxCount = usePxCalculator(1);
 
-  // Monitor horizontal scroll position to dynamically light up the timeline segments
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const scrollLeft = scrollRef.current.scrollLeft;
-      // Card width (350px) + gap (24px)
-      const cardWidth = 374;
-      const index = Math.round(scrollLeft / cardWidth);
-      setActiveIndex(Math.min(Math.max(index, 0), MODULES_DATA.length - 1));
-    }
-  };
+//   // Monitor horizontal scroll position to dynamically light up the timeline segments
+//   const handleScroll = () => {
+//     if (scrollRef.current) {
+//       const scrollLeft = scrollRef.current.scrollLeft;
+//       // Card width (350px) + gap (24px)
+//       const cardWidth = 374;
+//       const index = Math.round(scrollLeft / cardWidth);
+//       setActiveIndex(Math.min(Math.max(index, 0), MODULES_DATA.length - 1));
+//     }
+//   };
 
-  // Programmatically scroll the snapping carousel by one card width
-  const scrollNext = () => {
-    if (scrollRef.current) {
-      const container = scrollRef.current;
-      const cardWidth = 374;
-      const maxScroll = container.scrollWidth - container.clientWidth;
+//   // Programmatically scroll the snapping carousel by one card width
+//   const scrollNext = () => {
+//     if (scrollRef.current) {
+//       const container = scrollRef.current;
+//       const cardWidth = 374;
+//       const maxScroll = container.scrollWidth - container.clientWidth;
       
-      // If at the end, wrap smoothly back to the beginning
-      if (container.scrollLeft >= maxScroll - 10) {
-        container.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        container.scrollBy({ left: cardWidth, behavior: 'smooth' });
-      }
-    }
-  };
+//       // If at the end, wrap smoothly back to the beginning
+//       if (container.scrollLeft >= maxScroll - 10) {
+//         container.scrollTo({ left: 0, behavior: 'smooth' });
+//       } else {
+//         container.scrollBy({ left: cardWidth, behavior: 'smooth' });
+//       }
+//     }
+//   };
 
   return (
     <section className="w-full bg-white py-16 md:py-24">
@@ -150,88 +239,24 @@ export default function Curriculum() {
         {/* Carousel Snapping Viewport */}
         <div className="relative">
           <div
-            ref={scrollRef}
-            onScroll={handleScroll}
+            // ref={scrollRef}
+            // onScroll={handleScroll}
             className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 learn-scrollbar scroll-smooth"
           >
-            {MODULES_DATA.map((mod, idx) => (
-              <div
-                key={mod.code}
-                className="w-[325px] md:w-[350px] shrink-0 snap-start flex flex-col space-y-5 bg-white rounded-3xl p-1 select-none"
-              >
-                
-                {/* 1. Vimeo Video Media using existing VideoCard */}
-                <div className="w-full rounded-2xl overflow-hidden shadow-sm">
-                  <VideoCard
-                    video={mod.video}
-                    cardWidth="w-full"
-                    index={idx}
-                    autoplay={false}
-                  />
-                </div>
-
-                {/* 2. Badge & Title */}
-                <div className="space-y-1 pt-1">
-                  <span className="block font-display text-[11px] font-extrabold tracking-wider text-terracotta uppercase">
-                    {mod.code}
-                  </span>
-                  <h3 className="font-display text-xl font-extrabold text-charcoal tracking-tight">
-                    {mod.title}
-                  </h3>
-                </div>
-
-                {/* 3. Description */}
-                <p className="font-sans text-[13.5px] leading-relaxed text-charcoal/70 min-h-[64px]">
-                  {mod.description}
-                </p>
-
-                {/* 4. Orange Bullet Specs */}
-                <div className="flex flex-col space-y-1.5 font-sans text-sm text-charcoal/80">
-                  <div className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-terracotta shrink-0" />
-                    <span>
-                      <span className="font-bold text-charcoal">Duration:</span> {mod.duration}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-terracotta shrink-0" />
-                    <span>
-                      <span className="font-bold text-charcoal">Level:</span> {mod.level}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-terracotta shrink-0" />
-                    <span>
-                      <span className="font-bold text-charcoal">Format:</span> {mod.format}
-                    </span>
-                  </div>
-                </div>
-
-                {/* 5. Tools Tag Row */}
-                <div className="flex flex-wrap gap-2.5 pt-1">
-                  {mod.tools.map((tool) => (
-                    <span
-                      key={tool}
-                      className="px-3 py-1 text-[10px] font-display font-extrabold tracking-wider bg-[#f8f9fa] border border-sage/30 text-[#5e714e] rounded-full"
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-
-                {/* 6. Outcome Row */}
-                <div className="flex items-start gap-2.5 pt-3 border-t border-gray-100">
-                  <OutcomeIcon />
-                  <span className="font-sans text-[12.5px] leading-normal text-charcoal/60">
-                    {mod.outcome}
-                  </span>
-                </div>
-
-              </div>
-            ))}
+            <Swiper
+				spaceBetween={20}
+				slidesPerView="auto"
+				loop={false}
+				slidesOffsetBefore={pxCount} 
+				slidesOffsetAfter={pxCount}
+				onSwiper={(swiper: SwiperType) => setActiveIndex(swiper.activeIndex)}
+				onSlideChange={(swiper: SwiperType) => setActiveIndex(swiper.activeIndex)}
+			>
+                    {render_modules_slides()}
+			</Swiper>
 
             {/* Next Button floating card integrated at the very right of scrolling carousel */}
-            <div className="w-[100px] shrink-0 snap-start flex items-center justify-start pl-4 select-none">
+            {/* <div className="w-[100px] shrink-0 snap-start flex items-center justify-start pl-4 select-none">
               <button
                 onClick={scrollNext}
                 className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-terracotta border border-gray-150 shadow-md hover:scale-105 hover:shadow-lg transition duration-200 cursor-pointer"
@@ -246,13 +271,13 @@ export default function Curriculum() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </button>
-            </div>
+            </div> */}
 
           </div>
         </div>
 
         {/* Dynamic bottom pagination segment bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-12 mt-4 border-t border-gray-100">
+        {/* <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-12 mt-4 border-t border-gray-100">
           <span className="font-display text-base font-extrabold text-charcoal select-none">
             Complete Learning Journey
           </span>
@@ -273,8 +298,9 @@ export default function Curriculum() {
               />
             ))}
           </div>
-        </div>
-
+        </div> */}
+		<SwipeProgress totalSlides={MODULES_DATA.length} activeIndex={activeIndex} visibleOnLarge={false}/>
+			
       </div>
     </section>
   );

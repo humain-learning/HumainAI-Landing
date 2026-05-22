@@ -59,10 +59,10 @@ export default function Herolp() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#FAFAF9] py-12 md:py-20 lg:py-24">
+    <section className="relative w-full overflow-hidden bg-white pt-12 md:pt-20 lg:pt-24">
       {/* Background soft glow elements */}
-      <div className="absolute top-0 right-0 -z-10 h-[500px] w-[500px] rounded-full bg-sage/5 blur-[120px]" />
-      <div className="absolute bottom-0 left-0 -z-10 h-[600px] w-[600px] rounded-full bg-terracotta/5 blur-[150px]" />
+      {/* <div className="absolute top-0 right-0 -z-10 h-[500px] w-[500px] rounded-full bg-sage/5 blur-[120px]" /> */}
+      {/* <div className="absolute bottom-0 left-0 -z-10 h-[600px] w-[600px] rounded-full bg-terracotta/5 blur-[150px]" /> */}
 
       <div className="mx-auto w-full max-w-7xl px-6 md:px-12 lg:px-16">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
@@ -82,7 +82,7 @@ export default function Herolp() {
               </span>
               <span className="flex items-center gap-1.5 rounded-full bg-[#aac1911a] px-3.5 py-1.5 text-xs font-semibold tracking-wider text-[#5e714e]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#5e714e]" />
-                GRADES 8ᵀH - 12ᵀH
+                GRADES 8 - 12
               </span>
             </div>
 
@@ -105,7 +105,7 @@ export default function Herolp() {
             </p>
 
             {/* Buttons Group */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <div className="flex flex-col md:flex-row sm:items-center text-sm gap-4 pt-2 ">
               {/* Enroll Now Button */}
               <motion.a
                 href="https://pages.razorpay.com/humainchamps"
@@ -115,7 +115,7 @@ export default function Herolp() {
                 whileTap={{ scale: 0.98 }}
                 className="group flex cursor-pointer items-center justify-between gap-3 rounded-full bg-terracotta py-2 pr-2 pl-6 text-white shadow-md shadow-terracotta/20 transition-all duration-300 hover:bg-[#df935c] hover:shadow-lg hover:shadow-terracotta/30"
               >
-                <span className="font-display text-base font-bold tracking-wide">Enroll Now</span>
+                <span className="font-display text-base font-bold tracking-wide whitespace-nowrap">Enroll Now</span>
                 <span className="rounded-full bg-white px-4 py-2 font-display text-sm font-extrabold text-terracotta border border-terracotta/10">
                   ₹11,800
                 </span>

@@ -45,7 +45,7 @@ export const GameChanger = () => {
                 <hr className="w-1/2 md:w-1/4 lg:w-1/8 border-t-4 border-terracotta mb-10" />
           	</div>
 			
-            {/* <Swiper
+            <Swiper
 				spaceBetween={10}
 				breakpoints={{
 					500: { spaceBetween: 14 },
@@ -62,7 +62,7 @@ export const GameChanger = () => {
 				onSlideChange={(swiper: SwiperType) => setActiveIndex(swiper.activeIndex)}
 			>
 				{renderFeatureSlides()}
-			</Swiper> */}
+			</Swiper>
 			<SwipeProgress totalSlides={features.length} activeIndex={activeIndex} visibleOnLarge={false}/>
 		</div>
 	)
