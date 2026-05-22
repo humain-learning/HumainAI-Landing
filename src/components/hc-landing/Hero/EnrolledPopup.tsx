@@ -58,7 +58,7 @@ export function EnrolledPopup() {
     const hiddenTimeout = setTimeout(() => {
       setCurrentIndex((prev) => (prev + 1) % MOCK_ENROLLMENTS.length);
       setIsVisible(true);
-    }, 4000);
+    }, 60000);
 
     return () => clearTimeout(hiddenTimeout);
   }, [isVisible, isDismissed]);
