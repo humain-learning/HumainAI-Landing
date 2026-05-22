@@ -17,7 +17,7 @@ export default function ParentsSaying() {
               PARENT REVIEWS
             </span>
           </div>
-          <h2 className="font-display text-3xl font-extrabold leading-tight text-charcoal sm:text-4xl md:text-5xl">
+          <h2 className="font-display font-extrabold leading-tight text-charcoal text-3xl md:text-5xl">
             What parents are saying
           </h2>
           <div className="bg-[#fafaf9] border border-gray-150 px-4 py-2 rounded-2xl shadow-sm inline-block select-none mt-2">
