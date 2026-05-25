@@ -25,7 +25,7 @@ export default async function HumainChampsLanding() {
 		getCurrentActiveDiscount(template_id),
 	]);
 	const batches = Array.isArray(batchesData?.message) ? batchesData.message : [];
-
+	
 	return (
 		<>
 			<Headerlp />
@@ -35,7 +35,6 @@ export default async function HumainChampsLanding() {
 			<Curriculum />
 			<StudentWork />
 			<Credential />
-			{/* <Tools /> */}
 			<InstructorsCollage />
 			<Founder />
 			<ParentsSaying />
