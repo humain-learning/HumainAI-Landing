@@ -2,10 +2,6 @@
 
 import React, { useRef, useState } from 'react';
 import { VideoCard } from '@/components/ui/VideoCard';
-<<<<<<< Updated upstream
-=======
-import { SwipeProgress } from '@/components/ui/SwipeProgress';
->>>>>>> Stashed changes
 import { studentVideos } from './data'
 
 // Custom Graduation Cap / Badge Icon for professional student creations
@@ -37,7 +33,6 @@ export default function StudentWork() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-<<<<<<< Updated upstream
   // Monitor horizontal scroll position to dynamically update the active segment index
   const handleScroll = () => {
     if (scrollRef.current) {
@@ -62,15 +57,6 @@ export default function StudentWork() {
       } else {
         container.scrollBy({ left: cardWidth, behavior: 'smooth' });
       }
-=======
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      if (scrollWidth <= clientWidth) return;
-      const scrollPercentage = scrollLeft / (scrollWidth - clientWidth);
-      const index = Math.round(scrollPercentage * (studentVideos.length - 1));
-      setActiveIndex(Math.min(Math.max(index, 0), studentVideos.length - 1));
->>>>>>> Stashed changes
     }
   };
 
@@ -109,14 +95,7 @@ export default function StudentWork() {
             className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 learn-scrollbar scroll-smooth"
           >
             {studentVideos.map((video, idx) => (
-<<<<<<< Updated upstream
-              <div
-                key={video.id}
-                className="w-[325px] md:w-[350px] shrink-0 snap-start flex flex-col space-y-5 bg-white/[0.08] backdrop-blur-md rounded-3xl p-4 border border-white/15 select-none"
-              >
-=======
               <div key={video.id} className="w-[325px] md:w-[350px] h-[620px] shrink-0 snap-start flex flex-col space-y-5 bg-white/[0.08] backdrop-blur-md rounded-3xl p-4 border border-white/15 select-none">
->>>>>>> Stashed changes
 
                 {/* 1. Vimeo Video Media using existing VideoCard */}
                 <div className="w-full rounded-2xl overflow-hidden shadow-sm bg-white/10">
@@ -157,7 +136,6 @@ export default function StudentWork() {
 
               </div>
             ))}
-<<<<<<< Updated upstream
 
             {/* Next Button floating card integrated at the very right of scrolling carousel */}
             <div className="w-[100px] shrink-0 snap-start flex items-center justify-start pl-4 select-none">
@@ -177,8 +155,6 @@ export default function StudentWork() {
               </button>
             </div>
 
-=======
->>>>>>> Stashed changes
           </div>
         </div>
 
