@@ -2,6 +2,10 @@
 
 import React, { useRef, useState } from 'react';
 import { VideoCard } from '@/components/ui/VideoCard';
+<<<<<<< Updated upstream
+=======
+import { SwipeProgress } from "@/components/ui/SwipeProgress";
+>>>>>>> Stashed changes
 
 // A high-quality icon for the key learning outcome
 const OutcomeIcon = () => (
@@ -28,49 +32,55 @@ const CURRICULUM_DETAILS = [
     duration: '56 days',
     level: 'Beginner',
     format: 'Beginner',
-    tools: ['CHATGPT', 'GEMINI', 'PERPLEXITY'],
+    tools: ['CHATGPT', 'GEMINI', 'HEYGEN'],
     outcome: 'Students can explain how AI works to their classmates',
-    longDescription: 'Students learn what AI actually is, how it works, and how to think about it critically not just use it blindly. Sets the foundation for every module ahead.'
+    longDescription: 'Learn what AI is, how it works, where it is used today, and where its limitations lie while exploring beginner-friendly AI tools.',
+    title: 'The AI Revolution'
   },
   {
     duration: '56 days',
     level: 'Beginner',
     format: 'Beginner',
-    tools: ['CHATGPT', 'NOTEBOOKLM'],
+    tools: ['PERPLEXITY', 'CHATGPT', 'GEMINI'],
     outcome: 'Students build their own custom study notes dynamic tutor',
-    longDescription: 'Using AI to take smarter notes, create personalised flashcards, generate practice questions, and study their syllabus more efficiently.'
+    longDescription: 'Use AI as a study partner to deepen understanding, clear misconceptions, and generate quizzes and worksheets for smarter learning.',
+    title: 'Learning Better with AI'
   },
   {
     duration: '56 days',
     level: 'Intermediate',
     format: 'Hands-on Project',
-    tools: ['MIDJOURNEY', 'CANVA AI', 'KREA'],
+    tools: ['NOTEBOOKLM', 'GROK', 'CHATGPT', 'GAMMA'],
     outcome: 'Students present a designed website mock hackathon deck',
-    longDescription: 'Mastering generative art and visual storytelling. Using AI to design presentations, website layouts, posters, and professional graphics.'
+    longDescription: 'Learn how to use AI for feedback, exam preparation, quiz generation, performance analysis, and becoming college-ready.',
+    title: 'Studying Smarter with AI'
   },
   {
     duration: '56 days',
     level: 'Intermediate',
     format: 'Hands-on Project',
-    tools: ['ELEVENLABS', 'RUNWAY', 'SUNO'],
+    tools: ['KREA', 'RUNWAY', 'SUNO'],
     outcome: 'Students submit a fully produced 1-min AI video commercial',
-    longDescription: 'Creating professional synthetic voices, writing scripts with LLMs, and editing/generating high-fidelity videos using Runway and ElevenLabs.'
+    longDescription: 'Turn imagination into reality by creating images, videos, music, stories, and creative projects with AI — while keeping humans at the center of creativity.',
+    title: 'Creating with AI'
   },
   {
     duration: '56 days',
     level: 'Advanced',
     format: 'Live Challenge',
-    tools: ['N8N', 'CHATGPT API'],
+    tools: ['TEACHABLE MACHINE'],
     outcome: 'Students connect custom automations to trigger research agents',
-    longDescription: 'Introduction to zero-code automation tools. Building custom AI agents that connect multiple web apps and run tasks on auto-pilot.'
+    longDescription: 'Understand what happens behind the scenes of AI and build awareness around bias, misinformation, privacy, and responsible AI use.',
+    title: 'Learning How AI Works and Its Ethics'
   },
   {
     duration: '56 days',
     level: 'Advanced',
     format: 'Hackathon Pitch',
-    tools: ['ALL TOOLKITS'],
+    tools: ['N8N'],
     outcome: 'E-Cell IIT Kharagpur Nationally Recognized Certification',
-    longDescription: 'Polishing the personalized AI Study Agent, compiling the roadmap documentation, and pitching their final project to the E-Cell IIT Kharagpur panel.'
+    longDescription: 'Design and build your own AI agents, including character-based, email, and fun-fact agents using automation workflows.',
+    title: 'Building AI Agents'
   }
 ];
 
@@ -82,7 +92,7 @@ const MODULES_DATA = aiRoadmapVideos.map((video, idx) => {
   
   return {
     code: formattedCode,
-    title: video.description,
+    title: details.title || video.description,
     description: details.longDescription,
     duration: details.duration,
     level: details.level,
@@ -97,10 +107,72 @@ const MODULES_DATA = aiRoadmapVideos.map((video, idx) => {
   };
 });
 
+<<<<<<< Updated upstream
+=======
+const render_modules_slides = () => (
+	MODULES_DATA.map((mod, idx) => (
+		<div
+		key={mod.code}
+		className="w-[325px] md:w-[350px] shrink-0 snap-start flex flex-col space-y-5 bg-white rounded-3xl p-1 select-none"
+		>
+		
+		{/* 1. Vimeo Video Media using existing VideoCard */}
+		<div className="w-full rounded-2xl overflow-hidden shadow-sm">
+			<VideoCard
+			video={mod.video}
+			cardWidth="w-full"
+			index={idx}
+			autoplay={false}
+			/>
+		</div>
+
+		{/* 2. Badge & Title */}
+		<div className="space-y-1 pt-1">
+			<span className="block font-display text-[11px] font-extrabold tracking-wider text-terracotta uppercase">
+			{mod.code}
+			</span>
+			<h3 className="font-display text-xl font-extrabold text-charcoal tracking-tight">
+			{mod.title}
+			</h3>
+		</div>
+
+		{/* 3. Description */}
+		<p className="font-sans text-[13.5px] leading-relaxed text-charcoal/70 min-h-[64px]">
+			{mod.description}
+		</p>
+
+
+
+		{/* 5. Tools Tag Row */}
+		<div className="flex flex-wrap gap-2.5 pt-1">
+			{mod.tools.map((tool) => (
+			<span
+				key={tool}
+				className="px-3 py-1 text-[10px] font-display font-extrabold tracking-wider bg-[#f8f9fa] border border-sage/30 text-[#5e714e] rounded-full"
+			>
+				{tool}
+			</span>
+			))}
+		</div>
+
+		{/* 6. Outcome Row */}
+		<div className="flex items-start gap-2.5 pt-3 border-t border-gray-100">
+			<OutcomeIcon />
+			<span className="font-sans text-[12.5px] leading-normal text-charcoal/60">
+			{mod.outcome}
+			</span>
+		</div>
+
+		</div>
+	))
+);
+
+>>>>>>> Stashed changes
 export default function Curriculum() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
+<<<<<<< Updated upstream
   // Monitor horizontal scroll position to dynamically light up the timeline segments
   const handleScroll = () => {
     if (scrollRef.current) {
@@ -127,6 +199,17 @@ export default function Curriculum() {
       }
     }
   };
+=======
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      if (scrollWidth <= clientWidth) return;
+      const scrollPercentage = scrollLeft / (scrollWidth - clientWidth);
+      const index = Math.round(scrollPercentage * (MODULES_DATA.length - 1));
+      setActiveIndex(Math.min(Math.max(index, 0), MODULES_DATA.length - 1));
+    }
+  };
+>>>>>>> Stashed changes
 
   return (
     <section className="w-full bg-white py-16 md:py-24">
@@ -154,6 +237,7 @@ export default function Curriculum() {
             onScroll={handleScroll}
             className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 learn-scrollbar scroll-smooth"
           >
+<<<<<<< Updated upstream
             {MODULES_DATA.map((mod, idx) => (
               <div
                 key={mod.code}
@@ -248,6 +332,9 @@ export default function Curriculum() {
               </button>
             </div>
 
+=======
+            {render_modules_slides()}
+>>>>>>> Stashed changes
           </div>
         </div>
 

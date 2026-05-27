@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function Founder() {
   return (
-    <section className="w-full bg-white py-16 md:py-24 border-t border-gray-100 overflow-hidden">
+    <section className="w-full bg-white pt-8 md:pt-12 pb-16 md:pb-24 border-t border-gray-100 overflow-hidden">
       <div className="mx-auto w-full max-w-7xl px-6 md:px-12 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
@@ -25,7 +25,7 @@ export default function Founder() {
 
             {/* Title / Role */}
             <span className="block font-display text-xs sm:text-sm font-extrabold text-[#e7a572] leading-snug uppercase tracking-wider mt-1.5 max-w-md">
-              Founder, Humain Learning • Founder, The Heritage Experiential Learning Schools
+              Founder, Humain Learning • Founder, The Heritage Xperiential Learning Schools
             </span>
 
             {/* Orange Separator line */}
@@ -34,7 +34,7 @@ export default function Founder() {
             {/* Biography body copy */}
             <div className="space-y-4 max-w-xl font-sans text-sm sm:text-[15px] leading-relaxed text-charcoal/80">
               <p>
-                With over <span className="font-bold text-charcoal">25 years of experience</span> in education, our founder Manit – Harvard Alumnus, has worked with schools, teachers, and students across India. He has founded The Heritage Experiential Learning Schools – which have been ranked number <span className="font-bold text-charcoal">1</span> consistently in the country.
+                With over <span className="font-bold text-charcoal">25 years of experience</span> in education, our founder Manit – Harvard Alumnus, has worked with schools, teachers, and students across India. He has founded The Heritage Xperiential Learning Schools – which have been ranked number <span className="font-bold text-charcoal">1</span> consistently in the country.
               </p>
               <p>
                 His expertise in combining <span className="font-bold text-charcoal">pedagogy with technology</span> enables us to design learning journeys that prepare students for the <span className="font-bold text-charcoal">AI-first future</span> while staying grounded in values that matter.

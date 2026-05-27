@@ -53,7 +53,7 @@ export default function BottomCTA() {
         </h2>
         
         <p className="font-sans text-base sm:text-lg text-white/90 max-w-2xl mx-auto mb-14 drop-shadow-sm">
-          The May batches are filling fast. Don't let your child miss the summer that could change their academic trajectory.
+          The  batches are filling fast. Don't let your child miss the summer that could change their academic trajectory.
         </p>
 
         {/* Large Countdown Timer */}
@@ -146,27 +146,7 @@ export default function BottomCTA() {
 
         </div>
 
-        {/* Bottom Checklist */}
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-          <div className="flex items-center gap-2 select-none">
-            <span className="text-white text-xs font-bold">✓</span>
-            <span className="font-sans text-[11px] sm:text-xs font-medium text-white/90">
-              Full refund guarantee
-            </span>
-          </div>
-          <div className="flex items-center gap-2 select-none">
-            <span className="text-white text-xs font-bold">✓</span>
-            <span className="font-sans text-[11px] sm:text-xs font-medium text-white/90">
-              Max 12 students
-            </span>
-          </div>
-          <div className="flex items-center gap-2 select-none">
-            <span className="text-white text-xs font-bold">✓</span>
-            <span className="font-sans text-[11px] sm:text-xs font-medium text-white/90">
-              Max 12 students
-            </span>
-          </div>
-        </div>
+       
 
       </div>
       

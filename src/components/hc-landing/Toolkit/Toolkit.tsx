@@ -73,7 +73,7 @@ export default function Toolkit() {
             THE TOOLKIT
           </span>
           <h2 className="font-display text-3xl font-extrabold leading-tight !text-white sm:text-4xl md:text-5xl max-w-3xl">
-            15+ AI tools your child will master
+            10+ AI tools your child will master
           </h2>
           <p className="font-sans text-sm md:text-base !text-white/85 max-w-2xl">
             Not just "learn about AI" actually use these tools to create, research, build, and automate.

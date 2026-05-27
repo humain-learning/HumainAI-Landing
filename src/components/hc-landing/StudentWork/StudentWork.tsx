@@ -2,6 +2,10 @@
 
 import React, { useRef, useState } from 'react';
 import { VideoCard } from '@/components/ui/VideoCard';
+<<<<<<< Updated upstream
+=======
+import { SwipeProgress } from '@/components/ui/SwipeProgress';
+>>>>>>> Stashed changes
 import { studentVideos } from './data'
 
 // Custom Graduation Cap / Badge Icon for professional student creations
@@ -23,16 +27,17 @@ const SuccessBadgeIcon = () => (
 
 // High-fidelity description mappings for each student creation
 const CREATION_DESCRIPTIONS: Record<string, string> = {
-  'Amayerah': 'Built a personalized AI Study Companion that generates CBSE Grade 9 mock papers, summarizes textbook chapters, and quizzes her on active recall.',
-  'Diya Gosain': 'Built an interactive AI History Tutor that conducts gamified mock quizzes and explains ancient civilizations through immersive storytelling.',
-  'Tanay Mohan': 'Designed an automated AI Essay writing assistant that helps high schoolers structure, proofread, and elevate their analytical writing.',
-  'Avanindra Kumar Singh': 'Created a high-fidelity AI Chemistry Assistant capable of balancing equations, explaining reaction mechanisms, and drawing 3D formulas.',
+  'Amayerah': 'Built a personal AI-powered study assistant app designed to improve focus and productivity. The app included a weekly study timetable, personalized focus tips, and a built-in Pomodoro timer system with 25-minute study sessions followed by 5-minute breaks, helping her manage procrastination, improve concentration, and stay consistent with studying.',
+  'Diya Gosain': 'Built an AI- driven psychology app that analyzed and captured the motions she felt on a particular day, helping her track emotional patterns and mental well-being over time. The app used natural language processing to understand her daily journal entries and provided insights into her emotional trends, triggers, and overall mental health.',
+  'Tanay Mohan': 'Created several AI- based projects during the session, including building a realisitic digital twin and creating a personalized study schedule system that used AI to optimize his study time based on his habits and upcoming exams. What amazed him the most was seeing how AI could turn simple ideas and prompts into practical, realistic and highly useful outputs.',
+  'Avanindra Kumar Singh': ' Explored and experimented with AI powered projects ,related to music generation ,media creation and AI assisted studying. He also used AI tools to create personalised learning support for his science exam preparation, helping him study more effectively and interactively.',
 };
 
 export default function StudentWork() {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
+<<<<<<< Updated upstream
   // Monitor horizontal scroll position to dynamically update the active segment index
   const handleScroll = () => {
     if (scrollRef.current) {
@@ -57,6 +62,15 @@ export default function StudentWork() {
       } else {
         container.scrollBy({ left: cardWidth, behavior: 'smooth' });
       }
+=======
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      if (scrollWidth <= clientWidth) return;
+      const scrollPercentage = scrollLeft / (scrollWidth - clientWidth);
+      const index = Math.round(scrollPercentage * (studentVideos.length - 1));
+      setActiveIndex(Math.min(Math.max(index, 0), studentVideos.length - 1));
+>>>>>>> Stashed changes
     }
   };
 
@@ -95,10 +109,14 @@ export default function StudentWork() {
             className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 learn-scrollbar scroll-smooth"
           >
             {studentVideos.map((video, idx) => (
+<<<<<<< Updated upstream
               <div
                 key={video.id}
                 className="w-[325px] md:w-[350px] shrink-0 snap-start flex flex-col space-y-5 bg-white/[0.08] backdrop-blur-md rounded-3xl p-4 border border-white/15 select-none"
               >
+=======
+              <div key={video.id} className="w-[325px] md:w-[350px] h-[620px] shrink-0 snap-start flex flex-col space-y-5 bg-white/[0.08] backdrop-blur-md rounded-3xl p-4 border border-white/15 select-none">
+>>>>>>> Stashed changes
 
                 {/* 1. Vimeo Video Media using existing VideoCard */}
                 <div className="w-full rounded-2xl overflow-hidden shadow-sm bg-white/10">
@@ -125,7 +143,7 @@ export default function StudentWork() {
                 </div>
 
                 {/* 3. Description */}
-                <p className="font-sans text-[13.5px] leading-relaxed !text-white/80 px-1 min-h-[64px]">
+                <p className="font-sans text-[13.5px] leading-relaxed !text-white/80 px-1 flex-grow">
                   {CREATION_DESCRIPTIONS[video.name] || 'Built an advanced AI study companion to automate note-taking, active recall testing, and exam preparation.'}
                 </p>
 
@@ -139,6 +157,7 @@ export default function StudentWork() {
 
               </div>
             ))}
+<<<<<<< Updated upstream
 
             {/* Next Button floating card integrated at the very right of scrolling carousel */}
             <div className="w-[100px] shrink-0 snap-start flex items-center justify-start pl-4 select-none">
@@ -158,6 +177,8 @@ export default function StudentWork() {
               </button>
             </div>
 
+=======
+>>>>>>> Stashed changes
           </div>
         </div>
 
