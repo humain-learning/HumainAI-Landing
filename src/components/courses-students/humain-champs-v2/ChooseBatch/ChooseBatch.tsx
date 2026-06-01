@@ -35,7 +35,7 @@ type ChooseBatchProps = {
 }
 export const ChooseBatch = ({ Batches, discountData }: ChooseBatchProps) => {
     const isActive = Boolean(discountData?.active);
-    const originalPrice = Number(12500);
+    const originalPrice = Number(discountData?.base_price ?? 12500);
     const discountedPrice = Number(discountData?.active_tier?.final_price ?? originalPrice);
     return (
         <div className="relative flex flex-col items-center justify-center my-5 md:my-10">
