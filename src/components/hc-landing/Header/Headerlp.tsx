@@ -2,8 +2,10 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-
-export default function Headerlp() {
+type HeaderProps = {
+  basePrice: number;
+};
+export default function Headerlp({ basePrice }: HeaderProps) {
   return (
     <header className=" z-50 w-full bg-white  transition-all duration-300">
       <div className="mx-auto w-full max-w-7xl px-6 py-3 md:px-12 md:py-4 lg:px-16">
@@ -40,7 +42,7 @@ export default function Headerlp() {
                   Enroll Now
                 </span>
                 <span className="rounded-full bg-white px-2.5 py-1 font-display text-[10px] md:text-xs font-extrabold text-terracotta border border-terracotta/10">
-                  ₹11,800
+                	{(basePrice + (basePrice * 0.18)).toLocaleString('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 })}
                 </span>
               </motion.button>
             </a>

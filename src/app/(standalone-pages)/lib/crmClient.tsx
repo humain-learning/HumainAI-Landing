@@ -177,3 +177,18 @@ export async function submitWebinarLead(
 		return { ok: false, message: 'An error occured, please try again. If issue persists, call us at +918130023688' };
 	}
 }
+
+export async function getBasePrice(templateId: TemplateId) {
+	const { baseUrl, authHeader } = getCRMCredentials();
+
+	const url = `${baseUrl}/api/resource/Template Course/${templateId}?fields=["price"]`;
+
+	const response = await fetch(url, {
+		method: 'GET',
+		headers: {
+			Authorization: authHeader,
+		},
+	});
+	const data = await response.json();
+	return data.data.price;
+}

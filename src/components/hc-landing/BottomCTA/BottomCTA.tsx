@@ -5,9 +5,10 @@ import { RequestCallbackModal } from './RequestCallbackModal';
 
 type BottomCTAProps = {
   targetTime: number;
+  basePrice: number;
 };
 
-export default function BottomCTA({ targetTime }: BottomCTAProps) {
+export default function BottomCTA({ targetTime, basePrice }: BottomCTAProps) {
   const [timeLeft, setTimeLeft] = React.useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
@@ -120,7 +121,7 @@ export default function BottomCTA({ targetTime }: BottomCTAProps) {
             </span>
             <div className="bg-[#e7a572] rounded-full px-4 py-2.5">
               <span className="font-display text-[13px] sm:text-[14px] font-extrabold text-white leading-none">
-                ₹11,800
+                	{(basePrice + (basePrice * 0.18)).toLocaleString('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 })}
               </span>
             </div>
           </a>

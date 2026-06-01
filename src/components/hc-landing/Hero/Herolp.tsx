@@ -18,44 +18,10 @@ const CheckIcon = () => (
   </svg>
 );
 
-const BrainChipIcon = () => (
-  <svg
-    className="h-10 w-10 text-white"
-    viewBox="0 0 100 100"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    {/* Outer circle connections */}
-    <circle cx="50" cy="50" r="38" stroke="white" strokeWidth="2.5" strokeDasharray="4 6" opacity="0.8" />
-    
-    {/* Brain shape with neural pathways */}
-    <path
-      d="M38 50C38 42 42 38 48 38C50 38 50 40 52 40C54 40 54 38 56 38C62 38 66 42 66 50C66 58 62 62 56 62C54 62 54 60 52 60C50 60 50 62 48 62C42 62 38 58 38 50Z"
-      stroke="white"
-      strokeWidth="3.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M52 40V60M48 38C48 32 40 32 40 38M56 38C56 32 64 32 64 38M48 62C48 68 40 68 40 62M56 62C56 68 64 68 64 62"
-      stroke="white"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-    />
-    
-    {/* Microchip nodes */}
-    <rect x="49" y="47" width="6" height="6" rx="1.5" fill="white" />
-    <circle cx="52" cy="34" r="2.5" fill="white" />
-    <circle cx="52" cy="66" r="2.5" fill="white" />
-    <circle cx="34" cy="50" r="2.5" fill="white" />
-    <circle cx="70" cy="50" r="2.5" fill="white" />
-    
-    {/* Subtle paths */}
-    <path d="M49 50H36M55 50H68" stroke="white" strokeWidth="2" strokeLinecap="round" />
-  </svg>
-);
-
-export default function Herolp() {
+type HeroProps = {
+	basePrice: number;
+}
+export default function Herolp({basePrice}: HeroProps) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -117,7 +83,7 @@ export default function Herolp() {
               >
                 <span className="font-display text-base font-bold tracking-wide whitespace-nowrap">Enroll Now</span>
                 <span className="rounded-full bg-white px-4 py-2 font-display text-sm font-extrabold text-terracotta border border-terracotta/10">
-                  ₹11,800
+                	{(basePrice + (basePrice * 0.18)).toLocaleString('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 })}
                 </span>
               </motion.a>
 
