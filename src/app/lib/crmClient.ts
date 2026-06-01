@@ -29,7 +29,7 @@ export type WebinarLeadState = {
 
 const allowedLeadTypes = new Set(['teacher', 'child', 'parent']);
 
-function getCRMCredentials() {
+export function getCRMCredentials() {
 	// const baseUrl = process.env.LOCAL_APP_URL;
 	// const key = process.env.LOCAL_CRM_KEY;
 	// const secret = process.env.LOCAL_CRM_SECRET;
@@ -178,10 +178,64 @@ export async function submitWebinarLead(
 	}
 }
 
+export async function getBatchDetailsOfTemplate(templateId: TemplateId) {
+	const { baseUrl, authHeader } = getCRMCredentials();
 
+	const params = new URLSearchParams({
+		template_id: String(templateId),
+		start_date: getTodayIstDateString(),
+	});
 
-export async function getCourseDetails(courseId: string) {
-	const crmCreds = getCRMCredentials();
+	const url = `${baseUrl}/api/method/humain_learning.humain_learning.api.web.batch_details_of_template?${params}`;
 
-	const url = `${crmCreds.baseUrl.replace(/\/$/, '')}/api/resource/Template Course/${courseId}`;
+	const response = await fetch(url, {
+		method: 'GET',
+		headers: {
+			Authorization: authHeader,
+		},
+		cache: 'no-store',
+	});
+
+	const data = await response.json();
+	return data;
 }
+
+export async function getCurrentActiveDiscount(templateId: TemplateId) {
+	const { baseUrl, authHeader } = getCRMCredentials();
+
+	const params = new URLSearchParams({
+		template_id: String(templateId),
+	});
+
+	const url = `${baseUrl}/api/method/humain_learning.humain_learning.api.web.current_active_discount?${params}`;
+
+	const response = await fetch(url, {
+		method: 'GET',
+		headers: {
+			Authorization: authHeader,
+		},
+		cache: 'no-store',
+	});
+
+	const data = await response.json();
+	return data;
+}
+
+
+export async function getTemplateDetails(templateId: TemplateId) {
+	const { baseUrl, authHeader } = getCRMCredentials();
+
+	const url = `${baseUrl}/api/resource/Template Course/${templateId}`;
+
+	const response = await fetch(url, {
+		method: 'GET',
+		headers: {
+			Authorization: authHeader,
+		},
+		cache: 'no-store',
+	});
+
+	const data = await response.json();
+
+	return data.data;
+};

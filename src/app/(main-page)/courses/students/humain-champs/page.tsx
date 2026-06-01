@@ -8,7 +8,7 @@ import { Tools } from "components/courses-students/humain-champs-v2/Tools/Tools"
 import { StudentCreations } from "components/courses-students/humain-champs-v2/StudentCreations/StudentCreations";
 import { Instructors } from "components/courses-students/humain-champs-v2/Instructors/Instructors";
 import { ChooseBatch } from "components/courses-students/humain-champs-v2/ChooseBatch/ChooseBatch";
-import { getBatchDetailsOfTemplate, getCurrentActiveDiscount } from "@/app/lib/adminApi";
+import { getBatchDetailsOfTemplate, getCurrentActiveDiscount } from "@/app/lib/crmClient";
 import { Parents } from "components/courses-students/humain-champs-v2/Parents/Parents";
 import { ContactUs } from "components/courses-students/humain-champs-v2/ContactUs/ContactUs";
 import { Founder } from "components/courses-students/humain-champs-v2/Founder/Founder";
