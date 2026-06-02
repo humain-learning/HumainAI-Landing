@@ -38,7 +38,7 @@ export function getCRMCredentials() {
 	const secret = process.env.FRAPPE_API_SECRET;
 
 	if (!baseUrl || !key || !secret) {
-		throw new Error('Missing admin CRM environment variables');
+		throw new Error('Environment Variables Set to Dev Defaults');
 	}
 
 	return {
