@@ -18,51 +18,17 @@ const CheckIcon = () => (
   </svg>
 );
 
-const BrainChipIcon = () => (
-  <svg
-    className="h-10 w-10 text-white"
-    viewBox="0 0 100 100"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    {/* Outer circle connections */}
-    <circle cx="50" cy="50" r="38" stroke="white" strokeWidth="2.5" strokeDasharray="4 6" opacity="0.8" />
-    
-    {/* Brain shape with neural pathways */}
-    <path
-      d="M38 50C38 42 42 38 48 38C50 38 50 40 52 40C54 40 54 38 56 38C62 38 66 42 66 50C66 58 62 62 56 62C54 62 54 60 52 60C50 60 50 62 48 62C42 62 38 58 38 50Z"
-      stroke="white"
-      strokeWidth="3.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M52 40V60M48 38C48 32 40 32 40 38M56 38C56 32 64 32 64 38M48 62C48 68 40 68 40 62M56 62C56 68 64 68 64 62"
-      stroke="white"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-    />
-    
-    {/* Microchip nodes */}
-    <rect x="49" y="47" width="6" height="6" rx="1.5" fill="white" />
-    <circle cx="52" cy="34" r="2.5" fill="white" />
-    <circle cx="52" cy="66" r="2.5" fill="white" />
-    <circle cx="34" cy="50" r="2.5" fill="white" />
-    <circle cx="70" cy="50" r="2.5" fill="white" />
-    
-    {/* Subtle paths */}
-    <path d="M49 50H36M55 50H68" stroke="white" strokeWidth="2" strokeLinecap="round" />
-  </svg>
-);
-
-export default function Herolp() {
+type HeroProps = {
+	basePrice: number;
+}
+export default function Herolp({basePrice}: HeroProps) {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#FAFAF9] py-12 md:py-20 lg:py-24">
+    <section className="relative w-full overflow-hidden bg-white pt-12 md:pt-20 lg:pt-24">
       {/* Background soft glow elements */}
-      <div className="absolute top-0 right-0 -z-10 h-[500px] w-[500px] rounded-full bg-sage/5 blur-[120px]" />
-      <div className="absolute bottom-0 left-0 -z-10 h-[600px] w-[600px] rounded-full bg-terracotta/5 blur-[150px]" />
+      {/* <div className="absolute top-0 right-0 -z-10 h-[500px] w-[500px] rounded-full bg-sage/5 blur-[120px]" /> */}
+      {/* <div className="absolute bottom-0 left-0 -z-10 h-[600px] w-[600px] rounded-full bg-terracotta/5 blur-[150px]" /> */}
 
       <div className="mx-auto w-full max-w-7xl px-6 md:px-12 lg:px-16">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
@@ -82,7 +48,7 @@ export default function Herolp() {
               </span>
               <span className="flex items-center gap-1.5 rounded-full bg-[#aac1911a] px-3.5 py-1.5 text-xs font-semibold tracking-wider text-[#5e714e]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#5e714e]" />
-                GRADES 8ᵀH - 12ᵀH
+                GRADES 8 - 12
               </span>
             </div>
 
@@ -105,7 +71,7 @@ export default function Herolp() {
             </p>
 
             {/* Buttons Group */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <div className="flex flex-col md:flex-row sm:items-center text-sm gap-4 pt-2 ">
               {/* Enroll Now Button */}
               <motion.a
                 href="https://pages.razorpay.com/humainchamps"
@@ -115,9 +81,9 @@ export default function Herolp() {
                 whileTap={{ scale: 0.98 }}
                 className="group flex cursor-pointer items-center justify-between gap-3 rounded-full bg-terracotta py-2 pr-2 pl-6 text-white shadow-md shadow-terracotta/20 transition-all duration-300 hover:bg-[#df935c] hover:shadow-lg hover:shadow-terracotta/30"
               >
-                <span className="font-display text-base font-bold tracking-wide">Enroll Now</span>
+                <span className="font-display text-base font-bold tracking-wide whitespace-nowrap">Enroll Now</span>
                 <span className="rounded-full bg-white px-4 py-2 font-display text-sm font-extrabold text-terracotta border border-terracotta/10">
-                  ₹11,800
+                	{(basePrice + (basePrice * 0.18)).toLocaleString('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 })}
                 </span>
               </motion.a>
 

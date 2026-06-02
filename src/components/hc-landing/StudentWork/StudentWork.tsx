@@ -1,7 +1,12 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { VideoCard } from '@/components/ui/VideoCard';
+import { usePxCalculator } from 'hooks/usePxCalculator';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper';
+import "swiper/swiper.css";
+import { SwipeProgress } from '@/components/ui/SwipeProgress';
 import { studentVideos } from './data'
 
 // Custom Graduation Cap / Badge Icon for professional student creations
@@ -30,32 +35,16 @@ const CREATION_DESCRIPTIONS: Record<string, string> = {
 };
 
 export default function StudentWork() {
-  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const pxCount = usePxCalculator(1);
 
-  // Monitor horizontal scroll position to dynamically update the active segment index
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const scrollLeft = scrollRef.current.scrollLeft;
-      // Card width (350px) + gap (24px)
-      const cardWidth = 374;
-      const index = Math.round(scrollLeft / cardWidth);
-      setActiveIndex(Math.min(Math.max(index, 0), studentVideos.length - 1));
-    }
-  };
-
-  // Programmatically scroll the snapping carousel by one card width
   const scrollNext = () => {
-    if (scrollRef.current) {
-      const container = scrollRef.current;
-      const cardWidth = 374;
-      const maxScroll = container.scrollWidth - container.clientWidth;
-
-      // If at the end, wrap smoothly back to the beginning
-      if (container.scrollLeft >= maxScroll - 10) {
-        container.scrollTo({ left: 0, behavior: 'smooth' });
+    if (swiperInstance) {
+      if (swiperInstance.isEnd) {
+        swiperInstance.slideTo(0);
       } else {
-        container.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        swiperInstance.slideNext();
       }
     }
   };
@@ -90,12 +79,23 @@ export default function StudentWork() {
         {/* Carousel Snapping Viewport */}
         <div className="relative">
           <div
-            ref={scrollRef}
-            onScroll={handleScroll}
             className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 learn-scrollbar scroll-smooth"
           >
+            <Swiper
+              spaceBetween={24}
+              slidesPerView="auto"
+              loop={false}
+              slidesOffsetBefore={pxCount}
+              slidesOffsetAfter={pxCount}
+              onSwiper={(swiper: SwiperType) => {
+                setSwiperInstance(swiper);
+                setActiveIndex(swiper.activeIndex);
+              }}
+              onSlideChange={(swiper: SwiperType) => setActiveIndex(swiper.activeIndex)}
+            >
             {studentVideos.map((video, idx) => (
-              <div key={video.id} className="w-[325px] md:w-[350px] h-[620px] shrink-0 snap-start flex flex-col space-y-5 bg-white/[0.08] backdrop-blur-md rounded-3xl p-4 border border-white/15 select-none">
+              <SwiperSlide key={video.id} className="!w-auto">
+                <div className="w-[325px] md:w-[350px] shrink-0 snap-start flex flex-col space-y-5 bg-white/[0.08] backdrop-blur-md rounded-3xl p-4 border border-white/15 select-none">
 
                 {/* 1. Vimeo Video Media using existing VideoCard */}
                 <div className="w-full rounded-2xl overflow-hidden shadow-sm bg-white/10">
@@ -134,11 +134,13 @@ export default function StudentWork() {
                   </span>
                 </div>
 
-              </div>
+                </div>
+              </SwiperSlide>
             ))}
+            </Swiper>
 
             {/* Next Button floating card integrated at the very right of scrolling carousel */}
-            <div className="w-[100px] shrink-0 snap-start flex items-center justify-start pl-4 select-none">
+            {/* <div className="w-[100px] shrink-0 snap-start flex items-center justify-start pl-4 select-none">
               <button
                 onClick={scrollNext}
                 className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-terracotta border border-gray-150 shadow-md hover:scale-105 hover:shadow-lg transition duration-200 cursor-pointer"
@@ -153,33 +155,12 @@ export default function StudentWork() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </button>
-            </div>
+            </div> */}
 
           </div>
         </div>
 
-        {/* Dynamic bottom pagination segment bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-12 mt-4 border-t border-white/20">
-          <span className="font-display text-base font-extrabold !text-white select-none">
-            Explore Student Projects
-          </span>
-          <div className="flex items-center gap-1.5 select-none">
-            {studentVideos.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => {
-                  if (scrollRef.current) {
-                    const cardWidth = 374;
-                    scrollRef.current.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
-                  }
-                }}
-                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${i === activeIndex ? 'w-14 bg-white' : 'w-7 bg-white/30 hover:bg-white/50'
-                  }`}
-                aria-label={`Go to project ${i + 1}`}
-              />
-            ))}
-          </div>
-        </div>
+        <SwipeProgress totalSlides={studentVideos.length} activeIndex={activeIndex} visibleOnLarge={false} colour='white' />
 
       </div>
     </section>

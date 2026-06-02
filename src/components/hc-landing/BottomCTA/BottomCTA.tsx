@@ -3,32 +3,22 @@
 import React from 'react';
 import { RequestCallbackModal } from './RequestCallbackModal';
 
-export default function BottomCTA() {
+type BottomCTAProps = {
+  targetTime: number;
+  basePrice: number;
+};
+
+export default function BottomCTA({ targetTime, basePrice }: BottomCTAProps) {
   const [timeLeft, setTimeLeft] = React.useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   React.useEffect(() => {
-    // Sync with the exact same timer as Band.tsx
-    let targetStr = typeof window !== 'undefined' ? localStorage.getItem('hc_camp_timer_target') : null;
-    let targetTime = targetStr ? parseInt(targetStr, 10) : 0;
-
-    const now = Date.now();
-    if (!targetTime || targetTime < now) {
-      targetTime = now + (1 * 24 + 18) * 60 * 60 * 1000 + 30 * 60 * 1000;
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('hc_camp_timer_target', targetTime.toString());
-      }
-    }
-
-    const interval = setInterval(() => {
+    const updateTimer = () => {
       const current = Date.now();
       const diff = targetTime - current;
 
       if (diff <= 0) {
-        const newTarget = Date.now() + 24 * 60 * 60 * 1000;
-        if (typeof window !== 'undefined') {
-          localStorage.setItem('hc_camp_timer_target', newTarget.toString());
-        }
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       } else {
         const d = Math.floor(diff / (1000 * 60 * 60 * 24));
         const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
@@ -36,10 +26,13 @@ export default function BottomCTA() {
         const s = Math.floor((diff / 1000) % 60);
         setTimeLeft({ days: d, hours: h, minutes: m, seconds: s });
       }
-    }, 1000);
+    };
+
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [targetTime]);
 
   return (
     <section className="w-full bg-[#e7a572] py-20 md:py-28 overflow-hidden relative">
@@ -128,7 +121,7 @@ export default function BottomCTA() {
             </span>
             <div className="bg-[#e7a572] rounded-full px-4 py-2.5">
               <span className="font-display text-[13px] sm:text-[14px] font-extrabold text-white leading-none">
-                ₹11,800
+                	{(basePrice + (basePrice * 0.18)).toLocaleString('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 })}
               </span>
             </div>
           </a>

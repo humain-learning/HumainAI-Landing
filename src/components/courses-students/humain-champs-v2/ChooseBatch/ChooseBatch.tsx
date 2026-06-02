@@ -35,7 +35,7 @@ type ChooseBatchProps = {
 }
 export const ChooseBatch = ({ Batches, discountData }: ChooseBatchProps) => {
     const isActive = Boolean(discountData?.active);
-    const originalPrice = Number(discountData?.base_price ?? 11800);
+    const originalPrice = Number(discountData?.base_price ?? 12500);
     const discountedPrice = Number(discountData?.active_tier?.final_price ?? originalPrice);
     return (
         <div className="relative flex flex-col items-center justify-center my-5 md:my-10">
@@ -119,7 +119,7 @@ export const ChooseBatch = ({ Batches, discountData }: ChooseBatchProps) => {
                                                     <span className="pr-2"><s>&#8377;{originalPrice.toLocaleString('en-IN')}</s></span><span>&#8377;{discountedPrice.toLocaleString('en-IN')}</span>
                                                 </div>
                                             ) : (
-                                                <div>&#8377;{originalPrice.toLocaleString('en-IN')}</div>
+                                                <div>&#8377;{(originalPrice*1.18).toLocaleString('en-IN')}</div>
                                             )}
                                         </div>
                                     </a>

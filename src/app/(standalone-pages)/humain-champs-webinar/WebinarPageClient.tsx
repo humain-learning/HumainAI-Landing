@@ -1,19 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import WebinarHero from '@/components/webinar/WebinarHero';
-import ParentQuestionsSection from '@/components/webinar/ParentQuestionsSection';
-import WhatYouWillLearnSection from '@/components/webinar/WhatYouWillLearnSection';
-import LearningOutcomesSection from '@/components/webinar/LearningOutcomesSection';
-import MeetTheEducatorsSection from '@/components/webinar/MeetTheEducatorsSection';
-import WhyNowMattersSection from '@/components/webinar/WhyNowMattersSection';
-import { StudentStoriesSection } from '@/components/webinar/StudentStoriesSection';
-import LiveBonusesSection from '@/components/webinar/LiveBonusesSection';
-import WebinarFAQSection from '@/components/webinar/WebinarFAQSection';
-import ReserveSeatCTASection from '@/components/webinar/ReserveSeatCTASection';
+import WebinarHero from '@/components/hc-webinar/WebinarHero';
+import ParentQuestionsSection from '@/components/hc-webinar/ParentQuestionsSection';
+import WhatYouWillLearnSection from '@/components/hc-webinar/WhatYouWillLearnSection';
+import LearningOutcomesSection from '@/components/hc-webinar/LearningOutcomesSection';
+import MeetTheEducatorsSection from '@/components/hc-webinar/MeetTheEducatorsSection';
+import WhyNowMattersSection from '@/components/hc-webinar/WhyNowMattersSection';
+import { StudentStoriesSection } from '@/components/hc-webinar/StudentStoriesSection';
+import LiveBonusesSection from '@/components/hc-webinar/LiveBonusesSection';
+import WebinarFAQSection from '@/components/hc-webinar/WebinarFAQSection';
+import ReserveSeatCTASection from '@/components/hc-webinar/ReserveSeatCTASection';
 import { Tools } from '@/components/courses-students/humain-champs-v2/Tools/Tools';
-import WebinarPageClientForm from '@/components/webinar/webinarpageclientform';
-import { Band } from '@/components/webinar/Band';
+import WebinarPageClientForm from '@/components/hc-webinar/webinarpageclientform';
+import { Band } from '@/components/hc-webinar/Band';
 import type { WebinarLeadState } from '../lib/crmClient';
 
 type WebinarDetails = {

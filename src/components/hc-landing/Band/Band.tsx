@@ -3,32 +3,20 @@
 import React from 'react';
 import SecondaryButton from "ui/SecondaryButton";
 
-export const Band = () => {
+type BandProps = {
+  targetTime: number;
+};
+
+export const Band = ({ targetTime }: BandProps) => {
   const [timeLeft, setTimeLeft] = React.useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   React.useEffect(() => {
-    let targetStr = typeof window !== 'undefined' ? localStorage.getItem('hc_camp_timer_target') : null;
-    let targetTime = targetStr ? parseInt(targetStr, 10) : 0;
-
-    const now = Date.now();
-    if (!targetTime || targetTime < now) {
-      // evergreen countdown: set to 1 day, 18 hours, and 30 minutes from now
-      targetTime = now + (1 * 24 + 18) * 60 * 60 * 1000 + 30 * 60 * 1000;
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('hc_camp_timer_target', targetTime.toString());
-      }
-    }
-
-    const interval = setInterval(() => {
+    const updateTimer = () => {
       const current = Date.now();
       const diff = targetTime - current;
 
       if (diff <= 0) {
-        // rollover another 24h evergreen period
-        const newTarget = Date.now() + 24 * 60 * 60 * 1000;
-        if (typeof window !== 'undefined') {
-          localStorage.setItem('hc_camp_timer_target', newTarget.toString());
-        }
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       } else {
         const d = Math.floor(diff / (1000 * 60 * 60 * 24));
         const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
@@ -36,10 +24,13 @@ export const Band = () => {
         const s = Math.floor((diff / 1000) % 60);
         setTimeLeft({ days: d, hours: h, minutes: m, seconds: s });
       }
-    }, 1000);
+    };
+
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [targetTime]);
 
   return (
     <div className="bg-sage w-full sticky bottom-0 text-white py-3 z-[10000] shadow-[0_-4px_10px_rgba(0,0,0,0.12)] px-6">
