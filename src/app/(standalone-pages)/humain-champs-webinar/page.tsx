@@ -6,49 +6,20 @@ export const dynamic = 'force-dynamic';
 const templateId = 1;
 
 type WebinarDetails = {
-	date: string;
-	startTime: string;
-	endTime: string;
+	date: Date;
+	startTime: Date;
+	endTime: Date;
 };
 
-const fallbackWebinarDetails: WebinarDetails = {
-	date: 'Coming Soon',
-	startTime: '11:00 AM',
-	endTime: '12:00 PM',
-};
-
-function isWebinarDetails(value: unknown): value is WebinarDetails {
-	if (!value || typeof value !== 'object') {
-		return false;
-	}
-
-	const candidate = value as Partial<WebinarDetails>;
-	return (
-		typeof candidate.date === 'string' &&
-		typeof candidate.startTime === 'string' &&
-		typeof candidate.endTime === 'string'
-	);
-}
 
 export default async function WebinarPage() {
-	let webinarDetails = fallbackWebinarDetails;
-
-	try {
-		const response = await getWebinarDetails(templateId);
-		const responseWithMessage = response as { message?: unknown };
-
-		if (isWebinarDetails(responseWithMessage.message)) {
-			webinarDetails = responseWithMessage.message;
-		} else if (isWebinarDetails(response)) {
-			webinarDetails = response;
-		}
-	} catch (error) {
-		console.error(
-			'Error fetching webinar details:',
-			error instanceof Error ? error.message : String(error)
-		);
+	
+	const message = await getWebinarDetails(templateId);
+	const webinarDetails = {
+		date: message.date,
+		startTime: new Date(message.start_time),
+		endTime: new Date(message.end_time),
 	}
-
 	return (
 		<WebinarPageClient
 			webinarDetails={webinarDetails}

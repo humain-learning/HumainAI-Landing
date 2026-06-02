@@ -18,8 +18,8 @@ import type { WebinarLeadState } from '../lib/crmClient';
 
 type WebinarDetails = {
 	date: string;
-	startTime: string;
-	endTime: string;
+	startTime: Date;
+	endTime: Date;
 };
 
 type WebinarLeadAction = (

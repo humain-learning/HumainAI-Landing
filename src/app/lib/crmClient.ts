@@ -74,7 +74,8 @@ export async function getWebinarDetails(templateId: TemplateId) {
 	});
 
 	const data = await response.json();
-	return data;
+	const message = data.message;
+	return message;
 }
 
 function normalize(value: FormDataEntryValue | null) {
