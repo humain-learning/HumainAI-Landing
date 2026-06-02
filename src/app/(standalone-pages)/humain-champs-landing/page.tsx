@@ -15,7 +15,7 @@ import BottomCTA from "@/components/hc-landing/BottomCTA/BottomCTA";
 import { Batches } from "@/components/courses-teachers/humain-educators/data/batchData";
 import { Tools } from "@/components/hc-landing/Tools/Tools";
 import { getBatchDetailsOfTemplate, getCurrentActiveDiscount } from "@/app/lib/adminApi";
-import { getBasePrice } from "../lib/crmClient";
+import { getBasePrice } from "@/app/lib/crmClient";
 
 export default async function HumainChampsLanding() {
 

@@ -30,7 +30,7 @@ import { aiRoadmapVideos } from './data';
 // Curriculum static details to be combined with the imported aiRoadmapVideos
 const CURRICULUM_DETAILS = [
   {
-    duration: '56 days',
+    duration: '2 Hours',
     level: 'Beginner',
     format: 'Beginner',
     tools: ['CHATGPT', 'GEMINI', 'PERPLEXITY'],
@@ -38,7 +38,7 @@ const CURRICULUM_DETAILS = [
     longDescription: 'Students learn what AI actually is, how it works, and how to think about it critically not just use it blindly. Sets the foundation for every module ahead.'
   },
   {
-    duration: '56 days',
+    duration: '2 Hours',
     level: 'Beginner',
     format: 'Beginner',
     tools: ['CHATGPT', 'NOTEBOOKLM'],
@@ -46,7 +46,7 @@ const CURRICULUM_DETAILS = [
     longDescription: 'Using AI to take smarter notes, create personalised flashcards, generate practice questions, and study their syllabus more efficiently.'
   },
   {
-    duration: '56 days',
+    duration: '2 Hours',
     level: 'Intermediate',
     format: 'Hands-on Project',
     tools: ['MIDJOURNEY', 'CANVA AI', 'KREA'],
@@ -54,7 +54,7 @@ const CURRICULUM_DETAILS = [
     longDescription: 'Mastering generative art and visual storytelling. Using AI to design presentations, website layouts, posters, and professional graphics.'
   },
   {
-    duration: '56 days',
+    duration: '2 Hours',
     level: 'Intermediate',
     format: 'Hands-on Project',
     tools: ['ELEVENLABS', 'RUNWAY', 'SUNO'],
@@ -62,7 +62,7 @@ const CURRICULUM_DETAILS = [
     longDescription: 'Creating professional synthetic voices, writing scripts with LLMs, and editing/generating high-fidelity videos using Runway and ElevenLabs.'
   },
   {
-    duration: '56 days',
+    duration: '2 Hours',
     level: 'Advanced',
     format: 'Live Challenge',
     tools: ['N8N', 'CHATGPT API'],
@@ -70,7 +70,7 @@ const CURRICULUM_DETAILS = [
     longDescription: 'Introduction to zero-code automation tools. Building custom AI agents that connect multiple web apps and run tasks on auto-pilot.'
   },
   {
-    duration: '56 days',
+    duration: '2 Hours',
     level: 'Advanced',
     format: 'Hackathon Pitch',
     tools: ['ALL TOOLKITS'],
@@ -119,7 +119,7 @@ const render_modules_slides = () => (
 			video={mod.video}
 			cardWidth="w-full"
 			index={idx}
-			autoplay={false}
+			autoplay={true}
 			/>
 		</div>
 
