@@ -8,7 +8,6 @@ Disallow: /preview/
 Disallow: /studio/
 Disallow: /testing/
 Disallow: /thank-you
-Disallow: /_next/
 Disallow: /.well-known/
 Disallow: /404
 Disallow: /500
