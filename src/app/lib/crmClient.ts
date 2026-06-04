@@ -1,33 +1,20 @@
 import 'server-only';
 import { cookies } from 'next/headers';
-
+import { webinarLeadSchema, flattenZodErrors, type FieldErrors } from '@/lib/schemas/webinarLead';
+import { extractFbclidFromFbc } from '@/app/lib/attribution';
 
 type TemplateId = number;
-
-type WebinarLeadPayload = {
-	firstname: string;
-	lastname: string;
-	email: string;
-	mobile: string;
-	role: string;
-	childGrade: string;
-	school: string;
-	city: string;
-	fbclid: string;
-	utmSource: string;
-	utmMedium: string;
-	utmCampaign: string;
-	utmTerm: string;
-	utmContent: string;
-};
 
 export type WebinarLeadState = {
 	ok: boolean;
 	message: string | null;
-	errors?: string[];
+	fieldErrors?: FieldErrors;
 };
 
-const allowedLeadTypes = new Set(['teacher', 'child', 'parent']);
+export type WebinarLeadAction = (
+	prevState: WebinarLeadState,
+	formData: FormData
+) => Promise<WebinarLeadState>;
 
 export function getCRMCredentials() {
 	// const baseUrl = process.env.LOCAL_APP_URL;
@@ -82,52 +69,45 @@ function normalize(value: FormDataEntryValue | null) {
 	return typeof value === 'string' ? value.trim() : '';
 }
 
-function extractFbclidFromFbc(fbc: string) {
-	if (!fbc) return '';
-	const parts = fbc.split('.');
-	// Expected format: fb.1.<timestamp>.<fbclid>
-	return parts.length >= 4 ? parts.slice(3).join('.') : '';
-}
-
-function normalizeLeadType(value: string) {
-	if (!value) return '';
-	return allowedLeadTypes.has(value) ? value : '';
-}
-
-
 export async function submitWebinarLead(
 	_prevState: WebinarLeadState,
 	formData: FormData
 ): Promise<WebinarLeadState> {
 	'use server';
 
-	const payload: WebinarLeadPayload = {
+	const raw = {
 		firstname: normalize(formData.get('firstname')),
 		lastname: normalize(formData.get('lastname')),
 		email: normalize(formData.get('email')),
 		mobile: normalize(formData.get('mobile')),
-		role: normalizeLeadType(normalize(formData.get('role')).toLowerCase()),
+		role: normalize(formData.get('role')).toLowerCase(),
 		childGrade: normalize(formData.get('childGrade')),
 		school: normalize(formData.get('school')),
 		city: normalize(formData.get('city')),
-		fbclid: normalize(formData.get('fbclid')),
-		utmSource: normalize(formData.get('utm_source')),
-		utmMedium: normalize(formData.get('utm_medium')),
-		utmCampaign: normalize(formData.get('utm_campaign')),
-		utmTerm: normalize(formData.get('utm_term')),
-		utmContent: normalize(formData.get('utm_content')),
 	};
 
-	if (!payload.role) {
-		return { ok: false, message: 'Invalid role selected.' };
+	const parsed = webinarLeadSchema.safeParse(raw);
+	if (!parsed.success) {
+		return {
+			ok: false,
+			message: 'Please fix the errors below.',
+			fieldErrors: flattenZodErrors(parsed.error),
+		};
 	}
+
+	const payload = parsed.data;
+	const fbclid = normalize(formData.get('fbclid'));
+	const utmSource = normalize(formData.get('utm_source'));
+	const utmMedium = normalize(formData.get('utm_medium'));
+	const utmCampaign = normalize(formData.get('utm_campaign'));
+	const utmTerm = normalize(formData.get('utm_term'));
+	const utmContent = normalize(formData.get('utm_content'));
 
 	try {
 		const cookieStore = await cookies();
 		const fbpCookie = cookieStore.get('_fbp')?.value ?? '';
 		const fbcCookie = cookieStore.get('_fbc')?.value ?? '';
-		const fbc = fbcCookie;
-		const effectiveFbclid = payload.fbclid || extractFbclidFromFbc(fbcCookie);
+		const effectiveFbclid = fbclid || extractFbclidFromFbc(fbcCookie);
 
 		const { baseUrl, authHeader } = getCRMCredentials();
 		const url = `${baseUrl.replace(/\/$/, '')}/api/resource/CRM Lead`;
@@ -142,16 +122,16 @@ export async function submitWebinarLead(
 			custom_grade: payload.childGrade,
 			custom_school: payload.school,
 			custom_city: payload.city,
-			custom_actionable: "Webinar",
+			custom_actionable: 'Webinar',
 			custom_fbp: fbpCookie || undefined,
-			custom_fbc: fbc || undefined,
+			custom_fbc: fbcCookie || undefined,
 			custom_fbclid: effectiveFbclid || undefined,
-			custom_utm_source: payload.utmSource || undefined,
-			custom_utm_medium: payload.utmMedium || undefined,
-			custom_utm_campaign: payload.utmCampaign || undefined,
-			custom_utm_term: payload.utmTerm || undefined,
-			custom_utm_content: payload.utmContent || undefined,
-			source: "Webinar Landing"
+			custom_utm_source: utmSource || undefined,
+			custom_utm_medium: utmMedium || undefined,
+			custom_utm_campaign: utmCampaign || undefined,
+			custom_utm_term: utmTerm || undefined,
+			custom_utm_content: utmContent || undefined,
+			source: 'Webinar Landing',
 		};
 
 		const response = await fetch(url, {

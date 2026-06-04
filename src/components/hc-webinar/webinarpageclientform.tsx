@@ -4,15 +4,23 @@ import { useActionState, useEffect, useState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
-import type { WebinarLeadState } from '@/app/lib/crmClient';
+import type { WebinarLeadState, WebinarLeadAction } from '@/app/lib/crmClient';
+import {
+  webinarLeadSchema,
+  flattenZodErrors,
+  initialValues,
+  fieldNames,
+  type WebinarLeadFormValues,
+  type FieldName,
+  type FieldErrors,
+} from '@/lib/schemas/webinarLead';
+import { resolveAttribution, type AttributionData } from '@/app/lib/attribution';
+import FocusTrap from 'focus-trap-react';
 
 type WebinarPageClientFormProps = {
   open: boolean;
   onClose: () => void;
-  onSubmitLead: (
-    prevState: WebinarLeadState,
-    formData: FormData
-  ) => Promise<WebinarLeadState>;
+  onSubmitLead: WebinarLeadAction;
 };
 
 const initialState: WebinarLeadState = {
@@ -20,101 +28,10 @@ const initialState: WebinarLeadState = {
   message: null,
 };
 
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phoneRegex = /^\d{10}$/;
-const simpleTextRegex = /^[a-zA-Z0-9 ]+$/;
-const gradeOptions = new Set(['8', '9', '10', '11', '12']);
-
-type FieldName =
-  | 'firstname'
-  | 'lastname'
-  | 'email'
-  | 'mobile'
-  | 'role'
-  | 'childGrade'
-  | 'school'
-  | 'city';
-
-type FieldValues = Record<FieldName, string>;
-type FieldErrors = Partial<Record<FieldName, string>>;
-
-const initialValues: FieldValues = {
-  firstname: '',
-  lastname: '',
-  email: '',
-  mobile: '',
-  role: '',
-  childGrade: '',
-  school: '',
-  city: '',
-};
-
-const initialTouched: Record<FieldName, boolean> = {
-  firstname: false,
-  lastname: false,
-  email: false,
-  mobile: false,
-  role: false,
-  childGrade: false,
-  school: false,
-  city: false,
-};
-
-function getCookieValue(name: string) {
-  const cookie = document.cookie
-    .split('; ')
-    .find((entry) => entry.startsWith(`${name}=`));
-  return cookie ? decodeURIComponent(cookie.split('=').slice(1).join('=')) : '';
-}
-
-function extractFbclidFromFbc(fbc: string) {
-  if (!fbc) return '';
-  const parts = fbc.split('.');
-  return parts.length >= 4 ? parts.slice(3).join('.') : '';
-}
-
-function validateField(name: FieldName, value: string): string | undefined {
-  if (!value) {
-    return 'This field is required.';
-  }
-
-  switch (name) {
-    case 'firstname':
-    case 'lastname':
-    case 'school':
-    case 'city':
-      return simpleTextRegex.test(value)
-        ? undefined
-        : 'Only letters, numbers, and spaces are allowed.';
-    case 'email':
-      return emailRegex.test(value) ? undefined : 'Enter a valid email.';
-    case 'mobile':
-      return phoneRegex.test(value)
-        ? undefined
-        : 'Enter a 10 digit mobile number.';
-    case 'role':
-      return value === 'parent' || value === 'child'
-        ? undefined
-        : 'Select Parent or Child.';
-    case 'childGrade':
-      return gradeOptions.has(value)
-        ? undefined
-        : 'Select a grade between 8 and 12.';
-    default:
-      return undefined;
-  }
-}
-
-function validateAll(values: FieldValues): FieldErrors {
-  return Object.keys(values).reduce<FieldErrors>((errors, key) => {
-    const name = key as FieldName;
-    const error = validateField(name, values[name]);
-    if (error) {
-      errors[name] = error;
-    }
-    return errors;
-  }, {});
-}
+const initialTouched: Record<FieldName, boolean> = fieldNames.reduce(
+  (acc, key) => ({ ...acc, [key]: false }),
+  {} as Record<FieldName, boolean>
+);
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -137,13 +54,11 @@ export default function WebinarPageClientForm({
 }: WebinarPageClientFormProps) {
   const router = useRouter();
   const [state, formAction] = useActionState(onSubmitLead, initialState);
-  const [values, setValues] = useState<FieldValues>(initialValues);
-  const [touched, setTouched] = useState<Record<FieldName, boolean>>(
-    initialTouched
-  );
+  const [values, setValues] = useState<WebinarLeadFormValues>(initialValues);
+  const [touched, setTouched] = useState<Record<FieldName, boolean>>(initialTouched);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
-  const [attribution, setAttribution] = useState({
+  const [attribution, setAttribution] = useState<AttributionData>({
     fbclid: '',
     utm_source: '',
     utm_medium: '',
@@ -151,7 +66,6 @@ export default function WebinarPageClientForm({
     utm_term: '',
     utm_content: '',
   });
-
 
   useEffect(() => {
     if (!open) return;
@@ -162,34 +76,8 @@ export default function WebinarPageClientForm({
     setHasSubmitted(false);
 
     const params = new URLSearchParams(window.location.search);
-    const fbclidFromUrl = params.get('fbclid') ?? '';
-    const fbclidFromFbc = extractFbclidFromFbc(getCookieValue('_fbc'));
-    let fbclidFromSession = '';
+    setAttribution(resolveAttribution(params));
 
-    try {
-      fbclidFromSession = window.sessionStorage.getItem('fbclid') ?? '';
-    } catch {
-      fbclidFromSession = '';
-    }
-
-    const resolvedFbclid = fbclidFromUrl || fbclidFromSession || fbclidFromFbc;
-
-    try {
-      if (resolvedFbclid) {
-        window.sessionStorage.setItem('fbclid', resolvedFbclid);
-      }
-    } catch {
-      // Ignore storage errors and continue with in-memory resolved value.
-    }
-
-    setAttribution({
-      fbclid: resolvedFbclid,
-      utm_source: params.get('utm_source') ?? '',
-      utm_medium: params.get('utm_medium') ?? '',
-      utm_campaign: params.get('utm_campaign') ?? '',
-      utm_term: params.get('utm_term') ?? '',
-      utm_content: params.get('utm_content') ?? '',
-    });
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -213,40 +101,57 @@ export default function WebinarPageClientForm({
         `/submission-received?returnTo=${encodeURIComponent(returnTo)}`
       );
     }
-  }, [state.ok, router]);
+    // Merge server-returned field errors into local error state
+    if (!state.ok && state.fieldErrors) {
+      setErrors((prev) => ({ ...prev, ...state.fieldErrors }));
+      const touched = fieldNames.reduce(
+        (acc, key) => ({ ...acc, [key]: true }),
+        {} as Record<FieldName, boolean>
+      );
+      setTouched(touched);
+    }
+  }, [state, router]);
 
   if (!open) return null;
 
   const handleChange = (name: FieldName, value: string) => {
-    setValues((prev) => ({ ...prev, [name]: value }));
+    const next = { ...values, [name]: value };
+    setValues(next);
     if (touched[name]) {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: validateField(name, value),
-      }));
+      const result = webinarLeadSchema.safeParse(next);
+      const fieldError = result.success
+        ? undefined
+        : flattenZodErrors(result.error)[name];
+      setErrors((prev) => ({ ...prev, [name]: fieldError }));
     }
   };
 
   const handleBlur = (name: FieldName, value: string) => {
+    const next = { ...values, [name]: value };
     setTouched((prev) => ({ ...prev, [name]: true }));
-    setErrors((prev) => ({
-      ...prev,
-      [name]: validateField(name, value),
-    }));
+    const result = webinarLeadSchema.safeParse(next);
+    const fieldError = result.success
+      ? undefined
+      : flattenZodErrors(result.error)[name];
+    setErrors((prev) => ({ ...prev, [name]: fieldError }));
   };
 
   return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="reserve-seat-form-title"
-      className="learn-scrollbar fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/45 px-4 py-6 sm:items-center"
-      onMouseDown={(event) => {
-        if (event.target === event.currentTarget) {
-          onClose();
-        }
-      }}
+    <FocusTrap
+      active={open}
+      focusTrapOptions={{ allowOutsideClick: true, escapeDeactivates: false }}
     >
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="reserve-seat-form-title"
+        className="learn-scrollbar fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto bg-black/45 px-4 py-6 sm:items-center"
+        onMouseDown={(event) => {
+          if (event.target === event.currentTarget) {
+            onClose();
+          }
+        }}
+      >
       <div className="learn-scrollbar relative my-2 max-h-[calc(100dvh-1rem)] w-full max-w-[460px] overflow-y-auto rounded-[20px] bg-white px-5 py-6 shadow-[0_24px_80px_rgba(0,0,0,0.22)] sm:my-6 sm:max-h-[calc(100dvh-3rem)] sm:px-7 sm:py-7">
         <button
           type="button"
@@ -286,16 +191,15 @@ export default function WebinarPageClientForm({
             action={formAction}
             onSubmit={(event) => {
               setHasSubmitted(true);
-              const nextTouched = Object.keys(touched).reduce(
+              const nextTouched = fieldNames.reduce(
                 (acc, key) => ({ ...acc, [key]: true }),
                 {} as Record<FieldName, boolean>
               );
               setTouched(nextTouched);
 
-              const nextErrors = validateAll(values);
-              setErrors(nextErrors);
-
-              if (Object.values(nextErrors).some(Boolean)) {
+              const result = webinarLeadSchema.safeParse(values);
+              if (!result.success) {
+                setErrors(flattenZodErrors(result.error));
                 event.preventDefault();
               }
             }}
@@ -476,5 +380,6 @@ export default function WebinarPageClientForm({
         )}
       </div>
     </div>
+    </FocusTrap>
   );
 }

@@ -14,18 +14,13 @@ import ReserveSeatCTASection from '@/components/hc-webinar/ReserveSeatCTASection
 import { Tools } from '@/components/courses-students/humain-champs-v2/Tools/Tools';
 import WebinarPageClientForm from '@/components/hc-webinar/webinarpageclientform';
 import { Band } from '@/components/hc-webinar/Band';
-import type { WebinarLeadState } from '@/app/lib/crmClient';
+import type { WebinarLeadState, WebinarLeadAction } from '@/app/lib/crmClient';
 
 type WebinarDetails = {
 	date: string;
 	startTime: string;
 	endTime: string;
 };
-
-type WebinarLeadAction = (
-	prevState: WebinarLeadState,
-	formData: FormData
-) => Promise<WebinarLeadState>;
 
 export default function WebinarPageClient({
 	webinarDetails,
