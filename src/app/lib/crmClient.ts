@@ -38,7 +38,7 @@ export function getCRMCredentials() {
 	const secret = process.env.FRAPPE_API_SECRET;
 
 	if (!baseUrl || !key || !secret) {
-		throw new Error('Missing admin API environment variables');
+		throw new Error('Environment Variables Set to Dev Defaults');
 	}
 
 	return {
@@ -74,7 +74,8 @@ export async function getWebinarDetails(templateId: TemplateId) {
 	});
 
 	const data = await response.json();
-	return data;
+	const message = data.message;
+	return message;
 }
 
 function normalize(value: FormDataEntryValue | null) {
@@ -239,3 +240,19 @@ export async function getTemplateDetails(templateId: TemplateId) {
 
 	return data.data;
 };
+
+
+export async function getBasePrice(templateId: TemplateId) {
+	const { baseUrl, authHeader } = getCRMCredentials();
+
+	const url = `${baseUrl}/api/resource/Template Course/${templateId}?fields=["price"]`;
+
+	const response = await fetch(url, {
+		method: 'GET',
+		headers: {
+			Authorization: authHeader,
+		},
+	});
+	const data = await response.json();
+	return data.data.price;
+}

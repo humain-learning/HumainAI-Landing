@@ -4,7 +4,7 @@ import { useActionState, useEffect, useState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
-import type { WebinarLeadState } from '@/app/(standalone-pages)/lib/crmClient';
+import type { WebinarLeadState } from '@/app/lib/crmClient';
 
 type WebinarPageClientFormProps = {
   open: boolean;

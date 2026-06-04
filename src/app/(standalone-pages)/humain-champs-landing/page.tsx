@@ -14,8 +14,8 @@ import ParentQuestionsSection from "@/components/hc-landing/Questions/ParentQues
 import BottomCTA from "@/components/hc-landing/BottomCTA/BottomCTA";
 import { Batches } from "@/components/courses-teachers/humain-educators/data/batchData";
 import { Tools } from "@/components/hc-landing/Tools/Tools";
-import { getBatchDetailsOfTemplate, getCurrentActiveDiscount } from "@/app/lib/adminApi";
-import { getBasePrice } from "../lib/crmClient";
+import { getBatchDetailsOfTemplate, getCurrentActiveDiscount } from "@/app/lib/crmClient";
+import { getBasePrice } from "@/app/lib/crmClient";
 
 export default async function HumainChampsLanding() {
 
@@ -43,8 +43,8 @@ export default async function HumainChampsLanding() {
 				<ChooseBatch Batches={batches} discountData={discountData.message} />
 			)}
 			<ParentQuestionsSection />
-			<BottomCTA targetTime={new Date('2026-06-01T00:00:00').getTime()} basePrice={basePrice} />
-			<Band targetTime={new Date('2026-06-01T00:00:00').getTime()} />
+			<BottomCTA targetTime={new Date('2026-06-06T00:00:00').getTime()} basePrice={basePrice} />
+			<Band targetTime={new Date('2026-06-06T00:00:00').getTime()} />
 		</>
 	)
 }

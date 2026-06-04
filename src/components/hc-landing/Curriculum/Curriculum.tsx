@@ -13,34 +13,52 @@ import { aiRoadmapVideos } from './data';
 // Curriculum static details to be combined with the imported aiRoadmapVideos
 const CURRICULUM_DETAILS = [
   {
-    tools: ['ChatGPT', 'Gemini', 'HeyGen'],
-    longDescription: 'Learn what AI is, how it works, where it is used today, and where its limitations lie while exploring beginner-friendly AI tools.',
-    title: 'The AI Revolution'
+    duration: '2 Hours',
+    level: 'Beginner',
+    format: 'Beginner',
+    tools: ['CHATGPT', 'GEMINI', 'PERPLEXITY'],
+    outcome: 'Students can explain how AI works to their classmates',
+    longDescription: 'Students learn what AI actually is, how it works, and how to think about it critically not just use it blindly. Sets the foundation for every module ahead.'
   },
   {
-    tools: ['Perplexity', 'ChatGPT', 'Gemini'],
-    longDescription: 'Use AI as a study partner to deepen understanding, clear misconceptions, and generate quizzes and worksheets for smarter learning.',
-    title: 'Learning Better with AI'
+    duration: '2 Hours',
+    level: 'Beginner',
+    format: 'Beginner',
+    tools: ['CHATGPT', 'NOTEBOOKLM'],
+    outcome: 'Students build their own custom study notes dynamic tutor',
+    longDescription: 'Using AI to take smarter notes, create personalised flashcards, generate practice questions, and study their syllabus more efficiently.'
   },
   {
-    tools: ['NotebookLM', 'Grok', 'ChatGPT', 'Gamma'],
-    longDescription: 'Learn how to use AI for feedback, exam preparation, quiz generation, performance analysis, and becoming college-ready.',
-    title: 'Studying Smarter with AI'
+    duration: '2 Hours',
+    level: 'Intermediate',
+    format: 'Hands-on Project',
+    tools: ['MIDJOURNEY', 'CANVA AI', 'KREA'],
+    outcome: 'Students present a designed website mock hackathon deck',
+    longDescription: 'Mastering generative art and visual storytelling. Using AI to design presentations, website layouts, posters, and professional graphics.'
   },
   {
-    tools: ['Krea', 'Runway', 'Suno'],
-    longDescription: 'Turn imagination into reality by creating images, videos, music, stories, and creative projects with AI — while keeping humans at the center of creativity.',
-    title: 'Creating with AI'
+    duration: '2 Hours',
+    level: 'Intermediate',
+    format: 'Hands-on Project',
+    tools: ['ELEVENLABS', 'RUNWAY', 'SUNO'],
+    outcome: 'Students submit a fully produced 1-min AI video commercial',
+    longDescription: 'Creating professional synthetic voices, writing scripts with LLMs, and editing/generating high-fidelity videos using Runway and ElevenLabs.'
   },
   {
-    tools: ['Teachable Machine'],
-    longDescription: 'Understand what happens behind the scenes of AI and build awareness around bias, misinformation, privacy, and responsible AI use.',
-    title: 'Learning How AI Works and Its Ethics'
+    duration: '2 Hours',
+    level: 'Advanced',
+    format: 'Live Challenge',
+    tools: ['N8N', 'CHATGPT API'],
+    outcome: 'Students connect custom automations to trigger research agents',
+    longDescription: 'Introduction to zero-code automation tools. Building custom AI agents that connect multiple web apps and run tasks on auto-pilot.'
   },
   {
-    tools: ['n8n'],
-    longDescription: 'Design and build your own AI agents, including character-based, email, and fun-fact agents using automation workflows.',
-    title: 'Building AI Agents'
+    duration: '2 Hours',
+    level: 'Advanced',
+    format: 'Hackathon Pitch',
+    tools: ['ALL TOOLKITS'],
+    outcome: 'E-Cell IIT Kharagpur Nationally Recognized Certification',
+    longDescription: 'Polishing the personalized AI Study Agent, compiling the roadmap documentation, and pitching their final project to the E-Cell IIT Kharagpur panel.'
   }
 ];
 
@@ -80,7 +98,7 @@ const render_modules_slides = () => (
 			video={mod.video}
 			cardWidth="w-full"
 			index={idx}
-			autoplay={false}
+			autoplay={true}
 			/>
 		</div>
 
