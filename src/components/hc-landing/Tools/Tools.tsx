@@ -3,8 +3,9 @@ import { Marquee } from "ui/marquee";
 export const models = [
     '/assets/HCV2/tools/chatgpt.svg',
     '/assets/HCV2/tools/gemini.svg',
-    // '/assets/HCV2/tools/perplexity.svg',
+    '/assets/HCV2/tools/perplexity.svg',
     '/assets/HCV2/tools/grok.svg',
+    '/assets/HCV2/tools/gamma-01.svg',
     // '/assets/HCV2/tools/claude.svg'
 ]
 
@@ -13,7 +14,8 @@ export const tools = [
     '/assets/HCV2/tools/runway.svg',
     '/assets/HCV2/tools/notebooklm.svg',
     '/assets/HCV2/tools/krea.svg',
-    // '/assets/HCV2/tools/suno.svg'
+    '/assets/HCV2/tools/suno.svg',
+    '/assets/HCV2/tools/heygen.svg',
 ]
 export const Tools = () => {
     return (
@@ -25,7 +27,7 @@ export const Tools = () => {
 				<hr className="w-1/2 md:w-1/4 lg:w-1/8 border-t-3 border-white mx-6 mt-2" />
 
                 <h1 className="text-3xl md:text-5xl font-semibold py-6 text-center">
-                    <span className="text-white">15+ AI Tools Your Child Will Master</span>
+                    <span className="text-white">10+ AI Tools Your Child Will Master</span>
 					<br />
 					
                 </h1>
@@ -48,12 +50,12 @@ export const Tools = () => {
 			</div>
             <Marquee className="py-5  [--duration:30s]">
                 {models.map((model, index) => (
-                    <img src={model} key={index} alt={`AI Model ${index + 1}`} className="h-10 md:h-15 mx-3 md:mx-8" />
+                    <img src={model} key={index} alt={`AI Model ${index + 1}`} className="h-10  mx-3 md:mx-8" />
                 ))}
             </Marquee>
             <Marquee className="pt-5 pb-10 [--duration:30s]" reverse>
                 {tools.map((tool, index) => (
-                    <img src={tool} key={index} alt={`AI Tool ${index + 1}`} className="h-5 md:h-7 mx-3 md:mx-8" />
+                    <img src={tool} key={index} alt={`AI Tool ${index + 1}`} className={`mx-3 md:mx-8 ${tool.includes('heygen') ? 'h-10 md:h-14' : 'h-5 md:h-7'}`} />
                 ))}
             </Marquee>
         </div>

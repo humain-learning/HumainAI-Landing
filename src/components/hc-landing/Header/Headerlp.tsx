@@ -23,7 +23,7 @@ export default function Headerlp({ basePrice }: HeaderProps) {
           <div className="flex items-center gap-4 md:gap-6">
             {/* Seat Limit Badge (Hidden on mobile, shown on md and larger) */}
             <div className="hidden md:flex items-center gap-2 rounded-full border border-terracotta/30 bg-[#ffe9d7]/30 px-4 py-2 text-xs font-semibold text-terracotta shadow-sm select-none">
-              <span>Only few seats left in May 12 batch</span>
+              <span>Only few seats left</span>
             </div>
 
             {/* Enroll Now Button */}

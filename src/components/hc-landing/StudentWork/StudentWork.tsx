@@ -28,10 +28,10 @@ const SuccessBadgeIcon = () => (
 
 // High-fidelity description mappings for each student creation
 const CREATION_DESCRIPTIONS: Record<string, string> = {
-  'Amayerah': 'Built a personalized AI Study Companion that generates CBSE Grade 9 mock papers, summarizes textbook chapters, and quizzes her on active recall.',
-  'Diya Gosain': 'Built an interactive AI History Tutor that conducts gamified mock quizzes and explains ancient civilizations through immersive storytelling.',
-  'Tanay Mohan': 'Designed an automated AI Essay writing assistant that helps high schoolers structure, proofread, and elevate their analytical writing.',
-  'Avanindra Kumar Singh': 'Created a high-fidelity AI Chemistry Assistant capable of balancing equations, explaining reaction mechanisms, and drawing 3D formulas.',
+  'Amayerah': 'Built a personal AI-powered study assistant app designed to improve focus and productivity. The app included a weekly study timetable, personalized focus tips, and a built-in Pomodoro timer system with 25-minute study sessions followed by 5-minute breaks, helping her manage procrastination, improve concentration, and stay consistent with studying.',
+  'Diya Gosain': 'Built an AI- driven psychology app that analyzed and captured the motions she felt on a particular day, helping her track emotional patterns and mental well-being over time. The app used natural language processing to understand her daily journal entries and provided insights into her emotional trends, triggers, and overall mental health.',
+  'Tanay Mohan': 'Created several AI- based projects during the session, including building a realisitic digital twin and creating a personalized study schedule system that used AI to optimize his study time based on his habits and upcoming exams. What amazed him the most was seeing how AI could turn simple ideas and prompts into practical, realistic and highly useful outputs.',
+  'Avanindra Kumar Singh': ' Explored and experimented with AI powered projects ,related to music generation ,media creation and AI assisted studying. He also used AI tools to create personalised learning support for his science exam preparation, helping him study more effectively and interactively.',
 };
 
 export default function StudentWork() {
@@ -122,7 +122,7 @@ export default function StudentWork() {
                 </div>
 
                 {/* 3. Description */}
-                <p className="font-sans text-[13.5px] leading-relaxed !text-white/80 px-1 min-h-[64px]">
+                <p className="font-sans text-[13.5px] leading-relaxed !text-white/80 px-1 flex-grow">
                   {CREATION_DESCRIPTIONS[video.name] || 'Built an advanced AI study companion to automate note-taking, active recall testing, and exam preparation.'}
                 </p>
 

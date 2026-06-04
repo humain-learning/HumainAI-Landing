@@ -54,11 +54,11 @@ export function EnrolledPopup() {
     if (isDismissed) return;
     if (isVisible) return;
 
-    // Wait 4 seconds when hidden before showing the next one
+    // Wait 60 seconds when hidden before showing the next one
     const hiddenTimeout = setTimeout(() => {
       setCurrentIndex((prev) => (prev + 1) % MOCK_ENROLLMENTS.length);
       setIsVisible(true);
-    }, 4000);
+    }, 60000);
 
     return () => clearTimeout(hiddenTimeout);
   }, [isVisible, isDismissed]);

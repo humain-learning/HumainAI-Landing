@@ -8,23 +8,6 @@ import type { Swiper as SwiperType } from 'swiper';
 import "swiper/swiper.css";
 import { SwipeProgress } from "@/components/ui/SwipeProgress";
 
-// A high-quality icon for the key learning outcome
-const OutcomeIcon = () => (
-  <svg
-    className="h-4.5 w-4.5 text-sage shrink-0 mt-0.5"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth="2.5"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-    />
-  </svg>
-);
-
 import { aiRoadmapVideos } from './data';
 
 // Curriculum static details to be combined with the imported aiRoadmapVideos
@@ -87,13 +70,9 @@ const MODULES_DATA = aiRoadmapVideos.map((video, idx) => {
   
   return {
     code: formattedCode,
-    title: video.description,
+    title: details.title || video.description,
     description: details.longDescription,
-    duration: details.duration,
-    level: details.level,
-    format: details.format,
     tools: details.tools,
-    outcome: details.outcome,
     video: {
       id: video.id,
       url: video.url,
@@ -243,17 +222,54 @@ export default function Curriculum() {
             // onScroll={handleScroll}
             className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 learn-scrollbar scroll-smooth"
           >
-            <Swiper
-				spaceBetween={20}
-				slidesPerView="auto"
-				loop={false}
-				slidesOffsetBefore={pxCount} 
-				slidesOffsetAfter={pxCount}
-				onSwiper={(swiper: SwiperType) => setActiveIndex(swiper.activeIndex)}
-				onSlideChange={(swiper: SwiperType) => setActiveIndex(swiper.activeIndex)}
-			>
-                    {render_modules_slides()}
-			</Swiper>
+            {MODULES_DATA.map((mod, idx) => (
+              <div
+                key={mod.code}
+                className="w-[325px] md:w-[350px] shrink-0 snap-start flex flex-col space-y-5 bg-white rounded-3xl p-1 select-none"
+              >
+                
+                {/* 1. Vimeo Video Media using existing VideoCard */}
+                <div className="w-full rounded-2xl overflow-hidden shadow-sm">
+                  <VideoCard
+                    video={mod.video}
+                    cardWidth="w-full"
+                    index={idx}
+                    autoplay={false}
+                  />
+                </div>
+
+                {/* 2. Badge & Title */}
+                <div className="space-y-1 pt-1">
+                  <span className="block font-display text-[11px] font-extrabold tracking-wider text-terracotta uppercase">
+                    {mod.code}
+                  </span>
+                  <h3 className="font-display text-xl font-extrabold text-charcoal tracking-tight">
+                    {mod.title}
+                  </h3>
+                </div>
+
+                {/* 3. Description */}
+                <p className="font-sans text-[13.5px] leading-relaxed text-charcoal/70 min-h-[64px]">
+                  {mod.description}
+                </p>
+
+                {/* 4. Tools Tag Row */}
+                <div className="space-y-2 pt-4 border-t border-gray-100 mt-auto">
+                  <span className="font-sans text-[13px] font-bold text-charcoal">Tools Learned:</span>
+                  <div className="flex flex-wrap gap-2.5">
+                    {mod.tools.map((tool) => (
+                      <span
+                        key={tool}
+                        className="px-3 py-1 text-[11px] font-display font-bold tracking-wide bg-[#f8f9fa] border border-sage/30 text-[#5e714e] rounded-full"
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+            ))}
 
             {/* Next Button floating card integrated at the very right of scrolling carousel */}
             {/* <div className="w-[100px] shrink-0 snap-start flex items-center justify-start pl-4 select-none">

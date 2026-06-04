@@ -31,10 +31,10 @@ export const parentReviews: ParentReview[] = [
     url: "https://player.vimeo.com/video/1143056003",
     student: "Mrityunjai Malik",
     videoHeadline: "My son is very happy to join this course",
-    reviewTitle: "My child built her own study buddy agent",
-    reviewText: "My child's learning style has changed. She now uses NotebookLM and other AI tools confidently to study better. She even built her own study buddy agent during the program – and now looks forward to reading emails from her AI buddy every day.",
+    reviewTitle: "My child built his own study buddy agent",
+    reviewText: "He was always interested in AI and computer-related learning, so joining this course has made him very happy and motivated. He enjoys learning new things and even explores topics like Python on his own through YouTube. Now he keeps sharing exciting things he learns about AI every day. I can see a positive change in his interest towards studies and learning overall",
     rating: 5,
-    author: "Sunita R.",
+    author: "Reena Malik",
     sub: "Mother of Mrityunjai Malik, Grade 11 · Chennai"
   },
   {
@@ -45,8 +45,8 @@ export const parentReviews: ParentReview[] = [
     reviewTitle: "Very reassuring as a parent.",
     reviewText: "I was skeptical my daughter has zero coding background and is not a 'tech kid.' By week 3, she had created her own AI-powered news briefing tool and was explaining it to me with full confidence. The instructors are incredibly patient and the batch size is small enough that she got real attention.",
     rating: 5,
-    author: "Vikram M.",
-    sub: "Father of Kashvi, Grade 9 · Pune"
+    author: "Ankita Gupta",
+    sub: "Mother of Kashvi, Grade 9 · Pune"
   },
   
 ];

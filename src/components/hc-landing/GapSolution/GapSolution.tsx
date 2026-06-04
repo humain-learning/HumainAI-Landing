@@ -131,7 +131,7 @@ export default function GapSolution() {
                 <CheckCircleIcon />
                 <div className="flex flex-col">
                   <span className="font-display text-base font-bold text-charcoal">
-                    15+ real tools mastered{' '}
+                    10+ real tools mastered{' '}
                     <span className="font-sans text-sm font-normal text-charcoal/60">
                       ChatGPT, Gemini, NoteBook LM, Canva AI, Heygen, N8N and more.
                     </span>
