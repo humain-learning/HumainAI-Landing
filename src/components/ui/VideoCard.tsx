@@ -7,7 +7,6 @@ interface VideoCardProps {
         id: number;
         url: string;
         title?: string;
-        student?: string;
     };
     cardWidth?: string;
     index?: number;
