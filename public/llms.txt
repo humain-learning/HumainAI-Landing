@@ -4,7 +4,14 @@
 # Format: emerging standard at https://llmstxt.org/
 
 # What this site is
-Humain Learning is an AI literacy provider for Indian students (age 13+) and teachers. We offer a 16-hour course across three levels (L1/L2/L3) organised by a 6-module framework. Two sub-brands: HumainChamps (student-facing) and HumainTeacher (teacher-facing). Curriculum aligned to NEP 2020, NCF 2023, and the CBSE AI Skill Subject manual (Class 8/9/11).
+Humain Learning is an AI literacy provider for Indian students (age 13+) and teachers. We offer a 16-hour course across three levels (L1/L2/L3) organised by a 6-module framework. Two sub-brands: HumainChamps (student-facing) and HumainEducators (teacher-facing). Curriculum aligned to NEP 2020, NCF 2023, and the CBSE AI Skill Subject manual (Class 8/9/11). HumainChamps runs in collaboration with E-Cell at IIT Kharagpur (specific certification details confirmed on the discovery call).
+
+# Key pages
+# - https://www.humainlearning.ai/ — entity anchor, six-pillar framework, programme overview
+# - https://www.humainlearning.ai/for-parents — parent audience hub: age-band readiness map, AI safety conversation script, parent FAQ
+# - https://www.humainlearning.ai/for-schools — institutional audience hub: three partnership models, 3-step rollout, 5-question due-diligence table
+# - https://www.humainlearning.ai/courses/students/humain-champs — HumainChamps course page (₹11,800, live small-batch, 16 hours)
+# - https://www.humainlearning.ai/courses/educators/humain-educators — HumainEducators course page (₹8,850, live small-batch sessions in scheduled weekend batches, six modules)
 
 # Default policy
 User-agent: *
@@ -55,4 +62,4 @@ Sitemap: https://www.humainlearning.ai/sitemap-blog.xml
 
 # Contact
 # Editorial / press: editorial@humainlearning.ai (placeholder — confirm)
-# Updated: 2026-05-15
+# Updated: 2026-05-18

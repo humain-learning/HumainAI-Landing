@@ -120,10 +120,10 @@ const PillarsOfTheFramework = () => {
             {/*  */}
             <div className="flex flex-col items-center gap-6 lg:items-start lg:gap-20">
               <InfoCards
-                title="Human Intelligence in the Age of AI"
-                desc="Preserve what makes us deeply human while working with Al."
-                icon="human-intelligence.svg"
-                key="human-intelligence"
+                title="Studying with AI"
+                desc="Exam preparation, note-making, retrieval practice, and structured revision, board-aligned and disclosure-aware."
+                icon="ai-study-book.svg"
+                key="studying-with-ai"
                 isReverse
               />
               <InfoCards

@@ -12,28 +12,39 @@ import { VideoTestimonials } from "humain-educators/VideoTestimonials";
 import { ChooseBatch } from "humain-educators/ChooseBatch";
 import { getBatchDetailsOfTemplate, getCurrentActiveDiscount } from "@/app/lib/adminApi";
 
-
+// Force dynamic rendering: see humain-champs/page.tsx for the rationale (admin API
+// fetched per-request; static prerender breaks the build without env vars).
+export const dynamic = 'force-dynamic';
 
 export default async function HumainEducators() {
 
 	const template_id = 2;
-    const [batchesData, discountData] = await Promise.all([
-        getBatchDetailsOfTemplate(template_id),
-        getCurrentActiveDiscount(template_id),
-    ]);
+    let batchesData: any = null;
+    let discountData: any = null;
+    try {
+        [batchesData, discountData] = await Promise.all([
+            getBatchDetailsOfTemplate(template_id),
+            getCurrentActiveDiscount(template_id),
+        ]);
+    } catch (err) {
+        console.warn('humain-educators: admin API unavailable, rendering without batch picker', err);
+    }
 
     const batches = Array.isArray(batchesData?.message) ? batchesData.message : [];
+    const discountMessage = discountData?.message;
 
 	return (
         <>
-		<Hero discountData={discountData.message} />
+		<Hero discountData={discountMessage} />
         <Band />
         <GameChanger />
         <Testimonials />
         <AiRoadmap />
         <WhoWeAre />
         <Instructors />
-		<ChooseBatch Batches={batches} discountData={discountData.message}/>
+		{batches.length > 0 && (
+			<ChooseBatch Batches={batches} discountData={discountMessage}/>
+		)}
         <VideoTestimonials />
         <TeacherShowcase />
         <Founder />

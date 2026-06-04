@@ -10,6 +10,14 @@ import { app } from '@/app/lib/firebase'; // adjust path as needed
 
 const ROUTES = [
   {
+    name: 'For Parents',
+    href: '/for-parents',
+  },
+  {
+    name: 'For Schools',
+    href: '/for-schools',
+  },
+  {
     name: 'About',
     href: '/#about',
   },
@@ -18,7 +26,7 @@ const ROUTES = [
     href: '/#ai-starter-pack',
   },
   {
-    name: 'Discover', 
+    name: 'Discover',
     href: '/#why-humain',
   },
   {
@@ -317,7 +325,7 @@ const NavbarSidebar = ({
         {ROUTES.map((route, i) => (
           <Link
             key={i}
-            href={isCoursesPage ? `/${route.href}` : route.href}
+            href={route.href}
             onClick={onClose}
             className="text-left text-lg font-medium text-gray-700 hover:text-black"
           >
@@ -438,7 +446,7 @@ const Header = () => {
           <div className="hidden items-center md:flex gap-2">
             {ROUTES?.map((route, i) => (
               <Link
-                href={isCoursesPage || isPrivacyPage ? `/${route?.href}` : route?.href}
+                href={route?.href}
                 className={cn(
                   "cursor-pointer px-3 text-base ",
                   i % 2 === 0 ? "after:bg-[#aac291]" : "after:bg-[#e8a772]"

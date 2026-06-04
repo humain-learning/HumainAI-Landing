@@ -24,28 +24,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Humain Learning — AI Literacy for Indian Students and Teachers',
+  title: 'Humain Learning: AI Literacy Course for Indian Students',
   metadataBase: new URL('https://www.humainlearning.ai'),
   alternates: {
     canonical: './',
   },
   description:
-    'Humain Learning runs a 16-hour AI literacy course for Indian students (age 13+) and teachers — live small-batch sessions, six modules, IIT Kharagpur certification.',
+    'AI literacy course for Class 8-12 students and teachers in India. Live small-batch cohorts, six modules, with E-Cell at IIT Kharagpur.',
   icons: {
     icon: '/assets/logo/brain-logo.png',
   },
   openGraph: {
-    title: 'Humain Learning — AI Literacy for Indian Students and Teachers',
+    title: 'Humain Learning: AI Literacy Course for Indian Students',
     description:
-      'Humain Learning runs a 16-hour AI literacy course for Indian students (age 13+) and teachers — live small-batch sessions, six modules, IIT Kharagpur certification.',
+      'Live 16-hour AI literacy course for Indian students and teachers. Six modules, small cohorts, in collaboration with E-Cell at IIT Kharagpur.',
     url: 'https://www.humainlearning.ai/',
     siteName: 'Humain Learning',
+    locale: 'en_IN',
     images: [
       {
-        url: '/assets/logo/brain-logo.png',
+        url: '/og/homepage-1200x630.webp',
         width: 1200,
         height: 630,
-        alt: 'Humain Learning logo',
+        alt: 'Humain Learning: AI literacy course for Class 8-12 students and teachers in India.',
+        type: 'image/webp',
       },
     ],
     type: 'website',
@@ -58,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-IN">
       <head>
         <script
           type="application/ld+json"

@@ -9,6 +9,7 @@ import WhyHumain from './WhyHumain';
 import WhoAreWeCard from './WhoAreWeCard';
 import OurPurpose from './OurPurpose';
 import PillarsOfTheFramework from './PillarsOfTheFramework';
+import RecognitionAlignment from './RecognitionAlignment';
 import Header from 'ui/Header';
 // import ProductShowcase from './ProductShowcase';
 const LandingPage = () => {
@@ -36,6 +37,7 @@ const LandingPage = () => {
       {/* <AiLearnPack /> */}
       {/* <ProductShowcase /> */}
       <WhyHumain />
+      <RecognitionAlignment />
       <ExpertsTeam />
       <Testimonial />
       <FAQLists />

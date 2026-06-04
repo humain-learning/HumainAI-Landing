@@ -6,14 +6,16 @@ const LIST = [
   {
     name: 'Aniisha',
     class: '11th',
-    school: 'The Heritage School',
+    // school attribution intentionally omitted: avoids implying Heritage Group of Schools
+    // is a current Humain partner per customer Gate 2b 2026-05-18 instruction.
+    school: '',
     city: 'New Delhi',
     desc: `After attending all the sessions, I now understand how to use AI to my advantage, instead of just following the crowd.I feel confident about using it now.`,
   },
   {
     name: 'Aradhya Kinra',
     class: '8E',
-    school: 'The Heritage School, Rohini',
+    school: '',
     city: 'New Delhi',
     desc: `In the modules, we learned how to bring memories back to life.I used a photo and created a video, added music using AI apps. It felt great to create something that was in my mind.`,
   },
@@ -27,7 +29,7 @@ const LIST = [
   {
     name: 'Divyank Sharma',
     class: '',
-    school: 'The Heritage school, D-II, Vasant Kunj, New Delhi',
+    school: '',
     city: 'New Delhi',
     desc: `The most interesting part for me was using AI for learning.
 I actually use tools beyond ChatGPT to study now and I am able to create 50–60 quick flash cards to revise for my exams. This experience really shifted my perspective on how AI can support learning.`,
