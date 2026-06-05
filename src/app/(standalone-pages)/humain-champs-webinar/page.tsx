@@ -1,7 +1,7 @@
 import { getWebinarDetails, submitWebinarLead } from '@/app/lib/crmClient';
 import WebinarPageClient from './WebinarPageClient';
 
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
 
 const templateId = 1;
 

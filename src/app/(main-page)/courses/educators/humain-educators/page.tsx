@@ -14,7 +14,7 @@ import { getBatchDetailsOfTemplate, getCurrentActiveDiscount } from "@/app/lib/a
 
 // Force dynamic rendering: see humain-champs/page.tsx for the rationale (admin API
 // fetched per-request; static prerender breaks the build without env vars).
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
 
 export default async function HumainEducators() {
 
