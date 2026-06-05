@@ -12,6 +12,7 @@
   "dependencies": {
     "@next/third-parties": "^16.2.6",
     "@vercel/analytics": "^1.6.1",
+    "@vercel/speed-insights": "^2.0.0",
     "@vimeo/player": "^2.30.1",
     "analytics": "^0.8.19",
     "class-variance-authority": "^0.7.1",
