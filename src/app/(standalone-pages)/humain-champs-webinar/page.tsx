@@ -15,10 +15,19 @@ type WebinarDetails = {
 export default async function WebinarPage() {
 	
 	const message = await getWebinarDetails(templateId);
-	const date = new Date(message.start_time).toLocaleDateString('en-IN', { day : 'numeric', month : 'long', weekday: 'long', year: 'numeric' });
-	const startTime = new Date(message.start_time).toLocaleTimeString('en-IN', {hour: "numeric", minute: "numeric", hour12: true}).toUpperCase();
-	const endTime = new Date(message.end_time).toLocaleTimeString('en-IN', {hour: "numeric", minute: "numeric", hour12: true}).toUpperCase();
-	
+	console.log('Webinar details fetched from CRM:', message);
+	var date = '';
+	var startTime = '';
+	var endTime = '';
+	if (!message) {
+		date = 'Coming Soon!'
+		startTime = '11AM';
+		endTime = '12PM';
+	} else {
+		date = new Date(message.start_time).toLocaleDateString('en-IN', { day : 'numeric', month : 'long', weekday: 'long', year: 'numeric' });
+		startTime = new Date(message.start_time).toLocaleTimeString('en-IN', {hour: "numeric", minute: "numeric", hour12: true}).toUpperCase();
+		endTime = new Date(message.end_time).toLocaleTimeString('en-IN', {hour: "numeric", minute: "numeric", hour12: true}).toUpperCase();
+	}
 	const webinarDetails: WebinarDetails = {
 		date,
 		startTime,
