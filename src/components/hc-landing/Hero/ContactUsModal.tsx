@@ -2,46 +2,61 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useForm } from 'react-hook-form';
+
+type FormData = {
+    parentFirstName: string;
+    parentLastName?: string;
+    childFirstName: string;
+    childLastName?: string;
+    mobileNo: string;
+    email: string;
+    childGrade: string;
+    city?: string;
+    message?: string;
+};
 
 export const ContactUsModal = ({ onClose }: { onClose: () => void }) => {
     const router = useRouter();
-    const [formData, setFormData] = useState({
-        parentFirstName: '',
-        parentLastName: '',
-        childFirstName: '',
-        childLastName: '',
-        mobileNo: '',
-        email: '',
-        childGrade: '',
-        city: '',
-        message: '',
-    });
-
+    
     // loading / feedback state
     const [loading, setLoading] = useState(false);
     const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
-    };
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm<FormData>({
+        defaultValues: {
+            parentFirstName: '',
+            parentLastName: '',
+            childFirstName: '',
+            childLastName: '',
+            mobileNo: '',
+            email: '',
+            childGrade: '',
+            city: '',
+            message: '',
+        }
+    });
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+    const onSubmitLead = async (data: FormData) => {
         setLoading(true);
         setStatusMessage(null);
 
         try {
             const payload = {
-                parentFirstName: formData.parentFirstName,
-                parentLastName: formData.parentLastName,
-                childFirstName: formData.childFirstName,
-                childLastName: formData.childLastName,
-                mobileNo: formData.mobileNo,
-                email: formData.email,
-                childGrade: formData.childGrade,
-                city: formData.city,
-                custom_message: formData.message,
+                parentFirstName: data.parentFirstName,
+                parentLastName: data.parentLastName,
+                childFirstName: data.childFirstName,
+                childLastName: data.childLastName,
+                mobileNo: data.mobileNo,
+                email: data.email,
+                childGrade: data.childGrade,
+                city: data.city,
+                custom_message: data.message,
                 source: 'Website Form'
             };
 
@@ -58,26 +73,16 @@ export const ContactUsModal = ({ onClose }: { onClose: () => void }) => {
                 throw new Error(error.message || `Submission failed with status ${res.status}`);
             }
 
-            const data = await res.json();
+            const responseData = await res.json();
 
-            if (data.redirect) {
-                router.push(data.redirect);
+            if (responseData.redirect) {
+                router.push(responseData.redirect);
             } else {
                 setStatusMessage('Thank you for reaching out! We\'ve received your request and will be in touch with you soon.');
             }
             
             // reset form
-            setFormData({
-                parentFirstName: '',
-                parentLastName: '',
-                childFirstName: '',
-                childLastName: '',
-                mobileNo: '',
-                email: '',
-                childGrade: '',
-                city: '',
-                message: '',
-            });
+            reset();
 
         } catch (err: any) {
             setStatusMessage('An unknown error has occurred. Please try again later or reach out to us directly via Phone or Email.');
@@ -108,100 +113,98 @@ export const ContactUsModal = ({ onClose }: { onClose: () => void }) => {
 
             {/* Right Column */}
             <div className="flex w-full lg:w-[55%] lg:pl-6">
-                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5 w-full px-3 md:px-0">
+                <form onSubmit={handleSubmit(onSubmitLead)} className="space-y-4 md:space-y-5 w-full px-3 md:px-0">
                     {/* Child Name Row */}
                     <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                        <input
-                            type="text"
-                            name="childFirstName"
-                            placeholder="Child First Name"
-                            value={formData.childFirstName}
-                            onChange={handleInputChange}
-                            className="flex-1 p-3 border-b-2 border-gray-200 focus:border-sage focus:outline-none focus:ring-0 text-base"
-                            required
-                        />
-                        <input
-                            type="text"
-                            name="childLastName"
-                            placeholder="Child Last Name"
-                            value={formData.childLastName}
-                            onChange={handleInputChange}
-                            className="flex-1 p-3 border-b-2 border-gray-200 focus:border-sage focus:outline-none focus:ring-0 text-base"
-                        />
+                        <div className="flex-1 flex flex-col">
+                            <input
+                                type="text"
+                                placeholder="Child First Name"
+                                {...register('childFirstName', { required: 'Child first name is required' })}
+                                className="w-full p-3 border-b-2 border-gray-200 focus:border-sage focus:outline-none focus:ring-0 text-base"
+                            />
+                            {errors.childFirstName && <span className="text-red-500 text-xs mt-1">{errors.childFirstName.message}</span>}
+                        </div>
+                        <div className="flex-1 flex flex-col">
+                            <input
+                                type="text"
+                                placeholder="Child Last Name"
+                                {...register('childLastName')}
+                                className="w-full p-3 border-b-2 border-gray-200 focus:border-sage focus:outline-none focus:ring-0 text-base"
+                            />
+                        </div>
                     </div>
                     {/* Parent Name Row */}
                     <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                        <input
-                            type="text"
-                            name="parentFirstName"
-                            placeholder="Parent First Name"
-                            value={formData.parentFirstName}
-                            onChange={handleInputChange}
-                            className="flex-1 p-3 border-b-2 border-gray-200 focus:border-sage focus:outline-none focus:ring-0 text-base"
-                            required
-                        />
-                        <input
-                            type="text"
-                            name="parentLastName"
-                            placeholder="Parent Last Name"
-                            value={formData.parentLastName}
-                            onChange={handleInputChange}
-                            className="flex-1 p-3 border-b-2 border-gray-200 focus:border-sage focus:outline-none focus:ring-0 text-base"
-                        />
+                        <div className="flex-1 flex flex-col">
+                            <input
+                                type="text"
+                                placeholder="Parent First Name"
+                                {...register('parentFirstName', { required: 'Parent first name is required' })}
+                                className="w-full p-3 border-b-2 border-gray-200 focus:border-sage focus:outline-none focus:ring-0 text-base"
+                            />
+                            {errors.parentFirstName && <span className="text-red-500 text-xs mt-1">{errors.parentFirstName.message}</span>}
+                        </div>
+                        <div className="flex-1 flex flex-col">
+                            <input
+                                type="text"
+                                placeholder="Parent Last Name"
+                                {...register('parentLastName')}
+                                className="w-full p-3 border-b-2 border-gray-200 focus:border-sage focus:outline-none focus:ring-0 text-base"
+                            />
+                        </div>
                     </div>
 
                     {/* Mobile No and Email Row */}
                     <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                        <input
-                            type="tel"
-                            name="mobileNo"
-                            placeholder="Mobile No."
-                            value={formData.mobileNo}
-                            onChange={handleInputChange}
-                            className="flex-1 p-3 border-b-2 border-gray-200 focus:border-sage focus:outline-none focus:ring-0 text-base"
-                            required
-                        />
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            className="flex-1 p-3 border-b-2 border-gray-200 focus:border-sage focus:outline-none focus:ring-0 text-base"
-                            required
-                        />
+                        <div className="flex-1 flex flex-col">
+                            <input
+                                type="tel"
+                                placeholder="Mobile No."
+                                {...register('mobileNo', { required: 'Mobile number is required' })}
+                                className="w-full p-3 border-b-2 border-gray-200 focus:border-sage focus:outline-none focus:ring-0 text-base"
+                            />
+                            {errors.mobileNo && <span className="text-red-500 text-xs mt-1">{errors.mobileNo.message}</span>}
+                        </div>
+                        <div className="flex-1 flex flex-col">
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                {...register('email', { required: 'Email is required' })}
+                                className="w-full p-3 border-b-2 border-gray-200 focus:border-sage focus:outline-none focus:ring-0 text-base"
+                            />
+                            {errors.email && <span className="text-red-500 text-xs mt-1">{errors.email.message}</span>}
+                        </div>
                     </div>
 
                     {/* Grade and City Row */}
                     <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                        <select
-                            name="childGrade"
-                            value={formData.childGrade}
-                            onChange={handleInputChange}
-                            className="flex-1 p-3 border-b-2 border-gray-200 focus:border-sage focus:outline-none focus:ring-0 text-base bg-white"
-                            required
-                        >
-                            <option value="" className='text-[#999999]'>Select Child's Grade</option>
-                            <option value="8">Grade 8th</option>
-                            <option value="9">Grade 9th</option>
-                            <option value="10">Grade 10th</option>
-                            <option value="11">Grade 11th</option>
-                            <option value="12">Grade 12th</option>
-                        </select>
-                        <input 
-                            type='text'
-                            name="city"
-                            placeholder="City"
-                            value={formData.city}
-                            onChange={handleInputChange}
-                            className="flex-1 p-3 border-b-2 border-gray-200 focus:border-sage focus:outline-none focus:ring-0 text-base"
-                        />
+                        <div className="flex-1 flex flex-col">
+                            <select
+                                {...register('childGrade', { required: 'Child grade is required' })}
+                                className="w-full p-3 border-b-2 border-gray-200 focus:border-sage focus:outline-none focus:ring-0 text-base bg-white"
+                            >
+                                <option value="" className='text-[#999999]'>Select Child's Grade</option>
+                                <option value="8">Grade 8th</option>
+                                <option value="9">Grade 9th</option>
+                                <option value="10">Grade 10th</option>
+                                <option value="11">Grade 11th</option>
+                                <option value="12">Grade 12th</option>
+                            </select>
+                            {errors.childGrade && <span className="text-red-500 text-xs mt-1">{errors.childGrade.message}</span>}
+                        </div>
+                        <div className="flex-1 flex flex-col">
+                            <input 
+                                type='text'
+                                placeholder="City"
+                                {...register('city')}
+                                className="w-full p-3 border-b-2 border-gray-200 focus:border-sage focus:outline-none focus:ring-0 text-base"
+                            />
+                        </div>
                     </div>
                     <textarea
-                        name="message"
                         placeholder="Message"
-                        value={formData.message}
-                        onChange={handleInputChange}
+                        {...register('message')}
                         className="w-full p-3 border-b-2 border-gray-200 focus:border-sage focus:outline-none focus:ring-0 h-24 resize-none text-base"
                     />
                     <button
