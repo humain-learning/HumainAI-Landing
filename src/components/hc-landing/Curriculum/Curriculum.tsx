@@ -4,10 +4,12 @@ import React, { useRef, useState } from 'react';
 import { VideoCard } from '@/components/ui/VideoCard';
 import { usePxCalculator } from 'hooks/usePxCalculator';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Mousewheel } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import "swiper/swiper.css";
 import { SwipeProgress } from "@/components/ui/SwipeProgress";
 import { modulesData } from './data';
+
 
 // Dynamically construct MODULES_DATA by merging the official aiRoadmapVideos database with local structural content
 const SLIDE_WIDTH_CLASS = "w-[80vw] md:w-[30vw]";
@@ -96,11 +98,15 @@ export default function Curriculum() {
         {/* Carousel Snapping Viewport */}
         <div className="w-full">
 			<Swiper
+				modules={[Mousewheel]}
 				spaceBetween={20}
 				slidesPerView='auto'
 				loop={false}
-				slidesOffsetBefore={pxCount} 
+				slidesOffsetBefore={pxCount}
 				slidesOffsetAfter={pxCount}
+				touchEventsTarget='container'
+				simulateTouch={true}
+				mousewheel={{ forceToAxis: true, releaseOnEdges: true }}
 				onSwiper={(swiper: SwiperType) => setActiveIndex(swiper.activeIndex)}
 				onSlideChange={(swiper: SwiperType) => setActiveIndex(swiper.activeIndex)}
 			>

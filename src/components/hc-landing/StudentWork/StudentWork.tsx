@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { VideoCard } from '@/components/ui/VideoCard';
 import { usePxCalculator } from 'hooks/usePxCalculator';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Mousewheel } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import "swiper/swiper.css";
 import { SwipeProgress } from '@/components/ui/SwipeProgress';
@@ -78,15 +79,16 @@ export default function StudentWork() {
 
         {/* Carousel Snapping Viewport */}
         <div className="relative">
-          <div
-            className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-8 learn-scrollbar scroll-smooth"
-          >
             <Swiper
+              modules={[Mousewheel]}
               spaceBetween={24}
               slidesPerView="auto"
               loop={false}
               slidesOffsetBefore={pxCount}
               slidesOffsetAfter={pxCount}
+              touchEventsTarget='container'
+              simulateTouch={true}
+              mousewheel={{ forceToAxis: true, releaseOnEdges: true }}
               onSwiper={(swiper: SwiperType) => {
                 setSwiperInstance(swiper);
                 setActiveIndex(swiper.activeIndex);
@@ -157,7 +159,6 @@ export default function StudentWork() {
               </button>
             </div> */}
 
-          </div>
         </div>
 
         <SwipeProgress totalSlides={studentVideos.length} activeIndex={activeIndex} visibleOnLarge={false} colour='white' />
