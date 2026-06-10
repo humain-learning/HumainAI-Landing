@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import "swiper/swiper.css";
 import { features } from "./data";
-import { usePxCalculator } from 'hooks/usePxCalculator';
+import { usePxCalculator } from '@/hooks/usePxCalculator';
 
 
 const renderFeatureSlides = () => (

@@ -3,12 +3,17 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
-interface Enrollment {
+type Enrollment = {
   name: string;
   batch: string;
   city: string;
   initial: string;
   color: string;
+}
+
+type Batch = {
+	id: number;
+	name: string;
 }
 
 const MOCK_ENROLLMENTS: Enrollment[] = [

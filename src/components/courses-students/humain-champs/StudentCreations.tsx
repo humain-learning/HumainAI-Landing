@@ -3,7 +3,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.css';
 import { Autoplay, FreeMode } from 'swiper/modules';
-import { usePxCalculator } from '../../hooks/usePxCalculator';
+import { usePxCalculator } from '../../../hooks/usePxCalculator';
 import { VideoCard } from 'ui/VideoCard';
 import { studentVideos } from './data/studentVideos';
 

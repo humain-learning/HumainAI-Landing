@@ -1,9 +1,9 @@
 import { redirect } from 'next/navigation';
 import { CheckOut } from 'components/checkout-page/checkOut';
-import { getBatchDetailsOfTemplate } from '../lib/adminApi';
+import { getBatchDetailsOfTemplate } from '../lib/crmClient';
 type CheckOutPageProps = {
 	searchParams: Promise<{
-		courseId?: string;
+		courseId?: number;
 	}>;
 };
 
@@ -13,7 +13,7 @@ export default async function CheckOutPage({ searchParams }: CheckOutPageProps) 
 	if (!courseId) {
 		redirect('/');
 	}
-	// const batches = await getBatchDetailsOfTemplate(courseId);
+	const batches = await getBatchDetailsOfTemplate(courseId);
 
 
 	return <CheckOut courseId={courseId} />;

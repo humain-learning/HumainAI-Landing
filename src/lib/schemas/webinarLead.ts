@@ -6,7 +6,7 @@ const textField = z
   .min(1, 'This field is required.')
   .regex(
     /^[a-zA-Z0-9 ',.\-&]+$/,
-    "Only letters, numbers, spaces, and ' , . - & are allowed."
+    "Special Characters are not allowed"
   );
 
 export const webinarLeadSchema = z.object({

@@ -10,7 +10,7 @@ import { Instructors } from "humain-educators/Instructors";
 import { TeacherShowcase } from "humain-educators/TeacherShowcase";
 import { VideoTestimonials } from "humain-educators/VideoTestimonials";
 import { ChooseBatch } from "humain-educators/ChooseBatch";
-import { getBatchDetailsOfTemplate, getCurrentActiveDiscount } from "@/app/lib/adminApi";
+import { getBatchDetailsOfTemplate, getCurrentActiveDiscount } from "@/app/lib/crmClient";
 
 // Force dynamic rendering: see humain-champs/page.tsx for the rationale (admin API
 // fetched per-request; static prerender breaks the build without env vars).

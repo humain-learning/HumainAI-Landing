@@ -1,7 +1,7 @@
 'use client';
 
 
-import { usePxCalculator } from 'hooks/usePxCalculator';
+import { usePxCalculator } from '@/hooks/usePxCalculator';
 import { VideoCard } from '@/components/ui/VideoCard';
 import { studentVideos } from '@/components/courses-students/humain-champs-v2/StudentCreations/data';
 import { Swiper, SwiperSlide } from 'swiper/react';
