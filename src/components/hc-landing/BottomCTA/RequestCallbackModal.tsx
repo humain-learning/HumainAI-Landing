@@ -21,7 +21,7 @@ export const RequestCallbackModal: React.FC<RequestCallbackModalProps> = ({ isOp
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+    <div className="fixed inset-0 z-[10001] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
       <div className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-lg shadow-2xl">
         {/* Close Button */}
         <button 
