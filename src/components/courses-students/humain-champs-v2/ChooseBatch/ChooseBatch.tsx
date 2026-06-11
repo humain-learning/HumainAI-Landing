@@ -2,7 +2,7 @@
 
 type ItineraryItem = {
     date: string;
-    day: string;
+    date_objday: string;
     timing: string;
 };
 
@@ -87,7 +87,7 @@ export const ChooseBatch = ({ Batches, discountData }: ChooseBatchProps) => {
                                             {batch.itinerary.map((item, i) => (
                                                 <tr key={i} className="border-b border-gray-200 md:border-none">
                                                     <td className="font-semibold text-sage py-1 md:py-2">{item.date}</td>
-                                                    <td className="py-1 md:py-2">{item.day}</td>
+                                                    <td className="py-1 md:py-2">{item.date_objday}</td>
                                                     <td className="py-1 md:py-2">{item.timing}</td>
                                                 </tr>
                                             ))}
