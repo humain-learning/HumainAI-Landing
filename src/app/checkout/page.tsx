@@ -1,4 +1,4 @@
-import { CheckOutV2 } from "@/components/checkout-page/CheckOut";
+import { CheckOutV2 } from "@/components/checkout-page/CheckOutVersion2";
 import { getBatchDetailsOfTemplate, getBillingDetails, getTemplateDetails } from "@/app/lib/crmClient";
 import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
