@@ -14,7 +14,7 @@ export function proxy(request: NextRequest) {
 		const value = searchParams.get(param)
 		if (value) {
 		response.cookies.set({
-			name: param, 
+			name: ('custom_'+param), 
 			value: value, 
 			path: '/', 
 			}) // Store for 30 days
