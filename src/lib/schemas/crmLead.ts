@@ -6,25 +6,40 @@ const textField = z
 .string()
 .min(1, 'This field is required.')
 .regex(
-	/^[a-zA-Z0-9 ',.\-&]+$/, 
+	/^[a-zA-Z0-9 ]+$/, 
 	"Special Characters are not allowed"
 );
+
+
 const mobileField = z.string()
-	.min(1, 'Mobile No. is Required')
+	.min(1, 'Mobile number is required')
 	.trim()
 	.refine((val) => isValidPhoneNumber(val), {
-		message: 'Mobile nunber is invalid',
+		message: 'Mobile number is invalid',
 	})
-
 	
 export const crmLeadSchema = z.object({
 	firstName: textField,
 	lastName: textField,
-	email: z.email(),
+	email: z
+		.string()
+		.trim()
+		.min(1, 'Email is required.')
+		.pipe(z.email({ error: 'Please enter a valid email address.' })),
 	mobile: mobileField,
-	leadType: z.enum(['parent', 'child','teacher']),
-	grade: z.enum(['8', '9', '10', '11', '12']).optional(),
-	school: textField.optional(),
-	city: textField.optional(),
+	grade: z
+		.string()
+		.min(1, 'Grade is required.')
+		.pipe(z.enum(['','8', '9', '10', '11', '12'], { error: 'Grade is required.' })),
+	school: textField,
+	city: textField,
 	actionable: z.enum(["Webinar", "Direct Sale"]),
+})
+
+export const hcLeadSchema = crmLeadSchema.extend({
+		leadType: z.enum(['parent', 'child'], { error: 'Please select one' }),
+})
+
+export const heLeadSchema = crmLeadSchema.extend({
+		leadType: z.literal('teacher'),
 })

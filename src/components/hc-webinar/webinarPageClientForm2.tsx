@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { crmLeadSchema } from '@/lib/schemas/crmLead';
 import { X } from 'lucide-react';
 import { z } from 'zod';
+
 type WebinarPageClientForm2Props = {
 	open: boolean;
 	onClose: () => void;
@@ -25,7 +26,6 @@ export const WebinarPageClientForm2 = ({open, onClose}:WebinarPageClientForm2Pro
 					<X aria-hidden="true" className="h-6 w-6 text-gray-500 font-light" strokeWidth={1}/>
 				</button>
 
-				
 				<input {...register('firstName')} placeholder="First Name" className="w-full border p-2 rounded" />
 				<input {...register('lastName')} placeholder="Last Name" className="w-full border p-2 rounded" />
 				<input {...register('email')} placeholder="Email" className="w-full border p-2 rounded" />

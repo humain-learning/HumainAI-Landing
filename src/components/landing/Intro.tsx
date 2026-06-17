@@ -65,7 +65,7 @@ const Intro = () => {
             </p>
           </div>
           <div className="flex w-full flex-col items-center gap-3 pt-4 md:flex-row">
-            <PrimaryButton text="For Parents" target='/courses/students/humain-champs' />
+            <PrimaryButton text="For Students" target='/courses/students/humain-champs' />
             <SecondaryButton text="For Educators" target='/courses/educators/humain-educators' />
           </div>
         </div>

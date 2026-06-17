@@ -9,14 +9,7 @@ import toast from 'react-hot-toast';
 // import { app } from '@/app/lib/firebase'; // adjust path as needed
 
 const ROUTES = [
-  {
-    name: 'For Parents',
-    href: '/for-parents',
-  },
-  {
-    name: 'For Schools',
-    href: '/for-schools',
-  },
+
   {
     name: 'About',
     href: '/#about',

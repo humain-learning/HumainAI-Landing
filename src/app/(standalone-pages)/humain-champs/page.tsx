@@ -14,19 +14,43 @@ import ParentQuestionsSection from "@/components/hc-landing/Questions/ParentQues
 import BottomCTA from "@/components/hc-landing/BottomCTA/BottomCTA";
 import { Batches } from "@/components/courses-teachers/humain-educators/data/batchData";
 import { Tools } from "@/components/hc-landing/Tools/Tools";
-import { getBatchDetailsOfTemplate, getCurrentActiveDiscount } from "@/app/lib/crmClient";
-import { getBasePrice } from "@/app/lib/crmClient";
+import { getBatchDetailsOfTemplate, getCurrentActiveDiscount, getBasePrice } from "@/app/lib/crmClient";
 
 export default async function HumainChampsLanding() {
 
-	const template_id = 1;
-	const [batchesData, discountData, basePrice] = await Promise.all([
-		getBatchDetailsOfTemplate(template_id),
-		getCurrentActiveDiscount(template_id),
-		getBasePrice(template_id)
-	]);
-	const batches = Array.isArray(batchesData?.message) ? batchesData.message : [];
+	const template_id = 1; 
 	
+	try {
+		var batchesData = await getBatchDetailsOfTemplate(template_id); 
+	} catch (e) {
+		console.log("Batches could not be fetched:", e)
+		batchesData = {
+			message: []
+		}
+	}
+	const batches = batchesData.message
+
+	try {
+		var discountData = await getCurrentActiveDiscount(template_id);
+	} catch (e) {
+		console.log("Discount could not be fetched:", e)
+		discountData = {
+			message: {
+				template_id: String(template_id),
+				has_discount: false,
+				active_tier: null,
+			}
+		}
+	}
+
+	try {
+		var basePrice = await getBasePrice(template_id);
+	} catch (e) {
+		console.log("Base Price could not be fetched:", e)
+		basePrice = 12500
+	}
+
+
 	return (
 		<>
 			<Headerlp basePrice={basePrice}/>

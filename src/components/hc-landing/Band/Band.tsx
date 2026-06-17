@@ -33,7 +33,7 @@ export const Band = ({ targetTime }: BandProps) => {
   }, [targetTime]);
 
   return (
-    <div className="bg-sage w-full sticky bottom-0 text-white py-3 z-[10000] shadow-[0_-4px_10px_rgba(0,0,0,0.12)] px-6">
+    <div className="bg-sage w-full sticky bottom-0 text-white py-3 z-40 shadow-[0_-4px_10px_rgba(0,0,0,0.12)] px-6">
       <div className="flex flex-col sm:flex-row w-full md:max-w-7xl items-center justify-between mx-auto gap-4 sm:gap-6">
         
         {/* Left Side: Header & Urgency Indicator */}

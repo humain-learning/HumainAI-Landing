@@ -33,6 +33,7 @@ type ChooseBatchProps = {
     Batches: Batch[];
     discountData?: DiscountData;
 }
+
 export const ChooseBatch = ({ Batches, discountData }: ChooseBatchProps) => {
     const isActive = Boolean(discountData?.active);
     const originalPrice = Number(discountData?.base_price ?? 12500);

@@ -36,14 +36,14 @@ export default function ThankYouPage() {
       	<div className="max-w-2xl w-full rounded-2xl border p-10 text-center shadow">
         	<h1 className="text-3xl md:text-4xl font-bold mb-4"><span className='text-sage'>Thank you!</span></h1>
         	<p className="text-gray-700 mb-6 text-base md:text-lg">
-         		Your submission was successful. Our team will contact you shortly.
+         		Your submission was successful. You shall receive your details shortly.
        	 	</p>
 
         <div className="flex items-center justify-center gap-4">
           <PrimaryButton text='Go Back' target={destination} buttonClassName="whitespace-nowrap" />
         </div>
 
-        <p className="mt-6 text-sm text-gray-500">If you don't hear from us within 48 hours, please check your spam folder or contact us at hi@humainlearning.ai</p>
+        <p className="mt-6 text-sm text-gray-500">If you don't hear from us within 48 hours, please check your registered email's spam folder or contact us at <a href="mailto:hi@humainlearning.ai">hi@humainlearning.ai</a> or call us at <a href="tel:+91XXXXXXXXXX">+91XXXXXXXXXX</a></p>
       </div>
     </div>
 	</>
