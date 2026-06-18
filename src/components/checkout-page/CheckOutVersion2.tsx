@@ -183,6 +183,7 @@ export const CheckOutV2 = ({templateDetails, availableBatches, billingDetails}: 
 			y: event.clientY - bounds.top,
 		});
 	}
+
 	const createOrder = async () => {
 
 		setIsCreatingOrder(true);
@@ -243,7 +244,16 @@ export const CheckOutV2 = ({templateDetails, availableBatches, billingDetails}: 
 						setOrderError("Payment cancelled.");
 					}
 				},
-				callback_url: `https://humainlearning.ai/checkout/confirmation?receipt=${order.receipt}&batchName=${selectedBatch?.name}&startDate=${selectedBatch?.itinerary[1].date}&courseName=${templateDetails.courseName}`,
+				
+				callback_url:
+					'https://humainlearning.ai/checkout/confirmation?' +
+					new URLSearchParams({
+						receipt: order.receipt,
+						batchName: selectedBatch?.name ?? '',
+						startDate: selectedBatch?.itinerary[1].date ?? '',
+						courseName: templateDetails.courseName ?? '',
+					}).toString(),				
+
 				handler: async function (response: any) {
 					console.log("verifying payment with response:", response);
 					const res = await fetch('/api/verify-order', {
@@ -257,11 +267,6 @@ export const CheckOutV2 = ({templateDetails, availableBatches, billingDetails}: 
 						}),
 					});
 					
-					if (res.ok) {
-						router.push(`checkout/confirmation?receipt=${order.receipt}&batchName=${selectedBatch?.name}&startDate=${selectedBatch?.itinerary[0].date}&courseName=${templateDetails.courseName}`);
-					} else {
-						setOrderError('Payment verification failed.')
-					}
 				}
 			};	
 			console.log("Opening Razorpay payment modal with data:", paymentData);
