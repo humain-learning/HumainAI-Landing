@@ -66,35 +66,52 @@ export default function Hero() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[#AAC191] pt-[86px] pb-16 px-5 md:px-16 flex items-center min-h-[80vh]">
+      <section className="relative overflow-hidden bg-white pt-[86px] pb-16 px-5 md:px-16 flex items-center min-h-[80vh]">
       {/* Geometric accent rings */}
-      <div className="absolute rounded-full border border-white/20 pointer-events-none w-[560px] h-[560px] -top-[200px] -right-[160px]"></div>
-      <div className="absolute rounded-full border border-white/20 pointer-events-none w-[320px] h-[320px] top-[40px] right-[70px]"></div>
-      <div className="absolute rounded-full border border-white/10 pointer-events-none w-[140px] h-[140px] bottom-[80px] left-[5%]"></div>
+      <div className="absolute rounded-full border border-[#E7A572]/15 pointer-events-none w-[560px] h-[560px] -top-[200px] -right-[160px]"></div>
+      <div className="absolute rounded-full border border-[#E7A572]/15 pointer-events-none w-[320px] h-[320px] top-[40px] right-[70px]"></div>
+      <div className="absolute rounded-full border border-[#E7A572]/10 pointer-events-none w-[140px] h-[140px] bottom-[80px] left-[5%]"></div>
 
       <div className="relative z-10 w-full max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_390px] gap-12 items-center">
         
         {/* Left copy */}
         <div>
-          <div className="inline-flex items-center gap-2 bg-white/30 border border-white/40 rounded-full py-1.5 pl-2.5 pr-3.5 mb-6">
+          <div className="inline-flex items-center gap-2 bg-[#FDF3EB] border border-[#E7A572]/20 rounded-full py-1.5 pl-2.5 pr-3.5 mb-6">
             <div className="w-2 h-2 rounded-full bg-[#E7A572] animate-[pulse_1.6s_ease-in-out_infinite]"></div>
-            <span className="font-sans text-[0.72rem] font-medium tracking-[1.8px] uppercase text-[#333333]">
+            <span className="font-sans text-[0.72rem] font-medium tracking-[1.8px] uppercase text-[#C97D49]">
               Free Live Masterclass &middot; Upcoming Session &middot; Limited Seats
             </span>
           </div>
           
           <h1 className="font-display text-[clamp(2.2rem,4.5vw,3.6rem)] font-extrabold leading-[1.1] tracking-[-1.5px] text-[#333333] mb-5">
-            Your Child Is Already Using AI.<br />
-            Is It Working <span className="inline-block bg-[#E7A572] text-white px-2.5 pt-0.5 pb-1 rounded-md">For Them</span> or Against Them?
+            Thousands of Students Have Already Found Their Edge with AI.<br />
+           <span className="text-[#E7A572]">Is Yours Next?</span> 
           </h1>
           
           <p className="font-sans text-base text-[#333333]/75 max-w-[520px] mb-3 leading-relaxed">
             Most students use ChatGPT or Gemini without guidance — like learning to swim without a coach. They struggle, waste time, and get average results. In this live session, your child will learn the techniques that actually make AI a study superpower.
           </p>
           
-          <p className="font-sans text-[0.82rem] font-medium text-[#333333]/55 mb-8 tracking-[0.3px]">
-            For Class 8–12 students &middot; All boards &middot; Just a smartphone
-          </p>
+          <div className="flex flex-wrap items-center gap-3 mb-8">
+            <div className="flex items-center gap-2">
+              <svg className="w-4 h-4 text-[#AAC191]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C6.228 6.228 2 10.228 2 15s4.228 8.772 10 8.772 10-4.228 10-8.772C22 10.228 17.772 6.228 12 6.253" />
+              </svg>
+              <span className="font-sans text-[0.85rem] font-bold text-[#AAC191] tracking-[0.3px]">For Class 8–12 students</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg className="w-4 h-4 text-[#AAC191]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+              </svg>
+              <span className="font-sans text-[0.85rem] font-bold text-[#AAC191] tracking-[0.3px]">All boards</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg className="w-4 h-4 text-[#AAC191]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+              <span className="font-sans text-[0.85rem] font-bold text-[#AAC191] tracking-[0.3px]">Just a smartphone</span>
+            </div>
+          </div>
           
           <div className="flex flex-wrap items-center gap-[18px]">
             <button 
@@ -103,9 +120,14 @@ export default function Hero() {
             >
               Book Your Child's Free Slot
             </button>
-            <span className="font-sans text-[0.78rem] font-medium text-[#333333]/55 tracking-[0.2px]">
-              Free &middot; Originally <s className="opacity-70">₹299</s> &middot; Pan-India
-            </span>
+            <div className="flex flex-col gap-1">
+              <span className="font-display text-[0.95rem] font-extrabold text-[#333333]">
+                <span className="text-[#AAC191]">FREE</span> • Originally <s className="text-[#888888] font-normal">₹299</s>
+              </span>
+              <span className="font-sans text-[0.75rem] font-medium text-[#333333]/55 tracking-[0.2px]">
+                Pan-India Access
+              </span>
+            </div>
           </div>
         </div>
 
@@ -190,8 +212,14 @@ export default function Hero() {
           </div>
 
           
-          <div className="mt-2 text-center font-sans text-[0.72rem] font-semibold text-[#C97D49] tracking-[0.3px]">
-            Only 47 seats remaining
+          <div className="mt-4 text-center">
+            <div className="inline-flex items-center gap-2 bg-[#FFE5D6] rounded-lg px-4 py-2.5">
+              <svg className="w-4 h-4 text-[#E7A572] animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd"/></svg>
+              <span className="font-display text-[0.9rem] font-extrabold text-[#C97D49] tracking-[0.3px]">
+                Hurry! Only 47 seats remaining
+              </span>
+            </div>
           </div>
         </div>
 
