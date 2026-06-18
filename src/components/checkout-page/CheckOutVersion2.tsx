@@ -258,7 +258,7 @@ export const CheckOutV2 = ({templateDetails, availableBatches, billingDetails}: 
 					});
 					
 					if (res.ok) {
-						router.push(`checkout/confirmation?receipt=${order.receipt}&batchName=${selectedBatch?.name}&startDate=${selectedBatch?.itinerary[1].date}&courseName=${templateDetails.courseName}`);
+						router.push(`checkout/confirmation?receipt=${order.receipt}&batchName=${selectedBatch?.name}&startDate=${selectedBatch?.itinerary[0].date}&courseName=${templateDetails.courseName}`);
 					} else {
 						setOrderError('Payment verification failed.')
 					}
