@@ -17,9 +17,7 @@ export default function Agenda() {
     {
       text: <> <strong className="font-display font-bold text-[0.88rem]">The 10x Study System — revealed live</strong> — The secret methods demonstrated in action. Your child leaves knowing exactly what to use that evening. </>
     },
-    {
-      text: <> <strong className="font-display font-bold text-[0.88rem]">Prompt Premier League (live game)</strong> — Friendly competition, best prompt wins, announced live. </>
-    },
+    
     {
       text: <> <strong className="font-display font-bold text-[0.88rem]">Responsible AI habits</strong> — How using AI well builds stronger thinking and better learning outcomes. </>
     }
