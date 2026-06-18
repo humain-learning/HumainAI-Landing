@@ -12,12 +12,7 @@ export default function FinalCTA() {
   const [submitError, setSubmitError] = useState('');
 
   const handleEnrollClick = () => {
-    if (getCookie('leadId')) {
-      router.push('/submission-received');
-      return;
-    } else {
       setShowModal(true);
-    }
   };
 
   const onSubmit = async (values: unknown) => {
