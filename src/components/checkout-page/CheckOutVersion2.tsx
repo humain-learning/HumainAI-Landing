@@ -243,7 +243,7 @@ export const CheckOutV2 = ({templateDetails, availableBatches, billingDetails}: 
 						setOrderError("Payment cancelled.");
 					}
 				},
-				callback_url: `${window.location.origin}/checkout/confirmation?receipt=${order.receipt}&batchName=${selectedBatch?.name}&startDate=${selectedBatch?.itinerary[1].date}&courseName=${templateDetails.courseName}`,
+				callback_url: `https://humainlearning.ai/checkout/confirmation?receipt=${order.receipt}&batchName=${selectedBatch?.name}&startDate=${selectedBatch?.itinerary[1].date}&courseName=${templateDetails.courseName}`,
 				handler: async function (response: any) {
 					console.log("verifying payment with response:", response);
 					const res = await fetch('/api/verify-order', {
