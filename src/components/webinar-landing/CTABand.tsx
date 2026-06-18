@@ -67,7 +67,7 @@ export default function CTABand() {
       </div>
       <PopupFormModal isOpen={showModal} onClose={() => setShowModal(false)}>
         <LeadForm
-          actionable="Direct Sale"
+          actionable="Webinar"
           heading="Book Your Child's Free Seat"
           buttonText="Book Now"
           source="Webinar"

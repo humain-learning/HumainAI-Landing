@@ -81,7 +81,7 @@ export default function Header() {
       </nav>
     <PopupFormModal isOpen={showModal} onClose={() => setShowModal(false)}>
       <LeadForm
-        actionable="Direct Sale"
+        actionable="Webinar"
         heading="Book Your Free Seat"
         buttonText="Book Now"
         source="Webinar"
