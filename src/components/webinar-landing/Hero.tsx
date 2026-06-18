@@ -227,7 +227,7 @@ export default function Hero() {
       </section>
       <PopupFormModal isOpen={showModal} onClose={() => setShowModal(false)}>
       <LeadForm
-        actionable="Direct Sale"
+        actionable="Webinar"
         heading="Book Your Child's Free Seat"
         buttonText="Book Now"
         source="Webinar"
