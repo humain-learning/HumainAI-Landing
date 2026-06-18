@@ -3,20 +3,20 @@ import React from 'react';
 export default function Audience() {
   const cards = [
     {
-      heading: "Never used AI before?",
-      sub: "Perfect. By minute 15, you'll have successfully built something with AI, on your own. No setup, no experience needed — just a phone."
+      heading: "My child has never used AI before.",
+      sub: "Perfect starting point. The session is designed for complete beginners — by the end, your child will have successfully used AI for a real study task, on their own phone, with zero setup."
     },
     {
-      heading: "Already use ChatGPT?",
-      sub: "We guarantee at least two techniques you've never seen. The TAP formula alone changes how you get results from any AI tool."
+      heading: "My child already uses ChatGPT or Gemini.",
+      sub: "They're using a powerful tool without the right technique. This session gives them the framework that makes every AI interaction measurably better. Parents of regular AI users consistently say this is the biggest shift."
     },
     {
-      heading: "CBSE / CISCE / State Board?",
-      sub: "All boards, all subjects. The AI study tools work for Maths, Science, SST, English — built around NCERT and board exam patterns."
+      heading: "CBSE / ICSE / State Board?",
+      sub: "All boards, all subjects. The methods work for Maths, Science, SST, English — built around NCERT and board exam patterns. AI is already in CBSE and ICSE curricula. Your child can get ahead now."
     },
     {
-      heading: "Parents attending?",
-      sub: "You're welcome and encouraged. We run a free parent orientation call for every enrolled student — see exactly what your child learns."
+      heading: "Can I attend with my child?",
+      sub: "Absolutely — and we encourage it. We run a free parent orientation segment within the session. See exactly what your child is learning and why it's safe, structured, and school-aligned."
     }
   ];
 
@@ -28,7 +28,7 @@ export default function Audience() {
             Who It's For
           </span>
           <h2 className="font-display text-[clamp(1.7rem,3vw,2.5rem)] font-extrabold tracking-[-0.8px] leading-[1.15] mb-3.5 text-[#333333]">
-            Built for every Class 8–12 student in India
+            Built for every Class 8–12 family in India
           </h2>
         </div>
         

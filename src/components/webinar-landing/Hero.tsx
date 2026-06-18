@@ -43,21 +43,21 @@ export default function Hero() {
           <div className="inline-flex items-center gap-2 bg-white/30 border border-white/40 rounded-full py-1.5 pl-2.5 pr-3.5 mb-6">
             <div className="w-2 h-2 rounded-full bg-[#E7A572] animate-[pulse_1.6s_ease-in-out_infinite]"></div>
             <span className="font-sans text-[0.72rem] font-medium tracking-[1.8px] uppercase text-[#333333]">
-              Free Live Masterclass &middot; June 20, 2026 &middot; Limited Seats
+              Free Live Masterclass &middot; Upcoming Session &middot; Limited Seats
             </span>
           </div>
           
           <h1 className="font-display text-[clamp(2.2rem,4.5vw,3.6rem)] font-extrabold leading-[1.1] tracking-[-1.5px] text-[#333333] mb-5">
-            Make your child a <span className="inline-block bg-[#E7A572] text-white px-2.5 pt-0.5 pb-1 rounded-md">10x Student</span><br />
-            with AI in 60 Minutes
+            Your Child Is Already Using AI.<br />
+            Is It Working <span className="inline-block bg-[#E7A572] text-white px-2.5 pt-0.5 pb-1 rounded-md">For Them</span> or Against Them?
           </h1>
           
           <p className="font-sans text-base text-[#333333]/75 max-w-[520px] mb-3 leading-relaxed">
-            Build your AI study system — 3 tools that actually help you study smarter: a smart timetable, a photo-to-notes machine, and a 24/7 doubt solver.
+            Most students use ChatGPT or Gemini without guidance — like learning to swim without a coach. They struggle, waste time, and get average results. In this live session, your child will learn the techniques that actually make AI a study superpower.
           </p>
           
           <p className="font-sans text-[0.82rem] font-medium text-[#333333]/55 mb-8 tracking-[0.3px]">
-            For students of Class 8–12 &middot; No coding experience needed &middot; Just your phone
+            For Class 8–12 students &middot; All boards &middot; Just a smartphone
           </p>
           
           <div className="flex flex-wrap items-center gap-[18px]">
@@ -65,7 +65,7 @@ export default function Hero() {
               href="#book" 
               className="inline-flex items-center justify-center font-display font-extrabold bg-[#E7A572] text-white px-10 py-[18px] text-[1.05rem] rounded-md shadow-[0_4px_22px_rgba(231,165,114,0.35)] transition-all hover:bg-[#C97D49] hover:-translate-y-[1px] hover:shadow-[0_6px_28px_rgba(231,165,114,0.45)]"
             >
-              Book Your Free Slot
+              Book Your Child's Free Slot
             </a>
             <span className="font-sans text-[0.78rem] font-medium text-[#333333]/55 tracking-[0.2px]">
               Free &middot; Originally <s className="opacity-70">₹299</s> &middot; Pan-India

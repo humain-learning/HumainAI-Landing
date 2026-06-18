@@ -12,7 +12,7 @@ export default function FinalCTA() {
           <em className="text-[#AAC191] not-italic">Start studying smarter.</em>
         </h2>
         <p className="font-sans text-[0.9rem] text-white/55 mb-8 leading-[1.65]">
-          Join thousands of Class 8–12 students building their AI study system — and making AI work for them, not against them.<br />
+          Give your child the guided AI techniques that thousands of Class 8–12 students across India are already using.<br />
           Free. Live. One session.
         </p>
         
@@ -22,7 +22,7 @@ export default function FinalCTA() {
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center font-display font-extrabold bg-[#E7A572] text-white px-10 py-[18px] text-[1.05rem] rounded-md shadow-[0_4px_22px_rgba(231,165,114,0.35)] transition-all hover:bg-[#C97D49] hover:-translate-y-[1px] hover:shadow-[0_6px_28px_rgba(231,165,114,0.45)]"
         >
-          Book Your Free Slot
+          Book Your Child's Free Slot
         </a>
         
         <div className="mt-3.5 font-sans text-[0.72rem] text-white/30 tracking-[0.5px]">

@@ -7,11 +7,11 @@ export default function CTABand() {
       
       <div className="relative z-10 max-w-[1100px] mx-auto">
         <h2 className="font-display text-[clamp(1.7rem,3.5vw,2.7rem)] font-extrabold text-white tracking-[-0.8px] leading-[1.15] mb-3">
-          Your child's AI study system<br />starts here. Tonight.
+          Your child's 10x study system<br />starts here.
         </h2>
         
         <p className="font-sans text-[0.92rem] text-white/80 mb-8 leading-[1.65]">
-          Free live session &middot; 60 minutes &middot; Class 8–12 &middot; All boards &middot; Just a phone
+          Free live session &middot; Class 8–12 &middot; All boards &middot; Just a phone
         </p>
         
         <a 
@@ -20,7 +20,7 @@ export default function CTABand() {
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center bg-white text-[#C97D49] font-display font-extrabold px-10 py-[18px] text-[1.05rem] rounded-md shadow-[0_4px_20px_rgba(0,0,0,0.12)] transition-shadow duration-150 hover:shadow-[0_6px_28px_rgba(0,0,0,0.18)]"
         >
-          Book Your Free Slot
+          Book Your Child's Free Slot
         </a>
         
         <div className="mt-[14px] font-sans text-[0.75rem] text-white/55 tracking-[0.3px]">

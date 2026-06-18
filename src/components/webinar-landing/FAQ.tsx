@@ -9,19 +9,23 @@ const faqs = [
   },
   {
     q: "Which classes is this for?",
-    a: "Classes 8 to 12, across all boards — CBSE, CISCE, State boards. No prior AI or tech experience is needed. Complete beginners and students who already use ChatGPT both get something new from this session."
+    a: "Classes 8 to 12, across all boards — CBSE, ICSE, State boards. No prior AI or tech experience is needed. Complete beginners and students who already use ChatGPT both get something new from this session."
   },
   {
-    q: "What does my child actually need to join?",
+    q: "What will my child actually do in the session?",
+    a: "It's a live, interactive workshop — not a lecture. Your child will submit their own AI prompts in real time, watch how professional techniques transform the results, discover the methods top students use, and compete in a friendly live challenge. They leave with techniques and a study system ready to use the same evening."
+  },
+  {
+    q: "Is this responsible use of AI? Won't it make my child dependent on it?",
+    a: "The method we teach builds thinking, not dependence. The core technique turns AI into a Socratic guide — one that asks your child questions rather than handing over answers. Students who go through this session consistently show stronger reasoning and better output than those using AI without guidance. We also teach verification habits so your child always checks AI output against their own knowledge."
+  },
+  {
+    q: "What does my child need to join?",
     a: "Just a smartphone or laptop with internet. No software installation needed. We use free AI tools (ChatGPT, Gemini, or Claude) — the free version is enough for everything. No account required on the day; guest access works perfectly."
   },
   {
-    q: "Is AI safe for school students? Won't this encourage cheating?",
-    a: "Our method is the opposite of cheating. The signature technique — \"don't give me the answer\" — turns AI into a Socratic coach that asks guiding questions. Students think more, not less. We also teach verification habits so students always check AI output against their textbooks. Parents watching consistently say this builds stronger thinking, not weaker."
-  },
-  {
     q: "Is AI part of the school curriculum in India?",
-    a: "Yes. AI is already part of CBSE and CISCE curricula, and is a central pillar of India's NEP 2020 education policy. Schools across India are racing to integrate AI skills — students who learn this now will be significantly ahead of their peers within 1–2 years."
+    a: "Yes. AI is already part of CBSE and ICSE curricula, and is a central pillar of India's NEP 2020 education policy. Schools across India are racing to integrate AI skills — students who learn this now will be significantly ahead of their peers within 1–2 years."
   },
   {
     q: "What if my child misses the live session?",

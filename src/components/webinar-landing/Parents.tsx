@@ -9,10 +9,10 @@ export default function Parents() {
             For Parents
           </span>
           <h2 className="font-display text-[clamp(1.7rem,3vw,2.5rem)] font-extrabold tracking-[-0.8px] leading-[1.15] mb-3.5 text-[#333333]">
-            This is the opposite of cheating
+            AI as a thinking coach — not a shortcut
           </h2>
           <p className="font-sans text-[0.95rem] text-[#555555] max-w-[580px] leading-[1.72]">
-            The method we teach makes your child think more, not less. Here's why parents consistently recommend it.
+            The method we teach makes your child think more deeply, not less. Here's why parents consistently recommend it.
           </p>
         </div>
         
@@ -25,7 +25,7 @@ export default function Parents() {
               Safe & Responsible
             </div>
             <div className="font-sans text-[0.85rem] text-[#555555] leading-[1.65]">
-              We teach verification, ethics, and smart-use habits — never blind copying. Our signature "don't give me the answer" technique turns AI into a Socratic coach. Students think more, not less.
+              We teach verification, critical thinking, and structured AI use — never blind copying. Our signature technique turns AI into a Socratic guide that asks questions instead of handing over answers. Your child develops sharper thinking, not dependence.
             </div>
           </div>
           
@@ -37,7 +37,7 @@ export default function Parents() {
               Board & NEP Aligned
             </div>
             <div className="font-sans text-[0.85rem] text-[#555555] leading-[1.65]">
-              AI is already in CBSE and CISCE curricula and central to India's NEP 2020 policy. We're teaching tomorrow's core skill, today. Schools are racing to catch up — your child can get ahead now.
+              AI is already in CBSE and ICSE curricula and central to India's NEP 2020 policy. We're teaching tomorrow's core skill, today. Schools are racing to catch up — your child can get ahead now.
             </div>
           </div>
           

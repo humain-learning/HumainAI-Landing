@@ -27,7 +27,7 @@ export default function Header() {
           href="#agenda"
           className="hidden sm:block font-sans text-[0.85rem] font-medium text-[#555555] transition-colors duration-150 hover:text-[#333333]"
         >
-          What You'll Learn
+          What They'll Learn
         </Link>
         <Link
           href="#faq"

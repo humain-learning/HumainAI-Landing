@@ -103,10 +103,11 @@ export default function Problem() {
         </div>
 
         <div className="mt-7 bg-[#333333] rounded-[10px] py-8 px-9 text-center">
+          <p className="font-sans text-[clamp(0.95rem,1.8vw,1.1rem)] text-white/80 leading-[1.65] mb-4">
+            The difference isn't talent or tuition fees. It's guidance.
+          </p>
           <p className="font-sans text-[clamp(0.95rem,1.8vw,1.1rem)] text-white/80 leading-[1.65]">
-            The difference isn't talent. It's not extra tuition.<br />
-            It's <strong className="font-bold text-[#AAC191]">one skill — using AI as a study multiplier.</strong><br />
-            And it takes <strong className="font-bold text-[#AAC191]">60 minutes to start learning.</strong> That's exactly what this masterclass is for.
+            Every student is already using AI. But most are swimming without a coach — developing bad habits, getting inconsistent results, wasting hours. A guided approach changes everything. That's what this session is.
           </p>
         </div>
       </div>
