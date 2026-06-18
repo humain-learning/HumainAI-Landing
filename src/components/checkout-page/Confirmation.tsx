@@ -86,7 +86,7 @@ export default function PaymentConfirmation({
 
 	return (
 		<div className="relative min-h-screen bg-white">
-			<div className="pointer-events-none fixed top-0 right-0 h-100 w-100 rounded-full bg-[#eef6df] blur-2xl" />
+			{/* <div className="pointer-events-none fixed top-0 right-0 h-100 w-100 rounded-full bg-[#eef6df] blur-2xl" /> */}
 
 			<div className="mx-auto flex min-h-screen max-w-4xl items-center justify-center px-4 py-10">
 				<div className="w-full rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">

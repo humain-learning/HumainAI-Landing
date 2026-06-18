@@ -280,7 +280,7 @@ export const CheckOutV2 = ({templateDetails, availableBatches, billingDetails}: 
 	return (
 		<div className="relative min-h-screen bg-white py-8 sm:py-12 mx-auto">
 			<Script type='text/javascript' src="https://checkout.razorpay.com/v1/checkout.js" />
-			<div className="pointer-events-none fixed top-0 right-0 h-100 w-100 rounded-full bg-[#eef6df] blur-2xl z-0" />
+			{/* <div className="pointer-events-none fixed top-0 right-0 h-100 w-100 rounded-full bg-[#eef6df] blur-2xl z-0" /> */}
 			<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 z-100">
 				<form onSubmit={form.handleSubmit(createOrder)}>
 					<input
