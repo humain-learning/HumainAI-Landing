@@ -1,9 +1,16 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { getCookie } from 'cookies-next';
+import { useRouter } from 'next/navigation';
+import { PopupFormModal } from 'ui/PopupFormModal';
+import LeadForm from 'components/forms/hcForm';
 
 export default function Hero() {
+  const router = useRouter();
   const [timeLeft, setTimeLeft] = useState({ d: '00', h: '00', m: '00', s: '00' });
+  const [showModal, setShowModal] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   useEffect(() => {
     const target = new Date('2026-06-20T11:00:00+05:30').getTime();
@@ -29,8 +36,37 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
+  const handleEnrollClick = () => {
+    if (getCookie('leadId')) {
+      router.push('/submission-received');
+      return;
+    } else {
+      setShowModal(true);
+    }
+  };
+
+  const onSubmit = async (values: unknown) => {
+    const res = await fetch('/api/submit-lead', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    });
+
+    const data = await res.json();
+    console.log('DATA:', data);
+    if (!res.ok) {
+      setSubmitError('Something went wrong. Please try again.');
+      throw new Error(data.error || 'Something went wrong');
+    }
+
+    return data;
+  };
+
   return (
-    <section className="relative overflow-hidden bg-[#AAC191] pt-[86px] pb-16 px-5 md:px-16 flex items-center min-h-[80vh]">
+    <>
+      <section className="relative overflow-hidden bg-[#AAC191] pt-[86px] pb-16 px-5 md:px-16 flex items-center min-h-[80vh]">
       {/* Geometric accent rings */}
       <div className="absolute rounded-full border border-white/20 pointer-events-none w-[560px] h-[560px] -top-[200px] -right-[160px]"></div>
       <div className="absolute rounded-full border border-white/20 pointer-events-none w-[320px] h-[320px] top-[40px] right-[70px]"></div>
@@ -61,12 +97,12 @@ export default function Hero() {
           </p>
           
           <div className="flex flex-wrap items-center gap-[18px]">
-            <a 
-              href="#book" 
+            <button 
+              onClick={handleEnrollClick}
               className="inline-flex items-center justify-center font-display font-extrabold bg-[#E7A572] text-white px-10 py-[18px] text-[1.05rem] rounded-md shadow-[0_4px_22px_rgba(231,165,114,0.35)] transition-all hover:bg-[#C97D49] hover:-translate-y-[1px] hover:shadow-[0_6px_28px_rgba(231,165,114,0.45)]"
             >
               Book Your Child's Free Slot
-            </a>
+            </button>
             <span className="font-sans text-[0.78rem] font-medium text-[#333333]/55 tracking-[0.2px]">
               Free &middot; Originally <s className="opacity-70">₹299</s> &middot; Pan-India
             </span>
@@ -160,6 +196,19 @@ export default function Hero() {
         </div>
 
       </div>
-    </section>
+      </section>
+      <PopupFormModal isOpen={showModal} onClose={() => setShowModal(false)}>
+      <LeadForm
+        actionable="Direct Sale"
+        heading="Book Your Child's Free Seat"
+        buttonText="Book Now"
+        source="Webinar"
+        destination="/submission-received"
+        onSubmit={onSubmit}
+        submitError={submitError}
+        setSubmitError={setSubmitError}
+      />
+    </PopupFormModal>
+    </>
   );
 }
