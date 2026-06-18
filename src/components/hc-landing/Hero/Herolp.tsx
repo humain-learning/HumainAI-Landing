@@ -63,7 +63,7 @@ export default function Herolp({basePrice}: HeroProps) {
 			setSubHeading('');
 			setButtonText('Proceed to Checkout');
 			setShowModal(true);
-			setSource('HC Direct Sale Landing');
+			setSource('Testing');
 			setDestination('/checkout?courseId=1')
 		}
 
@@ -292,7 +292,7 @@ export default function Herolp({basePrice}: HeroProps) {
 
 		{/* Modal Dialog for callback request form */}
 		
-		<PopupFormModal isOpen={showModal} onClose={() => setShowModal(false)} maxWidthClassName="max-w-[30vw]">
+		<PopupFormModal isOpen={showModal} onClose={() => setShowModal(false)}>
 			<LeadForm
 				actionable={actionable}
 				heading={heading}

@@ -44,3 +44,4 @@ export const hcLeadSchema = crmLeadSchema.extend({
 export const heLeadSchema = crmLeadSchema.extend({
 		leadType: z.literal('teacher'),
 })
+

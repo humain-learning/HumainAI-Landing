@@ -12,9 +12,9 @@ type PopupModalProps = {
 
 export function PopupFormModal({
 	isOpen,
-	onClose,
 	children,
-	maxWidthClassName = 'max-w-[30vw]',
+	maxWidthClassName = 'max-w-[90vw] md:max-w-xl',
+	onClose,
 }: PopupModalProps) {
 	useEffect(() => {
 		document.body.style.overflow = isOpen ? 'hidden' : 'unset';
@@ -27,8 +27,8 @@ export function PopupFormModal({
 	return (
 		<AnimatePresence>
 			{isOpen && (
-				<div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-					<div className="absolute inset-0 cursor-default" onClick={onClose} />
+				<div className="fixed inset-0 z-[200] flex items-center justify-center  bg-black/70 backdrop-blur-sm">
+					<div className="absolute inset-0 cursor-default"/>
 
 					<motion.div
 						initial={{ opacity: 0, scale: 0.95 }}
@@ -41,14 +41,13 @@ export function PopupFormModal({
 					>
 						<button
 							onClick={onClose}
-							className="absolute top-4 right-4 cursor-pointer rounded-full p-2 text-charcoal transition-colors duration-200 hover:bg-gray-100 md:top-6 md:right-6"
+							className="absolute top-3 right-3 cursor-pointer rounded-full p-2 text-charcoal transition-colors duration-200 hover:bg-gray-100 md:top-6 md:right-6"
 							aria-label="Close modal"
 						>
 							<svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
 								<path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
 							</svg>
 						</button>
-
 						{children}
 					</motion.div>
 				</div>
