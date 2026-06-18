@@ -34,6 +34,7 @@ export const crmLeadSchema = z.object({
 	school: textField,
 	city: textField,
 	actionable: z.enum(["Webinar", "Direct Sale"]),
+	source: z.string().optional(),
 })
 
 export const hcLeadSchema = crmLeadSchema.extend({

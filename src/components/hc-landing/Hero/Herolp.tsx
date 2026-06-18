@@ -157,7 +157,7 @@ export default function Herolp({basePrice}: HeroProps) {
 							setSubHeading('');
 							setButtonText('Submit');
 							setShowModal(true);
-							setSource('HC Landing');
+							setSource('Testing');
 							setDestination('/submission-received');
 						}}
 						whileHover={{ scale: 1.02, backgroundColor: '#f3f6f1' }}

@@ -32,7 +32,7 @@ export default function LeadForm({
 	subHeading,
 	buttonText,
 	submitError,
-	setSubmitError,
+	source,	setSubmitError,
 }: LeadFormProps) {
 	const router = useRouter();
 	const {
@@ -51,7 +51,8 @@ export default function LeadForm({
 			grade: '',
 			school: '',
 			city: '',
-			actionable,
+			actionable: actionable,
+			source: source,
 		},
 		mode: 'all',
 		reValidateMode: 'onChange',
@@ -81,7 +82,7 @@ export default function LeadForm({
 				})}
 			>
 				<input type="hidden" {...register('actionable')} />
-
+				<input type="hidden" {...register('source')} />
 				<div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 					<label className="grid gap-1.5 text-[12px] font-semibold text-charcoal">
 						First Name
