@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getCookie } from 'cookies-next';
@@ -10,15 +10,8 @@ import LeadForm from 'components/forms/hcForm';
 
 export default function Header() {
   const router = useRouter();
-  const [scrolled, setScrolled] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [submitError, setSubmitError] = useState('');
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const handleEnrollClick = () => {
 
@@ -46,11 +39,7 @@ export default function Header() {
 
   return (
     <>
-      <nav
-        className={`fixed inset-x-0 top-0 z-[100] flex h-[62px] items-center justify-between px-5 md:px-16 bg-white/95 backdrop-blur-md border-b border-[#E6E6E6] transition-shadow duration-200 ${
-          scrolled ? 'shadow-[0_2px_16px_rgba(0,0,0,0.07)]' : ''
-        }`}
-      >
+      <nav className="fixed inset-x-0 top-0 z-[100] flex h-[75px] items-center justify-between px-5 md:px-16 bg-white/95 backdrop-blur-md border-b border-[#E6E6E6] shadow-[0_2px_16px_rgba(0,0,0,0.07)]">
         <Link href="/" className="flex items-center">
           <Image src="/assets/logo/brain-logo.png" alt="Humain Learning Logo" width={240} height={60} className="object-contain w-40 md:w-52 h-auto" priority />
         </Link>
@@ -75,18 +64,18 @@ export default function Header() {
           </button>
         </div>
       </nav>
-    <PopupFormModal isOpen={showModal} onClose={() => setShowModal(false)}>
-      <LeadForm
-        actionable="Webinar"
-        heading="Book Your Free Seat"
-        buttonText="Book Now"
-        source="Webinar"
-        destination="/submission-received"
-        onSubmit={onSubmit}
-        submitError={submitError}
-        setSubmitError={setSubmitError}
-      />
-    </PopupFormModal>
+      <PopupFormModal isOpen={showModal} onClose={() => setShowModal(false)}>
+        <LeadForm
+          actionable="Webinar"
+          heading="Book Your Free Seat"
+          buttonText="Book Now"
+          source="Webinar"
+          destination="/submission-received"
+          onSubmit={onSubmit}
+          submitError={submitError}
+          setSubmitError={setSubmitError}
+        />
+      </PopupFormModal>
     </>
   );
 }
