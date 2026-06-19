@@ -69,7 +69,7 @@ export default function Header() {
           actionable="Webinar"
           heading="Book Your Free Seat"
           buttonText="Book Now"
-          source="Webinar"
+          source="Webinar Landing"
           destination="/submission-received"
           onSubmit={onSubmit}
           submitError={submitError}
