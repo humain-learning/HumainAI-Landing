@@ -23,19 +23,52 @@ function getUrgencyText(): string {
   return 'Starting very soon!';
 }
 
+const mapping: Record<string, React.ReactNode> = {
+  aspiration: (
+    <p>
+      The students topping their class aren't studying harder.<br />
+      <span className="text-[#E7A572]">They're studying differently.</span>
+    </p>
+  ),
+  exam: (
+    <p>
+      What if exam prep felt organised,{' '}
+      <span className="text-[#E7A572]">not overwhelming?</span>
+    </p>
+  ),
+   social: (
+    <p>
+      Thousands of families across India are already inside.{' '}
+      <span className="text-[#E7A572]">Is your child next?</span>
+    </p>
+  ),
+  future: (
+    <p>
+      The skill that's quietly separating this generation of students,{' '}
+      <span className="text-[#E7A572]">and how your child can build it.</span>
+    </p>
+  ),
+};
+
 export default function Hero() {
   const router = useRouter();
   const [urgencyText, setUrgencyText] = useState('');
+  const [title, setTitle] = useState<React.ReactNode>(mapping['aspiration']);
   const [showModal, setShowModal] = useState(false);
   const [submitError, setSubmitError] = useState('');
 
   useEffect(() => {
+    // Safe to access window here — client only
+    const searchParams = new URLSearchParams(window.location.search);
+    const utm_term = searchParams.get('utm_term');
+    setTitle(mapping[utm_term as keyof typeof mapping] ?? mapping['aspiration']);
+
     // Compute once on mount — no interval, no re-renders
     setUrgencyText(getUrgencyText());
   }, []);
 
   const handleEnrollClick = () => {
-      setShowModal(true);
+    setShowModal(true);
   };
 
   const onSubmit = async (values: unknown) => {
@@ -59,7 +92,7 @@ export default function Hero() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-white pt-[86px] pb-16 px-5 md:px-16 flex items-center min-h-[80vh]">
+      <section className="relative overflow-hidden bg-white pt-[96px] pb-16 px-5 md:px-16 flex items-center min-h-[80vh]">
       {/* Geometric accent rings */}
       <div className="absolute rounded-full border border-[#E7A572]/15 pointer-events-none w-[560px] h-[560px] -top-[200px] -right-[160px]"></div>
       <div className="absolute rounded-full border border-[#E7A572]/15 pointer-events-none w-[320px] h-[320px] top-[40px] right-[70px]"></div>
@@ -77,8 +110,7 @@ export default function Hero() {
           </div>
           
           <h1 className="font-display text-[clamp(2.2rem,4.5vw,3.6rem)] font-extrabold leading-[1.1] tracking-[-1.5px] text-[#333333] mb-5">
-            Thousands of Students Have Already Found Their Edge with AI.<br />
-           <span className="text-[#E7A572]">Is Yours Next?</span> 
+            {title}
           </h1>
           
           <p className="font-sans text-base text-[#333333]/75 max-w-[520px] mb-3 leading-relaxed">
@@ -203,17 +235,17 @@ export default function Hero() {
       </div>
       </section>
       <PopupFormModal isOpen={showModal} onClose={() => setShowModal(false)}>
-      <LeadForm
-        actionable="Webinar"
-        heading="Book Your Child's Free Seat"
-        buttonText="Book Now"
-        source="Webinar Landing"
-        destination="/submission-received"
-        onSubmit={onSubmit}
-        submitError={submitError}
-        setSubmitError={setSubmitError}
-      />
-    </PopupFormModal>
+        <LeadForm
+          actionable="Webinar"
+          heading="Book Your Child's Free Seat"
+          buttonText="Book Now"
+          source="Webinar Landing"
+          destination="/submission-received"
+          onSubmit={onSubmit}
+          submitError={submitError}
+          setSubmitError={setSubmitError}
+        />
+      </PopupFormModal>
     </>
   );
 }
