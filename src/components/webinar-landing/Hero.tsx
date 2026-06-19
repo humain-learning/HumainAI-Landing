@@ -37,11 +37,14 @@ const mapping: Record<string, React.ReactNode> = {
     </p>
   ),
    social: (
-    <p>
-      Families from across India.One session.{' '}
-      <span className="text-[#E7A572]">Real change.</span>
-    </p>
-  ),
+  <p>
+    Families from across India.
+    One session.
+    <span className="block text-[#E7A572]">
+      Real change.
+    </span>
+  </p>
+),
   future: (
     <p>
       The skill that's quietly separating this generation of students,{' '}
