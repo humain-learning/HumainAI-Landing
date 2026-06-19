@@ -254,20 +254,20 @@ export const CheckOutV2 = ({templateDetails, availableBatches, billingDetails}: 
 						courseName: templateDetails.courseName ?? '',
 					}).toString(),				
 
-				handler: async function (response: any) {
-					console.log("verifying payment with response:", response);
-					const res = await fetch('/api/verify-order', {
-						method: 'POST',
-						headers: { 'Content-Type': 'application/json' },
-						body: JSON.stringify({
-							razorpay_payment_id: response.razorpay_payment_id,
-							razorpay_order_id: response.razorpay_order_id,
-							razorpay_signature: response.razorpay_signature,
-							receipt: order.receipt
-						}),
-					});
+				// handler: async function (response: any) {
+				// 	console.log("verifying payment with response:", response);
+				// 	const res = await fetch('/api/verify-order', {
+				// 		method: 'POST',
+				// 		headers: { 'Content-Type': 'application/json' },
+				// 		body: JSON.stringify({
+				// 			razorpay_payment_id: response.razorpay_payment_id,
+				// 			razorpay_order_id: response.razorpay_order_id,
+				// 			razorpay_signature: response.razorpay_signature,
+				// 			receipt: order.receipt
+				// 		}),
+				// 	});
 					
-				}
+				// }
 			};	
 			console.log("Opening Razorpay payment modal with data:", paymentData);
 			const payment = new window.Razorpay(paymentData as Record<string, unknown>);

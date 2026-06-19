@@ -22,23 +22,7 @@ export function getCRMCredentials() {
 		authHeader: `token ${key}:${secret}`,
 	};
 }
-export function getProdCRMCredentials() {
-	// const baseUrl = process.env.LOCAL_APP_URL;
-	// const key = process.env.LOCAL_CRM_KEY;
-	// const secret = process.env.LOCAL_CRM_SECRET;
-	const baseUrl = process.env.FRAPPE_BASE_URL;
-	const key = process.env.FRAPPE_API_KEY;
-	const secret = process.env.FRAPPE_API_SECRET;
 
-	if (!baseUrl || !key || !secret) {
-		throw new Error('Environment Variables Set to Dev Defaults');
-	}
-
-	return {
-		baseUrl,
-		authHeader: `token ${key}:${secret}`,
-	};
-}
 function getTodayIstDateString() {
 	return new Intl.DateTimeFormat('en-CA', {
 		timeZone: 'Asia/Kolkata',
@@ -120,7 +104,7 @@ export async function getCurrentActiveDiscount(templateId: TemplateId) {
 
 
 export async function getTemplateDetails(templateId: TemplateId) {
-	const { baseUrl, authHeader } = getProdCRMCredentials();
+	const { baseUrl, authHeader } = getCRMCredentials();
 
 	const url = `${baseUrl}/api/resource/Template Course/${templateId}`;
 

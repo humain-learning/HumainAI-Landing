@@ -66,15 +66,23 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ['172.16.16.*'],
-  async headers() {
-    return [
-      {
-        source: "/(.*)",
-        headers: securityHeaders,
-      },
-    ];
-  },
+	allowedDevOrigins: ['172.16.16.*'],
+	async headers() {
+		return [
+		{
+			source: "/(.*)",
+			headers: securityHeaders,
+		},
+		];
+	},
+	async redirects() {
+		return [
+			{
+				source: "/humain-champs-landing",
+				destination: "/humain-champs",
+				permanent: true,
+			},
+		];
+	}
 };
-
 export default nextConfig;
