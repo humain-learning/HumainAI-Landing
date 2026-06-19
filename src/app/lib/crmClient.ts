@@ -64,7 +64,7 @@ export async function getBatchDetailsOfTemplate(templateId: TemplateId) {
 
 	const params = new URLSearchParams({
 		template_id: String(templateId),
-		start_date: "2026-06-01",
+		start_date: getTodayIstDateString(),
 	});
 
 	const url = `${baseUrl}/api/method/humain_learning.humain_learning.api.web.batch_details_of_template?${params}`;

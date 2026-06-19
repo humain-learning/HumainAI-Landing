@@ -4,8 +4,9 @@ import { useState, useEffect, useRef } from 'react';
 
 type ItineraryItem = {
     date: string;
-    date_objday: string;
+    day: string;
     timing: string;
+	session: string;
 };
 
 type Batch = {
@@ -36,53 +37,9 @@ type ChooseBatchProps = {
     discountData?: DiscountData;
 }
 
-const RazorpayButton = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const container = containerRef.current;
-        if (!container) return;
-
-        container.innerHTML = '';
-        const form = document.createElement('form');
-        const script = document.createElement('script');
-        script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
-        script.setAttribute('data-payment_button_id', 'pl_SrYD9PAHtLTEOD');
-        script.async = true;
-
-        const style = document.createElement('style');
-        style.textContent = `
-            .razorpay-payment-button,
-            .razorpay-btn-container button,
-            .razorpay-btn-container form button {
-                border-radius: 9999px !important;
-            }
-        `;
-
-        form.appendChild(script);
-        form.appendChild(style);
-        container.appendChild(form);
-
-        return () => {
-            container.innerHTML = '';
-        };
-    }, []);
-
-    return (
-        <div ref={containerRef} className="w-full flex justify-center razorpay-btn-container">
-            <style>{`
-                .razorpay-payment-button,
-                .razorpay-btn-container button,
-                .razorpay-btn-container form button {
-                    border-radius: 9999px !important;
-                }
-            `}</style>
-        </div>
-    );
-};
 
 export const ChooseBatch = ({ Batches, discountData }: ChooseBatchProps) => {
-    const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+    const [expanded, setExpanded] = useState<number | null>(null);
     const isActive = Boolean(discountData?.active);
     const originalPrice = Number(discountData?.base_price ?? 11800);
     const discountedPrice = Number(discountData?.active_tier?.final_price ?? originalPrice);
@@ -103,17 +60,17 @@ export const ChooseBatch = ({ Batches, discountData }: ChooseBatchProps) => {
 
             <div className="grid md:grid-cols-2 max-w-7xl grid-cols-1 gap-5 md:gap-10 mx-auto w-full md:w-[90vw] px-3 md:px-6 mt-5 md:mt-10">
                 {Batches.map((batch, index) => {
-                    const isExpanded = expandedIndex === index;
+                    const isExpanded = expanded === index;
                     const cardBg = index % 2 === 0 ? 'bg-[#fcf5f0]' : 'bg-[#f8faf5]';
                     
                     return (
                         <div 
-                            className={`relative flex flex-col justify-start w-auto rounded-[2rem] md:rounded-[4rem] border border-transparent hover:border-sage/20 transition-all duration-300 ${cardBg}`} 
-                            key={index}
-                        >
+							className={`relative flex flex-col justify-start self-start w-auto rounded-[2rem] md:rounded-[4rem] border border-transparent hover:border-sage/20 transition-all duration-300 ${cardBg}`} 
+							key={index}
+						>
                             {/* Card Header acting as a clickable Tab */}
                             <button
-                                onClick={() => setExpandedIndex(isExpanded ? null : index)}
+                                onClick={() => setExpanded(isExpanded ? null : index)}
                                 className="flex flex-col items-start w-full px-5 md:px-10 pt-5 md:pt-10 pb-2.5 md:pb-5 text-left cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-sage/30 rounded-t-[2rem] md:rounded-t-[4rem]"
                             >
                                 <div className="flex justify-between w-[80%] items-center">
@@ -143,18 +100,18 @@ export const ChooseBatch = ({ Batches, discountData }: ChooseBatchProps) => {
                                         <table className="w-full table-auto text-center ">
                                             <thead className="hidden md:table-header-group">
                                                 <tr>
-                                                    <th className="font-semibold text-sage py-2">Date</th>
-                                                    <th className="py-2">Day</th>
+                                                    <th className="font-semibold text-sage py-2 text-left">Date</th>
                                                     <th className="py-2">Timing</th>
+                                                    <th className="py-2 text-right">Session</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {batch.itinerary.map((item, i) => (
                                                     <tr key={i} className="border-b border-gray-200 md:border-none">
-                                                        <td className="font-semibold text-sage py-1 md:py-2">{item.date}</td>
-                                                        <td className="py-1 md:py-2">{item.date_objday}</td>
-                                                        <td className="py-1 md:py-2">{item.timing}</td>
-                                                    </tr>
+														<td className="font-semibold py-1 md:py-2 text-left">{item.date}, {item.day}</td>
+														<td className="py-1 md:py-2">{item.timing}</td>
+														<td className="py-1 md:py-2 text-right">{item.session}</td>
+													</tr>
                                                 ))}
                                             </tbody>
                                         </table>
