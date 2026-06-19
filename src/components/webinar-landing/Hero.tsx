@@ -38,8 +38,8 @@ const mapping: Record<string, React.ReactNode> = {
   ),
    social: (
     <p>
-      Thousands of families across India are already inside.{' '}
-      <span className="text-[#E7A572]">Is your child next?</span>
+      Families from across India.One session.{' '}
+      <span className="text-[#E7A572]">Real change.</span>
     </p>
   ),
   future: (
