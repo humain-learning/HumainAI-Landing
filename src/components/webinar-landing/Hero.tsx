@@ -26,7 +26,7 @@ function getUrgencyText(): string {
 const mapping: Record<string, React.ReactNode> = {
   aspiration: (
     <p>
-      The students topping their class aren't studying harder.<br />
+      The students outperforming their class aren't studying harder.<br />
       <span className="text-[#E7A572]">They're studying differently.</span>
     </p>
   ),
