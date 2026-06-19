@@ -19,7 +19,7 @@ export default function PilotModelSP() {
   ];
 
   return (
-    <section className="relative w-full bg-[#f9faf7] py-16 md:py-24 border-b border-[#e8efe0]">
+    <section className="relative w-full bg-white py-16 md:py-24 border-b border-grey">
       <div className="mx-auto w-full max-w-6xl px-6 md:px-12 lg:px-16 flex flex-col items-center">
         
         <div className="w-full text-center mb-16">
@@ -50,9 +50,9 @@ export default function PilotModelSP() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white rounded-3xl p-8 border border-[#e8efe0] shadow-sm"
+              className="bg-white rounded-3xl p-8 border border-grey shadow-sm"
             >
-              <h3 className="font-display text-xl font-bold text-[#5e714e] mb-6">
+              <h3 className="font-display text-xl font-bold text-sage mb-6">
                 Pilot structure
               </h3>
               <ul className="space-y-4">
@@ -74,9 +74,9 @@ export default function PilotModelSP() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-[#5e714e]/10 rounded-2xl p-6 border border-[#5e714e]/20"
+              className="bg-sage/10 rounded-2xl p-6 border border-sage/20"
             >
-              <h3 className="font-display text-lg font-bold text-[#5e714e] mb-2">
+              <h3 className="font-display text-lg font-bold text-sage mb-2">
                 Indicative pilot cost
               </h3>
               <p className="font-sans text-base text-charcoal/90 font-medium">
@@ -90,14 +90,14 @@ export default function PilotModelSP() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="bg-white rounded-3xl p-8 border border-[#e8efe0] shadow-sm h-full flex flex-col"
+            className="bg-white rounded-3xl p-8 border border-grey shadow-sm h-full flex flex-col"
           >
             <h3 className="font-display text-xl font-bold text-terracotta mb-6">
               Decision points
             </h3>
             <ul className="space-y-4 mb-8 flex-1">
               {questions.map((q, idx) => (
-                <li key={idx} className="flex items-start gap-4 p-4 rounded-xl bg-[#fdfaf6] border border-[#e7a572]/20">
+                <li key={idx} className="flex items-start gap-4 p-4 rounded-xl bg-terracotta/10 border border-terracotta/20">
                   <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-terracotta text-white font-bold text-xs mt-0.5">
                     {idx + 1}
                   </span>
@@ -107,7 +107,7 @@ export default function PilotModelSP() {
                 </li>
               ))}
             </ul>
-            <p className="font-sans text-sm md:text-base text-charcoal/80 leading-relaxed p-6 bg-[#f9faf7] rounded-xl border border-[#e8efe0] italic">
+            <p className="font-sans text-sm md:text-base text-charcoal/80 leading-relaxed p-6 bg-grey/25 rounded-xl border border-grey italic">
               If the answers to all four questions are yes, we recommend moving to Phase 2 implementation. If any answer is no, we recommend either a focused remediation or a clean separation. We do not believe in forcing a fit. Three of the schools we ran pilots with did not proceed to scale; that outcome is the right one when the fit is not there.
             </p>
           </motion.div>

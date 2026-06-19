@@ -34,7 +34,7 @@ export default function MeasurableOutcomesSP() {
   ];
 
   return (
-    <section className="relative w-full bg-white py-16 md:py-24 border-b border-[#e8efe0]">
+    <section className="relative w-full bg-white py-16 md:py-24 border-b border-grey">
       <div className="mx-auto w-full max-w-7xl px-6 md:px-12 lg:px-16 flex flex-col items-center">
         
         <div className="w-full text-center mb-16 max-w-4xl mx-auto">
@@ -70,13 +70,13 @@ export default function MeasurableOutcomesSP() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 * idx }}
               >
-                <h3 className="font-display text-xl font-bold text-terracotta mb-6 border-b border-[#e8efe0] pb-2">
+                <h3 className="font-display text-xl font-bold text-terracotta mb-6 border-b border-grey pb-2">
                   {category.title}
                 </h3>
                 <ul className="space-y-4">
                   {category.items.map((item, i) => (
                     <li key={i} className="flex gap-4">
-                      <span className="flex-shrink-0 w-2 h-2 rounded-full bg-[#5e714e] mt-2"></span>
+                      <span className="flex-shrink-0 w-2 h-2 rounded-full bg-sage mt-2"></span>
                       <p className="font-sans text-base text-charcoal/80 leading-relaxed">
                         <strong className="text-charcoal">{item.strong}:</strong> {item.text}
                       </p>
@@ -94,13 +94,13 @@ export default function MeasurableOutcomesSP() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="w-full max-w-[500px] bg-[#f9faf7] rounded-3xl p-8 border border-[#e8efe0] shadow-sm flex flex-col items-center"
+              className="w-full max-w-[500px] bg-grey/25 rounded-3xl p-8 border border-grey shadow-sm flex flex-col items-center"
             >
               
               <div className="w-full flex flex-col gap-3">
                 <Link 
                   href="/research/pilot-2025"
-                  className="inline-flex items-center text-[#5e714e] font-semibold hover:text-[#4a5a3e] transition-colors group text-sm"
+                  className="inline-flex items-center text-sage font-semibold hover:text-terracotta transition-colors group text-sm"
                 >
                   Read the full pilot methodology
                   <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -109,7 +109,7 @@ export default function MeasurableOutcomesSP() {
                 </Link>
                 <Link 
                   href="/research/teacher-cohort-1"
-                  className="inline-flex items-center text-[#5e714e] font-semibold hover:text-[#4a5a3e] transition-colors group text-sm"
+                  className="inline-flex items-center text-sage font-semibold hover:text-terracotta transition-colors group text-sm"
                 >
                   Read the teacher cohort methodology
                   <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

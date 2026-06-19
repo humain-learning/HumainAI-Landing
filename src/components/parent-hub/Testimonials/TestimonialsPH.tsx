@@ -95,12 +95,12 @@ export default function TestimonialsPH() {
               </div>
               <p className="font-sans text-sm text-charcoal/90 leading-relaxed italic mb-4">&quot;{t.quote}&quot;</p>
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-[#aac191]/10 border border-[#e8efe0] flex items-center justify-center text-[#aac191] font-display font-bold text-xs">
+                <div className="w-8 h-8 rounded-full bg-[#aac191]/10 border border-[#e8efe0] flex items-center justify-center text-[#aac191] font-display font-bold text-sm">
                   {t.name.charAt(0)}
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-charcoal text-xs">{t.name}</h4>
-                  <p className="font-sans text-[10px] text-charcoal/50">{t.relation}</p>
+                  <h4 className="font-display font-bold text-charcoal text-sm">{t.name}</h4>
+                  <p className="font-sans text-xs text-charcoal/50">{t.relation}</p>
                 </div>
               </div>
             </motion.div>

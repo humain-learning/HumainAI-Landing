@@ -1,24 +1,16 @@
 import { Metadata } from 'next';
 import HeroPH from "@/components/parent-hub/Hero/HeroPH";
-import AuthorReviewerStripPH from "@/components/parent-hub/AuthorReviewer/AuthorReviewerStripPH";
 import FoundationPH from "@/components/parent-hub/Foundation/FoundationPH";
-import WhyItMattersPH from "@/components/parent-hub/WhyItMatters/WhyItMattersPH";
 import ShouldChildLearnAIPH from "@/components/parent-hub/ShouldChildLearnAI/ShouldChildLearnAIPH";
 import WillAIReplaceJobPH from "@/components/parent-hub/WillAIReplaceJob/WillAIReplaceJobPH";
 import FrameworkPH from "@/components/parent-hub/Framework/FrameworkPH";
 import FiveQuestionsPH from "@/components/parent-hub/FiveQuestions/FiveQuestionsPH";
 import IsAISafePH from "@/components/parent-hub/IsAISafe/IsAISafePH";
-import SafetyByAgePH from "@/components/parent-hub/SafetyByAge/SafetyByAgePH";
-import ScreenTimePH from "@/components/parent-hub/ScreenTime/ScreenTimePH";
 import RulesToAllowPH from "@/components/parent-hub/RulesToAllow/RulesToAllowPH";
 import DPDPActPH from "@/components/parent-hub/DPDPAct/DPDPActPH";
-import TeachAIAtHomePH from "@/components/parent-hub/TeachAIAtHome/TeachAIAtHomePH";
 import BoardExamsPH from "@/components/parent-hub/BoardExams/BoardExamsPH";
 import AICoursesForDaughtersPH from "@/components/parent-hub/AICoursesForDaughters/AICoursesForDaughtersPH";
-import BestAICoursePH from "@/components/parent-hub/BestAICourse/BestAICoursePH";
-import HumainChampsPitchPH from "@/components/parent-hub/HumainChampsPitch/HumainChampsPitchPH";
 import TestimonialsPH from "@/components/parent-hub/Testimonials/TestimonialsPH";
-import PricingPH from "@/components/parent-hub/Pricing/PricingPH";
 import DownloadsPH from "@/components/parent-hub/Downloads/DownloadsPH";
 import FAQPH from "@/components/parent-hub/FAQ/FAQPH";
 import FinalBannerPH from "@/components/parent-hub/FinalBanner/FinalBannerPH";
@@ -102,25 +94,17 @@ export default function ParentHub() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <HeroPH />
-      <AuthorReviewerStripPH />
       <FoundationPH />
-      <WhyItMattersPH />
       <ShouldChildLearnAIPH />
       <WillAIReplaceJobPH />
       <FrameworkPH />
       <FiveQuestionsPH />
       <IsAISafePH />
-      <SafetyByAgePH />
-      <ScreenTimePH />
       <RulesToAllowPH />
       <DPDPActPH />
-      <TeachAIAtHomePH />
       <BoardExamsPH />
       <AICoursesForDaughtersPH />
-      <BestAICoursePH />
-      <HumainChampsPitchPH />
       <TestimonialsPH />
-      <PricingPH />
       <DownloadsPH />
       <FAQPH />
       <FinalBannerPH />

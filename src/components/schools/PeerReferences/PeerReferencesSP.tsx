@@ -30,7 +30,7 @@ export default function PeerReferencesSP() {
   ];
 
   return (
-    <section className="relative w-full bg-white py-16 md:py-24 border-b border-[#e8efe0]">
+    <section className="relative w-full bg-white py-16 md:py-24 border-b border-grey">
       <div className="mx-auto w-full max-w-6xl px-6 md:px-12 lg:px-16 flex flex-col items-center">
         
         <div className="w-full text-center mb-16 max-w-4xl mx-auto">
@@ -62,16 +62,16 @@ export default function PeerReferencesSP() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 * idx }}
-              className="bg-[#f9faf7] rounded-3xl p-8 border border-[#e8efe0] shadow-sm flex flex-col"
+              className="bg-grey/25 rounded-3xl p-8 border border-grey shadow-sm flex flex-col"
             >
-              <h3 className="font-display text-xl font-bold text-[#5e714e] mb-4">
+              <h3 className="font-display text-xl font-bold text-sage mb-4">
                 {c.title}
               </h3>
               <p className="font-sans text-base text-charcoal/80 leading-relaxed flex-1">
                 {c.body}
               </p>
               {c.quote && (
-                <div className="mt-6 pt-6 border-t border-[#e8efe0]">
+                <div className="mt-6 pt-6 border-t border-grey">
                   <p className="font-display text-lg font-bold text-terracotta leading-snug italic">
                     {c.quote}
                   </p>
@@ -89,7 +89,7 @@ export default function PeerReferencesSP() {
         >
           <Link 
             href="/case-studies"
-            className="inline-flex items-center text-[#5e714e] font-semibold hover:text-[#4a5a3e] transition-colors group text-sm md:text-base"
+            className="inline-flex items-center text-sage font-semibold hover:text-terracotta transition-colors group text-sm md:text-base"
           >
             Read full case studies (NDA required for procurement-level access)
             <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

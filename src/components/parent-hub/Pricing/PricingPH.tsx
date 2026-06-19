@@ -21,7 +21,7 @@ const tiers = [
   },
   {
     name: 'Humain Champs',
-    price: 'Rs. 14,750',
+    price: '',
     subtitle: 'Full refund after the first session if not satisfied.',
     badge: 'Class 8 to Class 12',
     features: [
@@ -67,7 +67,7 @@ export default function PricingPH() {
             viewport={{ once: true }}
             className="font-display text-3xl md:text-4xl lg:text-[42px] font-extrabold leading-[1.15] tracking-tight text-charcoal mb-3"
           >
-            AI course pricing for Indian parents: free guide and Rs.&nbsp;14,750 for the flagship
+            AI course pricing for Indian parents: free guide and full programme for your child
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -115,13 +115,15 @@ export default function PricingPH() {
                 >
                   {tier.name}
                 </motion.h3>
-                <div 
-                  className="font-display text-3xl lg:text-4xl font-black tracking-tight mb-1" 
-                  style={{ color: tier.isPrimary ? '#fff' : '#1a1a1a' }}
-                >
-                  {tier.price}
-                </div>
-                <p className={`font-sans text-xs font-medium mb-5 ${tier.isPrimary ? 'text-[#d9e3d0]' : 'text-charcoal/50'}`}>
+                {tier.price && (
+                  <div 
+                    className="font-display text-3xl lg:text-4xl font-black tracking-tight mb-1" 
+                    style={{ color: tier.isPrimary ? '#fff' : '#1a1a1a' }}
+                  >
+                    {tier.price}
+                  </div>
+                )}
+                <p className={`font-sans text-sm font-medium mb-5 ${tier.isPrimary ? 'text-[#d9e3d0]' : 'text-charcoal/50'}`}>
                   {tier.subtitle}
                 </p>
 

@@ -79,7 +79,7 @@ export default function HeaderPH() {
                 whileTap={{ scale: 0.98 }}
                 className="group flex cursor-pointer items-center justify-between gap-2.5 rounded-full bg-terracotta py-2 px-5 text-white shadow-md shadow-terracotta/20 transition-all duration-300 hover:bg-[#df935c] hover:shadow-lg hover:shadow-terracotta/30"
               >
-                <span className="font-display text-xs md:text-sm font-bold tracking-wide">
+                <span className="font-display text-sm md:text-base font-bold tracking-wide">
                   Enroll Now
                 </span>
               </motion.button>
@@ -87,7 +87,7 @@ export default function HeaderPH() {
             
             <a
               href="/resources/parents-guide"
-              className="inline-block md:hidden bg-[#aac191] text-white text-xs font-bold px-4 py-2 rounded-full"
+              className="inline-block md:hidden bg-[#aac191] text-white text-sm font-bold px-4 py-2 rounded-full"
             >
               Get Guide
             </a>

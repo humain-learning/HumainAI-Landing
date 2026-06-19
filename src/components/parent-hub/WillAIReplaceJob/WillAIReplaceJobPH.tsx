@@ -46,7 +46,7 @@ export default function WillAIReplaceJobPH() {
                   className="rounded-2xl bg-white border border-[#e6e6e6] p-4 text-center shadow-sm"
                 >
                   <div className="font-display text-xl font-extrabold text-terracotta">{s.value}</div>
-                  <div className="font-sans text-xs text-charcoal/60 mt-0.5">{s.label}</div>
+                  <div className="font-sans text-sm text-charcoal/60 mt-0.5">{s.label}</div>
                   <div className="font-sans text-[10px] text-charcoal/40 mt-0.5">{s.sub}</div>
                 </div>
               ))}
@@ -74,7 +74,7 @@ export default function WillAIReplaceJobPH() {
             >
               <div className="font-display text-[10px] font-extrabold tracking-wider text-terracotta uppercase mb-2">Direct Answer</div>
               <p className="font-sans text-base md:text-lg text-charcoal/80 font-medium leading-relaxed">
-                AI will not replace your child. A person who uses AI well will replace one who cannot. Future readiness
+                A person who uses AI well will replace one who cannot. Future readiness
                 is not about predicting which jobs survive. It is about raising a child who can learn, adapt, and work
                 alongside AI.
               </p>

@@ -71,7 +71,7 @@ export default function SafetyByAgePH() {
             <thead>
               <tr className="bg-sage">
                 {[`Grade band`, `AI use`, `Parent role`, `What to teach first`, ``].map((h) => (
-                  <th key={h} className="p-4 border-r border-white/20 last:border-r-0 font-display font-bold text-white tracking-wide uppercase text-xs">
+                  <th key={h} className="p-4 border-r border-white/20 last:border-r-0 font-display font-bold text-white tracking-wide uppercase text-sm">
                     {h}
                   </th>
                 ))}
@@ -88,7 +88,7 @@ export default function SafetyByAgePH() {
                     <td className="p-4 border-b border-r border-[#e6e6e6]">
                       <div className="flex items-center gap-3">
                         {/* Grade progression indicator */}
-                        <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-display font-bold text-white text-xs" style={{
+                        <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-display font-bold text-white text-sm" style={{
                           background: `linear-gradient(135deg, ${idx <= 1 ? '#aac191' : '#e7a572'}, ${idx <= 1 ? '#c8d6bc' : '#f0b89d'})`
                         }}>
                           {idx + 1}
@@ -131,15 +131,15 @@ export default function SafetyByAgePH() {
                             <div className="max-w-3xl mx-auto space-y-4">
                               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <div className="p-4 rounded-xl bg-white border border-[#e8efe0] hover:border-[#aac191] transition-colors">
-                                  <div className="font-display text-xs font-bold text-[#aac191] uppercase mb-2">AI Use Pattern</div>
+                                  <div className="font-display text-sm font-bold text-[#aac191] uppercase mb-2">AI Use Pattern</div>
                                   <p className="font-sans text-sm text-charcoal/80 leading-relaxed">{row.use}</p>
                                 </div>
                                 <div className="p-4 rounded-xl bg-white border border-[#e8efe0] hover:border-terracotta transition-colors">
-                                  <div className="font-display text-xs font-bold text-terracotta uppercase mb-2">Your Role</div>
+                                  <div className="font-display text-sm font-bold text-terracotta uppercase mb-2">Your Role</div>
                                   <p className="font-sans text-sm text-charcoal/80 leading-relaxed">{row.role}</p>
                                 </div>
                                 <div className="p-4 rounded-xl bg-white border border-[#e8efe0] hover:border-[#aac191] transition-colors">
-                                  <div className="font-display text-xs font-bold text-[#aac191] uppercase mb-2">Teaching Focus</div>
+                                  <div className="font-display text-sm font-bold text-[#aac191] uppercase mb-2">Teaching Focus</div>
                                   <p className="font-sans text-sm text-charcoal/80 leading-relaxed">{row.teach}</p>
                                 </div>
                               </div>
@@ -147,7 +147,7 @@ export default function SafetyByAgePH() {
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.15 }}
-                                className="text-xs text-charcoal/60 italic pt-2"
+                                className="text-sm text-charcoal/60 italic pt-2"
                               >
                                 💡 Click to collapse. This progression helps build judgment gradually as your child matures.
                               </motion.p>

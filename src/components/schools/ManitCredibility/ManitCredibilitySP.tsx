@@ -24,7 +24,7 @@ export default function ManitCredibilitySP() {
   ];
 
   return (
-    <section className="relative w-full bg-[#f9faf7] py-16 md:py-24 border-b border-[#e8efe0]">
+    <section className="relative w-full bg-white py-16 md:py-24 border-b border-grey">
       <div className="mx-auto w-full max-w-7xl px-6 md:px-12 lg:px-16 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
         
         {/* Left: Image & Quote */}
@@ -43,8 +43,8 @@ export default function ManitCredibilitySP() {
             />
           </div>
 
-          <div className="bg-white rounded-2xl p-8 border border-[#e8efe0] shadow-sm relative">
-            <svg className="absolute top-4 left-4 w-8 h-8 text-[#5e714e]/20" fill="currentColor" viewBox="0 0 24 24">
+          <div className="bg-white rounded-2xl p-8 border border-grey shadow-sm relative">
+            <svg className="absolute top-4 left-4 w-8 h-8 text-sage/20" fill="currentColor" viewBox="0 0 24 24">
               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
             </svg>
             <p className="font-display text-lg font-bold text-charcoal leading-snug italic relative z-10 pt-4">
@@ -83,7 +83,7 @@ export default function ManitCredibilitySP() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 + (0.1 * idx) }}
               >
-                <h3 className="font-display text-xl font-bold text-[#5e714e] mb-2">
+                <h3 className="font-display text-xl font-bold text-sage mb-2">
                   {cred.title}
                 </h3>
                 <p className="font-sans text-base text-charcoal/80 leading-relaxed">

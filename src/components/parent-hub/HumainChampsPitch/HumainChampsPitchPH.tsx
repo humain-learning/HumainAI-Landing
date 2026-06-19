@@ -42,27 +42,13 @@ export default function HumainChampsPitchPH() {
               Small and interactive batches.
             </motion.p>
 
-            {/* Price box */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-white rounded-2xl border border-[#e8efe0] p-5 mb-5 shadow-sm"
-            >
-              <div className="font-display text-[10px] font-extrabold tracking-wider text-[#aac191] uppercase mb-3">Price &amp; Enrollment</div>
-              <div className="flex items-baseline gap-2 mb-3">
-                <span className="font-display text-4xl font-black text-charcoal">Rs. 14,750</span>
-                <span className="font-sans text-sm text-charcoal/50">for the full course</span>
-              </div>
-              <Link
+            <Link
                 href="https://pages.razorpay.com/humainchamps"
                 target="_blank"
-                className="flex items-center justify-center w-full py-3.5 px-6 rounded-full bg-terracotta text-white font-sans font-bold text-sm shadow-lg shadow-terracotta/30 hover:bg-[#d6925c] hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+                className="flex items-center justify-center w-full py-3.5 px-6 rounded-full bg-terracotta text-white font-sans font-bold text-sm shadow-lg shadow-terracotta/30 hover:bg-[#d6925c] hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 mb-5"
               >
-                Enroll your child in Humain Champs (Rs. 14,750)
+                Enroll your child in Humain Champs
               </Link>
-            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -84,7 +70,7 @@ export default function HumainChampsPitchPH() {
 
           {/* Right: benefits */}
           <div className="space-y-3">
-            <div className="font-display text-xs font-bold tracking-[0.15em] text-[#aac191] uppercase mb-2">What your child receives</div>
+            <div className="font-display text-sm font-bold tracking-[0.15em] text-[#aac191] uppercase mb-2">What your child receives</div>
             {benefits.map((item, idx) => {
               const getIcon = (iconType: string) => {
                 switch(iconType) {

@@ -129,7 +129,7 @@ export default function ScreenTimePH() {
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <div className="w-2.5 h-2.5 rounded-full bg-[#aac191]" />
-                    <span className="font-display text-xs font-extrabold tracking-wider text-[#aac191] uppercase">Active — encouraged</span>
+                    <span className="font-display text-sm font-extrabold tracking-wider text-[#aac191] uppercase">Active — encouraged</span>
                   </div>
                   <ul className="space-y-2.5 font-sans text-sm text-charcoal/80">
                     {['Training a model or testing its limits', 'Writing a prompt, then editing the output', 'Checking an AI answer against a textbook', 'Building a personal study agent'].map((item, i) => (
@@ -165,7 +165,7 @@ export default function ScreenTimePH() {
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <div className="w-2.5 h-2.5 rounded-full bg-terracotta" />
-                    <span className="font-display text-xs font-extrabold tracking-wider text-terracotta uppercase">Passive — push back on</span>
+                    <span className="font-display text-sm font-extrabold tracking-wider text-terracotta uppercase">Passive — push back on</span>
                   </div>
                   <ul className="space-y-2.5 font-sans text-sm text-charcoal/80">
                     {['Auto-played videos without a goal', 'Letting AI complete homework while scrolling', 'Open-ended chatting with no output', 'Using AI in private, without check-ins'].map((item, i) => (
@@ -195,7 +195,7 @@ export default function ScreenTimePH() {
               className="rounded-2xl bg-[#aac191] p-4 text-center group hover:shadow-lg transition-all"
             >
               <div className="font-display text-2xl font-extrabold text-white group-hover:scale-105 transition-transform">30–45 min/week</div>
-              <div className="font-sans text-xs text-white/70 mt-1">Humain's recommended AI session length for younger children</div>
+              <div className="font-sans text-sm text-white/70 mt-1">Humain's recommended AI session length for younger children</div>
             </motion.div>
 
             <motion.div

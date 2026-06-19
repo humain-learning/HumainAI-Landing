@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const tableData = [
   { safe: "Child is Class 8 or older and uses it with a parent's knowledge", unsafe: 'Child is under Class 8 and uses it alone' },
@@ -46,70 +47,23 @@ export default function IsAISafePH() {
             </motion.aside>
           </div>
 
-          <div>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="font-sans text-base md:text-lg text-charcoal/70 leading-relaxed mb-4"
-            >
-              The actual answer is conditional. AI is safe for your child when three conditions are met.
-            </motion.p>
-
-            <div className="space-y-3">
-              {[
-                { text: 'Your child knows what AI is and that it can invent facts.', detail: 'This prevents your child from blindly trusting AI outputs as gospel truth.' },
-                { text: "Your child knows what never to share with an AI tool (real name, school name, address, photos, family information, board enrollment number).", detail: 'Data protection is essential. Teach her what personal information to guard.' },
-                { text: 'You and your child agree on what AI is allowed to do and what it is not.', detail: 'Clear family rules prevent accidental misuse and build responsibility.' },
-              ].map((cond, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: 10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.15 + i * 0.08 }}
-                  onHoverStart={() => setHoveredCondition(i)}
-                  onHoverEnd={() => setHoveredCondition(null)}
-                  className="flex items-start gap-3 bg-[#f3f6f1] rounded-xl px-4 py-3 group hover:bg-[#e8efe0] transition-all"
-                >
-                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-[#aac191] flex items-center justify-center mt-0.5 group-hover:scale-110 transition-transform">
-                    <span className="text-white font-bold text-[10px]">{i + 1}</span>
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-sans text-sm text-charcoal/80 group-hover:text-[#aac191] transition-colors">{cond.text}</p>
-                    {hoveredCondition === i && (
-                      <motion.p 
-                        initial={{ opacity: 0, y: -5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="font-sans text-xs text-charcoal/60 mt-2 italic pl-3 border-l-2 border-[#aac191]"
-                      >
-                        💡 {cond.detail}
-                      </motion.p>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="mt-4"
-            >
-              <Link
-                href="/parents/is-ai-safe-for-children-india"
-                className="inline-flex items-center text-[#aac191] font-semibold hover:text-terracotta transition-colors group text-sm"
-              >
-                Read more: is AI safe for children in India
-                <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
-            </motion.div>
-          </div>
+          {/* Right column — photo */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15 }}
+            className="relative w-full h-[340px] md:h-[420px] rounded-2xl overflow-hidden shadow-md"
+          >
+            <Image
+              src="/assets/images/girlstudying.png"
+              alt="Girl studying with AI on a laptop"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+            />
+          </motion.div>
         </div>
 
         {/* Comparison Table */}
@@ -123,15 +77,15 @@ export default function IsAISafePH() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr>
-                <th className="w-1/2 p-4 bg-[#f3f6f1] border-b border-r border-[#e8efe0] font-display font-bold text-[#aac191] text-base">
-                  <span className="flex items-center gap-2"><svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg> When AI is reasonably safe</span>
+                <th className="w-1/2 p-5 bg-[#f3f6f1] border-b border-r border-[#e8efe0] font-display font-bold text-[#aac191] text-base">
+                  <span className="flex items-center gap-2"><svg className="w-4 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg> When AI is reasonably safe</span>
                 </th>
                 <th className="w-1/2 p-4 bg-red-50/40 border-b border-[#e8efe0] font-display font-bold text-terracotta text-base">
                   <span className="flex items-center gap-2"><svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg> When it is not</span>
                 </th>
               </tr>
             </thead>
-            <tbody className="font-sans text-sm text-charcoal/80">
+            <tbody className="font-sans text-lg text-charcoal/80">
               {tableData.map((row, idx) => (
                 <tr key={idx} className="hover:bg-gray-50/50 transition-colors">
                   <td className="p-4 border-b border-r border-[#e8efe0] align-top">

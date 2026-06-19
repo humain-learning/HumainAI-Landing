@@ -1,33 +1,43 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'motion/react';
+import { spViewport } from '../shared/SchoolsMotion';
 
 export default function AuthorStripSP() {
   return (
-    <section className="w-full bg-[#f9faf7] border-y border-[#e8efe0] py-6">
-      <div className="mx-auto w-full max-w-7xl px-6 md:px-12 lg:px-16 flex flex-col md:flex-row items-center gap-6">
-        
-        {/* Avatars */}
-        <div className="flex -space-x-4 flex-shrink-0">
-          <img 
-            src="/assets/images/e3.png" 
-            alt="Manit Jain, M.Ed Harvard, co-founder of Humain Learning AI and co-founder of Heritage Xperiential Learning Schools." 
-            className="w-14 h-14 rounded-full border-2 border-white object-cover shadow-sm bg-white"
-          />
-          <img 
-            src="/assets/images/e1.png" 
-            alt="Dr. Tapaswini Sahu, PhD Educational Psychology JNU and M.Phil Cambridge, Academic Director at Humain Learning AI." 
-            className="w-14 h-14 rounded-full border-2 border-white object-cover shadow-sm bg-white"
-          />
+    <section className="w-full border-y border-grey bg-white py-6">
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={spViewport}
+        transition={{ duration: 0.45 }}
+        className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 px-6 md:flex-row md:px-12 lg:px-16"
+      >
+        <div className="flex flex-shrink-0 -space-x-4">
+          {[
+            { src: '/assets/images/e3.png', alt: 'Manit Jain, co-founder of Humain Learning and Heritage Schools' },
+            { src: '/assets/images/e1.png', alt: 'Dr. Tapaswini Sahu, Academic Director at Humain Learning' },
+          ].map((person, idx) => (
+            <motion.img
+              key={person.src}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.08, zIndex: 10 }}
+              viewport={spViewport}
+              transition={{ delay: idx * 0.1, type: 'spring', stiffness: 200 }}
+              src={person.src}
+              alt={person.alt}
+              className="h-14 w-14 rounded-full border-2 border-white bg-white object-cover shadow-sm"
+            />
+          ))}
         </div>
-
-        {/* Text */}
-        <p className="font-sans text-sm md:text-base text-charcoal/80 leading-relaxed text-center md:text-left flex-1">
-          <strong>Authored by Manit Jain</strong>, Co-founder of Humain Learning AI, M.Ed Harvard Graduate School of Education, co-founder of Heritage Xperiential Learning Schools, Chair of the FICCI ARISE School Education Committee, NEP 2020 advisor. 
-          {' '}<strong>Reviewed by Dr. Tapaswini Sahu</strong>, PhD Educational Psychology JNU, M.Phil Cambridge.
+        <p className="flex-1 text-center font-sans text-sm leading-relaxed text-charcoal/80 md:text-left md:text-base">
+          Built by Heritage Schools co-founder <strong className="text-sage">Manit Jain</strong>. CBSE 417 mapping.
+          DPDP compliant. Reviewed by <strong className="text-sage">Dr. Tapaswini Sahu</strong>, PhD Educational
+          Psychology JNU, M.Phil Cambridge.
         </p>
-
-      </div>
+      </motion.div>
     </section>
   );
 }

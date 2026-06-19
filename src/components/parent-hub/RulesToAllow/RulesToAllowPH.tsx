@@ -95,7 +95,7 @@ export default function RulesToAllowPH() {
                 </th>
               </tr>
             </thead>
-            <tbody className="font-sans text-sm text-charcoal/80">
+            <tbody className="font-sans text-em text-charcoal/80">
               {tableData.map((row, idx) => (
                 <motion.tr 
                   key={idx} 
@@ -161,17 +161,6 @@ export default function RulesToAllowPH() {
             </tbody>
           </table>
         </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="font-sans text-sm md:text-base text-charcoal/80 leading-relaxed max-w-3xl"
-        >
-          Print this list and put it on the fridge. The first column is roughly what Pillar 3 (Learning with AI) covers
-          in Humain Champs. The second column is roughly what Pillar 2 (Ethics, Safety and Responsibility) covers.
-        </motion.p>
 
       </div>
     </section>

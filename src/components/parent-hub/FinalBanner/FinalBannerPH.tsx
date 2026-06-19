@@ -35,7 +35,7 @@ export default function FinalBannerPH() {
             target="_blank"
             className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full bg-terracotta text-white font-sans font-bold text-lg shadow-lg shadow-terracotta/30 hover:bg-[#d6925c] hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
           >
-            Enroll in Humain Champs (Rs. 14,750)
+            Enroll in Humain Champs
           </Link>
           
           <Link 

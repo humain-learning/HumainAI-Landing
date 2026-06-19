@@ -80,7 +80,7 @@ export default function TeachAIAtHomePH() {
                 transition={{ delay: 0.06 * idx }}
                 className="flex items-start gap-4 bg-[#f9faf7] rounded-2xl border border-[#e8efe0] px-5 py-4"
               >
-                <div className="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-terracotta text-white font-display font-bold text-xs mt-0.5">
+                <div className="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-terracotta text-white font-display font-bold text-sm mt-0.5">
                   {idx + 1}
                 </div>
                 <div>

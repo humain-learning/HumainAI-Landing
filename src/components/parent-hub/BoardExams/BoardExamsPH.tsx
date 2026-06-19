@@ -70,7 +70,7 @@ export default function BoardExamsPH() {
 
           {/* Right: how-to cards */}
           <div className="space-y-3">
-            <div className="font-display text-xs font-bold tracking-[0.15em] text-[#aac191] uppercase mb-2">How a Class 10 / 12 student uses AI well</div>
+            <div className="font-display text-xl font-bold tracking-[0.15em] text-[#aac191] uppercase mb-2">How a Class 10 / 12 student uses AI well</div>
             {[
               { tool: 'NotebookLM', use: 'Summarise a chapter, then test herself against it' },
               { tool: 'AI prompting', use: 'Generate board-pattern questions a level above her comfort' },
@@ -85,9 +85,9 @@ export default function BoardExamsPH() {
                 className="flex items-start gap-4 bg-white rounded-2xl border border-[#e8efe0] px-5 py-4 shadow-sm"
               >
                 <div className="flex-shrink-0 rounded-xl bg-[#aac191] px-2.5 py-1">
-                  <span className="font-display text-[10px] font-extrabold text-white tracking-wide">{item.tool}</span>
+                  <span className="font-display text-[20px] font-extrabold text-white tracking-wide">{item.tool}</span>
                 </div>
-                <p className="font-sans text-sm text-charcoal/80 mt-0.5">{item.use}</p>
+                <p className="font-sans text-em text-charcoal/80 mt-0.5">{item.use}</p>
               </motion.div>
             ))}
 

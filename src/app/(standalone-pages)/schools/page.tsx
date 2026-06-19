@@ -1,34 +1,26 @@
 import { Metadata } from 'next';
 import HeaderSP from "@/components/schools/Header/HeaderSP";
 import HeroSP from "@/components/schools/Hero/HeroSP";
-import AuthorStripSP from "@/components/schools/AuthorStrip/AuthorStripSP";
 import WhatIsAILiteracySP from "@/components/schools/WhatIsAILiteracy/WhatIsAILiteracySP";
 import WhyAdoptNowSP from "@/components/schools/WhyAdoptNow/WhyAdoptNowSP";
 import LearnerOutcomesSP from "@/components/schools/LearnerOutcomes/LearnerOutcomesSP";
-import EngagementModelSP from "@/components/schools/EngagementModel/EngagementModelSP";
 import CurriculumMappingSP from "@/components/schools/CurriculumMapping/CurriculumMappingSP";
 import DPDPComplianceSP from "@/components/schools/DPDPCompliance/DPDPComplianceSP";
+import EngagementModelSP from "@/components/schools/EngagementModel/EngagementModelSP";
 import TeacherCertificationSP from "@/components/schools/TeacherCertification/TeacherCertificationSP";
-import MeasurableOutcomesSP from "@/components/schools/MeasurableOutcomes/MeasurableOutcomesSP";
-import PilotModelSP from "@/components/schools/PilotModel/PilotModelSP";
-import ImplementationTimelineSP from "@/components/schools/ImplementationTimeline/ImplementationTimelineSP";
 import PricingModelSP from "@/components/schools/PricingModel/PricingModelSP";
-import PeerReferencesSP from "@/components/schools/PeerReferences/PeerReferencesSP";
-import ManitCredibilitySP from "@/components/schools/ManitCredibility/ManitCredibilitySP";
-import DownloadDeckSP from "@/components/schools/DownloadDeck/DownloadDeckSP";
 import FAQSchoolsSP from "@/components/schools/FAQ/FAQSchoolsSP";
 import FinalBannerSP from "@/components/schools/FinalBanner/FinalBannerSP";
 
-
 export const metadata: Metadata = {
-  title: "AI Literacy for Schools in India | Humain Learning AI",
-  description: "Humain AI Literacy Framework for Indian schools: CBSE, ICSE and state board compliant. DPDP-safe, NEP-aligned. Free 14-week pilot. Request a demo for your school.",
+  title: "AI Literacy Programme for Schools in India | Humain Learning",
+  description: "Institutional AI literacy for CBSE, ICSE, IB and state-board schools. Built by Heritage Schools co-founder Manit Jain. CBSE 417 mapping. DPDP compliant.",
   alternates: {
-    canonical: "https://humainlearning.ai/schools/ai-literacy-programme",
+    canonical: "https://humainlearning.ai/schools/partner-with-humain",
   },
   openGraph: {
-    title: "AI Literacy for Indian Schools | Humain Learning AI",
-    description: "The only AI literacy programme designed for Indian K-12. DPDP-safe. CBSE/ICSE/State board aligned. NEP-compliant. Free 14-week no-risk pilot.",
+    title: "AI Literacy Programme for Schools in India | Humain Learning",
+    description: "Institutional AI literacy for CBSE, ICSE, IB and state-board schools. Built by Heritage Schools co-founder Manit Jain. CBSE 417 mapping. DPDP compliant.",
     images: ["https://humainlearning.ai/og/schools-for-schools.png"],
     type: "website",
   },
@@ -51,19 +43,19 @@ export default function SchoolsPage() {
       },
       {
         "@type": "Course",
-        "@id": "https://humainlearning.ai/schools/ai-literacy-programme#course",
+        "@id": "https://humainlearning.ai/schools/partner-with-humain#course",
         "name": "Humain AI Literacy Programme for Schools",
-        "description": "A 14-week AI literacy programme for Indian K-12 schools. DPDP-safe, NEP-aligned, CBSE and ICSE curriculum-mapped.",
+        "description": "A structured AI literacy programme for CBSE, ICSE, IB and State Board schools in India.",
         "provider": { "@id": "https://humainlearning.ai/#org" },
         "educationalLevel": "K-12",
         "inLanguage": ["en-IN", "hi-IN"],
-        "url": "https://humainlearning.ai/schools/ai-literacy-programme",
+        "url": "https://humainlearning.ai/schools/partner-with-humain",
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://humainlearning.ai/" },
-          { "@type": "ListItem", "position": 2, "name": "For Schools", "item": "https://humainlearning.ai/schools/ai-literacy-programme" }
+          { "@type": "ListItem", "position": 2, "name": "For Schools", "item": "https://humainlearning.ai/schools/partner-with-humain" }
         ]
       }
     ]
@@ -77,21 +69,14 @@ export default function SchoolsPage() {
       />
       <HeaderSP />
       <HeroSP />
-      <AuthorStripSP />
       <WhatIsAILiteracySP />
       <WhyAdoptNowSP />
       <LearnerOutcomesSP />
-      <EngagementModelSP />
       <CurriculumMappingSP />
       <DPDPComplianceSP />
+      <EngagementModelSP />
       <TeacherCertificationSP />
-      <MeasurableOutcomesSP />
-      <PilotModelSP />
-      <ImplementationTimelineSP />
       <PricingModelSP />
-      <PeerReferencesSP />
-      <ManitCredibilitySP />
-      <DownloadDeckSP />
       <FAQSchoolsSP />
       <FinalBannerSP />
     </>

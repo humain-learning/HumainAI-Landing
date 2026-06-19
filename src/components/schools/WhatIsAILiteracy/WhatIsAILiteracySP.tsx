@@ -2,69 +2,53 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
+import Image from 'next/image';
+import { MotionHeading, SPButton } from '../shared/SchoolsMotion';
+import { sp } from '../shared/schoolsTheme';
 
 export default function WhatIsAILiteracySP() {
   return (
-    <section className="relative w-full bg-white py-16 md:py-24 border-b border-[#e8efe0]">
-      <div className="mx-auto w-full max-w-4xl px-6 md:px-12 lg:px-16 flex flex-col items-center">
-        
-        <div className="w-full">
-          <motion.h2 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-display text-3xl md:text-4xl lg:text-[42px] font-extrabold leading-[1.15] tracking-tight text-charcoal mb-8 text-center"
-          >
-            What is AI literacy for Schools and what should your school adopt?
-          </motion.h2>
+    <section className={`relative w-full py-16 md:py-24 ${sp.section} ${sp.sectionWhite}`}>
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-12 px-6 md:px-12 lg:flex-row lg:gap-16 lg:px-16">
+        <div className="flex-1">
+          <MotionHeading className="font-display mb-6 text-3xl font-extrabold leading-[1.15] tracking-tight text-charcoal md:text-4xl lg:text-[42px]">
+            What is AI literacy for schools?
+          </MotionHeading>
 
-          {/* Snippet Variant */}
-          <motion.aside 
-            data-snippet="institutional-ai-literacy"
+          <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-60px' }}
             transition={{ delay: 0.1 }}
-            className="mb-8 border-l-4 border-terracotta pl-6 py-2"
+            className="font-sans mb-8 text-base leading-relaxed text-charcoal/80 md:text-lg"
           >
-            <p className="font-sans text-xl md:text-2xl text-charcoal/90 font-medium leading-snug">
-              <strong className="text-charcoal font-bold">AI literacy for Schools</strong> is a school-wide programme that teaches every student from Class 8 to Class 12 to understand, use, evaluate, and question AI. It is built into the curriculum, not appended as a one-off workshop.
-            </p>
-          </motion.aside>
+            AI literacy for schools is a structured programme that helps students in Classes 8–12 understand, use,
+            evaluate, and apply AI responsibly. Aligned with CBSE, ICSE, IB, State Boards, NCF 2023, and NEP 2020, it
+            combines student learning, teacher training, assessments, certifications, and implementation support to build
+            future-ready AI skills across the school.
+          </motion.p>
 
-          {/* Full answer capsule */}
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="bg-[#f9faf7] rounded-2xl p-8 border border-[#e8efe0] shadow-sm mb-6"
-          >
-            <p className="font-sans text-base md:text-lg text-charcoal/80 leading-relaxed mb-6">
-              <strong className="text-charcoal">AI literacy for Schools</strong> is a school-wide programme that teaches every student from Class 3 to Class 12 to understand, use, evaluate, and question artificial intelligence. It is built into the curriculum, not appended to it as a one-off workshop. The Humain AI Literacy Framework defines what this looks like across six pillars and four NCF 2023 stages: Foundational, Preparatory, Middle, and Secondary.
-            </p>
-            <p className="font-sans text-base md:text-lg text-charcoal/80 leading-relaxed mb-6">
-              The framework is mapped to CBSE Artificial Intelligence (subject codes 417 and 843), ICSE Computer Applications and AI electives, and the state-board skill-subject frameworks. The implementation is reviewed against the DPDP Act 2023, which governs how Indian schools handle children&apos;s data.
-            </p>
-            <p className="font-sans text-base md:text-lg text-charcoal/80 leading-relaxed">
-              The programme is delivered as a three-step engagement: a principal-led demo, a curriculum-mapping workshop with academic leadership, and a teacher training week before students log in. Humain Learning AI is operated by Eduxa Consulting Pvt Ltd, founded by Heritage Xperiential Learning Schools co-founder Manit Jain (M.Ed Harvard).
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="text-center"
-          >
-            <p className="font-sans text-sm text-charcoal/50 italic">
-              Authored by Manit Jain. Reviewed by Dr. Tapaswini Sahu, PhD Educational Psychology JNU, M.Phil Cambridge. Last reviewed 28 May 2026.
-            </p>
-          </motion.div>
-
+          <SPButton href="/book-a-demo" variant="terracotta">
+            Start Your School&apos;s AI Literacy Journey
+          </SPButton>
         </div>
 
+        <motion.div
+          initial={{ opacity: 0, x: 24 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ delay: 0.15, type: 'spring', stiffness: 100 }}
+          className="w-full max-w-md flex-shrink-0 lg:max-w-lg rounded-2xl overflow-hidden"
+        >
+          <Image
+            src="/assets/images/whatisailiteracy.png"
+            alt="Students and teachers in an AI literacy classroom session"
+            width={500}
+            height={375}
+            className="w-full h-auto object-cover"
+            priority={false}
+          />
+        </motion.div>
       </div>
     </section>
   );

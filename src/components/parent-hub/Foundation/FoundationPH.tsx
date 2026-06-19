@@ -25,7 +25,7 @@ export default function FoundationPH() {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-display text-xs font-bold tracking-[0.15em] text-[#aac191] uppercase mb-3"
+              className="font-display text-sm font-bold tracking-[0.15em] text-[#aac191] uppercase mb-3"
             >
               The Foundation
             </motion.div>
@@ -128,22 +128,26 @@ export default function FoundationPH() {
             })}
 
             {/* Stat card */}
-            <motion.div
+            <motion.a
+              href="https://humainlearning.ai/framework"
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="col-span-2 rounded-2xl bg-[#aac191] px-5 py-4 flex items-center justify-between"
+              whileHover={{ scale: 1.02, shadow: "0 10px 25px rgba(0, 0, 0, 0.1)" }}
+              className="col-span-2 rounded-2xl bg-[#aac191] px-5 py-4 flex items-center justify-between cursor-pointer hover:shadow-lg transition-all duration-300"
             >
               <div>
                 <div className="font-display text-2xl font-extrabold text-white">6 Pillars</div>
-                <div className="font-sans text-xs text-white/70 mt-0.5">Humain AI Literacy Framework</div>
+                <div className="font-sans text-sm text-white/70 mt-0.5">Humain AI Literacy Framework</div>
               </div>
               <div className="text-right">
                 <div className="font-display text-lg font-extrabold text-[#d9e3d0]">Class 8–12</div>
-                <div className="font-sans text-xs text-white/60 mt-0.5">India-first, NEP 2020 aligned</div>
+                <div className="font-sans text-sm text-white/60 mt-0.5">India-first, NEP 2020 aligned</div>
               </div>
-            </motion.div>
+            </motion.a>
           </div>
         </div>
 

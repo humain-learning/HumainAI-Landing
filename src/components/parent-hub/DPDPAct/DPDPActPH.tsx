@@ -8,7 +8,7 @@ import Image from 'next/image';
 const rights = [
   {
     title: 'Parental consent',
-    body: "Any AI service that processes your child's data must have your verifiable consent. A click-through tick box on the child's screen is not enough. Many free AI tools do not yet meet this standard for Indian children. Humain meets the standard explicitly: we collect verifiable parental consent before any child account is created.",
+    body: "Your approval is required before a child's data is collected or processed",
     details: [
       'Email-based parental verification required',
       'Not just child account checkboxes',
@@ -18,7 +18,7 @@ const rights = [
   },
   {
     title: 'Purpose limitation',
-    body: "Your child's data may be processed only for the educational purpose stated. If a free AI tool collects her data for \"improving the service\" without naming what that means, the Act treats that as non-compliant. We name every purpose in our privacy policy.",
+    body: "Your child's data should only be used for the stated educational purpose.",
     details: [
       'Specific educational purposes only',
       'No vague \"service improvement\" language allowed',
@@ -27,8 +27,8 @@ const rights = [
     ],
   },
   {
-    title: 'Right to access and erase',
-    body: 'You have the right to access, correct, and erase your child\'s data. At Humain, you can request a copy of everything we hold on your child by emailing hi@humainlearning.ai. We respond within 30 days under the Act, usually within 5 business days in practice.',
+    title: 'Access & Deletion',
+    body: "You can request access to your child's data and ask for it to be deleted.",
     details: [
       'Full data access on request',
       'Corrections and updates possible',
@@ -37,8 +37,8 @@ const rights = [
     ],
   },
   {
-    title: 'Data residency',
-    body: "Your child's data is stored on servers in India. Cross-border transfer is restricted under the Act, and at Humain we do not transfer children's data out of India. If you are using an AI service registered outside India, ask where the data is stored. Many free AI tools cannot answer this cleanly today.",
+    title: 'Data Protection',
+    body: "Children's data should be stored securely and handled responsibly",
     details: [
       'Data stored exclusively in India',
       'No international server transfers',
@@ -75,33 +75,10 @@ export default function DPDPActPH() {
               className="font-sans text-base md:text-lg text-charcoal/80 leading-relaxed mb-5"
             >
               India&apos;s Digital Personal Data Protection Act 2023 gives your child specific protections that did not exist
-              before. We summarise the four that matter most to parents below. None of this is legal advice. The full
-              text is at meity.gov.in and the Children&apos;s Data section of the Humain privacy policy is at{' '}
-              <Link href="/privacy#children" className="text-[#aac191] font-semibold underline hover:text-terracotta transition-colors">/privacy#children</Link>.
+              before. We summarise the four that matter most to parents below. None of this is legal advice.
             </motion.p>
 
-            <div className="flex flex-col gap-3">
-              <Link
-                href="/parents/dpdp-act-ai-children"
-                className="inline-flex items-center text-[#aac191] font-semibold hover:text-terracotta transition-colors group text-sm"
-              >
-                Read more: DPDP Act and AI for kids
-                <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
-              <Link
-                href="https://www.meity.gov.in/data-protection-framework"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-[#aac191] font-semibold hover:text-terracotta transition-colors group text-sm"
-              >
-                Read the DPDP Act 2023 text
-                <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
-            </div>
+            
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}

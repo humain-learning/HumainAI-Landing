@@ -62,7 +62,7 @@ export default function FAQPH() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="font-display text-xs font-bold tracking-[0.15em] text-[#aac191] uppercase mb-3"
+                className="font-display text-sm font-bold tracking-[0.15em] text-[#aac191] uppercase mb-3"
               >
                 FAQ
               </motion.div>

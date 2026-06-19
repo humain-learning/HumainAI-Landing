@@ -68,7 +68,7 @@ export default function ShouldChildLearnAIPH() {
           </div>
 
           {/* Right: visual reasons why */}
-          <div className="space-y-3">
+          <div className="space-y-15">
             {[
               { icon: 'graduation', title: 'Every career', text: 'By Class 12, AI sits inside almost every job, course, and exam she meets.' },
               { icon: 'balance', title: 'Judgement over tools', text: 'It is not about coding. It is knowing when to trust an answer, when to question it.' },

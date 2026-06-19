@@ -45,7 +45,7 @@ export default function FamilyBriefPH() {
             
             <div className="p-8">
               {/* Date stamp */}
-              <div className="font-display text-xs font-extrabold tracking-widest text-terracotta uppercase mb-6 flex items-center justify-between">
+              <div className="font-display text-sm font-extrabold tracking-widest text-terracotta uppercase mb-6 flex items-center justify-between">
                 <span>Humain Family Brief</span>
                 <span>Friday, Oct 20</span>
               </div>
@@ -81,10 +81,10 @@ export default function FamilyBriefPH() {
 
             {/* Footer */}
             <div className="bg-white border-t border-[#e8efe0] px-8 py-4 flex items-center justify-between">
-              <span className="font-sans text-xs text-charcoal/50 font-medium">
+              <span className="font-sans text-sm text-charcoal/50 font-medium">
                 Humain Learning AI
               </span>
-              <span className="inline-flex items-center gap-1.5 font-sans text-[10px] uppercase tracking-wider font-bold text-[#aac191] bg-[#f9faf7] px-2 py-1 rounded-md">
+              <span className="inline-flex items-center gap-1.5 font-sans text-sm uppercase tracking-wider font-bold text-[#aac191] bg-[#f9faf7] px-2 py-1 rounded-md">
                 Available in English &amp; Hindi
               </span>
             </div>

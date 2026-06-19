@@ -3,110 +3,102 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import Link from 'next/link';
+import { MotionHeading, SPButton } from '../shared/SchoolsMotion';
+import ImagePlaceholderSP from '../shared/ImagePlaceholderSP';
+import { sp } from '../shared/schoolsTheme';
+
+const boardLinks = [
+  { label: 'AI Curriculum Alignment for CBSE Schools', href: '/schools/cbse-ai-curriculum-alignment' },
+  { label: 'AI Curriculum Alignment for ICSE Schools', href: '/schools/icse-ai-curriculum-alignment' },
+  { label: 'AI Curriculum Alignment for IB Schools', href: '/schools/ib-ai-curriculum-alignment' },
+];
 
 export default function CurriculumMappingSP() {
-  const mappings = [
-    {
-      title: "CBSE Artificial Intelligence (subject codes 417 and 843)",
-      body: "The Humain framework maps directly to the CBSE AI syllabus for Class 9-10 (code 417) and Class 11-12 (code 843). Pillars 1 (AI Foundations), 4 (Creating with AI), and 5 (Agents and Automation) align with the CBSE AI assessment rubric. The Humain capstone assessment artefact can be submitted as the CBSE AI subject's practical component without modification."
-    },
-    {
-      title: "ICSE Computer Applications and AI electives",
-      body: "Pillars 1, 3 (Learning with AI), and 5 map to the ICSE Computer Applications curriculum and the AI elective. The Humain assessment artefact maps to the ICSE practical-exam format. Schools running parallel ICSE and CBSE streams can run a single Humain framework across both streams without redundancy."
-    },
-    {
-      title: "State boards",
-      body: "Current cross-walked alignments include the Maharashtra State Board, the Tamil Nadu State Board, and the Karnataka SSLC. Gujarat, Telangana, and West Bengal alignments are in active development. State boards with skill-subject frameworks already published have priority. Schools running other state boards can request a custom mapping during Step 2."
-    },
-    {
-      title: "NEP 2020 and NCF 2023",
-      body: "Pillars 1, 3, and 5 satisfy the NEP 2020 digital fluency and computational thinking strands. The full Humain framework is structured around the four NCF 2023 stages (Foundational, Preparatory, Middle, Secondary). Schools planning their NCF 2023 transition can use the Humain framework as the AI literacy component of that transition without additional structural work."
-    },
-    {
-      title: "NCERT skill-subject framework",
-      body: "The Humain assessment rubrics align with the NCERT skill-subject framework for Computer Science and AI. Schools using NCERT textbooks as primary references can integrate Humain modules without textbook replacement."
-    }
-  ];
-
   return (
-    <section id="curriculum" className="relative w-full bg-[#f9faf7] py-16 md:py-24 border-b border-[#e8efe0]">
-      <div className="mx-auto w-full max-w-6xl px-6 md:px-12 lg:px-16 flex flex-col items-center">
-        
-        <div className="w-full text-center mb-16 max-w-4xl mx-auto">
-          <motion.h2 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-display text-3xl md:text-4xl lg:text-[42px] font-extrabold leading-[1.15] tracking-tight text-charcoal mb-6"
-          >
-            Curriculum mapping for AI literacy: CBSE 417 and 843, ICSE Computer Applications, NEP 2020, NCF 2023
-          </motion.h2>
+    <section id="curriculum" className={`relative w-full py-16 md:py-24 ${sp.section} ${sp.sectionAlt}`}>
+      <div className="mx-auto w-full max-w-7xl px-6 md:px-12 lg:px-16">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <MotionHeading className="font-display mb-4 text-3xl font-extrabold leading-[1.15] tracking-tight text-charcoal md:text-4xl lg:text-[42px]">
+              Curriculum mapping: CBSE, ICSE, IB, NEP 2020 and NCF 2023
+            </MotionHeading>
 
-          <motion.p 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="font-sans text-lg md:text-xl text-charcoal/80 leading-relaxed font-medium"
-          >
-            The framework was designed against the Indian curriculum from the start, not retrofitted. Below is the mapping summary. The full 24-page mapping deck is available as a free download from this page.
-          </motion.p>
-        </div>
-
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 w-full items-start">
-          
-          <div className="flex-1 w-full flex flex-col gap-6">
-            {mappings.map((mapping, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 * idx }}
-                className="bg-white rounded-2xl p-6 md:p-8 border border-[#e8efe0] shadow-sm"
-              >
-                <h3 className="font-display text-xl font-bold text-terracotta mb-3">
-                  {mapping.title}
-                </h3>
-                <p className="font-sans text-base md:text-lg text-charcoal/80 leading-relaxed">
-                  {mapping.body}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Visual Column */}
-          <div className="hidden lg:flex w-full lg:w-1/3 flex-col items-center gap-10 sticky top-32">
-            
-            
-            <motion.div 
+            <motion.p
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="w-full text-center"
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ delay: 0.1 }}
+              className="font-sans mb-8 text-base leading-relaxed text-charcoal/80 md:text-lg"
             >
-              <Link 
-                href="/downloads/curriculum-mapping-deck.pdf"
-                className="inline-flex w-full items-center justify-center px-6 py-4 rounded-full bg-[#5e714e] text-white font-sans font-bold text-sm shadow-lg shadow-[#5e714e]/30 hover:bg-[#4a5a3e] transition-all duration-300"
-              >
-                Download the 24-page Deck
-              </Link>
+              The Humain AI Literacy Framework is designed to align with Indian and international school curricula. It
+              maps to CBSE Artificial Intelligence curriculum requirements (including subject codes 417 and 843), ICSE,
+              IB, NEP 2020, and NCF 2023, helping schools integrate AI literacy into existing learning pathways.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ delay: 0.2 }}
+            >
+              <p className={`${sp.label} mb-4`}>Explore Curriculum Mapping</p>
+              <ul className="space-y-3">
+                {boardLinks.map((link, idx) => (
+                  <motion.li
+                    key={link.href}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: '-60px' }}
+                    transition={{ delay: 0.1 + idx * 0.06 }}
+                  >
+                    <Link
+                      href={link.href}
+                      className="group inline-flex items-center font-sans text-base font-semibold text-charcoal transition-colors hover:text-terracotta"
+                    >
+                      {link.label}
+                      <svg
+                        className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </Link>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ delay: 0.3 }}
+              className="mt-8"
+            >
+              <SPButton href="/downloads/curriculum-mapping-deck.pdf" variant="sage" size="sm">
+                Download the curriculum mapping deck (24 pages)
+              </SPButton>
             </motion.div>
           </div>
 
-        </div>
-
-        {/* Mobile CTA */}
-        <div className="w-full mt-10 text-center lg:hidden">
-          <Link 
-            href="/downloads/curriculum-mapping-deck.pdf"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#5e714e] text-white font-sans font-bold text-base shadow-lg shadow-[#5e714e]/30"
+          <motion.div
+            initial={{ opacity: 0, x: 2 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ delay: 0.15, type: 'spring', stiffness: 100 }}
+            whileHover={{ scale: 1.02 }}
+            className="rounded-2xl overflow-hidden shadow-lg"
           >
-            Download the 24-page Curriculum Mapping Deck
-          </Link>
+            <img
+              src="/assets/images/cbse.png"
+              alt="Curriculum mapping: CBSE, ICSE, IB, NEP 2020 and NCF 2023"
+              className="w-full h-auto object-cover"
+            />
+          </motion.div>
         </div>
-
       </div>
     </section>
   );

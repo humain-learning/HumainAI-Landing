@@ -76,7 +76,7 @@ export default function WhyItMattersPH() {
                 className="flex items-center gap-4 bg-white rounded-2xl border border-[#e6e6e6] px-5 py-4 shadow-sm"
               >
                 <div className="flex-shrink-0 rounded-xl bg-sage px-3 py-1.5">
-                  <span className="font-display text-xs font-extrabold text-white tracking-wide">{m.year}</span>
+                  <span className="font-display text-sm font-extrabold text-white tracking-wide">{m.year}</span>
                 </div>
                 <p className="font-sans text-sm text-charcoal/80 font-medium">{m.text}</p>
               </motion.div>

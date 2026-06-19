@@ -55,7 +55,7 @@ export default function FrameworkPH() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-display text-xs font-bold tracking-[0.15em] text-[#aac191] uppercase mb-3"
+            className="font-display text-sm font-bold tracking-[0.15em] text-[#aac191] uppercase mb-3"
           >
             The Framework
           </motion.div>
@@ -161,7 +161,7 @@ export default function FrameworkPH() {
                   className="mt-3 pt-3 border-t transition-all overflow-hidden"
                   style={{ borderColor: `${pillar.color}30` }}
                 >
-                  <p className="font-sans text-xs text-charcoal/60 font-semibold" style={{ color: pillar.color }}>✓ Selected</p>
+                  <p className="font-sans text-sm text-charcoal/60 font-semibold" style={{ color: pillar.color }}>✓ Selected</p>
                 </motion.div>
               </div>
             </motion.div>

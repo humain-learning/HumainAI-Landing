@@ -51,7 +51,7 @@ export default function ImplementationTimelineSP() {
   ];
 
   return (
-    <section className="relative w-full bg-white py-16 md:py-24 border-b border-[#e8efe0]">
+    <section className="relative w-full bg-white py-16 md:py-24 border-b border-grey">
       <div className="mx-auto w-full max-w-5xl px-6 md:px-12 lg:px-16 flex flex-col items-center">
         
         <div className="w-full text-center mb-16">
@@ -77,7 +77,7 @@ export default function ImplementationTimelineSP() {
 
         <div className="w-full relative">
           {/* Vertical line for desktop */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#e8efe0] transform -translate-x-1/2" />
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-grey transform -translate-x-1/2" />
           
           <div className="space-y-12 md:space-y-0">
             {phases.map((phase, idx) => (
@@ -91,15 +91,15 @@ export default function ImplementationTimelineSP() {
               >
                 
                 {/* Timeline Dot */}
-                <div className="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border-4 border-[#5e714e] z-10 items-center justify-center shadow-sm" />
+                <div className="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border-4 border-sage z-10 items-center justify-center shadow-sm" />
                 
                 {/* Empty space for alternating layout */}
                 <div className="hidden md:block w-5/12" />
                 
                 {/* Content Card */}
-                <div className={`w-full md:w-5/12 bg-[#f9faf7] p-8 rounded-2xl border border-[#e8efe0] shadow-sm relative ${idx % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
+                <div className={`w-full md:w-5/12 bg-grey/25 p-8 rounded-2xl border border-grey shadow-sm relative ${idx % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
                   {/* Mobile timeline dot */}
-                  <div className="md:hidden absolute top-0 left-8 transform -translate-y-1/2 w-6 h-6 rounded-full bg-white border-4 border-[#5e714e] z-10 shadow-sm" />
+                  <div className="md:hidden absolute top-0 left-8 transform -translate-y-1/2 w-6 h-6 rounded-full bg-white border-4 border-sage z-10 shadow-sm" />
                   
                   <h3 className="font-display text-xl md:text-2xl font-bold text-terracotta mb-4">
                     {phase.title}
@@ -107,7 +107,7 @@ export default function ImplementationTimelineSP() {
                   <ul className={`space-y-3 ${idx % 2 === 0 ? 'text-left' : 'md:inline-block md:text-left text-left'}`}>
                     {phase.items.map((item, i) => (
                       <li key={i} className={`flex items-start gap-3 ${idx % 2 === 0 ? '' : 'md:flex-row-reverse md:text-right'}`}>
-                        <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[#5e714e] mt-2.5"></span>
+                        <span className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-sage mt-2.5"></span>
                         <p className="font-sans text-base text-charcoal/80 leading-relaxed flex-1">
                           {item}
                         </p>
