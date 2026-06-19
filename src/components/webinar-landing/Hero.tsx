@@ -225,7 +225,7 @@ export default function Hero() {
         actionable="Webinar"
         heading="Book Your Child's Free Seat"
         buttonText="Book Now"
-        source="Webinar"
+        source="Webinar Landing"
         destination="/submission-received"
         onSubmit={onSubmit}
         submitError={submitError}
