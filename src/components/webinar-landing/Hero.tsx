@@ -6,34 +6,32 @@ import { useRouter } from 'next/navigation';
 import { PopupFormModal } from 'ui/PopupFormModal';
 import LeadForm from 'components/forms/hcForm';
 
+function getUrgencyText(): string {
+  const target = new Date('2026-06-20T11:00:00+05:30').getTime();
+  const diff = target - Date.now();
+
+  if (diff <= 0) return 'Session is live now!';
+
+  const totalMinutes = Math.floor(diff / 60000);
+  const totalHours = Math.floor(diff / 3600000);
+  const days = Math.floor(diff / 86400000);
+
+  if (days >= 2) return `Only ${days} days remaining`;
+  if (days === 1) return 'Only 1 day remaining';
+  if (totalHours >= 1) return `Only ${totalHours} hour${totalHours > 1 ? 's' : ''} remaining`;
+  if (totalMinutes >= 1) return `Only ${totalMinutes} minute${totalMinutes > 1 ? 's' : ''} remaining`;
+  return 'Starting very soon!';
+}
+
 export default function Hero() {
   const router = useRouter();
-  const [timeLeft, setTimeLeft] = useState({ d: '00', h: '00', m: '00', s: '00' });
+  const [urgencyText, setUrgencyText] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [submitError, setSubmitError] = useState('');
 
   useEffect(() => {
-    const target = new Date('2026-06-20T11:00:00+05:30').getTime();
-    
-    const tick = () => {
-      const diff = target - Date.now();
-      const pad = (n: number) => String(Math.max(0, n)).padStart(2, '0');
-      
-      if (diff <= 0) {
-        setTimeLeft({ d: '00', h: '00', m: '00', s: '00' });
-        return;
-      }
-      setTimeLeft({
-        d: pad(Math.floor(diff / 86400000)),
-        h: pad(Math.floor((diff % 86400000) / 3600000)),
-        m: pad(Math.floor((diff % 3600000) / 60000)),
-        s: pad(Math.floor((diff % 60000) / 1000)),
-      });
-    };
-
-    tick();
-    const interval = setInterval(tick, 1000);
-    return () => clearInterval(interval);
+    // Compute once on mount — no interval, no re-renders
+    setUrgencyText(getUrgencyText());
   }, []);
 
   const handleEnrollClick = () => {
@@ -177,32 +175,17 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="bg-[#EFF5E9] rounded-lg p-3.5 my-4">
-            <div className="font-sans text-[0.65rem] font-medium tracking-[1.5px] uppercase text-[#4A6335] mb-2.5">
-              Session begins in
+          {/* Static urgency banner — computed once on mount, refreshes on page reload */}
+          {urgencyText && (
+            <div className="bg-[#EFF5E9] rounded-lg px-4 py-3.5 my-4 flex items-center gap-2.5">
+              <svg className="w-4 h-4 flex-shrink-0 stroke-[#4A6335] fill-none stroke-[1.8] stroke-linecap-round stroke-linejoin-round" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/>
+              </svg>
+              <span className="font-display text-[0.9rem] font-extrabold text-[#4A6335] tracking-[0.2px]">
+                {urgencyText}
+              </span>
             </div>
-            <div className="flex items-end gap-2">
-              <div className="flex-1 text-center">
-                <span className="block font-display text-[1.8rem] font-extrabold text-[#333333] leading-none">{timeLeft.d}</span>
-                <span className="block font-sans text-[0.58rem] font-medium tracking-[0.8px] uppercase text-[#888888] mt-[3px]">Days</span>
-              </div>
-              <div className="flex-shrink-0 font-display text-[1.5rem] font-bold text-[#AAC191] pb-2.5">:</div>
-              <div className="flex-1 text-center">
-                <span className="block font-display text-[1.8rem] font-extrabold text-[#333333] leading-none">{timeLeft.h}</span>
-                <span className="block font-sans text-[0.58rem] font-medium tracking-[0.8px] uppercase text-[#888888] mt-[3px]">Hrs</span>
-              </div>
-              <div className="flex-shrink-0 font-display text-[1.5rem] font-bold text-[#AAC191] pb-2.5">:</div>
-              <div className="flex-1 text-center">
-                <span className="block font-display text-[1.8rem] font-extrabold text-[#333333] leading-none">{timeLeft.m}</span>
-                <span className="block font-sans text-[0.58rem] font-medium tracking-[0.8px] uppercase text-[#888888] mt-[3px]">Min</span>
-              </div>
-              <div className="flex-shrink-0 font-display text-[1.5rem] font-bold text-[#AAC191] pb-2.5">:</div>
-              <div className="flex-1 text-center">
-                <span className="block font-display text-[1.8rem] font-extrabold text-[#333333] leading-none">{timeLeft.s}</span>
-                <span className="block font-sans text-[0.58rem] font-medium tracking-[0.8px] uppercase text-[#888888] mt-[3px]">Sec</span>
-              </div>
-            </div>
-          </div>
+          )}
 
           <div className="flex items-center justify-between bg-[#FDF3EB] rounded-md px-3.5 py-2.5 mb-3.5">
             <span className="font-sans text-[0.75rem] font-medium text-[#555555]">Registration Fee</span>
@@ -211,7 +194,6 @@ export default function Hero() {
             </span>
           </div>
 
-          
           <div className="mt-4 text-center">
             <div className="inline-flex items-center gap-2 bg-[#FFE5D6] rounded-lg px-4 py-2.5">
               <svg className="w-4 h-4 text-[#E7A572] animate-pulse" fill="currentColor" viewBox="0 0 20 20">
