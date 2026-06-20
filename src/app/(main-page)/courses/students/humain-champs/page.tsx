@@ -52,7 +52,6 @@ export default async function HumainChampsV2() {
 			)}
 		<Founder />
 		<Parents />
-		<ContactUs />
 		<Band />
 		</>
 	)
