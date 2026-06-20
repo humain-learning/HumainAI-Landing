@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getCookie } from 'cookies-next';
@@ -8,10 +8,20 @@ import { useRouter } from 'next/navigation';
 import { PopupFormModal } from 'ui/PopupFormModal';
 import LeadForm from 'components/forms/hcForm';
 
+function isRegistrationClosed() {
+  const webinarTime = new Date('2026-06-20T11:00:00+05:30');
+  return Date.now() >= webinarTime.getTime();
+}
+
 export default function Header() {
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [registrationClosed, setRegistrationClosed] = useState(false);
+
+  useEffect(() => {
+    setRegistrationClosed(isRegistrationClosed());
+  }, []);
 
   const handleEnrollClick = () => {
 
@@ -59,8 +69,9 @@ export default function Header() {
           <button
             onClick={handleEnrollClick}
             className="inline-flex items-center gap-2 font-display font-extrabold border-none cursor-pointer rounded-md transition-all duration-150 hover:-translate-y-[1px] bg-[#E7A572] text-white px-7 py-3.5 text-[0.9rem] shadow-[0_2px_14px_rgba(231,165,114,0.3)] hover:bg-[#C97D49] hover:shadow-[0_4px_20px_rgba(231,165,114,0.4)]"
+            disabled={registrationClosed}
           >
-            Book Your Free Slot
+            {registrationClosed ? 'Registrations Closed' : 'Book Your Free Slot'}
           </button>
         </div>
       </nav>

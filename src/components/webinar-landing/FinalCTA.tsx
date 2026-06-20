@@ -1,15 +1,25 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import { PopupFormModal } from 'ui/PopupFormModal';
 import LeadForm from 'components/forms/hcForm';
 
+function isRegistrationClosed() {
+  const webinarTime = new Date('2026-06-20T11:00:00+05:30');
+  return Date.now() >= webinarTime.getTime();
+}
+
 export default function FinalCTA() {
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [registrationClosed, setRegistrationClosed] = useState(false);
+
+  useEffect(() => {
+    setRegistrationClosed(isRegistrationClosed());
+  }, []);
 
   const handleEnrollClick = () => {
       setShowModal(true);
@@ -53,8 +63,9 @@ export default function FinalCTA() {
           <button 
             onClick={handleEnrollClick}
             className="inline-flex items-center justify-center font-display font-extrabold bg-[#E7A572] text-white px-10 py-[18px] text-[1.05rem] rounded-md shadow-[0_4px_22px_rgba(231,165,114,0.35)] transition-all hover:bg-[#C97D49] hover:-translate-y-[1px] hover:shadow-[0_6px_28px_rgba(231,165,114,0.45)]"
+            disabled={registrationClosed}
           >
-            Book Your Child's Free Slot
+            {registrationClosed ? 'Registrations Closed' : "Book Your Child's Free Slot"}
           </button>
           
           <div className="mt-3.5 font-sans text-[0.72rem] text-white/30 tracking-[0.5px]">
