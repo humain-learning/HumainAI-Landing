@@ -136,7 +136,7 @@ export default function FoundationPH() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              whileHover={{ scale: 1.02, shadow: "0 10px 25px rgba(0, 0, 0, 0.1)" }}
+              whileHover={{ scale: 1.02, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)" }}
               className="col-span-2 rounded-2xl bg-[#aac191] px-5 py-4 flex items-center justify-between cursor-pointer hover:shadow-lg transition-all duration-300"
             >
               <div>

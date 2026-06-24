@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://www.humainlearning.ai</loc><lastmod>2026-06-17T08:37:46.765Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.humainlearning.ai/for-parents</loc><lastmod>2026-06-17T08:37:46.766Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.humainlearning.ai/for-schools</loc><lastmod>2026-06-17T08:37:46.766Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.humainlearning.ai/framework</loc><lastmod>2026-06-17T08:37:46.766Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.humainlearning.ai/parenthub</loc><lastmod>2026-06-17T08:37:46.766Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.humainlearning.ai/privacy-policy</loc><lastmod>2026-06-17T08:37:46.766Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.humainlearning.ai/schools</loc><lastmod>2026-06-17T08:37:46.766Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.humainlearning.ai/submission-received</loc><lastmod>2026-06-17T08:37:46.766Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.humainlearning.ai/courses/students/humain-champs</loc><lastmod>2026-06-17T08:37:46.766Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www.humainlearning.ai/courses/educators/humain-educators</loc><lastmod>2026-06-17T08:37:46.766Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.humainlearning.ai</loc><lastmod>2026-06-24T07:24:43.393Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.humainlearning.ai/framework</loc><lastmod>2026-06-24T07:24:43.394Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.humainlearning.ai/parenthub</loc><lastmod>2026-06-24T07:24:43.394Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.humainlearning.ai/privacy-policy</loc><lastmod>2026-06-24T07:24:43.394Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.humainlearning.ai/schools</loc><lastmod>2026-06-24T07:24:43.394Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.humainlearning.ai/submission-received</loc><lastmod>2026-06-24T07:24:43.394Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.humainlearning.ai/test</loc><lastmod>2026-06-24T07:24:43.394Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.humainlearning.ai/webinar</loc><lastmod>2026-06-24T07:24:43.394Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.humainlearning.ai/courses/students/humain-champs</loc><lastmod>2026-06-24T07:24:43.394Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.humainlearning.ai/courses/educators/humain-educators</loc><lastmod>2026-06-24T07:24:43.394Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
