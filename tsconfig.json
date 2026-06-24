@@ -36,7 +36,7 @@
 		"./src/components/courses-students/humain-champs/*"
 	  ],
       "hooks/*": [
-        "./src/components/hooks/*"
+        "./src/hooks/*"
       ],
       "components/*": [
         "./src/components/*"

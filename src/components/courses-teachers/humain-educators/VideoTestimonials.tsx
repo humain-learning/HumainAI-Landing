@@ -4,7 +4,7 @@ import { VideoCard } from "ui/VideoCard";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.css';
 import { videoTestimonials } from "./data/videotestimonials";
-import { usePxCalculator } from '../../hooks/usePxCalculator';
+import { usePxCalculator } from '../../../hooks/usePxCalculator';
 
 
 const SLIDE_WIDTH_CLASS = "w-[80vw] md:w-[30vw]";

@@ -1,14 +1,10 @@
 'use client';
-import React from 'react';
-import TyperwriterText from './TyperwriterText';
 import PrimaryButton from 'ui/PrimaryButton';
 import SecondaryButton from 'ui/SecondaryButton';
 import { motion } from 'motion/react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
 import Marquee from 'react-fast-marquee';
-import 'swiper/css';
-import 'swiper/css/autoplay';
+import 'swiper/swiper.css';
+// import 'swiper/css/autoplay';
 
 const SLIDER = [
   {
@@ -62,24 +58,15 @@ const Intro = () => {
           </div>
           <div className="space-y-3">
             <p className="hero-subhead text-xl font-medium text-[#00000099]">
-              An AI literacy course for Class 8-12 students and teachers in India. Live small-batch cohorts that teach young Indians to think clearly with AI, not around it.
+              An AI literacy course for Grade 8-12 students and teachers in India. Live small-batch cohorts that teach young Indians to think clearly with AI, not around it.
             </p>
             <p className="text-base text-[#4E5255]">
               Built on the six-pillar Humain AI Literacy Framework.
             </p>
           </div>
           <div className="flex w-full flex-col items-center gap-3 pt-4 md:flex-row">
-            <PrimaryButton text="For Parents" target='/for-parents' />
-            <SecondaryButton text="For Schools" target='/for-schools' />
-          </div>
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pt-3 text-sm text-[#4E5255]">
-            <a className="underline underline-offset-4 hover:text-[#e7a572]" href="/courses/students/humain-champs?utm_source=humain_site&amp;utm_medium=internal&amp;utm_campaign=homepage&amp;utm_content=hero_secondary#callback">
-              Students enrolling directly
-            </a>
-            <span aria-hidden="true">·</span>
-            <a className="underline underline-offset-4 hover:text-[#e7a572]" href="/courses/educators/humain-educators?utm_source=humain_site&amp;utm_medium=internal&amp;utm_campaign=homepage&amp;utm_content=hero_secondary#school-demo">
-              Teachers enrolling directly
-            </a>
+            <PrimaryButton text="For Students" target='/courses/students/humain-champs' />
+            <SecondaryButton text="For Educators" target='/courses/educators/humain-educators' />
           </div>
         </div>
         {/* Right Container */}

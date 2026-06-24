@@ -1,0 +1,20 @@
+
+{
+  "message": {
+    "leadId": "CRM-LEAD-2026-00087",
+    "order": {
+      "amount": 1180000,
+      "amount_due": 1180000,
+      "amount_paid": 0,
+      "attempts": 0,
+      "created_at": 1781579117,
+      "currency": "INR",
+      "entity": "order",
+      "id": "order_T29Ef7B6DcQoKU",
+      "notes": [],
+      "offer_id": null,
+      "receipt": "RZP-ORD-0000000017",
+      "status": "created"
+    }
+  }
+}

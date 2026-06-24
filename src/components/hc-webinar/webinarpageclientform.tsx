@@ -4,7 +4,7 @@ import { useActionState, useEffect, useState } from 'react';
 import { useFormStatus } from 'react-dom';
 import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
-import type { WebinarLeadState, WebinarLeadAction } from '@/app/lib/crmClient';
+// import type { WebinarLeadState, WebinarLeadAction } from '@/app/lib/crmClient';
 import {
   webinarLeadSchema,
   flattenZodErrors,
@@ -14,9 +14,36 @@ import {
   type FieldName,
   type FieldErrors,
 } from '@/lib/schemas/webinarLead';
-import { resolveAttribution, type AttributionData } from '@/app/lib/attribution';
-import FocusTrap from 'focus-trap-react';
+type AttributionData = {
+  fbclid: string;
+  utm_source: string;
+  utm_medium: string;
+  utm_campaign: string;
+  utm_term: string;
+  utm_content: string;
+};
 
+function resolveAttribution(params: URLSearchParams): AttributionData {
+  return {
+    fbclid: params.get('fbclid') ?? '',
+    utm_source: params.get('utm_source') ?? '',
+    utm_medium: params.get('utm_medium') ?? '',
+    utm_campaign: params.get('utm_campaign') ?? '',
+    utm_term: params.get('utm_term') ?? '',
+    utm_content: params.get('utm_content') ?? '',
+  };
+}
+import FocusTrap from 'focus-trap-react';
+type WebinarLeadState = {
+  ok: boolean;
+  message: string | null;
+  fieldErrors?: FieldErrors;
+};
+
+type WebinarLeadAction = (
+  state: WebinarLeadState,
+  formData: FormData
+) => Promise<WebinarLeadState>;
 type WebinarPageClientFormProps = {
   open: boolean;
   onClose: () => void;

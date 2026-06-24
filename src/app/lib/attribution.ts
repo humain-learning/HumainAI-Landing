@@ -1,59 +1,41 @@
-export type AttributionData = {
-  fbclid: string;
-  utm_source: string;
-  utm_medium: string;
-  utm_campaign: string;
-  utm_term: string;
-  utm_content: string;
-};
+'use server';
+import { cookies } from 'next/headers'
 
-export function extractFbclidFromFbc(fbc: string): string {
-  if (!fbc) return '';
-  const parts = fbc.split('.');
-  // Expected format: fb.1.<timestamp>.<fbclid>
-  return parts.length >= 4 ? parts.slice(3).join('.') : '';
+
+
+const ATTRIBUTION_KEYS = [
+	'custom_utm_source',
+	'custom_utm_medium',
+	'custom_utm_campaign',
+	'custom_utm_term',
+	'custom_utm_content',
+	'custom_fbclid',
+	'custom_fbp',
+	'custom_fbc'
+] as const;
+
+type AttributionData = {
+	custom_utm_source?: string,
+	custom_utm_medium?: string,
+	custom_utm_campaign?: string,
+	custom_utm_term?: string,
+	custom_utm_content?: string,
+	custom_fbclid?: string,
+	custom_fbp?: string,
+	custom_fbc?: string,
 }
 
-function getCookieValue(name: string): string {
-  if (typeof document === 'undefined') return '';
-  const cookie = document.cookie
-    .split('; ')
-    .find((entry) => entry.startsWith(`${name}=`));
-  return cookie ? decodeURIComponent(cookie.split('=').slice(1).join('=')) : '';
-}
+export async function getAttribution():Promise<AttributionData> {
+	
+	const attribution: AttributionData = {};
+	const cookieStore = await cookies();
 
-/**
- * Resolves fbclid and all UTM params from URL search params, sessionStorage,
- * and the _fbc cookie — in that priority order.
- * Safe to call only in browser contexts (inside useEffect).
- */
-export function resolveAttribution(params: URLSearchParams): AttributionData {
-  const fbclidFromUrl = params.get('fbclid') ?? '';
-  const fbclidFromFbc = extractFbclidFromFbc(getCookieValue('_fbc'));
-  let fbclidFromSession = '';
-
-  try {
-    fbclidFromSession = window.sessionStorage.getItem('fbclid') ?? '';
-  } catch {
-    // sessionStorage unavailable (e.g. private browsing restrictions)
-  }
-
-  const resolvedFbclid = fbclidFromUrl || fbclidFromSession || fbclidFromFbc;
-
-  try {
-    if (resolvedFbclid) {
-      window.sessionStorage.setItem('fbclid', resolvedFbclid);
-    }
-  } catch {
-    // Ignore storage errors — resolved value is still usable in memory
-  }
-
-  return {
-    fbclid: resolvedFbclid,
-    utm_source: params.get('utm_source') ?? '',
-    utm_medium: params.get('utm_medium') ?? '',
-    utm_campaign: params.get('utm_campaign') ?? '',
-    utm_term: params.get('utm_term') ?? '',
-    utm_content: params.get('utm_content') ?? '',
-  };
+	ATTRIBUTION_KEYS.forEach((key) => {
+		const cookieValue = cookieStore.get(key)?.value;
+		
+		if (cookieValue) {
+			attribution[key] = cookieValue;
+		}
+	});
+	return attribution;
 }

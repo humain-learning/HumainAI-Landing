@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { RequestCallbackModal } from './RequestCallbackModal';
+import LeadForm from '@/components/forms/hcForm';
 
 type BottomCTAProps = {
   targetTime: number;
@@ -143,10 +143,10 @@ export default function BottomCTA({ targetTime, basePrice }: BottomCTAProps) {
 
       </div>
       
-      <RequestCallbackModal 
+      {/* <LeadForm 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
-      />
+      /> */}
     </section>
   );
 }

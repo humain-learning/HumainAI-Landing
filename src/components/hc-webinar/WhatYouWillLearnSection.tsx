@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/swiper.css';
 import { useState } from 'react';
-import { usePxCalculator } from 'hooks/usePxCalculator';
+import { usePxCalculator } from '@/hooks/usePxCalculator';
 import { SwipeProgress } from '@/components/ui/SwipeProgress';
 
 const learnItems = [

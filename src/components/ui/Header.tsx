@@ -5,18 +5,11 @@ import { cn } from '@/utils';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
-import { app } from '@/app/lib/firebase'; // adjust path as needed
+// import { addDoc, collection, getFirestore } from 'firebase/firestore';
+// import { app } from '@/app/lib/firebase'; // adjust path as needed
 
 const ROUTES = [
-  {
-    name: 'For Parents',
-    href: '/for-parents',
-  },
-  {
-    name: 'For Schools',
-    href: '/for-schools',
-  },
+
   {
     name: 'About',
     href: '/#about',
@@ -277,18 +270,6 @@ const NavbarSidebar = ({
       }
 
       const data = await res.json();
-
-      // Backup: Firebase (fire and forget)
-      try {
-        const db = getFirestore(app);
-        addDoc(collection(db, 'callbackRequests'), {
-          firstName: user.firstName,
-          lastName: user.lastName,
-          email: user.email,
-          contact: user.contact,
-          createdAt: new Date(),
-        }).catch(err => console.log('Firebase backup failed:', err));
-      } catch {}
       
       setShowModal(false);
       if (data.redirect) {
@@ -403,19 +384,7 @@ const Header = () => {
       }
 
       const data = await res.json();
-
-      // Backup: Firebase
-      try {
-        const db = getFirestore(app);
-        addDoc(collection(db, 'callbackRequests'), {
-          firstName: user.firstName,
-          lastName: user.lastName,
-          email: user.email,
-          contact: user.contact,
-          createdAt: new Date(),
-        }).catch(err => console.log('Firebase backup failed:', err));
-      } catch {}
-      
+    
       setShowModal(false);
       if (data.redirect) {
         router.push(data.redirect);

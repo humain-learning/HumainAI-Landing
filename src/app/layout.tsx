@@ -6,6 +6,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { organizationSchema, websiteSchema } from '@/lib/schema-bundle';
 import FacebookPixel from '@/components/meta/FacebookPixel';
 import { GoogleTagManager } from '@next/third-parties/google'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const tomorrowSans = Tomorrow({
   variable: '--font-tomorrow',
@@ -80,6 +81,7 @@ export default function RootLayout({
         <Toaster />
         {children}
         <Analytics />
+		<SpeedInsights />
       </body>
     </html>
   );

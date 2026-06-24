@@ -5,7 +5,7 @@ import { VideoCard } from '@/components/ui/VideoCard';
 import { parentReviews } from './data';
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'swiper/swiper.css';
-import { usePxCalculator } from "hooks/usePxCalculator";
+import { usePxCalculator } from "@/hooks/usePxCalculator";
 
 export default function ParentsSaying() {
   const pxCount = usePxCalculator(5);

@@ -1,4 +1,3 @@
-'use client';
 import Accordion from 'ui/Accordion';
 import Link from 'next/link';
 

@@ -4,7 +4,7 @@ import { VideoCard } from "ui/VideoCard";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.css';
 import { aiRoadmapVideos } from "./data";
-import { usePxCalculator } from 'hooks/usePxCalculator';
+import { usePxCalculator } from '@/hooks/usePxCalculator';
 import { SwipeProgress } from 'components/ui/SwipeProgress';
 import type { Swiper as SwiperType } from 'swiper';
 

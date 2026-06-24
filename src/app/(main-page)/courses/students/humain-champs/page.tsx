@@ -17,7 +17,7 @@ import { Founder } from "components/courses-students/humain-champs-v2/Founder/Fo
 // admin API. Static prerendering breaks `npm run build` in environments where the
 // admin API env vars (ADMIN_BASE_URL / ADMIN_API_KEY / ADMIN_API_SECRET) are not set,
 // and we want the live batch list anyway.
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
 
 export default async function HumainChampsV2() {
 	const template_id = 1;
@@ -52,7 +52,6 @@ export default async function HumainChampsV2() {
 			)}
 		<Founder />
 		<Parents />
-		<ContactUs />
 		<Band />
 		</>
 	)
