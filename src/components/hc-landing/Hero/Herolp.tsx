@@ -172,10 +172,6 @@ export default function Herolp({basePrice}: HeroProps) {
 				<div className="space-y-3 pt-2">
 				<div className="flex items-start gap-2.5 text-sm md:text-base text-charcoal/70">
 					<CheckIcon />
-					<span>Full refund after first session if not satisfied, zero questions asked</span>
-				</div>
-				<div className="flex items-start gap-2.5 text-sm md:text-base text-charcoal/70">
-					<CheckIcon />
 					<span>Rated 4.5★ by 200+ parents · Small batches</span>
 				</div>
 				</div>

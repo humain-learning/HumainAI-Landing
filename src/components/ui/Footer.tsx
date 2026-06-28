@@ -1,4 +1,3 @@
-import React from 'react';
 import Link from 'next/link';
 import { FaInstagram, FaLinkedin } from 'react-icons/fa';
 
@@ -69,16 +68,16 @@ const Footer = () => {
                 <div className="flex flex-col gap-5">
                   <div className="flex items-start gap-2">
                     <img className="" src="/assets/icons/phone.svg" alt="" />
-                    <p className="cursor-pointer text-base font-normal">
+                    <a href='tel:+918130023688' className="cursor-pointer text-base font-normal">
                       +91 8130023688
-                    </p>
+                    </a>
                   </div>
 
                   <div className="flex items-start gap-2">
                     <img className="" src="/assets/icons/email.svg" alt="" />
-                    <p className="cursor-pointer text-base font-normal">
+                    <a href='mailto:hi@humainlearning.ai' className="cursor-pointer text-base font-normal">
                       hi@humainlearning.ai
-                    </p>
+                    </a>
                   </div>
 
                   <a
