@@ -17,7 +17,7 @@ export function proxy(request: NextRequest) {
 			name: ('custom_'+param), 
 			value: value, 
 			path: '/', 
-			}) // Store for 30 days
+			})
 		}
 	})
 

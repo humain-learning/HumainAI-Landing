@@ -12,7 +12,6 @@ import { Band } from "@/components/hc-landing/Band/Band";
 import { ChooseBatch } from "@/components/hc-landing/ChooseBatch/ChooseBatch";
 import ParentQuestionsSection from "@/components/hc-landing/Questions/ParentQuestionsSection";
 import BottomCTA from "@/components/hc-landing/BottomCTA/BottomCTA";
-import { Batches } from "@/components/courses-teachers/humain-educators/data/batchData";
 import { Tools } from "@/components/hc-landing/Tools/Tools";
 import { getBatchDetailsOfTemplate, getCurrentActiveDiscount, getBasePrice } from "@/app/lib/crmClient";
 

@@ -45,11 +45,11 @@ export default async function HumainChampsV2() {
 		<AiRoadmap/>
 		<SneakPeek/>
 		<Tools/>
-			<StudentCreations/>
-			<Instructors/>
-			{batches.length > 0 && (
-				<ChooseBatch Batches={batches} discountData={discountData.message} />
-			)}
+		<StudentCreations/>
+		<Instructors/>
+		{batches.length > 0 && (
+			<ChooseBatch Batches={batches} discountData={discountData.message} />
+		)}
 		<Founder />
 		<Parents />
 		<Band />
