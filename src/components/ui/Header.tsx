@@ -330,24 +330,6 @@ const NavbarSidebar = ({
 			  />
 			</div>
 		  </button>
-		  	<a href="#" className="loginButton login">
-				Log In
-			</a>
-			<a
-			href="#"
-			className="postLogin goToAccountButton"
-			style={{ display: "none" }}
-			>
-			Dashboard
-			</a>
-
-			<a
-			href="#"
-			className="postLogin logout"
-			style={{ display: "none" }}
-			>
-			Logout
-			</a>
 		</div>
 	  </div>
 	  <RequestCallBackModal
@@ -468,24 +450,6 @@ const Header = () => {
 			  />
 			</div>
 		  </button>
-		  <a href="https://learn.humainlearning.ai" className="">
-				Log In
-			</a>
-			<a
-			href="#"
-			className="postLogin goToAccountButton"
-			style={{ display: "none" }}
-			>
-			Dashboard
-			</a>
-
-			<a
-			href="#"
-			className="postLogin logout"
-			style={{ display: "none" }}
-			>
-			Logout
-			</a>
 		  <button
 			onClick={() => setIsSidebarOpen(true)}
 			className="m-0 inline-flex rounded-lg border border-black p-1.5 outline-0 hover:border-black md:hidden"
