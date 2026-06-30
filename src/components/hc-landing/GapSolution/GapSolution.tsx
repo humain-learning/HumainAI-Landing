@@ -2,6 +2,10 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
+import { getCookie } from 'cookies-next';
+import { useRouter } from 'next/navigation';
+import LeadForm from '@/components/forms/hcForm';
+import { PopupFormModal } from '@/components/ui/PopupFormModal';
 
 // Custom Checkmark SVG inside a solid green/sage circle for the solution checklist
 const CheckCircleIcon = () => (
@@ -18,6 +22,38 @@ const CheckCircleIcon = () => (
 );
 
 export default function GapSolution() {
+  const router = useRouter();
+  const [showModal, setShowModal] = React.useState(false);
+  const [submitError, setSubmitError] = React.useState('');
+
+  const handleEnrollClick = () => {
+    if (getCookie('leadId')) {
+      router.push('/checkout?courseId=1');
+      return;
+    }
+
+    setShowModal(true);
+  };
+
+  const onSubmit = async (values: unknown) => {
+    const res = await fetch('/api/submit-lead', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      setSubmitError('Something went wrong. Please try again.');
+      throw new Error(data.error || 'Something went wrong');
+    }
+
+    return data;
+  };
+
   return (
     <section className="w-full bg-white py-16 md:py-24">
       <div className="mx-auto w-full max-w-7xl px-6 md:px-12 lg:px-16">
@@ -195,10 +231,9 @@ export default function GapSolution() {
 
             {/* CTA Button */}
             <div className="pt-4">
-              <motion.a
-                href="https://pages.razorpay.com/humainchamps"
-                target="_blank"
-                rel="noopener noreferrer"
+              <motion.button
+                type="button"
+                onClick={handleEnrollClick}
                 whileHover="hover"
                 whileTap={{ scale: 0.98 }}
                 className="group flex cursor-pointer items-center justify-between gap-6 rounded-full bg-terracotta py-2.5 pr-2.5 pl-7 text-white shadow-sm transition-all duration-300 hover:bg-[#df935c] hover:shadow-md w-fit"
@@ -226,13 +261,27 @@ export default function GapSolution() {
                     />
                   </svg>
                 </motion.div>
-              </motion.a>
+              </motion.button>
             </div>
 
           </div>
 
         </div>
       </div>
+
+      <PopupFormModal isOpen={showModal} onClose={() => setShowModal(false)}>
+        <LeadForm
+          actionable="Direct Sale"
+          heading="Please fill in your details"
+          subHeading=""
+          buttonText="Proceed to Checkout"
+          source="Testing"
+          destination="/checkout?courseId=1"
+          onSubmit={onSubmit}
+          submitError={submitError}
+          setSubmitError={setSubmitError}
+        />
+      </PopupFormModal>
     </section>
   );
 }

@@ -1,6 +1,10 @@
 'use client';
 
 import React from 'react';
+import { getCookie } from 'cookies-next';
+import { useRouter } from 'next/navigation';
+import LeadForm from '@/components/forms/hcForm';
+import { PopupFormModal } from '@/components/ui/PopupFormModal';
 import SecondaryButton from "ui/SecondaryButton";
 
 type BandProps = {
@@ -8,7 +12,38 @@ type BandProps = {
 };
 
 export const Band = ({ targetTime }: BandProps) => {
+  const router = useRouter();
   const [timeLeft, setTimeLeft] = React.useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [showModal, setShowModal] = React.useState(false);
+  const [submitError, setSubmitError] = React.useState('');
+
+  const handleEnrollClick = () => {
+    if (getCookie('leadId')) {
+      router.push('/checkout?courseId=1');
+      return;
+    }
+
+    setShowModal(true);
+  };
+
+  const onSubmit = async (values: unknown) => {
+    const res = await fetch('/api/submit-lead', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      setSubmitError('Something went wrong. Please try again.');
+      throw new Error(data.error || 'Something went wrong');
+    }
+
+    return data;
+  };
 
   React.useEffect(() => {
     const updateTimer = () => {
@@ -40,68 +75,33 @@ export const Band = ({ targetTime }: BandProps) => {
         <div className="flex items-center gap-3">
           <span className="h-2 w-2 rounded-full bg-red-500 animate-ping shrink-0" />
           <p className="font-display text-sm sm:text-base font-extrabold tracking-tight text-white">
-            Summer Camp Filling Fast! <span className="font-sans text-xs sm:text-sm font-normal text-white/80 ml-1.5 hidden md:inline">Enroll before batches close.</span>
+            Batches Filling Fast! <span className="font-sans text-xs sm:text-sm font-normal text-white/80 ml-1.5 hidden md:inline">Enroll before batches close.</span>
           </p>
         </div>
 
         {/* Right Side: Dynamic Countdown Timer (Transparent White) & CTA Button */}
         <div className="flex items-center gap-4 sm:gap-6 shrink-0">
           
-          {/* Dynamic timer in custom transparent white tags */}
-          <div className="flex items-center gap-1.5 select-none font-mono">
-            {/* Days */}
-            <div className="bg-white/12 border border-white/15 px-2 py-1 rounded-lg text-center min-w-[34px]">
-              <span className="block font-display text-xs sm:text-sm font-extrabold leading-none text-white">
-                {String(timeLeft.days).padStart(2, '0')}
-              </span>
-              <span className="block font-sans text-[7px] uppercase tracking-wider text-white/70 mt-0.5 leading-none">
-                d
-              </span>
-            </div>
-            
-            <span className="font-sans text-xs font-bold text-white/40">:</span>
-
-            {/* Hours */}
-            <div className="bg-white/12 border border-white/15 px-2 py-1 rounded-lg text-center min-w-[34px]">
-              <span className="block font-display text-xs sm:text-sm font-extrabold leading-none text-white">
-                {String(timeLeft.hours).padStart(2, '0')}
-              </span>
-              <span className="block font-sans text-[7px] uppercase tracking-wider text-white/70 mt-0.5 leading-none">
-                h
-              </span>
-            </div>
-
-            <span className="font-sans text-xs font-bold text-white/40">:</span>
-
-            {/* Minutes */}
-            <div className="bg-white/12 border border-white/15 px-2 py-1 rounded-lg text-center min-w-[34px]">
-              <span className="block font-display text-xs sm:text-sm font-extrabold leading-none text-white">
-                {String(timeLeft.minutes).padStart(2, '0')}
-              </span>
-              <span className="block font-sans text-[7px] uppercase tracking-wider text-white/70 mt-0.5 leading-none">
-                m
-              </span>
-            </div>
-
-            <span className="font-sans text-xs font-bold text-white/40">:</span>
-
-            {/* Seconds */}
-            <div className="bg-white/15 border border-white/20 px-2 py-1 rounded-lg text-center min-w-[34px] animate-pulse">
-              <span className="block font-display text-xs sm:text-sm font-extrabold leading-none text-[#ffd3b4]">
-                {String(timeLeft.seconds).padStart(2, '0')}
-              </span>
-              <span className="block font-sans text-[7px] uppercase tracking-wider text-[#ffd3b4]/80 mt-0.5 leading-none">
-                s
-              </span>
-            </div>
-          </div>
-
           {/* Enroll Button */}
-          <SecondaryButton text="Enroll Now" target="https://pages.razorpay.com/humainchamps" newTab />
+          <SecondaryButton text="Enroll Now" target="" onClick={handleEnrollClick} />
 
         </div>
 
       </div>
+
+      <PopupFormModal isOpen={showModal} onClose={() => setShowModal(false)}>
+        <LeadForm
+          actionable="Direct Sale"
+          heading="Please fill in your details"
+          subHeading=""
+          buttonText="Proceed to Checkout"
+          source="Testing"
+          destination="/checkout?courseId=1"
+          onSubmit={onSubmit}
+          submitError={submitError}
+          setSubmitError={setSubmitError}
+        />
+      </PopupFormModal>
     </div>
   );
 };

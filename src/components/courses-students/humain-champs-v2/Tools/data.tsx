@@ -3,7 +3,6 @@ export const models = [
     '/assets/HCV2/tools/gemini.svg',
     '/assets/HCV2/tools/perplexity.svg',
     '/assets/HCV2/tools/grok.svg',
-    '/assets/HCV2/tools/claude.svg'
 ]
 
 export const tools = [

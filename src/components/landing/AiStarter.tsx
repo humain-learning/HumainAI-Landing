@@ -110,7 +110,7 @@ const AiStarter = () => {
                     ease: 'linear',
                   }}
                 />
-                <motion.img
+                {/* <motion.img
                   src="/assets/images/tools/tool5.png"
                   // className="absolute -top-6 right-10 w-10 sm:w-14 lg:w-auto"
                   className="absolute -right-0 bottom-6 w-12 md:right-20 md:bottom-10 lg:w-auto rotate-197"
@@ -120,7 +120,7 @@ const AiStarter = () => {
                     duration: 20,
                     ease: 'linear',
                   }}
-                />
+                /> */}
                 <motion.img
                   src="/assets/images/tools/tool7.png"
                   // className="absolute -top-6 right-10 w-10 sm:w-14 lg:w-auto"
