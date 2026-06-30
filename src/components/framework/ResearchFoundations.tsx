@@ -94,7 +94,7 @@ export default function ResearchFoundations() {
           <ol className="space-y-5">
             {citations.map((c, idx) => (
               <li key={idx} className="flex gap-4 group">
-                <span className="flex-shrink-0 font-display font-bold text-[#5e714e]/40 text-sm mt-1 w-5 text-right">
+                <span className="flex-shrink-0 font-display font-bold text-sage/40 text-sm mt-1 w-5 text-right">
                   {idx + 1}.
                 </span>
                 <p className="font-sans text-base text-charcoal/80 leading-relaxed">

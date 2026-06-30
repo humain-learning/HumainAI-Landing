@@ -92,8 +92,8 @@ export default function SixPillarsAtGlance() {
               </div>
 
               <div className="relative z-10 flex flex-col flex-grow">
-                <h3 className="font-display text-xl md:text-2xl font-bold text-[#5e714e] mb-4 flex items-center gap-3">
-                  <span className="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-[#5e714e] mt-0.5" />
+                <h3 className="font-display text-xl md:text-2xl font-bold text-sage mb-4 flex items-center gap-3">
+                  <span className="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-sage mt-0.5" />
                   {pillar.name}
                 </h3>
 
@@ -116,7 +116,7 @@ export default function SixPillarsAtGlance() {
             </motion.a>
           ))}
         </div>
-
+{/* 
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -132,7 +132,7 @@ export default function SixPillarsAtGlance() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </Link>
-        </motion.div>
+        </motion.div> */}
 
       </div>
     </section>

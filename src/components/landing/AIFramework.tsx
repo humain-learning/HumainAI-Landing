@@ -1,6 +1,6 @@
 const AIFramework = () => {
   return (
-    <div className="">
+    <div id=""className="">
       <div className="md:pt-14" />
       <div className="relative py-0 md:py-24">
         <img

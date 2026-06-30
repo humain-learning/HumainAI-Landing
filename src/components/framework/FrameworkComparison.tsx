@@ -71,7 +71,7 @@ export default function FrameworkComparison() {
   ];
 
   const getStyle = (val: string) => {
-    if (val.startsWith('✓')) return 'text-[#5e714e] font-semibold';
+    if (val.startsWith('✓')) return 'text-sage font-semibold';
     if (val === 'Partial') return 'text-[#d4af37] font-semibold';
     return 'text-charcoal/30';
   };
@@ -110,7 +110,7 @@ export default function FrameworkComparison() {
             <thead className="bg-[#f9faf7] border-b border-[#e8efe0]">
               <tr>
                 <th className="px-6 py-5 font-bold text-[#0a1e3f] w-2/5">Capacity</th>
-                <th className="px-6 py-5 font-bold text-[#5e714e] text-center">Humain</th>
+                <th className="px-6 py-5 font-bold text-sage text-center">Humain</th>
                 <th className="px-6 py-5 font-bold text-charcoal/70 text-center">OECD</th>
                 <th className="px-6 py-5 font-bold text-charcoal/70 text-center">UNESCO</th>
                 <th className="px-6 py-5 font-bold text-charcoal/70 text-center">EU</th>

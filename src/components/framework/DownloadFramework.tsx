@@ -56,11 +56,11 @@ export default function DownloadFramework() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 * idx }}
-              className="bg-[#f9faf7] rounded-3xl p-8 border border-[#e8efe0] border-l-4 border-l-[#5e714e] shadow-sm flex flex-col"
+              className="bg-[#f9faf7] rounded-3xl p-8 border border-[#e8efe0] border-l-4 border-l-sage shadow-sm flex flex-col"
             >
               {/* Language label row */}
               <div className="flex items-center gap-4 mb-6">
-                <span className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-[#e8efe0] text-[#5e714e] font-display font-bold text-base">
+                <span className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-[#e8efe0] text-sage font-display font-bold text-base">
                   {d.langCode}
                 </span>
                 <div>
@@ -75,7 +75,7 @@ export default function DownloadFramework() {
               {/* Download button */}
               <Link
                 href={d.href}
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-[#5e714e] text-white font-sans font-bold text-base shadow-lg shadow-[#5e714e]/30 hover:bg-[#4a5a3e] transition-all"
+                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-sage text-white font-sans font-bold text-base shadow-lg shadow-sage/30 hover:bg-[#4a5a3e] transition-all"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />

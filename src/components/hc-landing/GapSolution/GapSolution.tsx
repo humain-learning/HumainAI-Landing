@@ -133,7 +133,7 @@ export default function GapSolution() {
             {/* Header Badge */}
             <div className="space-y-2.5">
               <div className="h-[3px] w-12 rounded-full bg-sage" />
-              <span className="block font-display text-xs font-extrabold tracking-widest text-[#5e714e]">
+              <span className="block font-display text-xs font-extrabold tracking-widest text-sage">
                 THE HUMAN SOLUTION
               </span>
             </div>

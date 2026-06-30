@@ -40,7 +40,7 @@ export default function FinalConversionBanner() {
     <section className="relative w-full py-20 md:py-32 bg-[#0a1e3f] overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-[#5e714e]/10 blur-3xl" />
+        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-sage/10 blur-3xl" />
         <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-terracotta/10 blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-white/5" />
       </div>
@@ -54,7 +54,7 @@ export default function FinalConversionBanner() {
           className="font-display text-3xl md:text-5xl font-extrabold text-white leading-[1.1] tracking-tight mb-6"
         >
           The framework is the map.<br />
-          <span className="text-[#5e714e]">Humain Champs</span> is how your child walks it.
+          <span className="text-sage">Humain Champs</span> is how your child walks it.
         </motion.h2>
 
         <motion.p
@@ -80,7 +80,7 @@ export default function FinalConversionBanner() {
                 href={cta.href}
                 className={`flex flex-col h-full rounded-2xl p-6 text-left transition-all duration-300 group border ${
                   cta.primary
-                    ? 'bg-[#5e714e] border-[#5e714e] hover:bg-[#4a5a3e] shadow-xl shadow-[#5e714e]/30'
+                    ? 'bg-sage border-sage hover:bg-[#4a5a3e] shadow-xl shadow-sage/30'
                     : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'
                 }`}
               >

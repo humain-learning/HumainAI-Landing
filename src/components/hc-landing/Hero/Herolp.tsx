@@ -101,16 +101,16 @@ export default function Herolp({basePrice}: HeroProps) {
 				
 				{/* Header Chips/Badges */}
 				<div className="flex flex-wrap gap-2.5">
-				<span className="flex items-center gap-1.5 rounded-full bg-[#aac1911a] px-3.5 py-1.5 text-xs font-semibold tracking-wider text-[#5e714e]">
-					<span className="h-1.5 w-1.5 rounded-full bg-[#5e714e]" />
+				<span className="flex items-center gap-1.5 rounded-full bg-[#aac1911a] px-3.5 py-1.5 text-xs font-semibold tracking-wider text-sage">
+					<span className="h-1.5 w-1.5 rounded-full bg-sage" />
 					E-CELL IIT-K CERTIFIED
 				</span>
-				<span className="flex items-center gap-1.5 rounded-full bg-[#aac1911a] px-3.5 py-1.5 text-xs font-semibold tracking-wider text-[#5e714e]">
-					<span className="h-1.5 w-1.5 rounded-full bg-[#5e714e]" />
+				<span className="flex items-center gap-1.5 rounded-full bg-[#aac1911a] px-3.5 py-1.5 text-xs font-semibold tracking-wider text-sage">
+					<span className="h-1.5 w-1.5 rounded-full bg-sage" />
 					ONLINE
 				</span>
-				<span className="flex items-center gap-1.5 rounded-full bg-[#aac1911a] px-3.5 py-1.5 text-xs font-semibold tracking-wider text-[#5e714e]">
-					<span className="h-1.5 w-1.5 rounded-full bg-[#5e714e]" />
+				<span className="flex items-center gap-1.5 rounded-full bg-[#aac1911a] px-3.5 py-1.5 text-xs font-semibold tracking-wider text-sage">
+					<span className="h-1.5 w-1.5 rounded-full bg-sage" />
 					GRADES 8 - 12
 				</span>
 				</div>
@@ -162,7 +162,7 @@ export default function Herolp({basePrice}: HeroProps) {
 						}}
 						whileHover={{ scale: 1.02, backgroundColor: '#f3f6f1' }}
 						whileTap={{ scale: 0.98 }}
-						className="flex cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-sage bg-white py-3.5 px-6 font-display text-base font-bold text-[#5e714e] transition-all duration-300 hover:border-[#9ab081]"
+						className="flex cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-sage bg-white py-3.5 px-6 font-display text-base font-bold text-sage transition-all duration-300 hover:border-[#9ab081]"
 					>
 						Request a Callback
 					</motion.button>
@@ -236,12 +236,12 @@ export default function Herolp({basePrice}: HeroProps) {
 					whileHover={{ scale: 1.05, y: -2 }}
 					className="absolute top-[61%] left-[-7%] z-20 flex items-center gap-1.5 rounded-full border border-[#aac191]/50 bg-white/95 px-3 py-1.5 shadow-md shadow-sage/5 backdrop-blur-sm cursor-default"
 				>
-					<div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#5e714e]">
+					<div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sage">
 					<svg className="h-2.5 w-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4.5}>
 						<path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
 					</svg>
 					</div>
-					<span className="font-display text-[9.5px] font-extrabold tracking-wider text-[#5e714e] whitespace-nowrap">
+					<span className="font-display text-[9.5px] font-extrabold tracking-wider text-sage whitespace-nowrap">
 					NO CODING NEEDED
 					</span>
 				</motion.div>
@@ -253,12 +253,12 @@ export default function Herolp({basePrice}: HeroProps) {
 					whileHover={{ scale: 1.05, y: -2 }}
 					className="absolute top-[69.5%] left-[-7%] z-20 flex items-center gap-1.5 rounded-full border border-[#aac191]/50 bg-white/95 px-3 py-1.5 shadow-md shadow-sage/5 backdrop-blur-sm cursor-default"
 				>
-					<div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#5e714e]">
+					<div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sage">
 					<svg className="h-2.5 w-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4.5}>
 						<path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
 					</svg>
 					</div>
-					<span className="font-display text-[9.5px] font-extrabold tracking-wider text-[#5e714e] whitespace-nowrap">
+					<span className="font-display text-[9.5px] font-extrabold tracking-wider text-sage whitespace-nowrap">
 					LIVE CLASSES
 					</span>
 				</motion.div>
@@ -270,12 +270,12 @@ export default function Herolp({basePrice}: HeroProps) {
 					whileHover={{ scale: 1.05, y: -2 }}
 					className="absolute top-[78%] left-[-7%] z-20 flex items-center gap-1.5 rounded-full border border-[#aac191]/50 bg-white/95 px-3 py-1.5 shadow-md shadow-sage/5 backdrop-blur-sm cursor-default"
 				>
-					<div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#5e714e]">
+					<div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sage">
 					<svg className="h-2.5 w-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4.5}>
 						<path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
 					</svg>
 					</div>
-					<span className="font-display text-[9.5px] font-extrabold tracking-wider text-[#5e714e] whitespace-nowrap">
+					<span className="font-display text-[9.5px] font-extrabold tracking-wider text-sage whitespace-nowrap">
 					IIT CERTIFICATE
 					</span>
 				</motion.div>

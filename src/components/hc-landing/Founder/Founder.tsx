@@ -13,7 +13,7 @@ export default function Founder() {
 
             {/* Harvard Alumnus badge indicator */}
             <div className="inline-block rounded-full border border-sage/60 px-3.5 py-1 text-center bg-white shadow-sm select-none">
-              <span className="font-display text-[10.5px] font-extrabold tracking-wider text-[#5e714e] uppercase">
+              <span className="font-display text-[10.5px] font-extrabold tracking-wider text-sage uppercase">
                 Harvard Alumnus
               </span>
             </div>

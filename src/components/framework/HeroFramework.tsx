@@ -31,16 +31,6 @@ export default function HeroFramework() {
           {/* Left: Text */}
           <div className="flex-1 text-center lg:text-left">
 
-            {/* Hindi tagline */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="mb-5"
-            >
-              
-            </motion.div>
-
             {/* H1 */}
             <motion.h1
               initial={{ opacity: 0, y: 15 }}
@@ -49,7 +39,7 @@ export default function HeroFramework() {
               className="font-display text-4xl md:text-5xl lg:text-[54px] font-extrabold leading-[1.1] tracking-tight text-charcoal mb-5"
             >
               The Humain<br />
-              <span className="text-[#5e714e]">AI Literacy</span> Framework
+              <span className="text-sage">AI Literacy</span> Framework
             </motion.h1>
 
             {/* Sub-headline */}
@@ -80,7 +70,7 @@ export default function HeroFramework() {
             >
               {trustSignals.map((t, i) => (
                 <span key={i} className="inline-flex items-center gap-2 text-sm text-charcoal/70 font-medium">
-                  <span className="w-2 h-2 rounded-full bg-[#5e714e] flex-shrink-0" />
+                  <span className="w-2 h-2 rounded-full bg-sage flex-shrink-0" />
                   {t}
                 </span>
               ))}
@@ -93,24 +83,24 @@ export default function HeroFramework() {
               transition={{ delay: 0.35, duration: 0.5 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <Link
-                href="#download"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-[#5e714e] text-white font-sans font-bold text-base shadow-lg shadow-[#5e714e]/30 hover:bg-[#4a5a3e] transition-all"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                Download free PDF
-              </Link>
-              <Link
-                href="https://pages.razorpay.com/humainchamps"
-                className="inline-flex items-center justify-center px-7 py-4 rounded-full bg-white border-2 border-[#e8efe0] text-charcoal font-sans font-bold text-base hover:border-terracotta hover:text-terracotta transition-all"
-              >
-                Enroll in Humain Champs
-                <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
+				<Link
+					href="#download"
+					className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-sage text-white font-sans font-bold text-base shadow-lg shadow-sage/30 hover:bg-[#4a5a3e] transition-all"
+				>
+					<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+					<path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+					</svg>
+					Download free PDF
+				</Link>
+				<Link
+					href="/humain-champs"
+					className="inline-flex items-center justify-center px-7 py-4 rounded-full bg-white border-2 border-[#e8efe0] text-charcoal font-sans font-bold text-base hover:border-terracotta hover:text-terracotta transition-all"
+				>
+					Enroll in Humain Champs
+					<svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+					<path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+					</svg>
+				</Link>
             </motion.div>
 
           </div>
@@ -133,7 +123,7 @@ export default function HeroFramework() {
                     key={p.num}
                     className="bg-white rounded-xl border border-[#e8efe0] p-4 flex items-center gap-3 shadow-sm"
                   >
-                    <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-[#e8efe0] text-[#5e714e] font-display font-bold text-sm">
+                    <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-[#e8efe0] text-sage font-display font-bold text-sm">
                       {p.num}
                     </span>
                     <span className="font-display font-bold text-charcoal text-xs leading-tight">

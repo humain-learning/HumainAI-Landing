@@ -50,7 +50,7 @@ const EXPERTS_LIST = [
 
 const ExpertsTeam = () => {
   return (
-    <div className="mx-auto w-full max-w-7xl space-y-10 px-6 pt-5 pb-12 text-[#011813] md:px-0 lg:space-y-[50px] lg:pt-12">
+    <div id="our-team"className="mx-auto w-full max-w-7xl space-y-10 px-6 pt-5 pb-12 text-[#011813] md:px-0 lg:space-y-[50px] lg:pt-12">
       <h3 className="text-center text-4xl font-semibold md:text-5xl">
         Meet Our Expert Team
       </h3>

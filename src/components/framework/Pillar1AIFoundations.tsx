@@ -1,6 +1,4 @@
 'use client';
-
-import React from 'react';
 import { motion } from 'motion/react';
 import Link from 'next/link';
 
@@ -34,7 +32,7 @@ export default function Pillar1AIFoundations() {
         
         {/* Header */}
         <div className="w-full flex items-center gap-4 mb-6">
-          <span className="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-[#5e714e] mt-1" />
+          <span className="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-sage mt-1" />
           <motion.h2 
             initial={{ opacity: 0, x: -10 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -114,7 +112,7 @@ export default function Pillar1AIFoundations() {
             <h4 className="text-xs font-bold uppercase tracking-wider text-charcoal/50 mb-2">Deep-dive</h4>
             <Link 
               href="/framework/ai-foundations" 
-              className="font-semibold text-[#5e714e] hover:text-[#4a5a3e] transition-colors inline-flex items-center"
+              className="font-semibold text-sage hover:text-[#4a5a3e] transition-colors inline-flex items-center"
             >
               Read the full Pillar 1: AI Foundations page
               <svg className="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

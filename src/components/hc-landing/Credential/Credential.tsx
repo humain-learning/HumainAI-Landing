@@ -27,7 +27,7 @@ export default function Credential() {
 
             {/* Top Indicator Category */}
             <div className="h-[3px] w-12 bg-sage rounded-full mb-3" />
-            <span className="font-display text-xs font-extrabold tracking-widest text-[#5e714e] uppercase select-none">
+            <span className="font-display text-xs font-extrabold tracking-widest text-sage uppercase select-none">
               THE CERTIFICATE
             </span>
 

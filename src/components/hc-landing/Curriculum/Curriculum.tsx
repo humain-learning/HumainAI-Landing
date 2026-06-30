@@ -51,7 +51,7 @@ const renderModuleSlides = () => (
 				{mod.tools.map((tool) => (
 				<span
 					key={tool}
-					className="px-3 py-1 text-[10px] font-display font-extrabold tracking-wider bg-[#f8f9fa] border border-sage/30 text-[#5e714e] rounded-full"
+					className="px-3 py-1 text-[10px] font-display font-extrabold tracking-wider bg-[#f8f9fa] border border-sage/30 text-sage rounded-full"
 				>
 					{tool}
 				</span>
@@ -83,7 +83,7 @@ export default function Curriculum() {
         {/* Centered Title Area */}
         <div className="flex flex-col items-center space-y-3.5 mb-16 text-center">
           <div className="h-[3px] w-12 bg-sage rounded-full" />
-          <span className="font-display text-xs font-extrabold tracking-widest text-[#5e714e]">
+          <span className="font-display text-xs font-extrabold tracking-widest text-sage">
             THE CURRICULUM
           </span>
           <h2 className="font-display text-3xl font-extrabold leading-tight text-charcoal sm:text-4xl md:text-5xl max-w-4xl">

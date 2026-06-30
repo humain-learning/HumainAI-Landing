@@ -3,30 +3,34 @@ import React, { useEffect, useRef, useState } from 'react';
 import { MenuIcon, X } from 'lucide-react';
 import { cn } from '@/utils';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 // import { addDoc, collection, getFirestore } from 'firebase/firestore';
 // import { app } from '@/app/lib/firebase'; // adjust path as needed
 
-const ROUTES = [
+type NavRoute = {
+  name: string;
+  href: string;
+};
 
-  {
-	name: 'About',
-	href: '/#about',
-  },
-  {
-	name: 'Technologies',
-	href: '/#ai-starter-pack',
-  },
-  {
-	name: 'Discover',
-	href: '/#why-humain',
-  },
-  {
-	name: 'FAQs',
-	href: '/#faqs',
-  },
-];
+const ROUTES: NavRoute[] = [
+	{
+		name: 'Home',
+		href: '/',
+	},
+	{
+		name: 'Framework',
+		href: '/framework',
+	},
+	{
+		name: 'For Schools',
+		href: '/schools',
+	},
+	{
+		name: 'Parent Hub',
+		href: '/parenthub',
+	},
+	];
 
 // "Request a Call Back" modal component
 const RequestCallBackModal = ({
@@ -42,6 +46,10 @@ const RequestCallBackModal = ({
 }) => {
   const modalContainerRef = useRef<null | HTMLDivElement>(null);
   const [user, setUser] = useState({
+	firstName: '',
+	lastName: '',
+	email: '',
+	contact: '',
 	firstName: '',
 	lastName: '',
 	email: '',
@@ -221,256 +229,250 @@ const RequestCallBackModal = ({
 };
 
 const NavbarSidebar = ({
-  isOpen,
-  className,
-  onClose,
-}: {
-  onClose: () => void;
-  isOpen: boolean;
-  className?: string;
-}) => {
-  const [showModal, setShowModal] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const pathname = usePathname();
-  const router = useRouter();
-  const isCoursesPage = pathname === '/courses-students/humain-champs';
-  
-  // Submit to Frappe CRM via /api/submit-lead
-  const handleSubmit = async (user: {
-	firstName: string;
-	lastName: string;
-	email: string;
-	contact: string;
-  }) => {
-	setLoading(true);
+	isOpen,
+	className,
+	onClose,
+	}: {
+	onClose: () => void;
+	isOpen: boolean;
+	className?: string;
+	}) => {
+	const [showModal, setShowModal] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const router = useRouter();
 	
-	try {
-	  const payload = {
-		first_name: user.firstName,
-		last_name: user.lastName,
-		email: user.email,
-		mobile_no: user.contact,
-		custom_parent_first_name: '',
-		custom_parent_last_name: '',
-		custom_class: '',
-		custom_city: '',
-		custom_message: '',
-		source: 'Website Form',
-	  };
+	// Submit to Frappe CRM via /api/submit-lead
+	const handleSubmit = async (user: {
+		firstName: string;
+		lastName: string;
+		email: string;
+		contact: string;
+	}) => {
+		setLoading(true);
+		
+		try {
+		const payload = {
+			first_name: user.firstName,
+			last_name: user.lastName,
+			email: user.email,
+			mobile_no: user.contact,
+			custom_parent_first_name: '',
+			custom_parent_last_name: '',
+			custom_class: '',
+			custom_city: '',
+			custom_message: '',
+			source: 'Website Form',
+		};
 
-	  const res = await fetch('/api/submit-lead', {
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify(payload),
-	  });
+		const res = await fetch('/api/submit-lead', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(payload),
+		});
 
-	  if (!res.ok) {
-		const error = await res.json().catch(() => ({}));
-		throw new Error(error.message || 'Submission failed');
-	  }
+		if (!res.ok) {
+			const error = await res.json().catch(() => ({}));
+			throw new Error(error.message || 'Submission failed');
+		}
 
-	  const data = await res.json();
-	  
-	  setShowModal(false);
-	  if (data.redirect) {
-		router.push(data.redirect);
-	  } else {
-		toast.success('Thank you! We will contact you soon.');
-	  }
-	} catch (error) {
-	  console.error('Error:', error);
-	  toast.error('Something went wrong. Please try again.');
-	} finally {
-	  setLoading(false);
-	}
-  };
+		const data = await res.json();
+		
+		setShowModal(false);
+		if (data.redirect) {
+			router.push(data.redirect);
+		} else {
+			toast.success('Thank you! We will contact you soon.');
+		}
+		} catch (error) {
+		console.error('Error:', error);
+		toast.error('Something went wrong. Please try again.');
+		} finally {
+		setLoading(false);
+		}
+	};
 
-  return (
-	<div
-	  className={cn(
-		'fixed inset-0 z-50 transform bg-white transition-transform duration-300 ease-in-out md:hidden',
-		className,
-		isOpen ? 'translate-x-0' : 'translate-x-full'
-	  )}
-	>
-	  {/* Close button */}
-	  <div className="flex items-center justify-between border-b px-4 py-4">
-		<div className="text-lg font-semibold">Menu</div>
-		<button onClick={onClose}>
-		  <X className="h-6 w-6" />
-		</button>
-	  </div>
-
-	  {/* Sidebar links */}
-	  <div className="flex flex-col space-y-4 px-6 py-6">
-		{ROUTES.map((route, i) => (
-		  <Link
-			key={i}
-			href={route.href}
-			onClick={onClose}
-			className="text-left text-lg font-medium text-gray-700 hover:text-black"
-		  >
-			{route.name}
-		  </Link>
-		))}
-
-		{/* Explore more button */}
-		<div className="mt-4 flex justify-center">
-		  <button
-			type="button"
-			onClick={() => setShowModal(true)}
-			className="flex items-center gap-2 rounded-full border-2 py-1 pr-1 pl-4"
-		  >
-			Request A Callback
-			<div className="flex h-9 w-9 items-center justify-center rounded-full bg-black">
-			  <img
-				className="w-6"
-				src="/assets/icons/arrow-top-right.svg"
-				alt=""
-			  />
-			</div>
-		  </button>
+	return (
+		<div
+		className={cn(
+			'fixed inset-0 z-50 transform bg-white transition-transform duration-300 ease-in-out md:hidden',
+			className,
+			isOpen ? 'translate-x-0' : 'translate-x-full'
+		)}
+		>
+		{/* Close button */}
+		<div className="flex items-center justify-between border-b px-4 py-4">
+			<div className="text-lg font-semibold">Menu</div>
+			<button onClick={onClose}>
+			<X className="h-6 w-6" />
+			</button>
 		</div>
-	  </div>
-	  <RequestCallBackModal
-		isOpen={showModal}
-		onClose={() => setShowModal(false)}
-		onSubmit={handleSubmit}
-		loading={loading}
-	  />
-	</div>
-  );
-};
 
-const Header = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const pathname = usePathname();
-  const router = useRouter();
-  const isCoursesPage = pathname === '/courses-students/humain-champs';
-  const isPrivacyPage = pathname === '/privacy-policy'
-  const handleSubmit = async (user: {
-	firstName: string;
-	lastName: string;
-	email: string;
-	contact: string;
-  }) => {
-	setLoading(true);
-	
-	try {
-	  const payload = {
-		first_name: user.firstName,
-		last_name: user.lastName,
-		email: user.email,
-		mobile_no: user.contact,
-		custom_parent_first_name: '',
-		custom_parent_last_name: '',
-		custom_class: '',
-		custom_city: '',
-		custom_message: '',
-		source: 'Website Form',
-	  };
-
-	  const res = await fetch('/api/submit-lead', {
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify(payload),
-	  });
-
-	  if (!res.ok) {
-		const error = await res.json().catch(() => ({}));
-		throw new Error(error.message || 'Submission failed');
-	  }
-
-	  const data = await res.json();
-	
-	  setShowModal(false);
-	  if (data.redirect) {
-		router.push(data.redirect);
-	  } else {
-		toast.success('Thank you! We will contact you soon.');
-	  }
-	} catch (error) {
-	  console.error('Error:', error);
-	  toast.error('Something went wrong. Please try again.');
-	} finally {
-	  setLoading(false);
-	}
-  };
-
-  return (
-	<div className='z-0'>
-	  <nav className="mx-auto w-full md:max-w-[90vw] bg-transparent">
-		<div className="flex items-center justify-between px-2 py-2 md:px-4">
-		  <Link href="/" className="flex items-center gap-2">
-			<img
-			  className="h-24 md:h-28"
-			  src="/assets/logo/brain-logo.png"
-			  alt="Humain Learning"
-			/>
-			{/* <div className="text-xl font-semibold">HUMAIN LEARNING</div> */}
-		  </Link>
-
-		  <div className="hidden items-center md:flex gap-2">
-			{ROUTES?.map((route, i) => (
-			  <Link
-				href={route?.href}
-				className={cn(
-				  "cursor-pointer px-3 text-base ",
-				  i % 2 === 0 ? "after:bg-[#aac291]" : "after:bg-[#e8a772]"
-				)}
-				key={i}
-			  >
-				<span className={cn(
-				  "relative inline-block after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[2px] after:w-0 after:transition-all after:duration-500 hover:after:w-full",
-				  i % 2 === 0 ? "after:bg-[#aac291]" : "after:bg-[#e8a772]"
-				)}>
-				  {route?.name}
-				</span>
-			  </Link>
+		{/* Sidebar links */}
+		<div className="flex flex-col space-y-4 px-6 py-6">
+			{ROUTES.map((route) => (
+				<Link
+					key={route.name}
+					href={route.href}
+					onClick={onClose}
+					className="border-b border-gray-100 pb-4 text-left text-lg font-medium text-gray-700 transition hover:text-black last:border-b-0"
+				>
+					{route.name}
+				</Link>
 			))}
-		  </div>
 
-		  {/* Explore more */}
-		  <button
-			type="button"
-			className="hidden items-center gap-2 rounded-full border-2 py-1 pr-1 pl-4 md:flex"
-			onClick={() => {
-			  setShowModal(true);
-			  document.body.style.overflow = 'hidden';
-			}}
-		  >
-			Request A Callback
-			<div className="flex h-9 w-9 items-center justify-center rounded-full bg-black">
-			  <img
-				className="w-6"
-				src="/assets/icons/arrow-top-right.svg"
-				alt=""
-			  />
+			{/* Explore more button */}
+			<div className="mt-4 flex justify-center">
+			<button
+				type="button"
+				onClick={() => setShowModal(true)}
+				className="flex items-center gap-2 rounded-full border-2 py-1 pr-1 pl-4"
+			>
+				Request A Callback
+				<div className="flex h-9 w-9 items-center justify-center rounded-full bg-black">
+				<img
+					className="w-6"
+					src="/assets/icons/arrow-top-right.svg"
+					alt=""
+				/>
+				</div>
+			</button>
 			</div>
-		  </button>
-		  <button
-			onClick={() => setIsSidebarOpen(true)}
-			className="m-0 inline-flex rounded-lg border border-black p-1.5 outline-0 hover:border-black md:hidden"
-		  >
-			<MenuIcon />
-		  </button>
 		</div>
-	  </nav>
+		<RequestCallBackModal
+			isOpen={showModal}
+			onClose={() => setShowModal(false)}
+			onSubmit={handleSubmit}
+			loading={loading}
+		/>
+		</div>
+	);
+	};
 
-	  <NavbarSidebar
-		isOpen={isSidebarOpen}
-		onClose={() => setIsSidebarOpen(false)}
-	  />
-	  <RequestCallBackModal
-		isOpen={showModal}
-		onClose={() => setShowModal(false)}
-		onSubmit={handleSubmit}
-		loading={loading}
-	  />
-	</div>
-  );
-};
+	const Header = () => {
+	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+	const [showModal, setShowModal] = useState(false);
+	const [loading, setLoading] = useState(false);
+	const router = useRouter();
+	const handleSubmit = async (user: {
+		firstName: string;
+		lastName: string;
+		email: string;
+		contact: string;
+	}) => {
+		setLoading(true);
+		
+		try {
+		const payload = {
+			first_name: user.firstName,
+			last_name: user.lastName,
+			email: user.email,
+			mobile_no: user.contact,
+			custom_parent_first_name: '',
+			custom_parent_last_name: '',
+			custom_class: '',
+			custom_city: '',
+			custom_message: '',
+			source: 'Website Form',
+		};
 
-export default Header;
+		const res = await fetch('/api/submit-lead', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(payload),
+		});
+
+		if (!res.ok) {
+			const error = await res.json().catch(() => ({}));
+			throw new Error(error.message || 'Submission failed');
+		}
+
+		const data = await res.json();
+		
+		setShowModal(false);
+		if (data.redirect) {
+			router.push(data.redirect);
+		} else {
+			toast.success('Thank you! We will contact you soon.');
+		}
+		} catch (error) {
+		console.error('Error:', error);
+		toast.error('Something went wrong. Please try again.');
+		} finally {
+		setLoading(false);
+		}
+	};
+
+	return (
+		<div className='z-0'>
+		<nav className="mx-auto w-full md:max-w-[90vw] bg-transparent">
+			<div className="flex items-center justify-between px-2 py-2 md:px-4">
+			<Link href="/" className="flex items-center gap-2">
+				<img
+				className="h-24 md:h-28"
+				src="/assets/logo/brain-logo.png"
+				alt="Humain Learning"
+				/>
+				{/* <div className="text-xl font-semibold">HUMAIN LEARNING</div> */}
+			</Link>
+
+			<div className="hidden items-center gap-2 md:flex">
+				{ROUTES.map((route, i) => (
+					<Link
+						key={route.name}
+						href={route.href}
+						className="group flex cursor-pointer items-center gap-1 px-3 py-2 text-base"
+					>
+					<span
+						className={cn(
+						'relative inline-block after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-0 after:-translate-x-1/2 after:transition-all after:duration-500 group-hover:after:w-full',
+						i % 2 === 0 ? 'after:bg-[#aac291]' : 'after:bg-[#e8a772]'
+						)}
+					>
+						{route.name}
+					</span>
+					</Link>
+				))}
+			</div>
+
+			{/* Explore more */}
+			<button
+				type="button"
+				className="hidden items-center gap-2 rounded-full border-2 py-1 pr-1 pl-4 md:flex"
+				onClick={() => {
+				setShowModal(true);
+				document.body.style.overflow = 'hidden';
+				}}
+			>
+				Request A Callback
+				<div className="flex h-9 w-9 items-center justify-center rounded-full bg-black">
+				<img
+					className="w-6"
+					src="/assets/icons/arrow-top-right.svg"
+					alt=""
+				/>
+				</div>
+			</button>
+			<button
+				onClick={() => setIsSidebarOpen(true)}
+				className="m-0 inline-flex rounded-lg border border-black p-1.5 outline-0 hover:border-black md:hidden"
+			>
+				<MenuIcon />
+			</button>
+			</div>
+		</nav>
+
+		<NavbarSidebar
+			isOpen={isSidebarOpen}
+			onClose={() => setIsSidebarOpen(false)}
+		/>
+		<RequestCallBackModal
+			isOpen={showModal}
+			onClose={() => setShowModal(false)}
+			onSubmit={handleSubmit}
+			loading={loading}
+		/>
+		</div>
+	);
+	};
+
+	export default Header;

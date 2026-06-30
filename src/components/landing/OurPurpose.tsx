@@ -2,7 +2,7 @@ import React from 'react';
 
 const OurPurpose = () => {
   return (
-    <div className="bg-[#AAC191]/50 py-16">
+    <div id="our-purpose"className="bg-[#AAC191]/50 py-16">
       <div className="mx-auto w-full max-w-3xl space-y-4 px-6 md:px-0">
         <h2 className="text-center text-4xl font-semibold">Our Purpose</h2>
         <p className="text-center text-lg">

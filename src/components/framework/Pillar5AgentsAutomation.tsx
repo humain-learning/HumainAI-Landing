@@ -38,7 +38,7 @@ export default function Pillar5AgentsAutomation() {
 
         {/* Header */}
         <div className="w-full flex items-center gap-4 mb-6">
-          <span className="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-[#5e714e] mt-1" />
+          <span className="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-sage mt-1" />
           <motion.h2
             initial={{ opacity: 0, x: -10 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -78,7 +78,7 @@ export default function Pillar5AgentsAutomation() {
         {/* Student Showcase Cards */}
         <div className="w-full mb-12">
           <h3 className="font-display text-xl font-extrabold text-charcoal mb-6 flex items-center gap-3">
-            <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-[#e8efe0] text-[#5e714e] font-display font-bold text-sm">4</span>
+            <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-[#e8efe0] text-sage font-display font-bold text-sm">4</span>
             Real student agents built in Humain Champs
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -98,9 +98,9 @@ export default function Pillar5AgentsAutomation() {
 
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-[#5e714e]" />
+                    <span className="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-sage" />
                     <div>
-                      <p className="font-display font-bold text-[#5e714e] text-sm">{card.name}</p>
+                      <p className="font-display font-bold text-sage text-sm">{card.name}</p>
                       <p className="font-sans text-xs text-charcoal/50">{card.subject}</p>
                     </div>
                   </div>

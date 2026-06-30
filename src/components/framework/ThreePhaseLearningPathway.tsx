@@ -23,8 +23,8 @@ export default function ThreePhaseLearningPathway() {
       desc: "Humain Champs is a 16-hour live programme delivered in small cohorts over 8 weeks. Six modules map to the six pillars. Sessions run twice a week, 2 hours each, with a live instructor and a maximum of 15 students per cohort. The programme concludes with a capstone project: a personalised AI Study Agent built by the student using professional tools.",
       tools: ["16 hours of live instruction", "Max 15 students per cohort", "E-Cell IIT Kharagpur certificate"],
       cta: { label: "Enroll in Humain Champs (Rs. 11,800)", href: "https://pages.razorpay.com/humainchamps" },
-      color: "border-[#5e714e]",
-      badge: "bg-[#5e714e]/10 text-[#5e714e]"
+      color: "border-sage",
+      badge: "bg-sage/10 text-sage"
     },
     {
       num: "03",
@@ -64,7 +64,7 @@ export default function ThreePhaseLearningPathway() {
 
         <div className="flex flex-col lg:flex-row gap-6 relative">
           {/* Connector line */}
-          <div className="hidden lg:block absolute top-16 left-0 right-0 h-0.5 bg-gradient-to-r from-terracotta via-[#5e714e] to-[#d4af37] opacity-20 z-0" />
+          <div className="hidden lg:block absolute top-16 left-0 right-0 h-0.5 bg-gradient-to-r from-terracotta via-sage to-[#d4af37] opacity-20 z-0" />
 
           {phases.map((phase, idx) => (
             <motion.div
@@ -90,7 +90,7 @@ export default function ThreePhaseLearningPathway() {
               <ul className="space-y-2 mb-8">
                 {phase.tools.map((tool, i) => (
                   <li key={i} className="flex items-center gap-2 font-sans text-sm text-charcoal/70">
-                    <svg className="w-4 h-4 text-[#5e714e] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                    <svg className="w-4 h-4 text-sage flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                     {tool}
@@ -100,7 +100,7 @@ export default function ThreePhaseLearningPathway() {
 
               <Link
                 href={phase.cta.href}
-                className="inline-flex items-center justify-center w-full px-6 py-4 rounded-full bg-white border-2 border-[#e8efe0] text-[#0a1e3f] font-sans font-bold text-sm hover:border-[#5e714e] hover:text-[#5e714e] transition-all"
+                className="inline-flex items-center justify-center w-full px-6 py-4 rounded-full bg-white border-2 border-[#e8efe0] text-[#0a1e3f] font-sans font-bold text-sm hover:border-sage hover:text-sage transition-all"
               >
                 {phase.cta.label}
               </Link>

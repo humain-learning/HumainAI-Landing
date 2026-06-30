@@ -84,7 +84,7 @@ export default function RealOutcomesStudentWork() {
 
               <div className="relative z-10 flex flex-col flex-grow">
                 {/* Pillar tag */}
-                <span className="self-start inline-block px-3 py-1 rounded-full bg-[#e8efe0] text-[#5e714e] text-xs font-display font-bold mb-5">
+                <span className="self-start inline-block px-3 py-1 rounded-full bg-[#e8efe0] text-sage text-xs font-display font-bold mb-5">
                   {t.pillar}
                 </span>
 

@@ -103,7 +103,7 @@ export default function FrameworkPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <HeaderFW />
+      {/* <HeaderFW /> */}
       <HeroFramework />
       <WhatIsFramework />
       <WhyWeBuiltFramework />

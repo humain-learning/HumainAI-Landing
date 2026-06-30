@@ -97,14 +97,14 @@ export default function HowToUseFramework() {
 
               <div className="relative z-10 flex flex-col flex-grow">
                 <div className="flex items-center gap-3 mb-6">
-                  <span className="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-[#5e714e]" />
-                  <h3 className="font-display text-2xl font-extrabold text-[#5e714e]">For {card.role}</h3>
+                  <span className="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-sage" />
+                  <h3 className="font-display text-2xl font-extrabold text-sage">For {card.role}</h3>
                 </div>
 
                 <ol className="space-y-4 mb-8 flex-grow">
                   {card.instructions.map((inst, i) => (
                     <li key={i} className="flex gap-3">
-                      <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-[#e8efe0] text-[#5e714e] font-display font-bold text-xs mt-0.5">
+                      <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-[#e8efe0] text-sage font-display font-bold text-xs mt-0.5">
                         {i + 1}
                       </span>
                       <p className="font-sans text-base text-charcoal/80 leading-relaxed">{inst}</p>
@@ -114,7 +114,7 @@ export default function HowToUseFramework() {
 
                 <Link
                   href={card.cta.href}
-                  className="mt-auto inline-flex items-center justify-center w-full px-6 py-4 rounded-full bg-[#5e714e] text-white font-sans font-bold text-base shadow-lg shadow-[#5e714e]/30 hover:bg-[#4a5a3e] transition-all"
+                  className="mt-auto inline-flex items-center justify-center w-full px-6 py-4 rounded-full bg-sage text-white font-sans font-bold text-base shadow-lg shadow-sage/30 hover:bg-[#4a5a3e] transition-all"
                 >
                   {card.cta.label}
                 </Link>

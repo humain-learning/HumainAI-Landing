@@ -38,7 +38,7 @@ export default function WhatIsFramework() {
         >
           {/* Section label */}
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-1 h-8 rounded-full bg-[#5e714e]" />
+            <div className="w-1 h-8 rounded-full bg-sage" />
             <h2 className="font-display text-2xl md:text-3xl font-extrabold text-charcoal">
               What is the Humain AI Literacy Framework?
             </h2>
@@ -80,7 +80,7 @@ export default function WhatIsFramework() {
                   <div>
                     <div className="flex items-center gap-2 mb-0.5">
                       <p className="font-display font-bold text-sm text-charcoal">{a.name}</p>
-                      <span className="inline-block px-2 py-0.5 rounded-full bg-[#e8efe0] text-[#5e714e] text-[10px] font-bold uppercase tracking-wider">
+                      <span className="inline-block px-2 py-0.5 rounded-full bg-[#e8efe0] text-sage text-[10px] font-bold uppercase tracking-wider">
                         {a.label}
                       </span>
                     </div>

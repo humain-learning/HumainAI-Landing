@@ -26,7 +26,7 @@ export default function Pillar3LearningWithAI() {
         
         {/* Header */}
         <div className="w-full flex items-center gap-4 mb-6">
-          <span className="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-[#5e714e] mt-1" />
+          <span className="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-sage mt-1" />
           <motion.h2 
             initial={{ opacity: 0, x: -10 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -67,7 +67,7 @@ export default function Pillar3LearningWithAI() {
           <table className="w-full text-left font-sans text-base">
             <thead className="bg-[#f9faf7] border-b border-[#e8efe0]">
               <tr>
-                <th className="px-6 py-4 font-bold text-[#5e714e] w-1/2">Using AI well</th>
+                <th className="px-6 py-4 font-bold text-sage w-1/2">Using AI well</th>
                 <th className="px-6 py-4 font-bold text-terracotta w-1/2">Using AI badly</th>
               </tr>
             </thead>
@@ -87,7 +87,7 @@ export default function Pillar3LearningWithAI() {
           <h4 className="text-xs font-bold uppercase tracking-wider text-charcoal/50 mb-2">Deep-dive</h4>
           <Link 
             href="/framework/learning-with-ai" 
-            className="font-semibold text-[#5e714e] hover:text-[#4a5a3e] transition-colors inline-flex items-center text-lg"
+            className="font-semibold text-sage hover:text-[#4a5a3e] transition-colors inline-flex items-center text-lg"
           >
             Read the full Pillar 3: Learning with AI page
             <svg className="ml-2 w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

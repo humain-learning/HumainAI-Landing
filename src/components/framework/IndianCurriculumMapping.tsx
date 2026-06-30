@@ -75,7 +75,7 @@ export default function IndianCurriculumMapping() {
               <p className="font-sans text-base text-charcoal/80 leading-relaxed mb-4">{m.detail}</p>
               <div className="flex flex-wrap gap-2">
                 {m.pillars.map((p, i) => (
-                  <span key={i} className="inline-block px-3 py-1 rounded-full bg-[#5e714e]/10 text-[#5e714e] font-sans font-semibold text-xs border border-[#5e714e]/20">
+                  <span key={i} className="inline-block px-3 py-1 rounded-full bg-sage/10 text-sage font-sans font-semibold text-xs border border-sage/20">
                     {p}
                   </span>
                 ))}

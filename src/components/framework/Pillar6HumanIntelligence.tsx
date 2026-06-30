@@ -32,7 +32,7 @@ export default function Pillar6HumanIntelligence() {
 
         {/* Header */}
         <div className="w-full flex items-center gap-4 mb-6">
-          <span className="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-[#5e714e] mt-1" />
+          <span className="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-sage mt-1" />
           <motion.h2
             initial={{ opacity: 0, x: -10 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -120,7 +120,7 @@ export default function Pillar6HumanIntelligence() {
           <h4 className="text-xs font-bold uppercase tracking-wider text-charcoal/50 mb-2">Deep-dive</h4>
           <Link
             href="/framework/human-intelligence"
-            className="font-semibold text-[#5e714e] hover:text-[#4a5a3e] transition-colors inline-flex items-center text-lg"
+            className="font-semibold text-sage hover:text-[#4a5a3e] transition-colors inline-flex items-center text-lg"
           >
             Read the full Pillar 6: Human Intelligence page
             <svg className="ml-2 w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

@@ -119,7 +119,7 @@ export default function InstructorsCollage() {
           {/* Top Section: Heading and Text description */}
           <div className="flex flex-col justify-center items-center text-center max-w-3xl">
             <div className="h-[3px] w-12 bg-sage rounded-full mb-3 mx-auto" />
-            <span className="font-display text-xs font-extrabold tracking-widest text-[#5e714e] uppercase select-none">
+            <span className="font-display text-xs font-extrabold tracking-widest text-sage uppercase select-none">
               YOUR INSTRUCTORS
             </span>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-charcoal leading-tight mt-2 mb-4 tracking-tight">

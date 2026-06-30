@@ -87,7 +87,7 @@ export default function FrameworkFAQ() {
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
               >
                 <span className="font-display font-bold text-lg text-[#0a1e3f] pr-4 leading-snug">{faq.q}</span>
-                <span className={`flex-shrink-0 w-8 h-8 rounded-full border border-[#e8efe0] flex items-center justify-center transition-all duration-300 ${openIndex === idx ? 'bg-[#5e714e] border-[#5e714e] rotate-45' : 'bg-white group-hover:border-[#5e714e]'}`}>
+                <span className={`flex-shrink-0 w-8 h-8 rounded-full border border-[#e8efe0] flex items-center justify-center transition-all duration-300 ${openIndex === idx ? 'bg-sage border-sage rotate-45' : 'bg-white group-hover:border-sage'}`}>
                   <svg className={`w-4 h-4 transition-colors ${openIndex === idx ? 'text-white' : 'text-charcoal/50'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
                   </svg>
