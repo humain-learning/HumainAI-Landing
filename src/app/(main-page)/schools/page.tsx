@@ -67,7 +67,6 @@ export default function SchoolsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <HeaderSP />
       <HeroSP />
       <WhatIsAILiteracySP />
       <WhyAdoptNowSP />
