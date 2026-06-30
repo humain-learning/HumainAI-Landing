@@ -50,10 +50,6 @@ const RequestCallBackModal = ({
 	lastName: '',
 	email: '',
 	contact: '',
-	firstName: '',
-	lastName: '',
-	email: '',
-	contact: '',
   });
 
   const [touched, setTouched] = useState({
