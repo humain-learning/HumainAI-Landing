@@ -3,6 +3,7 @@ import Header from '@/components/webinar-landing/Header';
 import Hero from '@/components/webinar-landing/Hero';
 import TrustBar from '@/components/webinar-landing/TrustBar';
 import Problem from '@/components/webinar-landing/Problem';
+import BatchPicker from '@/components/webinar-landing/BatchPicker';
 import Tools from '@/components/webinar-landing/Tools';
 import Agenda from '@/components/webinar-landing/Agenda';
 import Audience from '@/components/webinar-landing/Audience';
@@ -10,6 +11,7 @@ import Parents from '@/components/webinar-landing/Parents';
 import CTABand from '@/components/webinar-landing/CTABand';
 import FAQ from '@/components/webinar-landing/FAQ';
 import FinalCTA from '@/components/webinar-landing/FinalCTA';
+import TakeHome from '@/components/webinar-landing/TakeHome';
 
 
 export const metadata = {
@@ -79,8 +81,10 @@ export default function WebinarStandalonePage() {
       <Hero />
       <TrustBar />
       <Problem />
-      <Tools />
+      <BatchPicker />
       <Agenda />
+      <TakeHome />
+      <Tools />
       <Audience />
       <Parents />
       <CTABand />
