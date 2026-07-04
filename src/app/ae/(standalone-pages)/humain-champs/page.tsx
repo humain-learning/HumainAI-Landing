@@ -1,18 +1,18 @@
-import Headerlp from "@/components/hc-landing/Header/Headerlp";
-import Herolp from "@/components/hc-landing/Hero/Herolp";
-import GapSolution from "@/components/hc-landing/GapSolution/GapSolution";
-import Toolkit from "@/components/hc-landing/Toolkit/Toolkit";
-import Curriculum from "@/components/hc-landing/Curriculum/Curriculum";
-import StudentWork from "@/components/hc-landing/StudentWork/StudentWork";
-import Credential from "@/components/hc-landing/Credential/Credential";
-import InstructorsCollage from "@/components/hc-landing/Instructors/InstructorsCollage";
-import Founder from "@/components/hc-landing/Founder/Founder";
-import ParentsSaying from "@/components/hc-landing/Parents/ParentsSaying";
-import { Band } from "@/components/hc-landing/Band/Band";
-import { ChooseBatch } from "@/components/hc-landing/ChooseBatch/ChooseBatch";
-import ParentQuestionsSection from "@/components/hc-landing/Questions/ParentQuestionsSection";
-import BottomCTA from "@/components/hc-landing/BottomCTA/BottomCTA";
-import { Tools } from "@/components/hc-landing/Tools/Tools";
+import Headerlp from "@/components/ae/hc-landing/Header/Headerlp";
+import Herolp from "@/components/ae/hc-landing/Hero/Herolp";
+import GapSolution from "@/components/ae/hc-landing/GapSolution/GapSolution";
+import Toolkit from "@/components/ae/hc-landing/Toolkit/Toolkit";
+import Curriculum from "@/components/ae/hc-landing/Curriculum/Curriculum";
+import StudentWork from "@/components/ae/hc-landing/StudentWork/StudentWork";
+import Credential from "@/components/ae/hc-landing/Credential/Credential";
+import InstructorsCollage from "@/components/ae/hc-landing/Instructors/InstructorsCollage";
+import Founder from "@/components/ae/hc-landing/Founder/Founder";
+import ParentsSaying from "@/components/ae/hc-landing/Parents/ParentsSaying";
+import { Band } from "@/components/ae/hc-landing/Band/Band";
+import { ChooseBatch } from "@/components/ae/hc-landing/ChooseBatch/ChooseBatch";
+import ParentQuestionsSection from "@/components/ae/hc-landing/Questions/ParentQuestionsSection";
+import BottomCTA from "@/components/ae/hc-landing/BottomCTA/BottomCTA";
+import { Tools } from "@/components/ae/hc-landing/Tools/Tools";
 import { getBatchDetailsOfTemplate, getCurrentActiveDiscount, getBasePrice } from "@/app/lib/crmClient";
 
 export default async function HumainChampsLanding() {

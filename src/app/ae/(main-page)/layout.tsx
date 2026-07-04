@@ -1,5 +1,5 @@
-import Header from 'ui/Header';
-import Footer from 'ui/Footer';
+import Header from 'components/ae/ui/Header';
+import Footer from 'components/ae/ui/Footer';
 
 export default function MainPageLayout({
 	children,

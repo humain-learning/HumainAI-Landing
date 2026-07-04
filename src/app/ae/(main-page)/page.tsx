@@ -1,4 +1,4 @@
-import LandingPage from '@/components/landing/page';
+import LandingPage from '@/components/ae/landing/page';
 import { homepageGraphSchema } from '@/lib/schema-bundle';
 
 export default function Home() {
