@@ -1,55 +1,116 @@
-import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+
+const agendaCards = [
+  {
+    id: 'part-1',
+    accentColor: '#E7A572',
+    eyebrow: 'PART 1 · CREATE WITH AI',
+    eyebrowColor: '#C97D49',
+    iconBg: '#FDF3EB',
+    title: 'Build a 30-second family tribute video — and send it that night',
+    desc: 'Your child writes heartfelt lyrics with AI, turns them into a real song, and directs a finished video — a gift for someone they love, made entirely by them.',
+    chips: ['Write', 'Score', 'Film'],
+    chipBg: '#EFF5E9',
+    chipText: '#5e714e',
+    imageSrc: '/assets/webinar/inside-webinar/part1.png',
+    imageAlt: 'Students creating with AI',
+    imageSide: 'right',
+  },
+  {
+    id: 'part-2',
+    accentColor: '#AAC191',
+    eyebrow: 'PART 2 · LEARN WITH AI',
+    eyebrowColor: '#5e714e',
+    iconBg: '#EFF5E9',
+    title: 'Study smarter, not longer — turn any chapter into a podcast',
+    desc: 'A patient AI tutor that quizzes instead of spoon-feeding, notes that become two hosts chatting about your exact chapter, and research answers with sources you can check.',
+    chips: ['Study Mode', 'Absorb', 'Verify'],
+    chipBg: '#FDF3EB',
+    chipText: '#C97D49',
+    imageSrc: '/assets/webinar/inside-webinar/part2.png',
+    imageAlt: 'Student studying with AI',
+    imageSide: 'left',
+  },
+];
 
 export default function Agenda() {
-  const agendaItems = [
-    {
-      text: <> <strong className="font-display font-bold text-[0.88rem]">The guided vs. unguided student</strong> — Why some students get 10x results from the same AI tools — using a swimming analogy your child will never forget </>
-    },
-    {
-      text: <> <strong className="font-display font-bold text-[0.88rem]">Showcase: What 10x students have already done</strong> — Real student work, real results. The 'aha moment' that shifts how your child sees what's possible. </>
-    },
-    {
-      text: <> <strong className="font-display font-bold text-[0.88rem]">Live Padlet Challenge</strong> — Students submit their own prompts for a real scenario. Best prompt wins. All prompts improved live, on screen. </>
-    },
-    {
-      text: <> <strong className="font-display font-bold text-[0.88rem]">The Framework Reveal</strong> — One technique that transforms any AI prompt from average to exceptional. Every subject. Every tool. Demonstrated live. </>
-    },
-    {
-      text: <> <strong className="font-display font-bold text-[0.88rem]">The 10x Study System — revealed live</strong> — The secret methods demonstrated in action. Your child leaves knowing exactly what to use that evening. </>
-    },
-    
-    {
-      text: <> <strong className="font-display font-bold text-[0.88rem]">Responsible AI habits</strong> — How using AI well builds stronger thinking and better learning outcomes. </>
-    }
-  ];
-
   return (
-    <section className="py-[88px] px-5 md:px-16 bg-[#F5F5F3]" id="agenda">
-      <div className="max-w-[1100px] mx-auto">
-        <div className="mb-[52px]">
-          <span className="block mb-3.5 font-sans text-[10px] font-medium tracking-[2.5px] uppercase text-[#888888]">
-            Full Agenda
-          </span>
-          <h2 className="font-display text-[clamp(1.7rem,3vw,2.5rem)] font-extrabold tracking-[-0.8px] leading-[1.15] mb-3.5 text-[#333333]">
-            Every minute earns its place.
+    <section className="bg-white px-5 py-16 md:px-16 md:py-24">
+      <div className="mx-auto max-w-5xl">
+        <div className="text-center">
+          <h2 className="font-display text-3xl font-extrabold text-[#333333] md:text-4xl">
+            What happens inside the webinar
           </h2>
-          <p className="font-sans text-[0.95rem] text-[#555555] max-w-[580px] leading-[1.72]">
-            Interactive. Hands-on. Your child won't sit and watch — they'll participate from minute one.
+          <p className="mt-3 text-center text-[#333333]/60">
+            Not a lecture. A build-along. Six free tools, two big wins, lots of &quot;your turn&quot; moments.
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {agendaItems.map((item, index) => (
-            <div key={index} className="flex gap-[14px] items-start bg-white border border-[#E6E6E6] rounded-lg p-[16px_18px] transition-colors duration-150 hover:border-[#AAC191]">
-              <div className="w-[22px] h-[22px] rounded-full bg-[#AAC191] flex items-center justify-center shrink-0 mt-px">
-                <svg viewBox="0 0 24 24" className="w-[10px] h-[10px] stroke-white stroke-[2.5] fill-none stroke-linecap-round stroke-linejoin-round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
+
+        <div className="mt-12 space-y-8">
+          {agendaCards.map((card) => (
+            <article
+              key={card.id}
+              className="overflow-hidden rounded-2xl border border-[#E6E6E6] bg-white shadow-[0_10px_35px_rgba(0,0,0,0.04)]"
+            >
+              <div className="grid grid-cols-1 items-center md:grid-cols-2">
+                <div className="p-8">
+                  <div className="flex items-center gap-2">
+                    <div
+                      className="flex h-7 w-7 items-center justify-center rounded-full"
+                      style={{ backgroundColor: card.iconBg }}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        className="h-4 w-4"
+                        style={{ color: card.accentColor }}
+                      >
+                        <path d="M7 5h10M7 12h10M7 19h6" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                    <span
+                      className="text-xs font-bold uppercase tracking-wider"
+                      style={{ color: card.eyebrowColor }}
+                    >
+                      {card.eyebrow}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-4 font-display text-xl font-extrabold leading-snug text-[#333333]">
+                    {card.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-[#333333]/60">
+                    {card.desc}
+                  </p>
+
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {card.chips.map((chip) => (
+                      <Link
+                        key={chip}
+                        href="/404"
+                        className="rounded-full px-4 py-1.5 text-sm font-semibold transition-opacity hover:opacity-90"
+                        style={{ backgroundColor: card.chipBg, color: card.chipText }}
+                      >
+                        {chip}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={`relative w-full ${card.imageSide === 'left' ? 'md:order-first' : ''}`}>
+                  <Image
+                    src={card.imageSrc}
+                    alt={card.imageAlt}
+                    width={600}
+                    height={400}
+                    className="h-full min-h-[300px] w-full object-cover"
+                  />
+                </div>
               </div>
-              <div className="font-sans text-[0.88rem] font-normal leading-[1.5] text-[#333333]">
-                {item.text}
-              </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

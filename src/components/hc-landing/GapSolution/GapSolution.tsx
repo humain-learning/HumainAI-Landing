@@ -66,7 +66,7 @@ export default function GapSolution() {
             <div className="space-y-2.5">
               <div className="h-[3px] w-12 rounded-full bg-terracotta" />
               <span className="block font-display text-xs font-extrabold tracking-widest text-terracotta">
-                THE AI GAP
+                THE AI GAP 
               </span>
             </div>
 

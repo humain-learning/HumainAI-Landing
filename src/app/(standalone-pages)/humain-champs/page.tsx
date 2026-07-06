@@ -17,7 +17,7 @@ import { getBatchDetailsOfTemplate, getCurrentActiveDiscount, getBasePrice } fro
 
 export default async function HumainChampsLanding() {
 
-	const template_id = 1; 
+	const template_id = 1;
 	
 	try {
 		var batchesData = await getBatchDetailsOfTemplate(template_id); 

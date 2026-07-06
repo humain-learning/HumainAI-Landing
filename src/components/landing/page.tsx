@@ -8,12 +8,15 @@ import AIFramework from './AIFramework';
 import WhyHumain from './WhyHumain';
 import WhoAreWeCard from './WhoAreWeCard';
 import OurPurpose from './OurPurpose';
+
 import PillarsOfTheFramework from './PillarsOfTheFramework';
 import RecognitionAlignment from './RecognitionAlignment';
 import Header from 'ui/Header';
+
 // import ProductShowcase from './ProductShowcase';
 const LandingPage = () => {
   return (
+    
     <div className="relative">
       <img
         className="absolute top-0 right-0 -z-10"
@@ -27,6 +30,7 @@ const LandingPage = () => {
       />
       <Intro />
       <OurPurpose />
+      
       <WhoAreWeCard />
       <AIFramework />
       <PillarsOfTheFramework />
