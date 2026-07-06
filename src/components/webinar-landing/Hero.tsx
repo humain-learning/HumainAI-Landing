@@ -1,33 +1,18 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import { PopupFormModal } from 'ui/PopupFormModal';
 import LeadForm from 'components/forms/hcForm';
-
-function getUrgencyText(): string {
-  const target = new Date('2026-06-20T11:00:00+05:30').getTime();
-  const diff = target - Date.now();
-
-  if (diff <= 0) return 'Session is live now!';
-
-  const totalMinutes = Math.floor(diff / 60000);
-  const totalHours = Math.floor(diff / 3600000);
-  const days = Math.floor(diff / 86400000);
-
-  if (days >= 2) return `Only ${days} days remaining`;
-  if (days === 1) return 'Only 1 day remaining';
-  if (totalHours >= 1) return `Only ${totalHours} hour${totalHours > 1 ? 's' : ''} remaining`;
-  if (totalMinutes >= 1) return `Only ${totalMinutes} minute${totalMinutes > 1 ? 's' : ''} remaining`;
-  return 'Starting very soon!';
-}
+import { getCountdown, getUrgencyText, isRegistrationClosed } from './data/batches';
 
 const mapping: Record<string, React.ReactNode> = {
   aspiration: (
 	<p>
-	  The students outperforming their class aren't studying harder.<br />
-	  <span className="text-[#E7A572]">They're studying differently.</span>
+	  Your Child Will <span className="text-[#E7A572]">Create With AI</span> — Not Just Scroll Past It.
 	</p>
   ),
   exam: (
@@ -53,10 +38,6 @@ const mapping: Record<string, React.ReactNode> = {
   ),
 };
 
-function isRegistrationClosed() {
-  const webinarTime = new Date('2026-06-20T11:00:00+05:30');
-  return Date.now() >= webinarTime.getTime();
-}
 export default function Hero() {
 	const router = useRouter();
 	const [urgencyText, setUrgencyText] = useState('');
@@ -64,10 +45,13 @@ export default function Hero() {
 	const [showModal, setShowModal] = useState(false);
 	const [submitError, setSubmitError] = useState('');
 	const [registrationClosed, setRegistrationClosed] = useState(false);
-
-	useEffect(() => {
-	setRegistrationClosed(isRegistrationClosed());
-	}, []);
+	const [countdown, setCountdown] = useState(() => ({
+	  days: 0,
+	  hours: 0,
+	  minutes: 0,
+	  seconds: 0,
+	  isLive: false,
+	}));
 
   useEffect(() => {
 	// Safe to access window here — client only
@@ -75,12 +59,20 @@ export default function Hero() {
 	const utm_term = searchParams.get('utm_term');
 	setTitle(mapping[utm_term as keyof typeof mapping] ?? mapping['aspiration']);
 
-	// Compute once on mount — no interval, no re-renders
+	setRegistrationClosed(isRegistrationClosed());
+	setCountdown(getCountdown());
 	setUrgencyText(getUrgencyText());
+
+	const timer = window.setInterval(() => {
+	  setCountdown(getCountdown());
+	}, 1000);
+
+	return () => window.clearInterval(timer);
   }, []);
 
   const handleEnrollClick = () => {
-	setShowModal(true);
+	const section = document.getElementById('batch-picker');
+	section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const onSubmit = async (values: unknown) => {
@@ -104,49 +96,45 @@ export default function Hero() {
 
   return (
 	<>
-	  <section className="relative overflow-hidden bg-white pt-[96px] pb-16 px-5 md:px-16 flex items-center min-h-[80vh]">
+	  <section className="relative overflow-hidden bg-white pt-[150px] pb-16 px-5 md:px-16 flex items-center min-h-[80vh]">
 	  {/* Geometric accent rings */}
 	  <div className="absolute rounded-full border border-[#E7A572]/15 pointer-events-none w-[560px] h-[560px] -top-[200px] -right-[160px]"></div>
 	  <div className="absolute rounded-full border border-[#E7A572]/15 pointer-events-none w-[320px] h-[320px] top-[40px] right-[70px]"></div>
 	  <div className="absolute rounded-full border border-[#E7A572]/10 pointer-events-none w-[140px] h-[140px] bottom-[80px] left-[5%]"></div>
 
-	  <div className="relative z-10 w-full max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_390px] gap-12 items-center">
+	  <div className="relative z-10 w-full max-w-[1020px] mx-auto grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-14 items-center">
 		
 		{/* Left copy */}
 		<div>
-		  <div className="inline-flex items-center gap-2 bg-[#FDF3EB] border border-[#E7A572]/20 rounded-full py-1.5 pl-2.5 pr-3.5 mb-6">
-			<div className="w-2 h-2 rounded-full bg-[#E7A572] animate-[pulse_1.6s_ease-in-out_infinite]"></div>
-			<span className="font-sans text-[0.72rem] font-medium tracking-[1.8px] uppercase text-[#C97D49]">
-			  Free Live Masterclass &middot; Upcoming Session &middot; Limited Seats
-			</span>
-		  </div>
-		  
 		  <h1 className="font-display text-[clamp(2.2rem,4.5vw,3.6rem)] font-extrabold leading-[1.1] tracking-[-1.5px] text-[#333333] mb-5">
 			{title}
 		  </h1>
 		  
-		  <p className="font-sans text-base text-[#333333]/75 max-w-[520px] mb-3 leading-relaxed">
-			Most students use ChatGPT or Gemini without guidance — like learning to swim without a coach. They struggle, waste time, and get average results. In this live session, your child will learn the techniques that actually make AI a study superpower.
+		  <p className="font-sans text-base text-[#333333]/75 max-w-[560px] mb-6 leading-relaxed">
+			In one power-packed live webinar, your child builds a real AI video gift for the family and learns the honest AI study system that makes revision faster and smarter — using 6 free tools they keep forever.
 		  </p>
 		  
-		  <div className="flex flex-wrap items-center gap-3 mb-8">
-			<div className="flex items-center gap-2">
-			  <svg className="w-4 h-4 text-[#AAC191]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-				<path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C6.228 6.228 2 10.228 2 15s4.228 8.772 10 8.772 10-4.228 10-8.772C22 10.228 17.772 6.228 12 6.253" />
-			  </svg>
-			  <span className="font-sans text-[0.85rem] font-bold text-[#AAC191] tracking-[0.3px]">For Class 8–12 students</span>
+		  <div className="mb-8 flex flex-wrap items-center gap-8">
+			<div className="flex items-center gap-3">
+			  <Image src="/assets/webinar/people_icon.png" alt="People" width={24} height={24} className="h-6 w-6" />
+			  <div>
+				<div className="font-display text-[0.95rem] font-extrabold text-[#333333]">Two Batches</div>
+				<div className="font-sans text-[0.72rem] font-medium text-[#333333]/70">10-11 or 12 July</div>
+			  </div>
 			</div>
-			<div className="flex items-center gap-2">
-			  <svg className="w-4 h-4 text-[#AAC191]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-				<path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-			  </svg>
-			  <span className="font-sans text-[0.85rem] font-bold text-[#AAC191] tracking-[0.3px]">All boards</span>
+			<div className="flex items-center gap-3">
+			  <Image src="/assets/webinar/timer_icon.png" alt="Timer" width={24} height={24} className="h-6 w-6" />
+			  <div>
+				<div className="font-display text-[0.95rem] font-extrabold text-[#333333]">2 Hours</div>
+				<div className="font-sans text-[0.72rem] font-medium text-[#333333]/70">Live</div>
+			  </div>
 			</div>
-			<div className="flex items-center gap-2">
-			  <svg className="w-4 h-4 text-[#AAC191]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-				<path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-			  </svg>
-			  <span className="font-sans text-[0.85rem] font-bold text-[#AAC191] tracking-[0.3px]">Just a smartphone</span>
+			<div className="flex items-center gap-3">
+			  <Image src="/assets/webinar/star_icon.png" alt="Star" width={24} height={24} className="h-6 w-6" />
+			  <div>
+				<div className="font-display text-[0.95rem] font-extrabold text-[#333333]">5000+</div>
+				<div className="font-sans text-[0.72rem] font-medium text-[#333333]/70">in bonuses</div>
+			  </div>
 			</div>
 		  </div>
 		  
@@ -158,93 +146,63 @@ export default function Hero() {
 			>
 			  {registrationClosed
 				? 'Registrations Closed'
-				: "Book Your Child's Free Slot"}
+				: <span className="inline-flex items-center gap-2"><span>RESERVE MY SEAT</span><span className="text-[0.9rem] font-medium line-through text-white/70">₹999</span><span className="text-[0.95rem] font-semibold">₹199</span></span>}
 			</button>
-			<div className="flex flex-col gap-1">
-			  <span className="font-display text-[0.95rem] font-extrabold text-[#333333]">
-				<span className="text-[#AAC191]">FREE</span> • Originally <s className="text-[#888888] font-normal">₹299</s>
+			{/* <div className="flex items-center gap-2 rounded-full bg-[#FDF3EB] px-3 py-2">
+			  <Image src="/assets/webinar/Whatsapp_icon.png" alt="WhatsApp" width={20} height={20} className="h-5 w-5" />
+			  <span className="font-sans text-[0.78rem] font-semibold text-[#333333]">
+				Instant Confirmation on WhatsApp!
 			  </span>
-			  <span className="font-sans text-[0.75rem] font-medium text-[#333333]/55 tracking-[0.2px]">
-				Pan-India Access
-			  </span>
-			</div>
+			</div> */}
 		  </div>
 		</div>
 
-		{/* Right card */}
-		<div id="book" className="relative z-10 bg-white rounded-xl py-7 px-6 shadow-[0_16px_52px_rgba(0,0,0,0.13),0_3px_12px_rgba(0,0,0,0.05)] lg:self-end">
-		  <div className="font-sans text-[0.68rem] font-medium tracking-[2px] uppercase text-[#888888] pb-4 mb-[18px] border-b border-[#E6E6E6]">
-			Reserve Your Free Seat
+		{/* Right column */}
+		<div className="relative z-10 flex flex-col items-center justify-center lg:self-end">
+		  <div className="relative mx-auto w-full max-w-[480px]">
+			<motion.div
+			  initial={{ opacity: 0, scale: 0.95 }}
+			  animate={{ opacity: 1, scale: 1 }}
+			  transition={{ duration: 0.8, ease: 'easeOut' }}
+			  className="relative w-full overflow-hidden rounded-[24px]"
+			>
+			  <Image
+				src="/assets/webinar/hero_family.png"
+				alt="Family using AI together"
+				width={480}
+				height={480}
+				className="aspect-square w-full rounded-[24px] object-cover"
+				priority
+			  />
+			</motion.div>
+
+			<motion.div
+			  initial={{ scale: 0, rotate: -15 }}
+			  animate={{ scale: 1, rotate: 0 }}
+			  transition={{ delay: 0.4, type: 'spring', stiffness: 120, damping: 15 }}
+			  className="absolute bottom-[2%] left-[-2%] z-20 flex h-[130px] w-[26%] min-w-[110px] max-w-[130px] items-center justify-center rounded-tl-full rounded-tr-full rounded-br-full rounded-bl-none bg-[#AAC191] shadow-[0_8px_24px_rgba(0,0,0,0.12)]"
+			>
+			  <Image src="/assets/webinar/photo_icon.png" alt="Photo" width={96} height={96} className="h-20 w-20 object-cover" />
+			</motion.div>
 		  </div>
 
-		  <div className="flex items-center gap-3 mb-3">
-			<div className="flex-shrink-0 w-8 h-8 rounded-md bg-[#EFF5E9] flex items-center justify-center">
-			  <svg viewBox="0 0 24 24" className="w-[14px] h-[14px] stroke-[#6E8E55] fill-none stroke-[1.8] stroke-linecap-round stroke-linejoin-round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-			</div>
-			<div>
-			  <div className="font-sans text-[0.67rem] font-medium tracking-[0.8px] uppercase text-[#888888]">Date</div>
-			  <div className="font-display text-[0.88rem] font-bold text-[#333333]">Saturday, 20 June 2026</div>
-			</div>
+		  <div className="mt-5 flex w-full max-w-[400px] flex-wrap items-center justify-center gap-2">
+			{[
+			  { value: countdown.days.toString().padStart(2, '0'), label: 'DAYS' },
+			  { value: countdown.hours.toString().padStart(2, '0'), label: 'HOURS' },
+			  { value: countdown.minutes.toString().padStart(2, '0'), label: 'MINS' },
+			  { value: countdown.seconds.toString().padStart(2, '0'), label: 'SECS' },
+			].map((item) => (
+			  <div key={item.label} className="flex min-w-[68px] flex-col items-center rounded-lg border border-[#E6E6E6] bg-white px-4 py-2.5 shadow-sm">
+				<span className="font-display text-[0.95rem] font-extrabold text-[#C97D49]">{item.value}</span>
+				<span className="font-sans text-[0.58rem] font-semibold uppercase tracking-[1.2px] text-[#888888]">{item.label}</span>
+			  </div>
+			))}
 		  </div>
 
-		  <div className="flex items-center gap-3 mb-3">
-			<div className="flex-shrink-0 w-8 h-8 rounded-md bg-[#EFF5E9] flex items-center justify-center">
-			  <svg viewBox="0 0 24 24" className="w-[14px] h-[14px] stroke-[#6E8E55] fill-none stroke-[1.8] stroke-linecap-round stroke-linejoin-round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-			</div>
-			<div>
-			  <div className="font-sans text-[0.67rem] font-medium tracking-[0.8px] uppercase text-[#888888]">Time</div>
-			  <div className="font-display text-[0.88rem] font-bold text-[#333333]">11:00 AM IST &middot; 60 Minutes</div>
-			</div>
-		  </div>
-
-		  <div className="flex items-center gap-3 mb-3">
-			<div className="flex-shrink-0 w-8 h-8 rounded-md bg-[#EFF5E9] flex items-center justify-center">
-			  <svg viewBox="0 0 24 24" className="w-[14px] h-[14px] stroke-[#6E8E55] fill-none stroke-[1.8] stroke-linecap-round stroke-linejoin-round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18M12 3a9 9 0 0 0 0 18M3 12h18"/></svg>
-			</div>
-			<div>
-			  <div className="font-sans text-[0.67rem] font-medium tracking-[0.8px] uppercase text-[#888888]">Mode</div>
-			  <div className="font-display text-[0.88rem] font-bold text-[#333333]">Live Online &middot; Pan-India</div>
-			</div>
-		  </div>
-
-		  <div className="flex items-center gap-3 mb-3">
-			<div className="flex-shrink-0 w-8 h-8 rounded-md bg-[#EFF5E9] flex items-center justify-center">
-			  <svg viewBox="0 0 24 24" className="w-[14px] h-[14px] stroke-[#6E8E55] fill-none stroke-[1.8] stroke-linecap-round stroke-linejoin-round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-			</div>
-			<div>
-			  <div className="font-sans text-[0.67rem] font-medium tracking-[0.8px] uppercase text-[#888888]">Language</div>
-			  <div className="font-display text-[0.88rem] font-bold text-[#333333]">English</div>
-			</div>
-		  </div>
-
-		  {/* Static urgency banner — computed once on mount, refreshes on page reload */}
-		  {urgencyText && (
-			<div className="bg-[#EFF5E9] rounded-lg px-4 py-3.5 my-4 flex items-center gap-2.5">
-			  <svg className="w-4 h-4 flex-shrink-0 stroke-[#4A6335] fill-none stroke-[1.8] stroke-linecap-round stroke-linejoin-round" viewBox="0 0 24 24">
-				<circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/>
-			  </svg>
-			  <span className="font-display text-[0.9rem] font-extrabold text-[#4A6335] tracking-[0.2px]">
-				{urgencyText}
-			  </span>
-			</div>
-		  )}
-
-		  <div className="flex items-center justify-between bg-[#FDF3EB] rounded-md px-3.5 py-2.5 mb-3.5">
-			<span className="font-sans text-[0.75rem] font-medium text-[#555555]">Registration Fee</span>
-			<span className="font-display text-[0.95rem] font-extrabold text-[#C97D49]">
-			  FREE <s className="text-[#888888] font-normal text-[0.78rem] ml-1">₹299</s>
-			</span>
-		  </div>
-
-		  <div className="mt-4 text-center">
-			<div className="inline-flex items-center gap-2 bg-[#FFE5D6] rounded-lg px-4 py-2.5">
-			  <svg className="w-4 h-4 text-[#E7A572] animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-				<path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd"/></svg>
-			  <span className="font-display text-[0.9rem] font-extrabold text-[#C97D49] tracking-[0.3px]">
-				Hurry! Only 47 seats remaining
-			  </span>
-			</div>
-		  </div>
+		  <p className="mt-3 text-center font-sans text-[0.82rem] font-medium text-[#333333]/70">
+			until the first batch begins
+		  </p>
 		</div>
 
 	  </div>

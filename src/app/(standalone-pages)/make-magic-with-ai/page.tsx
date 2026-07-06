@@ -1,8 +1,10 @@
 import React from 'react';
 import Header from '@/components/webinar-landing/Header';
 import Hero from '@/components/webinar-landing/Hero';
+import GoldenRule from '@/components/webinar-landing/GoldenRule';
 import TrustBar from '@/components/webinar-landing/TrustBar';
 import Problem from '@/components/webinar-landing/Problem';
+import BatchPicker from '@/components/webinar-landing/BatchPicker';
 import Tools from '@/components/webinar-landing/Tools';
 import Agenda from '@/components/webinar-landing/Agenda';
 import Audience from '@/components/webinar-landing/Audience';
@@ -10,6 +12,9 @@ import Parents from '@/components/webinar-landing/Parents';
 import CTABand from '@/components/webinar-landing/CTABand';
 import FAQ from '@/components/webinar-landing/FAQ';
 import FinalCTA from '@/components/webinar-landing/FinalCTA';
+import TakeHome from '@/components/webinar-landing/TakeHome';
+import Testimonials from '@/components/webinar-landing/Testimonials';
+import InstructorsCollage from '@/components/hc-landing/Instructors/InstructorsCollage';
 
 
 export const metadata = {
@@ -29,8 +34,8 @@ export default function WebinarStandalonePage() {
     '@type': 'Event',
     'name': 'Free AI Masterclass for Students | The 10x Student',
     'description': 'Your child learns the guided AI techniques that turn ordinary AI use into 10x study results. Interactive live session for Class 8–12 across India.',
-    'startDate': '2026-06-20T11:00:00+05:30',
-    'endDate': '2026-06-20T12:00:00+05:30',
+    'startDate': '2026-07-10T18:00:00+05:30',
+    'endDate': '2026-07-12T13:00:00+05:30',
     'eventAttendanceMode': 'https://schema.org/OnlineEventAttendanceMode',
     'eventStatus': 'https://schema.org/EventScheduled',
     'location': {
@@ -77,14 +82,22 @@ export default function WebinarStandalonePage() {
       />
       <Header />
       <Hero />
+      
       <TrustBar />
       <Problem />
-      <Tools />
+      <BatchPicker />
       <Agenda />
+      <GoldenRule />
+      <TakeHome />
       <Audience />
-      <Parents />
-      <CTABand />
+      <Testimonials />
+      <InstructorsCollage />
       <FAQ />
+      {/* <Tools />
+      
+      <Parents /> */}
+      {/* <CTABand /> */}
+      
       <FinalCTA />
     </div>
   );
