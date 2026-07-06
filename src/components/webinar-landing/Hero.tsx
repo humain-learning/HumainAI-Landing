@@ -12,7 +12,7 @@ import { getCountdown, getUrgencyText, isRegistrationClosed } from './data/batch
 const mapping: Record<string, React.ReactNode> = {
   aspiration: (
 	<p>
-	  Your Child Will <span className="text-[#E7A572]">Create With AI</span> — Not Just Scroll Past It.
+	  Your Child Will <span className="text-[#E7A572]">Make Magic With AI</span> — Not Just Scroll Past It.
 	</p>
   ),
   exam: (
@@ -111,15 +111,15 @@ export default function Hero() {
 		  </h1>
 		  
 		  <p className="font-sans text-base text-[#333333]/75 max-w-[560px] mb-6 leading-relaxed">
-			In one power-packed live webinar, your child builds a real AI video gift for the family and learns the honest AI study system that makes revision faster and smarter — using 6 free tools they keep forever.
+			In one power-packed live webinar, your child builds a real AI video gift for the family and learns the smart AI study system that makes revision faster and smarter — using 6 free tools they keep forever.
 		  </p>
 		  
 		  <div className="mb-8 flex flex-wrap items-center gap-8">
 			<div className="flex items-center gap-3">
 			  <Image src="/assets/webinar/people_icon.png" alt="People" width={24} height={24} className="h-6 w-6" />
 			  <div>
-				<div className="font-display text-[0.95rem] font-extrabold text-[#333333]">Two Batches</div>
-				<div className="font-sans text-[0.72rem] font-medium text-[#333333]/70">10-11 or 12 July</div>
+				<div className="font-display text-[0.95rem] font-extrabold text-[#333333]">6 AI Tools</div>
+				<div className="font-sans text-[0.72rem] font-medium text-[#333333]/70">Free to use</div>
 			  </div>
 			</div>
 			<div className="flex items-center gap-3">
@@ -132,7 +132,7 @@ export default function Hero() {
 			<div className="flex items-center gap-3">
 			  <Image src="/assets/webinar/star_icon.png" alt="Star" width={24} height={24} className="h-6 w-6" />
 			  <div>
-				<div className="font-display text-[0.95rem] font-extrabold text-[#333333]">5000+</div>
+				<div className="font-display text-[0.95rem] font-extrabold text-[#333333]">₹3000+</div>
 				<div className="font-sans text-[0.72rem] font-medium text-[#333333]/70">in bonuses</div>
 			  </div>
 			</div>
@@ -146,7 +146,7 @@ export default function Hero() {
 			>
 			  {registrationClosed
 				? 'Registrations Closed'
-				: <span className="inline-flex items-center gap-2"><span>RESERVE MY SEAT</span><span className="text-[0.9rem] font-medium line-through text-white/70">₹999</span><span className="text-[0.95rem] font-semibold">₹199</span></span>}
+				: <span className="inline-flex items-center gap-2"><span>RESERVE MY SEAT</span><span className="text-[0.9rem] font-medium line-through text-white/70">₹499</span><span className="text-[0.95rem] font-semibold">₹199</span></span>}
 			</button>
 			{/* <div className="flex items-center gap-2 rounded-full bg-[#FDF3EB] px-3 py-2">
 			  <Image src="/assets/webinar/Whatsapp_icon.png" alt="WhatsApp" width={20} height={20} className="h-5 w-5" />
@@ -201,7 +201,7 @@ export default function Hero() {
 		  </div>
 
 		  <p className="mt-3 text-center font-sans text-[0.82rem] font-medium text-[#333333]/70">
-			until the first batch begins
+			until the next batch begins
 		  </p>
 		</div>
 

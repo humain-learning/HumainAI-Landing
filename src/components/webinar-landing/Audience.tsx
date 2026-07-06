@@ -77,12 +77,16 @@ export default function Audience() {
               ))}
             </ul>
 
-            <Link
-              href="/404"
+            <button
+              type="button"
+              onClick={() => {
+                const section = document.getElementById('batch-picker');
+                section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
               className="mt-6 self-start rounded-full bg-white px-6 py-3 font-display font-bold text-[#333333]"
             >
               Reserve My Seat
-            </Link>
+            </button>
           </div>
         </motion.div>
       </div>

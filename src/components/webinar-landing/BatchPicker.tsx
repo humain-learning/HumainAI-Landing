@@ -32,7 +32,7 @@ export default function BatchPicker() {
               <div className="space-y-4">
                 {batch.bullets.map((bullet) => (
                   <div key={bullet} className="flex items-start gap-3">
-                    <div className="mt-1 flex h-6 w-6 items-center justify-center rounded-full" style={{ backgroundColor: batch.accent }}>
+                    <div className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full" style={{ backgroundColor: batch.accent }}>
                       <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 stroke-white fill-none" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M5 13l4 4L19 7" />
                       </svg>
@@ -43,7 +43,7 @@ export default function BatchPicker() {
               </div>
 
               <Link
-                href="/404"
+                href={batch.buttonHref}
                 className="mt-6 block w-full rounded-lg py-3 text-center font-semibold text-white"
                 style={{ backgroundColor: batch.accent }}
               >

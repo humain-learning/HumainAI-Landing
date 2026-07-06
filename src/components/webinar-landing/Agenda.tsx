@@ -8,6 +8,7 @@ const agendaCards = [
     eyebrow: 'PART 1 · CREATE WITH AI',
     eyebrowColor: '#C97D49',
     iconBg: '#FDF3EB',
+    icon: '/assets/webinar/inside-webinar/part1icon.svg',
     title: 'Build a 30-second family tribute video — and send it that night',
     desc: 'Your child writes heartfelt lyrics with AI, turns them into a real song, and directs a finished video — a gift for someone they love, made entirely by them.',
     chips: ['Write', 'Score', 'Film'],
@@ -23,6 +24,7 @@ const agendaCards = [
     eyebrow: 'PART 2 · LEARN WITH AI',
     eyebrowColor: '#5e714e',
     iconBg: '#EFF5E9',
+    icon: '/assets/webinar/inside-webinar/part2icon.svg',
     title: 'Study smarter, not longer — turn any chapter into a podcast',
     desc: 'A patient AI tutor that quizzes instead of spoon-feeding, notes that become two hosts chatting about your exact chapter, and research answers with sources you can check.',
     chips: ['Study Mode', 'Absorb', 'Verify'],
@@ -60,16 +62,7 @@ export default function Agenda() {
                       className="flex h-7 w-7 items-center justify-center rounded-full"
                       style={{ backgroundColor: card.iconBg }}
                     >
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.8"
-                        className="h-4 w-4"
-                        style={{ color: card.accentColor }}
-                      >
-                        <path d="M7 5h10M7 12h10M7 19h6" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
+                      <Image src={card.icon} alt="" width={20} height={20} className="h-5 w-5" />
                     </div>
                     <span
                       className="text-xs font-bold uppercase tracking-wider"

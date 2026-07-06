@@ -8,15 +8,32 @@ export type WebinarBatch = {
   bullets: string[];
   buttonLabel: string;
   buttonTextColor: string;
+  buttonHref: string;
 };
 
 export const webinarBatches: WebinarBatch[] = [
   {
     id: 1,
     accent: '#AAC191',
-    label: ['OPTION 1', 'WEEKDAY SPLIT'],
+    label: ['OPTION 1', 'WEEKEND IMMERSIVE'],
+    title: 'One Power Session',
+    date: 'Sun 12 July',
+    time: '11:00 AM – 1:00 PM',
+    bullets: [
+      'Create and Learn with AI in one immersive sitting',
+      'Perfect for busy school weeks',
+      'Parents can join for the full experience',
+    ],
+    buttonLabel: 'Choose My Batch → ₹199',
+    buttonTextColor: 'text-white',
+    buttonHref: 'https://learn.humainlearning.ai/event/1063?autojoin=1',
+  },
+  {
+    id: 2,
+    accent: '#E7A572',
+    label: ['OPTION 2', 'WEEKDAY SPLIT'],
     title: 'Two Evening Sessions',
-    date: 'Fri 10 July + Sat 11 July',
+    date: 'Wed 15 July + Thu 16 July',
     time: '6:00 PM – 7:00 PM (both days)',
     bullets: [
       'Day 1: Create with AI — build your family tribute video',
@@ -25,29 +42,25 @@ export const webinarBatches: WebinarBatch[] = [
     ],
     buttonLabel: 'Choose My Batch → ₹199',
     buttonTextColor: 'text-white',
-  },
-  {
-    id: 2,
-    accent: '#E7A572',
-    label: ['OPTION 2', 'WEEKEND IMMERSIVE'],
-    title: 'One Power Session',
-    date: 'Sun 12 July',
-    time: '11:00 AM – 1:00 PM',
-    bullets: [
-      'Both halves in one immersive sitting',
-      'Perfect for busy school weeks',
-      'Parents can join for the full experience',
-    ],
-    buttonLabel: 'Choose My Batch → ₹199',
-    buttonTextColor: 'text-white',
+    buttonHref: 'https://learn.humainlearning.ai/event/1059?autojoin=1',
   },
 ];
 
-export const firstSessionStart = new Date(Date.UTC(2026, 6, 10, 12, 30, 0)); // 10 July 18:00 IST
-export const lastSessionEnd = new Date(Date.UTC(2026, 6, 12, 7, 30, 0)); // 12 July 13:00 IST
+export const firstSessionStart = new Date(Date.UTC(2026, 6, 12, 5, 30, 0)); // 12 July 11:00 IST
+export const lastSessionEnd = new Date(Date.UTC(2026, 6, 16, 12, 30, 0)); // 16 July 18:00 IST
+
+const batchStarts = [
+  firstSessionStart,
+  new Date(Date.UTC(2026, 6, 16, 12, 30, 0)),
+];
+
+function getNextBatchStart(now = Date.now()) {
+  const upcomingBatch = batchStarts.find((start) => start.getTime() > now);
+  return upcomingBatch ?? batchStarts[batchStarts.length - 1];
+}
 
 export function isRegistrationClosed(now = Date.now()) {
-  const cutoff = firstSessionStart.getTime() - 2 * 60 * 60 * 1000;
+  const cutoff = getNextBatchStart(now).getTime() - 2 * 60 * 60 * 1000;
   return now >= cutoff;
 }
 
@@ -60,7 +73,8 @@ export type Countdown = {
 };
 
 export function getCountdown(now = Date.now()): Countdown {
-  const diffMs = Math.max(firstSessionStart.getTime() - now, 0);
+  const target = getNextBatchStart(now).getTime();
+  const diffMs = Math.max(target - now, 0);
   const totalSeconds = Math.floor(diffMs / 1000);
   const days = Math.floor(totalSeconds / 86400);
   const hours = Math.floor((totalSeconds % 86400) / 3600);
@@ -77,7 +91,7 @@ export function getCountdown(now = Date.now()): Countdown {
 }
 
 export function getUrgencyText(now = Date.now()) {
-  const target = firstSessionStart.getTime();
+  const target = getNextBatchStart(now).getTime();
   const diff = target - now;
 
   if (diff <= 0) return 'Session is live now!';

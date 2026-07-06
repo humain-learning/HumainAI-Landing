@@ -12,7 +12,7 @@ const problemCards = [
     id: 2,
     title: 'From cheating → learning',
     description:
-      'We teach the honest AI study method — a tutor that quizzes, notes that become podcasts, and answers you can verify.',
+      'We teach the smart AI study method — a tutor that quizzes, notes that become podcasts, and answers you can verify.',
     image: '/assets/webinar/second/learning.png',
   },
   {
@@ -36,7 +36,7 @@ export default function Problem() {
         </h2>
         <p className="text-[#333333]/60 max-w-2xl mx-auto text-base leading-relaxed">
           There's a difference between copying answers from a chatbot and creating, learning and thinking with AI. This
-          webinar teaches the second one — the skill that will define your child's decade.
+          webinar teaches the second one — the skill that will define your child's future.
         </p>
       </div>
 

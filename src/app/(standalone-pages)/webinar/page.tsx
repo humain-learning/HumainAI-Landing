@@ -85,8 +85,9 @@ export default function WebinarStandalonePage() {
       
       <TrustBar />
       <Problem />
-      <BatchPicker />
       <Agenda />
+      <BatchPicker />
+      
       <GoldenRule />
       <TakeHome />
       <Audience />

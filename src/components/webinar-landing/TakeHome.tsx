@@ -1,5 +1,6 @@
+'use client';
+
 import Image from 'next/image';
-import Link from 'next/link';
 import { takeHomeItems, takeHomeTotals } from './data/takeHome';
 
 const imageMap: Record<string, string> = {
@@ -152,12 +153,16 @@ export default function TakeHome() {
       </div>
 
       <div className="mt-6 flex justify-center">
-        <Link
-          href="/404"
+        <button
+          type="button"
+          onClick={() => {
+            const section = document.getElementById('batch-picker');
+            section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }}
           className="rounded-full bg-[#E7A572] px-8 py-3.5 font-display font-extrabold text-white transition-colors hover:bg-[#C97D49]"
         >
           Claim My Seat + All Bonuses → ₹199
-        </Link>
+        </button>
       </div>
     </section>
   );
