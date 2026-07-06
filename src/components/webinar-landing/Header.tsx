@@ -7,25 +7,17 @@ import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import { PopupFormModal } from 'ui/PopupFormModal';
 import LeadForm from 'components/forms/hcForm';
-
-function isRegistrationClosed() {
-  const webinarTime = new Date('2026-06-20T11:00:00+05:30');
-  return Date.now() >= webinarTime.getTime();
-}
+import { isRegistrationClosed } from './data/batches';
 
 export default function Header() {
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const [submitError, setSubmitError] = useState('');
-  const [registrationClosed, setRegistrationClosed] = useState(false);
-
-  useEffect(() => {
-    setRegistrationClosed(isRegistrationClosed());
-  }, []);
+  const [registrationClosed] = useState(() => isRegistrationClosed(Date.now()));
 
   const handleEnrollClick = () => {
-
-      setShowModal(true);
+    const section = document.getElementById('batch-picker');
+    section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const onSubmit = async (values: unknown) => {

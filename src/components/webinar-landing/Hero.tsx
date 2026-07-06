@@ -7,23 +7,7 @@ import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import { PopupFormModal } from 'ui/PopupFormModal';
 import LeadForm from 'components/forms/hcForm';
-
-function getUrgencyText(): string {
-  const target = new Date('2026-06-20T11:00:00+05:30').getTime();
-  const diff = target - Date.now();
-
-  if (diff <= 0) return 'Session is live now!';
-
-  const totalMinutes = Math.floor(diff / 60000);
-  const totalHours = Math.floor(diff / 3600000);
-  const days = Math.floor(diff / 86400000);
-
-  if (days >= 2) return `Only ${days} days remaining`;
-  if (days === 1) return 'Only 1 day remaining';
-  if (totalHours >= 1) return `Only ${totalHours} hour${totalHours > 1 ? 's' : ''} remaining`;
-  if (totalMinutes >= 1) return `Only ${totalMinutes} minute${totalMinutes > 1 ? 's' : ''} remaining`;
-  return 'Starting very soon!';
-}
+import { getCountdown, getUrgencyText, isRegistrationClosed } from './data/batches';
 
 const mapping: Record<string, React.ReactNode> = {
   aspiration: (
@@ -54,10 +38,6 @@ const mapping: Record<string, React.ReactNode> = {
   ),
 };
 
-function isRegistrationClosed() {
-  const webinarTime = new Date('2026-06-20T11:00:00+05:30');
-  return Date.now() >= webinarTime.getTime();
-}
 export default function Hero() {
 	const router = useRouter();
 	const [urgencyText, setUrgencyText] = useState('');
@@ -65,10 +45,13 @@ export default function Hero() {
 	const [showModal, setShowModal] = useState(false);
 	const [submitError, setSubmitError] = useState('');
 	const [registrationClosed, setRegistrationClosed] = useState(false);
-
-	useEffect(() => {
-	setRegistrationClosed(isRegistrationClosed());
-	}, []);
+	const [countdown, setCountdown] = useState(() => ({
+	  days: 0,
+	  hours: 0,
+	  minutes: 0,
+	  seconds: 0,
+	  isLive: false,
+	}));
 
   useEffect(() => {
 	// Safe to access window here — client only
@@ -76,12 +59,20 @@ export default function Hero() {
 	const utm_term = searchParams.get('utm_term');
 	setTitle(mapping[utm_term as keyof typeof mapping] ?? mapping['aspiration']);
 
-	// Compute once on mount — no interval, no re-renders
+	setRegistrationClosed(isRegistrationClosed());
+	setCountdown(getCountdown());
 	setUrgencyText(getUrgencyText());
+
+	const timer = window.setInterval(() => {
+	  setCountdown(getCountdown());
+	}, 1000);
+
+	return () => window.clearInterval(timer);
   }, []);
 
   const handleEnrollClick = () => {
-	setShowModal(true);
+	const section = document.getElementById('batch-picker');
+	section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const onSubmit = async (values: unknown) => {
@@ -157,12 +148,12 @@ export default function Hero() {
 				? 'Registrations Closed'
 				: <span className="inline-flex items-center gap-2"><span>RESERVE MY SEAT</span><span className="text-[0.9rem] font-medium line-through text-white/70">₹999</span><span className="text-[0.95rem] font-semibold">₹199</span></span>}
 			</button>
-			<div className="flex items-center gap-2 rounded-full bg-[#FDF3EB] px-3 py-2">
+			{/* <div className="flex items-center gap-2 rounded-full bg-[#FDF3EB] px-3 py-2">
 			  <Image src="/assets/webinar/Whatsapp_icon.png" alt="WhatsApp" width={20} height={20} className="h-5 w-5" />
 			  <span className="font-sans text-[0.78rem] font-semibold text-[#333333]">
 				Instant Confirmation on WhatsApp!
 			  </span>
-			</div>
+			</div> */}
 		  </div>
 		</div>
 
@@ -189,18 +180,18 @@ export default function Hero() {
 			  initial={{ scale: 0, rotate: -15 }}
 			  animate={{ scale: 1, rotate: 0 }}
 			  transition={{ delay: 0.4, type: 'spring', stiffness: 120, damping: 15 }}
-			  className="absolute bottom-[6%] left-[2%] z-20"
+			  className="absolute bottom-[2%] left-[-2%] z-20 flex h-[130px] w-[26%] min-w-[110px] max-w-[130px] items-center justify-center rounded-tl-full rounded-tr-full rounded-br-full rounded-bl-none bg-[#AAC191] shadow-[0_8px_24px_rgba(0,0,0,0.12)]"
 			>
-			  <Image src="/assets/webinar/photo_icon.png" alt="Photo" width={48} height={48} className="h-12 w-12" />
+			  <Image src="/assets/webinar/photo_icon.png" alt="Photo" width={96} height={96} className="h-20 w-20 object-cover" />
 			</motion.div>
 		  </div>
 
 		  <div className="mt-5 flex w-full max-w-[400px] flex-wrap items-center justify-center gap-2">
 			{[
-			  { value: '6', label: 'DAYS' },
-			  { value: '4', label: 'HOURS' },
-			  { value: '46', label: 'MINS' },
-			  { value: '15', label: 'SECS' },
+			  { value: countdown.days.toString().padStart(2, '0'), label: 'DAYS' },
+			  { value: countdown.hours.toString().padStart(2, '0'), label: 'HOURS' },
+			  { value: countdown.minutes.toString().padStart(2, '0'), label: 'MINS' },
+			  { value: countdown.seconds.toString().padStart(2, '0'), label: 'SECS' },
 			].map((item) => (
 			  <div key={item.label} className="flex min-w-[68px] flex-col items-center rounded-lg border border-[#E6E6E6] bg-white px-4 py-2.5 shadow-sm">
 				<span className="font-display text-[0.95rem] font-extrabold text-[#C97D49]">{item.value}</span>

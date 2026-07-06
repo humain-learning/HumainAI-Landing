@@ -1,49 +1,90 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { audienceData } from './data/audience';
 
 export default function Audience() {
-  const cards = [
-    {
-      heading: "My child has never used AI before.",
-      sub: "Perfect starting point. The session is designed for complete beginners — by the end, your child will have successfully used AI for a real study task, on their own phone, with zero setup."
-    },
-    {
-      heading: "My child already uses ChatGPT or Gemini.",
-      sub: "They're using a powerful tool without the right technique. This session gives them the framework that makes every AI interaction measurably better. Parents of regular AI users consistently say this is the biggest shift."
-    },
-    {
-      heading: "CBSE / ICSE / State Board?",
-      sub: "All boards, all subjects. The methods work for Maths, Science, SST, English — built around NCERT and board exam patterns. AI is already in CBSE and ICSE curricula. Your child can get ahead now."
-    },
-    {
-      heading: "Can I attend with my child?",
-      sub: "Absolutely — and we encourage it. We run a free parent orientation segment within the session. See exactly what your child is learning and why it's safe, structured, and school-aligned."
-    }
-  ];
+  const [activeTab, setActiveTab] = useState<'students' | 'parents'>('students');
+  const card = audienceData[activeTab];
 
   return (
-    <section className="py-[88px] px-5 md:px-16 bg-white">
-      <div className="max-w-[1100px] mx-auto">
-        <div className="mb-[52px]">
-          <span className="block mb-3.5 font-sans text-[10px] font-medium tracking-[2.5px] uppercase text-[#4A6335]">
-            Who It's For
-          </span>
-          <h2 className="font-display text-[clamp(1.7rem,3vw,2.5rem)] font-extrabold tracking-[-0.8px] leading-[1.15] mb-3.5 text-[#333333]">
-            Built for every Class 8–12 family in India
-          </h2>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {cards.map((card, idx) => (
-            <div key={idx} className="border border-[#E6E6E6] rounded-[10px] p-[22px_20px] bg-white transition-all duration-150 hover:border-[#AAC191] hover:shadow-[0_3px_16px_rgba(0,0,0,0.05)]">
-              <div className="font-display font-extrabold text-[0.92rem] mb-1.5 text-[#333333]">
-                {card.heading}
-              </div>
-              <div className="font-sans text-[0.83rem] text-[#555555] leading-[1.6]">
-                {card.sub}
-              </div>
-            </div>
-          ))}
-        </div>
+    <section className="bg-white px-5 py-16 md:px-16 md:py-24">
+      <div className="mx-auto max-w-5xl text-center">
+        <h2 className="font-display text-3xl font-extrabold text-[#333333] md:text-4xl">
+          Who this is for
+        </h2>
+        <p className="mt-2 text-center text-[#333333]/60">
+          Built for students, designed with parents in mind.
+        </p>
+      </div>
+
+      <div className="mt-8 flex justify-center gap-2">
+        <button
+          type="button"
+          onClick={() => setActiveTab('students')}
+          className={`rounded-full px-6 py-2.5 font-display font-bold transition-colors ${
+            activeTab === 'students'
+              ? 'bg-[#333333] text-white'
+              : 'border border-[#E6E6E6] bg-white text-[#333333]'
+          }`}
+        >
+          Students
+        </button>
+        <button
+          type="button"
+          onClick={() => setActiveTab('parents')}
+          className={`rounded-full px-6 py-2.5 font-display font-bold transition-colors ${
+            activeTab === 'parents'
+              ? 'bg-[#333333] text-white'
+              : 'border border-[#E6E6E6] bg-white text-[#333333]'
+          }`}
+        >
+          Parents
+        </button>
+      </div>
+
+      <div className="mx-auto mt-10 max-w-5xl overflow-hidden rounded-3xl">
+        <motion.div
+          key={activeTab}
+          initial={{ x: activeTab === 'parents' ? 500 : -500, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
+          className="grid grid-cols-1 md:grid-cols-2"
+        >
+          <div className="relative min-h-[320px] md:min-h-[420px]">
+            <Image src={card.image} alt={card.title} fill className="object-cover" />
+          </div>
+
+          <div
+            className="flex flex-col justify-center p-8 md:p-10"
+            style={{ backgroundColor: card.bgColor }}
+          >
+            <h3 className="font-display text-2xl font-extrabold text-white">{card.title}</h3>
+
+            <ul className="mt-5 space-y-3">
+              {card.bullets.map((bullet, index) => (
+                <li key={`${card.title}-${index}`} className="flex items-start gap-3">
+                  <div className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white/20">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-3.5 w-3.5 text-white">
+                      <path d="M5 12.5 9.5 17 19 7.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  <span className="text-sm leading-snug text-white">{bullet}</span>
+                </li>
+              ))}
+            </ul>
+
+            <Link
+              href="/404"
+              className="mt-6 self-start rounded-full bg-white px-6 py-3 font-display font-bold text-[#333333]"
+            >
+              Reserve My Seat
+            </Link>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

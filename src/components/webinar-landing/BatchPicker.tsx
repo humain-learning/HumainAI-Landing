@@ -1,41 +1,9 @@
 import Link from 'next/link';
-
-const batches = [
-  {
-    id: 1,
-    accent: '#AAC191',
-    label: ['OPTION 1', 'WEEKDAY SPLIT'],
-    title: 'Two Evening Sessions',
-    date: 'Fri 10 July + Sat 11 July',
-    time: '6:00 PM – 7:00 PM (both days)',
-    bullets: [
-      'Day 1: Create with AI — build your family tribute video',
-      'Day 2: Learn with AI — the smart study system',
-      'Easy 1-hour sittings after school',
-    ],
-    buttonLabel: 'Choose My Batch → ₹199',
-    buttonTextColor: 'text-white',
-  },
-  {
-    id: 2,
-    accent: '#E7A572',
-    label: ['OPTION 2', 'WEEKEND IMMERSIVE'],
-    title: 'One Power Session',
-    date: 'Sun 12 July',
-    time: '11:00 AM – 1:00 PM',
-    bullets: [
-      'Both halves in one immersive sitting',
-      'Perfect for busy school weeks',
-      'Parents can join for the full experience',
-    ],
-    buttonLabel: 'Choose My Batch → ₹199',
-    buttonTextColor: 'text-white',
-  },
-];
+import { webinarBatches } from './data/batches';
 
 export default function BatchPicker() {
   return (
-    <section className="bg-[#EFF5E9] py-16 md:py-24 px-5 md:px-16">
+    <section id="batch-picker" className="bg-[#EFF5E9] py-16 md:py-24 px-5 md:px-16">
       <div className="text-center">
         <h2 className="font-display text-3xl md:text-4xl font-extrabold text-[#333333]">
           Pick the batch that fits your week
@@ -44,7 +12,7 @@ export default function BatchPicker() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mt-12">
-        {batches.map((batch) => (
+        {webinarBatches.map((batch) => (
           <div
             key={batch.id}
             className="overflow-hidden rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.06)] flex flex-col md:flex-row"

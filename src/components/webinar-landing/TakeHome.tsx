@@ -1,5 +1,16 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { takeHomeItems, takeHomeTotals } from './data/takeHome';
+
+const imageMap: Record<string, string> = {
+  'family-tribute-video-kit': '/assets/webinar/takehome/Live2hour.png',
+  'ai-toolkit-bundle': '/assets/webinar/takehome/TheAIStudy.png',
+  'prompt-library': '/assets/webinar/takehome/50topper.png',
+  'parenting-guide': '/assets/webinar/takehome/theAIParentingGuide.png',
+  'career-starter-pack': '/assets/webinar/takehome/Futurecareer.png',
+  'replay-access': '/assets/webinar/takehome/sessionrecording.png',
+  'certificate-of-completion': '/assets/webinar/takehome/Certificate.png',
+};
 
 const iconStyles = {
   video: {
@@ -103,9 +114,13 @@ export default function TakeHome() {
                   className="flex h-11 w-11 items-center justify-center rounded-lg"
                   style={{ backgroundColor: iconBg }}
                 >
-                  <div className="text-current" style={{ color: iconColor }}>
-                    {iconConfig.svg}
-                  </div>
+                  <Image
+                    src={imageMap[item.id] || '/assets/webinar/takehome/Live2hour.png'}
+                    alt={item.title}
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 object-contain"
+                  />
                 </div>
                 <div className="text-left">
                   <div className="font-display font-bold text-[0.95rem] text-[#333333]">
