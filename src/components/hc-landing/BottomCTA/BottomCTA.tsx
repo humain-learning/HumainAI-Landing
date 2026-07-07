@@ -50,8 +50,8 @@ export default function BottomCTA({ targetTime, basePrice }: BottomCTAProps) {
         </p>
 
         {/* Large Countdown Timer */}
-        <div className="flex items-center justify-center gap-3 sm:gap-6 mb-14 font-mono select-none">
-          {/* Days */}
+        {/* <div className="flex items-center justify-center gap-3 sm:gap-6 mb-14 font-mono select-none">
+        
           <div className="flex flex-col items-center">
             <div className="bg-white/15 border border-white/20 px-4 sm:px-6 py-4 sm:py-5 rounded-2xl min-w-[70px] sm:min-w-[90px] backdrop-blur-sm shadow-sm flex items-center justify-center">
               <span className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-none">
@@ -65,7 +65,7 @@ export default function BottomCTA({ targetTime, basePrice }: BottomCTAProps) {
 
           <span className="font-display text-3xl sm:text-4xl font-bold text-white/50 -mt-6">:</span>
 
-          {/* Hours */}
+
           <div className="flex flex-col items-center">
             <div className="bg-white/15 border border-white/20 px-4 sm:px-6 py-4 sm:py-5 rounded-2xl min-w-[70px] sm:min-w-[90px] backdrop-blur-sm shadow-sm flex items-center justify-center">
               <span className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-none">
@@ -79,7 +79,7 @@ export default function BottomCTA({ targetTime, basePrice }: BottomCTAProps) {
 
           <span className="font-display text-3xl sm:text-4xl font-bold text-white/50 -mt-6">:</span>
 
-          {/* Minutes */}
+          
           <div className="flex flex-col items-center">
             <div className="bg-white/15 border border-white/20 px-4 sm:px-6 py-4 sm:py-5 rounded-2xl min-w-[70px] sm:min-w-[90px] backdrop-blur-sm shadow-sm flex items-center justify-center">
               <span className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-none">
@@ -93,7 +93,7 @@ export default function BottomCTA({ targetTime, basePrice }: BottomCTAProps) {
 
           <span className="font-display text-3xl sm:text-4xl font-bold text-white/50 -mt-6">:</span>
 
-          {/* Seconds */}
+          
           <div className="flex flex-col items-center">
             <div className="bg-white/15 border border-white/20 px-4 sm:px-6 py-4 sm:py-5 rounded-2xl min-w-[70px] sm:min-w-[90px] backdrop-blur-sm shadow-sm flex items-center justify-center animate-pulse">
               <span className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-none">
@@ -104,7 +104,7 @@ export default function BottomCTA({ targetTime, basePrice }: BottomCTAProps) {
               Secs
             </span>
           </div>
-        </div>
+        </div> */}
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full mb-8">
