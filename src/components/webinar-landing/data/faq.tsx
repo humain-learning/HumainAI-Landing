@@ -27,7 +27,7 @@ export const faqs = [
   {
     id: 6,
     question: 'Which batch should we pick?',
-    answer: 'Content is identical. Pick the the single 2-hour Sunday session (12 July, 11 AM) for one immersive sitting, or 1-hour × 2 evenings (15–16 July, 6 PM) if weekday evenings are easier.',
+    answer: 'Content is identical. Pick the the single 2-hour Sunday session (12 July, 11 AM) for one immersive sitting, or 1-hour × 2 evenings (14-15 July, 6 PM) if weekday evenings are easier.',
   },
   {
     id: 7,

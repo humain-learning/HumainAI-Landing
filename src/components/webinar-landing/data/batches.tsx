@@ -33,7 +33,7 @@ export const webinarBatches: WebinarBatch[] = [
     accent: '#E7A572',
     label: ['OPTION 2', 'WEEKDAY SPLIT'],
     title: 'Two Evening Sessions',
-    date: 'Wed 15 July + Thu 16 July',
+    date: 'Tue 14 July + Wed 15 July',
     time: '6:00 PM – 7:00 PM (both days)',
     bullets: [
       'Day 1: Create with AI — build your family tribute video',

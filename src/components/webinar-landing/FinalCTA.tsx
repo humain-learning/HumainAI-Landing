@@ -68,7 +68,7 @@ export default function FinalCTA() {
               />
               <div>
                 <div className="text-sm font-bold text-white">Batch 2</div>
-                <div className="text-sm text-white/80">15–16 July, 6 PM–7 PM</div>
+                <div className="text-sm text-white/80">14-15 July, 6 PM–7 PM</div>
               </div>
             </div>
           </div>

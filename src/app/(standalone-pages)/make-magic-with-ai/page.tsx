@@ -15,6 +15,7 @@ import FinalCTA from '@/components/webinar-landing/FinalCTA';
 import TakeHome from '@/components/webinar-landing/TakeHome';
 import Testimonials from '@/components/webinar-landing/Testimonials';
 import InstructorsCollage from '@/components/hc-landing/Instructors/InstructorsCollage';
+import { faqs } from '@/components/webinar-landing/data/faq';
 
 
 export const metadata = {
@@ -31,11 +32,11 @@ export const metadata = {
 export default function WebinarStandalonePage() {
   const eventSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Event',
+    '@type': 'EventSeries',
     'name': 'Free AI Masterclass for Students | The 10x Student',
-    'description': 'Your child learns the guided AI techniques that turn ordinary AI use into 10x study results. Interactive live session for Class 8–12 across India.',
-    'startDate': '2026-07-10T18:00:00+05:30',
-    'endDate': '2026-07-12T13:00:00+05:30',
+    'description': 'Your child learns the guided AI techniques that turn ordinary AI use into 10x study results. Interactive live, instructor-led sessions for Class 8–12 across India.',
+    'startDate': '2026-07-12T11:00:00+05:30',
+    'endDate': '2026-07-15T19:00:00+05:30',
     'eventAttendanceMode': 'https://schema.org/OnlineEventAttendanceMode',
     'eventStatus': 'https://schema.org/EventScheduled',
     'location': {
@@ -52,22 +53,40 @@ export default function WebinarStandalonePage() {
       '@type': 'Organization',
       'name': 'Humain Learning',
       'url': 'https://humainlearning.ai'
-    }
+    },
+    'subEvent': [
+      {
+        '@type': 'Event',
+        'name': 'One Power Session',
+        'startDate': '2026-07-12T11:00:00+05:30',
+        'endDate': '2026-07-12T13:00:00+05:30',
+      },
+      {
+        '@type': 'Event',
+        'name': 'Two Evening Sessions – Day 1',
+        'startDate': '2026-07-14T18:00:00+05:30',
+        'endDate': '2026-07-14T19:00:00+05:30',
+      },
+      {
+        '@type': 'Event',
+        'name': 'Two Evening Sessions – Day 2',
+        'startDate': '2026-07-15T18:00:00+05:30',
+        'endDate': '2026-07-15T19:00:00+05:30',
+      },
+    ],
   };
 
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    'mainEntity': [
-      {
-        '@type': 'Question',
-        'name': 'What will my child actually do in the session?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'It\'s a live, interactive workshop — not a lecture. Your child will submit their own AI prompts in real time, watch how professional techniques transform the results, discover the methods top students use, and compete in a friendly live challenge.'
-        }
-      }
-    ]
+    'mainEntity': faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
   };
 
   return (
