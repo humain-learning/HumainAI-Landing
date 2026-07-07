@@ -1,22 +1,24 @@
 export const audienceData = {
   students: {
-    title: 'For students who want to make AI useful, not just interesting',
+    title: 'Students — Grades 8 to 12',
     image: '/assets/webinar/Students_Parents_Cards/Students.png',
     bgColor: '#AAC191',
     bullets: [
-      'Learn a calm, practical way to use AI for study and creation.',
-      'See live examples that turn prompts into real student results.',
-      'Leave with confidence, not confusion.',
+      "You've used ChatGPT but want to do more than ask it questions",
+      'You want study methods that save hours before exams',
+      'You want to make things — videos, songs, projects — that impress',
+      'No coding or prior experience needed. A phone is enough.',
     ],
   },
   parents: {
-    title: 'For parents who want their child to learn with guidance and purpose',
+    title: 'Parents',
     image: '/assets/webinar/Students_Parents_Cards/Parents.png',
     bgColor: '#E7A572',
     bullets: [
-      'Watch a parent-friendly session that shows how AI can support growth.',
-      'Understand what healthy, guided AI use looks like at home.',
-      'See how your child can build confidence through hands-on practice.',
+      'You want your child ahead of the AI curve, not behind it',
+      'You worry about AI misuse — we teach the responsible way, explicitly',
+      'You want a productive screen-time win this summer',
+      "You're welcome to sit in on the entire session",
     ],
   },
 };

@@ -1,5 +1,6 @@
+'use client';
+
 import Image from 'next/image';
-import Link from 'next/link';
 
 export default function FinalCTA() {
   return (
@@ -26,16 +27,20 @@ export default function FinalCTA() {
             Give your child the AI head-start for less than the cost of a pizza.
           </p>
 
-          <Link
-            href="/404"
+          <button
+            type="button"
+            onClick={() => {
+              const section = document.getElementById('batch-picker');
+              section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
             className="mt-6 self-start rounded-full bg-white px-8 py-4 font-display font-extrabold text-[#333333]"
           >
-            RESERVE MY SEAT - <s className="text-[#888888]">₹999</s>{' '}
+            RESERVE MY SEAT - <s className="text-[#888888]">₹499</s>{' '}
             <span className="text-[#C97D49]">₹199</span>
-          </Link>
+          </button>
 
           <p className="mt-3 text-sm font-semibold text-white/80">
-            Includes 5000+ in bonuses • Instant WhatsApp confirmation
+            Includes ₹3000+ in bonuses
           </p>
 
           <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:gap-8">
@@ -49,7 +54,7 @@ export default function FinalCTA() {
               />
               <div>
                 <div className="text-sm font-bold text-white">Batch 1</div>
-                <div className="text-sm text-white/80">10–11 July, 6 PM</div>
+                <div className="text-sm text-white/80">12 July, 11 AM–1 PM</div>
               </div>
             </div>
 
@@ -63,7 +68,7 @@ export default function FinalCTA() {
               />
               <div>
                 <div className="text-sm font-bold text-white">Batch 2</div>
-                <div className="text-sm text-white/80">12 July, 11 AM–1 PM</div>
+                <div className="text-sm text-white/80">14-15 July, 6 PM–7 PM</div>
               </div>
             </div>
           </div>
