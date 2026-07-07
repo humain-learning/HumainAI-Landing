@@ -47,11 +47,14 @@ export const webinarBatches: WebinarBatch[] = [
 ];
 
 export const firstSessionStart = new Date(Date.UTC(2026, 6, 12, 5, 30, 0)); // 12 July 11:00 IST
-export const lastSessionEnd = new Date(Date.UTC(2026, 6, 16, 12, 30, 0)); // 16 July 18:00 IST
+export const secondSessionStart = new Date(Date.UTC(2026, 6, 14, 12, 30, 0)); // 14 July 6:00 PM IST
+export const thirdSessionStart = new Date(Date.UTC(2026, 6, 15, 12, 30, 0)); // 15 July 6:00 PM IST
+export const lastSessionEnd = new Date(Date.UTC(2026, 6, 15, 12, 30, 0)); // 15 July 6:00 PM IST
 
 const batchStarts = [
   firstSessionStart,
-  new Date(Date.UTC(2026, 6, 16, 12, 30, 0)),
+  secondSessionStart,
+  thirdSessionStart,
 ];
 
 function getNextBatchStart(now = Date.now()) {
