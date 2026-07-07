@@ -34,7 +34,7 @@ export default function Founder() {
             {/* Biography body copy */}
             <div className="space-y-4 max-w-xl font-sans text-sm sm:text-[15px] leading-relaxed text-charcoal/80">
               <p>
-                With over <span className="font-bold text-charcoal">25 years of experience</span> in education, our founder Manit – Harvard Alumnus, has worked with schools, teachers, and students across India. He has founded The Heritage Xperiential Learning Schools – which have been ranked number <span className="font-bold text-charcoal">1</span> consistently in the country.
+                With over <span className="font-bold text-charcoal">25 years of experience</span> in education, our founder Manit – Harvard Alumnus, has worked with schools, teachers, and students across India. He founded The Heritage Xperiential Learning Schools, one of India's most established K–12 school networks.
               </p>
               <p>
                 His expertise in combining <span className="font-bold text-charcoal">pedagogy with technology</span> enables us to design learning journeys that prepare students for the <span className="font-bold text-charcoal">AI-first future</span> while staying grounded in values that matter.
@@ -42,11 +42,26 @@ export default function Founder() {
             </div>
 
             {/* Bottom outline stats image */}
-            <img
+            {/* <img
               src="/assets/images/manitjainframe.png"
               alt="Manit Jain Stats"
               className="mt-10 w-full max-w-[480px] h-auto object-contain"
-            />
+            /> */}
+            <div className="w-3/4 grid grid-cols-3 gap-x-3 py-5" >
+              <div className=" flex flex-col text-center aspect-square items-center justify-center w-full p-3 rounded-t-full rounded-bl-full border-1 border-terracotta">
+                <h1 className="font-extrabold text-terracotta text-3xl">25+ Yrs</h1>
+                <span className="font-sans text-xs text-charcoal/80">Education Leadership Experience</span>
+              </div>
+              <div className=" flex flex-col text-center aspect-square items-center justify-center w-full p-3 rounded-t-full rounded-bl-full border-1 border-terracotta">
+                <h1 className="font-extrabold text-terracotta text-3xl">1,000+</h1>
+                <span className="font-sans text-xs text-charcoal/80">Students <br/> trained in AI</span>
+              </div>
+              <div className=" flex flex-col text-center aspect-square items-center justify-center w-full p-3 rounded-t-full rounded-bl-full border-1 border-terracotta">
+                <h1 className="font-extrabold text-terracotta text-3xl">Harvard</h1>
+                <span className="font-sans text-xs text-charcoal/80">Education background</span>
+              </div>
+
+            </div> 
 
           </div>
 

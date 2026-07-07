@@ -80,8 +80,8 @@ export default function GapSolution() {
 
             {/* Description */}
             <p className="font-sans text-base leading-relaxed text-charcoal/80">
-              India's schools are not teaching AI fast enough. Students who learn these skills 
-              now will have an unfair advantage in board exams, college applications, and careers.
+              Schools are not teaching AI fast enough. Students who learn these skills 
+              now will have an unfair advantage in exams, university applications, and careers.
             </p>
 
             {/* Stats Stack */}
@@ -195,7 +195,7 @@ export default function GapSolution() {
                   <span className="font-display text-base font-bold text-charcoal">
                     E- Cell IIT Kharagpur certificate{' '}
                     <span className="font-sans text-sm font-normal text-charcoal/60">
-                      LinkedIn-shareable, nationally recognised.
+                      LinkedIn-shareable, from one of India's premier engineering institutes.
                     </span>
                   </span>
                 </div>
@@ -206,7 +206,7 @@ export default function GapSolution() {
                 <CheckCircleIcon />
                 <div className="flex flex-col">
                   <span className="font-display text-base font-bold text-charcoal">
-                    Small students batch{' '}
+                    Small student batches{' '}
                     <span className="font-sans text-sm font-normal text-charcoal/60">
                       personal attention, not a lecture hall.
                     </span>
@@ -219,9 +219,9 @@ export default function GapSolution() {
                 <CheckCircleIcon />
                 <div className="flex flex-col">
                   <span className="font-display text-base font-bold text-charcoal">
-                    Curriculum designed for India{' '}
+                    Curriculum connects AI{' '}
                     <span className="font-sans text-sm font-normal text-charcoal/60">
-                      connects AI skills to board exam prep, research, and creative projects.
+                      connects AI skills to board exam prep, research, and creative projects aligned with IGCSE, A-Levels, IB, and MOE coursework.
                     </span>
                   </span>
                 </div>

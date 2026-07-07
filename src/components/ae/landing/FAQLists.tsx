@@ -17,7 +17,7 @@ const ENTITY_FAQ = [
     content: (
       <div>
         HumainChamps is for students aged 13–18. HumainEducators is for working school teachers.
-        School-side institutional partnerships route through the{' '}
+        {/* School-side institutional partnerships route through the{' '}
         <Link className="text-secondary-color underline underline-offset-4" href="/for-schools">
           for-schools page
         </Link>
@@ -25,7 +25,7 @@ const ENTITY_FAQ = [
         <Link className="text-secondary-color underline underline-offset-4" href="/for-parents">
           for-parents
         </Link>
-        ; teachers and direct enrollers can also self-enrol from the HumainEducators course page.
+        ; teachers and direct enrollers can also self-enrol from the HumainEducators course page. */}
       </div>
     ),
   },
@@ -36,12 +36,13 @@ const ENTITY_FAQ = [
         Free resources teach what a tool does; a structured course teaches a framework that applies to every new tool
         that ships next year. The Humain six-pillar framework spans foundations, learning, studying, creating, agents
         and automation, and ethics and safety; a child who has worked through it can pick up any new AI model and
-        judge it. The{' '}
+        judge it. 
+        {/* The{' '}
         <Link className="text-secondary-color underline underline-offset-4" href="/for-parents">
           for-parents page
         </Link>{' '}
         covers the full free-vs-paid comparison, including completion rates and the honest disqualifier for parents
-        whose child has already finished a self-paced course.
+        whose child has already finished a self-paced course. */}
       </div>
     ),
   },
@@ -98,7 +99,8 @@ const FAQLists = () => {
             <div>
               <h2 className="text-3xl font-semibold">Frequently Asked Questions</h2>
               <p className="mt-3 text-base text-[#4E5255]">
-                The most common questions about Humain Learning. For deeper parent and school questions, see the{' '}
+                The most common questions about Humain Learning. 
+                {/* For deeper parent and school questions, see the{' '}
                 <Link className="text-secondary-color underline underline-offset-4" href="/for-parents">
                   for parents
                 </Link>{' '}
@@ -106,7 +108,7 @@ const FAQLists = () => {
                 <Link className="text-secondary-color underline underline-offset-4" href="/for-schools">
                   for schools
                 </Link>{' '}
-                pages.
+                pages. */}
               </p>
             </div>
           </div>

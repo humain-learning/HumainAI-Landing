@@ -96,7 +96,7 @@ export default function ParentsSaying() {
           <div className="bg-[#fafaf9] border border-gray-150 px-4 py-2 rounded-2xl shadow-sm inline-block select-none mt-2 relative z-10">
             <p className="font-sans text-[13px] sm:text-[13.5px] font-semibold text-charcoal/90">
               Rated <span className="text-terracotta font-extrabold">4.5/5</span> based on <span className="font-bold">200+</span> parent reviews.
-              Here's what families from across India experienced.
+              Here's what families around the world experienced.
             </p>
           </div>
 
@@ -129,7 +129,7 @@ export default function ParentsSaying() {
           </div>
 
           <div className="md:w-[40%] hidden md:flex object-contain justify-center items-center">
-              <img src='/assets/Website%20Assets/Parents.png' className="w-full max-w-sm h-auto object-contain drop-shadow-sm" alt="Parents"/>
+              <img src='/assets/ae_humain_champs/Parents.png' className="w-full max-w-sm h-auto object-contain drop-shadow-sm" alt="Parents"/>
           </div>
 
         </div>

@@ -44,7 +44,7 @@ const faqs = [
   {
     id: 9,
     question: 'We can learn these courses for free, then why should we join this course?',
-    answer: "While free courses are available on platforms like YouTube and Instagram, we are not just another tech company offering generic lessons. Backed by a 25+ year legacy in education, our experienced educators deliver a carefully curated curriculum designed specifically for children of grade 8–12.",
+    answer: "While free courses are available on platforms like YouTube and Instagram, we are not just another tech company offering generic lessons. Backed by a 25+ year legacy in education, our experienced educators deliver a carefully curated curriculum designed specifically for students aged 13–18.",
   },
   {
     id: 10,
@@ -60,6 +60,11 @@ const faqs = [
     id: 12,
     question: 'My child knows all these tools already, what is diffwerent about this course then?',
     answer: "This course focuses on applying these tools in real-world scenarios and building comprehensive AI projects, rather than just learning the tools in isolation.",
+  },
+  {
+    id: 13,
+    question: 'How is my child\'s data and payment information handled?',
+    answer: "We take data privacy seriously. Your child's personal information is used only for course delivery and communication, and is never sold to third parties. All payments are processed through a secure, PCI-compliant payment provider, and your card details are never stored on our servers.",
   },
 
 

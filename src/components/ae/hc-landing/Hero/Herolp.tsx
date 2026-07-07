@@ -111,7 +111,7 @@ export default function Herolp({basePrice}: HeroProps) {
 				</span>
 				<span className="flex items-center gap-1.5 rounded-full bg-[#aac1911a] px-3.5 py-1.5 text-xs font-semibold tracking-wider text-[#5e714e]">
 					<span className="h-1.5 w-1.5 rounded-full bg-[#5e714e]" />
-					GRADES 8 - 12
+					AGES 13–18
 				</span>
 				</div>
 
@@ -128,8 +128,7 @@ export default function Herolp({basePrice}: HeroProps) {
 
 				{/* Subheading Description */}
 				<p className="font-sans text-base md:text-lg leading-relaxed text-charcoal/80 max-w-2xl">
-				Humain Champs is India's most credible AI learning course. Live online classes with a hackathon certified by E-Cell 
-				IIT Kharagpur, real AI tools like ChatGPT & Gemini, and a Harvard-pedigree 
+				Humain Champs is a live, instructor-led AI learning course for students in the UAE, culminating in a hackathon project certified by E-Cell IIT Kharagpur. Real AI tools like ChatGPT & Gemini, and a Harvard-pedigree 
 				founder. No coding needed.
 				</p>
 
@@ -190,12 +189,12 @@ export default function Herolp({basePrice}: HeroProps) {
 					initial={{ opacity: 0, scale: 0.95 }}
 					animate={{ opacity: 1, scale: 1 }}
 					transition={{ duration: 0.8, ease: 'easeOut' }}
-					className="relative w-full"
+					className="relative w-full aspect-square overflow-hidden rounded-tl-[48%] rounded-tr-[48%] rounded-bl-[48%] rounded-br-[0px]"
 				>
 					<img
-					src="/assets/images/parentslp.png"
+					src="/assets/ae_humain_champs/hero_family.png"
 					alt="Family studying AI together"
-					className="w-full h-auto object-contain drop-shadow-xl"
+					className="w-full h-full object-cover drop-shadow-xl"
 					/>
 				</motion.div>
 

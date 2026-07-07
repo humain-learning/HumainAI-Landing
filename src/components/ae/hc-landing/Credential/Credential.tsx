@@ -50,9 +50,7 @@ export default function Credential() {
               <div className="flex items-start gap-3.5">
                 <GreenCheckCircle />
                 <p className="font-sans text-sm md:text-[15px] leading-relaxed text-charcoal/80">
-                  <span className="font-bold text-charcoal">E-Cell IIT Kharagpur</span> issued
-                  by the entrepreneurship cell of India's oldest IIT, a nationally recognised
-                  institution.
+                  <span className="font-bold text-charcoal">E-Cell IIT Kharagpur</span> issued by the entrepreneurship cell of one of India's oldest and most respected engineering institutes.
                 </p>
               </div>
 
@@ -69,7 +67,7 @@ export default function Credential() {
               <div className="flex items-start gap-3.5">
                 <GreenCheckCircle />
                 <p className="font-sans text-sm md:text-[15px] leading-relaxed text-charcoal/80">
-                  <span className="font-bold text-charcoal">Small students batch</span> personal
+                  <span className="font-bold text-charcoal">Small student batches</span> personal
                   attention, not a lecture hall.
                 </p>
               </div>
