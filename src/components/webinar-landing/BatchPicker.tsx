@@ -44,6 +44,7 @@ export default function BatchPicker() {
 
               <Link
                 href={batch.buttonHref}
+                target="_blank"
                 className="mt-6 block w-full rounded-lg py-3 text-center font-semibold text-white"
                 style={{ backgroundColor: batch.accent }}
               >
