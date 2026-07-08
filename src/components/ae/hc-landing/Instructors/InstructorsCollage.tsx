@@ -6,8 +6,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import "swiper/swiper.css";
 
-import { instructors } from 'components/ae/courses-students/humain-champs-v2/Instructors/data';
-import { SwipeProgress } from 'components/ae/ui/SwipeProgress';
+import { instructors } from 'components/courses-students/humain-champs-v2/Instructors/data';
+import { SwipeProgress } from 'components/ui/SwipeProgress';
 
 const renderInstructorDetailsSlides = () => (
     instructors.map((instructor) => (

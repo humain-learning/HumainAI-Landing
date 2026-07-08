@@ -17,7 +17,7 @@ import Header from 'ui/Header';
 const LandingPage = () => {
   return (
     
-    <div className="relative">
+    <div className="relative overflow-hidden">
       <img
         className="absolute top-0 right-0 -z-10"
         src="/assets/images/top-right-fade.png"

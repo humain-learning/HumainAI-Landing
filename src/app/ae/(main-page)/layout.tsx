@@ -1,5 +1,5 @@
-import Header from 'components/ae/ui/Header';
-import Footer from 'components/ae/ui/Footer';
+import Header from 'ui/Header';
+import Footer from 'ui/Footer';
 
 export default function MainPageLayout({
 	children,
@@ -7,10 +7,10 @@ export default function MainPageLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<>
+		<div className="overflow-hidden">
 			<Header />
 			{children}
 			<Footer />
-		</>
+		</div>
 	);
 }

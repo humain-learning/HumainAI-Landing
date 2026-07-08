@@ -42,26 +42,25 @@ export default function Founder() {
             </div>
 
             {/* Bottom outline stats image */}
-            {/* <img
-              src="/assets/images/manitjainframe.png"
+            <img
+              src="/assets/ae_humain_champs/founderimage.png"
               alt="Manit Jain Stats"
               className="mt-10 w-full max-w-[480px] h-auto object-contain"
-            /> */}
-            <div className="w-3/4 grid grid-cols-3 gap-x-3 py-5" >
-              <div className=" flex flex-col text-center aspect-square items-center justify-center w-full p-3 rounded-t-full rounded-bl-full border-1 border-terracotta">
-                <h1 className="font-extrabold text-terracotta text-3xl">25+ Yrs</h1>
-                <span className="font-sans text-xs text-charcoal/80">Education Leadership Experience</span>
+            />
+            {/* <div className="w-full md:w-3/4 grid grid-cols-3 gap-2 md:gap-4 py-5">
+              <div className="flex flex-col text-center aspect-square items-center justify-center w-full p-2 md:p-3 rounded-t-full rounded-bl-full border border-terracotta overflow-hidden">
+                <h1 className="font-extrabold text-terracotta text-sm sm:text-lg lg:text-2xl leading-tight">25+ Yrs</h1>
+                <span className="font-sans text-[9px] sm:text-[11px] lg:text-xs text-charcoal/80 leading-tight mt-1">Education Leadership Experience</span>
               </div>
-              <div className=" flex flex-col text-center aspect-square items-center justify-center w-full p-3 rounded-t-full rounded-bl-full border-1 border-terracotta">
-                <h1 className="font-extrabold text-terracotta text-3xl">1,000+</h1>
-                <span className="font-sans text-xs text-charcoal/80">Students <br/> trained in AI</span>
+              <div className="flex flex-col text-center aspect-square items-center justify-center w-full p-2 md:p-3 rounded-t-full rounded-bl-full border border-terracotta overflow-hidden">
+                <h1 className="font-extrabold text-terracotta text-sm sm:text-lg lg:text-2xl leading-tight">1,000+</h1>
+                <span className="font-sans text-[9px] sm:text-[11px] lg:text-xs text-charcoal/80 leading-tight mt-1">Students trained in AI</span>
               </div>
-              <div className=" flex flex-col text-center aspect-square items-center justify-center w-full p-3 rounded-t-full rounded-bl-full border-1 border-terracotta">
-                <h1 className="font-extrabold text-terracotta text-3xl">Harvard</h1>
-                <span className="font-sans text-xs text-charcoal/80">Education background</span>
+              <div className="flex flex-col text-center aspect-square items-center justify-center w-full p-2 md:p-3 rounded-t-full rounded-bl-full border border-terracotta overflow-hidden">
+                <h1 className="font-extrabold text-terracotta text-sm sm:text-lg lg:text-2xl leading-tight">Harvard</h1>
+                <span className="font-sans text-[9px] sm:text-[11px] lg:text-xs text-charcoal/80 leading-tight mt-1">Education background</span>
               </div>
-
-            </div> 
+            </div>  */}
 
           </div>
 

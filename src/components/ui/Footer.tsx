@@ -126,12 +126,12 @@ const Footer = () => {
             Consulting.
           </p>
           <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2 text-base font-normal md:mr-20">
-            <Link href="/for-parents" className="hover:text-[#e8a772]">
+            {/* <Link href="/for-parents" className="hover:text-[#e8a772]">
               For Parents
             </Link>
             <Link href="/for-schools" className="hover:text-[#e8a772]">
               For Schools
-            </Link>
+            </Link> */}
             <Link href="/courses/students/humain-champs" className="hover:text-[#e8a772]">
               HumainChamps
             </Link>

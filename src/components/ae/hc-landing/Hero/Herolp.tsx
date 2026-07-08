@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { EnrolledPopup } from './EnrolledPopup';
-import LeadForm from '@/components/ae/forms/hcForm';
-import { PopupFormModal } from 'components/ae/ui/PopupFormModal';
+import LeadForm from '@/components/forms/hcForm';
+import { PopupFormModal } from 'components/ui/PopupFormModal';
 import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 
@@ -144,7 +144,7 @@ export default function Herolp({basePrice}: HeroProps) {
 					>
 						<span className="font-display text-base font-bold tracking-wide whitespace-nowrap">Enroll Now</span>
 						<span className="rounded-full bg-white px-4 py-2 font-display text-sm font-extrabold text-terracotta border border-terracotta/10">
-							{(basePrice + (basePrice * 0.18)).toLocaleString('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 })}
+							$250
 						</span>
 					</motion.button>
 
@@ -301,7 +301,7 @@ export default function Herolp({basePrice}: HeroProps) {
 			/>
 		</PopupFormModal>
 
-		{!showModal && <EnrolledPopup />}
+		{/* {!showModal && <EnrolledPopup />} */}
 		</section>
 	);
 }
