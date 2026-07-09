@@ -68,10 +68,13 @@ function normalize(value: FormDataEntryValue | null) {
 
 export async function getBatchDetailsOfTemplate(templateId: TemplateId) {
 	const { baseUrl, authHeader } = getCRMCredentials();
-
+	const start_date = process.env.MODE === 'prod'
+		? getTodayIstDateString()
+		: '2026-06-01';
+		
 	const params = new URLSearchParams({
 		template_id: String(templateId),
-		start_date: getTodayIstDateString(),
+		start_date: start_date,
 	});
 
 	const url = `${baseUrl}/api/method/humain_learning.humain_learning.api.web.batch_details_of_template?${params}`;
