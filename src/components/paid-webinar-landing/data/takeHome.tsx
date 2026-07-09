@@ -59,5 +59,6 @@ export const takeHomeItems = [
 
 export const takeHomeTotals = {
   totalValue: '₹3,095',
-  todayPrice: '₹0',
+  normalPrice: '₹499',
+  todayPrice: '₹199',
 };

@@ -145,24 +145,18 @@ export default function TakeHome() {
 
       <div className="mx-auto mt-8 max-w-3xl rounded-xl border-2 border-dashed border-[#E7A572]/50 py-5 text-center">
         <div className="text-[#333333]">
-          Total value: <s className="text-[#888888]">{takeHomeTotals.totalValue}</s> · Today:{' '}
-          <span className="font-display font-extrabold text-[#C97D49]">
-            {takeHomeTotals.todayPrice}
-          </span>
+          <span className="text-normal">Total Value: {takeHomeTotals.totalValue} ⸱ Normal Price: <span className='line-through'>{takeHomeTotals.normalPrice}</span> ⸱  Price Today: {takeHomeTotals.todayPrice}</span>
         </div>
       </div>
 
       <div className="mt-6 flex justify-center">
-        <button
-          type="button"
-          onClick={() => {
-            const section = document.getElementById('batch-picker');
-            section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }}
+        <a
+          href="https://learn.humainlearning.ai/event/1082"
+		  target="_blank"
           className="rounded-full bg-[#E7A572] px-8 py-3.5 font-display font-extrabold text-white transition-colors hover:bg-[#C97D49]"
         >
           Claim My Seat + All Bonuses
-        </button>
+        </a>
       </div>
     </section>
   );

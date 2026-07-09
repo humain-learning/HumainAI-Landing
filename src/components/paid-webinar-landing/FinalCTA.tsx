@@ -27,17 +27,14 @@ export default function FinalCTA() {
             Give your child the AI head-start for less than the cost of a pizza.
           </p>
 
-          <button
-            type="button"
-            onClick={() => {
-              const section = document.getElementById('batch-picker');
-              section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }}
+          <a
+            href="https://learn.humainlearning.ai/event/1082"
+			target="_blank"
             className="mt-6 self-start rounded-full bg-white px-8 py-4 font-display font-extrabold text-[#333333]"
           >
             RESERVE MY SEAT - <s className="text-[#888888]">₹499</s>{' '}
-            <span className="text-[#C97D49]">₹0</span>
-          </button>
+            <span className="text-[#C97D49]">₹199</span>
+          </a>
 
           <p className="mt-3 text-sm font-semibold text-white/80">
             Includes ₹3000+ in bonuses
@@ -53,22 +50,8 @@ export default function FinalCTA() {
                 className="h-6 w-6 object-contain"
               />
               <div>
-                <div className="text-sm font-bold text-white">Batch 1</div>
-                <div className="text-sm text-white/80">12 July, 11 AM–1 PM</div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <Image
-                src="/assets/webinar/footer/batch_icon.png"
-                alt="Batch"
-                width={24}
-                height={24}
-                className="h-6 w-6 object-contain"
-              />
-              <div>
-                <div className="text-sm font-bold text-white">Batch 2</div>
-                <div className="text-sm text-white/80">14-15 July, 6 PM–7 PM</div>
+                <div className="text-sm font-bold text-white">Sat, 18<sup>th</sup> July</div>
+                <div className="text-sm text-white/80">6:00PM to 8:00PM</div>
               </div>
             </div>
           </div>

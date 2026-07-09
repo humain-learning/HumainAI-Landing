@@ -4,17 +4,12 @@ import { webinarBatches } from './data/batches';
 import LeadForm from 'components/forms/hcForm';
 import { PopupFormModal } from 'ui/PopupFormModal';
 import { useState } from 'react';
-import { setCookie } from 'cookies-next';
 
 export default function BatchPicker() {
 	const [showModal, setShowModal] = useState(false);
 	const [submitError, setSubmitError] = useState('');
-	
-	const onClick = (batch: any) => {
-		setShowModal(true);
-		setCookie('custom_utm_campaign', batch.campaign, { path: '/', maxAge: 60 * 60 * 24 * 30 });
-		console.log('after', document.cookie);
-	}
+
+
 	const onSubmit = async (values: unknown) => {
 		const res = await fetch('/api/submit-lead', {
 			method: 'POST',
@@ -48,7 +43,7 @@ export default function BatchPicker() {
 						key={batch.id}
 						className="overflow-hidden rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.06)] flex flex-col md:flex-row"
 					>
-						<div className="md:w-[40%] p-6 md:p-8 justify-center flex flex-col" style={{ backgroundColor: batch.accent }}>
+						<div className="md:w-[40%] p-6 md:p-8" style={{ backgroundColor: batch.accent }}>
 							<div className="text-[10px] font-semibold uppercase tracking-[0.24em] text-white/80 leading-relaxed">
 								{batch.label[0]}
 								<br />
@@ -74,7 +69,7 @@ export default function BatchPicker() {
 							</div>
 
 							<button
-								onClick={() => onClick(batch)}
+								onClick={() => setShowModal(true)}
 								className="mt-6 block w-full rounded-lg py-3 text-center font-semibold text-white"
 								style={{ backgroundColor: batch.accent }}
 							>
@@ -85,19 +80,7 @@ export default function BatchPicker() {
 				))}
 			</div>
 
-		<PopupFormModal isOpen={showModal} onClose={() => setShowModal(false)}>
-			<LeadForm 
-				actionable="Webinar"
-				heading="Register Now"
-				subHeading="Please fill out the form below to reserve your spot"
-				buttonText="Register Now"
-				source="Webinar Landing"
-				destination="/submission-received"
-				onSubmit={onSubmit}
-				submitError={submitError}
-				setSubmitError={setSubmitError}
-			/>
-		</PopupFormModal>
+		
     	</section>
   	);
 }
