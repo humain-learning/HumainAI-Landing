@@ -17,7 +17,7 @@ import { getBatchDetailsOfTemplate, getCurrentActiveDiscount, getBasePrice } fro
 
 export default async function HumainChampsLanding() {
 
-	const template_id = 1; 
+	const template_id = 1;
 	
 	try {
 		var batchesData = await getBatchDetailsOfTemplate(template_id); 
@@ -67,7 +67,7 @@ export default async function HumainChampsLanding() {
 			)}
 			<ParentQuestionsSection />
 			<BottomCTA targetTime={new Date('2026-06-06T00:00:00').getTime()} basePrice={basePrice} />
-			<Band targetTime={new Date('2026-06-06T00:00:00').getTime()} />
+			{/* <Band targetTime={new Date('2026-06-06T00:00:00').getTime()} /> */}
 		</>
 	)
 }

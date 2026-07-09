@@ -1,90 +1,79 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { getCookie } from 'cookies-next';
-import { useRouter } from 'next/navigation';
-import { PopupFormModal } from 'ui/PopupFormModal';
-import LeadForm from 'components/forms/hcForm';
-
-function isRegistrationClosed() {
-  const webinarTime = new Date('2026-06-20T11:00:00+05:30');
-  return Date.now() >= webinarTime.getTime();
-}
+import Image from 'next/image';
 
 export default function FinalCTA() {
-  const router = useRouter();
-  const [showModal, setShowModal] = useState(false);
-  const [submitError, setSubmitError] = useState('');
-  const [registrationClosed, setRegistrationClosed] = useState(false);
-
-  useEffect(() => {
-    setRegistrationClosed(isRegistrationClosed());
-  }, []);
-
-  const handleEnrollClick = () => {
-      setShowModal(true);
-  };
-
-  const onSubmit = async (values: unknown) => {
-    const res = await fetch('/api/submit-lead', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    });
-
-    const data = await res.json();
-    console.log('DATA:', data);
-    if (!res.ok) {
-      setSubmitError('Something went wrong. Please try again.');
-      throw new Error(data.error || 'Something went wrong');
-    }
-
-    return data;
-  };
-
   return (
-    <>
-      <section className="bg-[#333333] py-[88px] px-5 md:px-16 text-center">
-        <div className="max-w-[1100px] mx-auto">
-          <span className="block text-center mb-4 font-sans text-[10px] font-medium tracking-[2.5px] uppercase text-[#AAC191]">
-            Ready to begin
-          </span>
-          <h2 className="font-display text-[clamp(1.8rem,3.5vw,2.8rem)] font-extrabold text-white tracking-[-0.8px] leading-[1.15] mb-2.5">
-            Stop studying harder.<br />
-            <em className="text-[#AAC191] not-italic">Start studying smarter.</em>
+    <section className="bg-[#E7A572] px-5 py-16 md:px-16 md:py-20">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 md:grid-cols-2">
+        <div className="flex justify-center md:justify-start">
+          <Image
+            src="/assets/webinar/footer/family.png"
+            alt="Happy family with AI"
+            width={500}
+            height={500}
+            className="w-full max-w-[420px] object-contain"
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <h2 className="font-display text-3xl font-extrabold leading-tight text-white md:text-4xl">
+            Two hours. Six tools.
+            <br />
+            One very proud family.
           </h2>
-          <p className="font-sans text-[0.9rem] text-white/55 mb-8 leading-[1.65]">
-            Give your child the guided AI techniques that thousands of Class 8–12 students across India are already using.<br />
-            Free. Live. One session.
+
+          <p className="mt-4 max-w-md text-base text-white/85">
+            Give your child the AI head-start for less than the cost of a pizza.
           </p>
-          
-          <button 
-            onClick={handleEnrollClick}
-            className="inline-flex items-center justify-center font-display font-extrabold bg-[#E7A572] text-white px-10 py-[18px] text-[1.05rem] rounded-md shadow-[0_4px_22px_rgba(231,165,114,0.35)] transition-all hover:bg-[#C97D49] hover:-translate-y-[1px] hover:shadow-[0_6px_28px_rgba(231,165,114,0.45)]"
-            disabled={registrationClosed}
+
+          <button
+            type="button"
+            onClick={() => {
+              const section = document.getElementById('batch-picker');
+              section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+            className="mt-6 self-start rounded-full bg-white px-8 py-4 font-display font-extrabold text-[#333333]"
           >
-            {registrationClosed ? 'Registrations Closed' : "Book Your Child's Free Slot"}
+            RESERVE MY SEAT - <s className="text-[#888888]">₹499</s>{' '}
+            <span className="text-[#C97D49]">₹199</span>
           </button>
-          
-          <div className="mt-3.5 font-sans text-[0.72rem] text-white/30 tracking-[0.5px]">
-            100% Free &middot; No Form &middot; No Credit Card &middot; No Personal Data Shared with AI Tools
+
+          <p className="mt-3 text-sm font-semibold text-white/80">
+            Includes ₹3000+ in bonuses
+          </p>
+
+          <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:gap-8">
+            <div className="flex items-center gap-2">
+              <Image
+                src="/assets/webinar/footer/batch_icon.png"
+                alt="Batch"
+                width={24}
+                height={24}
+                className="h-6 w-6 object-contain"
+              />
+              <div>
+                <div className="text-sm font-bold text-white">Batch 1</div>
+                <div className="text-sm text-white/80">12 July, 11 AM–1 PM</div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Image
+                src="/assets/webinar/footer/batch_icon.png"
+                alt="Batch"
+                width={24}
+                height={24}
+                className="h-6 w-6 object-contain"
+              />
+              <div>
+                <div className="text-sm font-bold text-white">Batch 2</div>
+                <div className="text-sm text-white/80">14-15 July, 6 PM–7 PM</div>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
-      <PopupFormModal isOpen={showModal} onClose={() => setShowModal(false)}>
-        <LeadForm
-          actionable="Webinar"
-          heading="Book Your Child's Free Seat"
-          buttonText="Book Now"
-          source="Webinar Landing"
-          destination="/submission-received"
-          onSubmit={onSubmit}
-          submitError={submitError}
-          setSubmitError={setSubmitError}
-        />
-      </PopupFormModal>
-    </>
+      </div>
+    </section>
   );
 }
