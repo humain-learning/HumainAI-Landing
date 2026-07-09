@@ -75,7 +75,7 @@ export default function Credential() {
             </div>
 
             <a
-              href="https://pages.razorpay.com/humainchamps"
+              href="https://pages.razorpay.com/pl_TAwskAWMh3GdXE/view"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-terracotta text-white rounded-full font-semibold px-6 py-3.5 shadow-md hover:shadow-lg transition duration-200 hover:scale-[1.02] active:scale-[0.98] mt-8 flex items-center gap-2 select-none cursor-pointer"
