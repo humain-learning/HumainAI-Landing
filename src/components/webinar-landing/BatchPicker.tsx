@@ -12,8 +12,8 @@ export default function BatchPicker() {
 	
 	const onClick = (batch: any) => {
 		setShowModal(true);
-		setCookie('custom_utm_campaign', batch.campaign, { path: '/', maxAge: 60 * 60 * 24 * 30 });
-		console.log('after', document.cookie);
+		// setCookie('custom_utm_campaign', batch.campaign, { path: '/', maxAge: 60 * 60 * 24 * 30 });
+		// console.log('after', document.cookie);
 	}
 	const onSubmit = async (values: unknown) => {
 		const res = await fetch('/api/submit-lead', {

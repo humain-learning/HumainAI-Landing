@@ -10,7 +10,7 @@ export type WebinarBatch = {
   buttonLabel: ReactNode;
   buttonTextColor: string;
   buttonHref: string;
-  campaign: string;
+//   campaign: string;
 };
 
 export const webinarBatches: WebinarBatch[] = [
@@ -29,24 +29,7 @@ export const webinarBatches: WebinarBatch[] = [
     buttonLabel: <span>Register <span className="line-through">₹499</span> Free!</span>,
     buttonTextColor: 'text-white',
     buttonHref: 'https://learn.humainlearning.ai/event/1063?autojoin=1',
-	campaign: 'Masterclass12-7'
-  },
-  {
-    id: 2,
-    accent: '#E7A572',
-    label: ['OPTION 2', 'WEEKDAY'],
-    // title: 'One Power Session',
-    date: 'Wed, 15 July',
-    time: '6:00 PM – 8:00 PM',
-    bullets: [
-      'Create and Learn with AI in one immersive sitting',
-      'Perfect for an after school session',
-      'Parents can join for the full experience',
-    ],
-    buttonLabel: <span>Register <span className="line-through">₹499</span> Free!</span>,
-    buttonTextColor: 'text-white',
-    buttonHref: 'https://learn.humainlearning.ai/event/1063?autojoin=1',
-	campaign: 'Masterclass12-7'
+	// campaign: 'Masterclass12-7'
   },
 ];
 
