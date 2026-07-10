@@ -46,7 +46,7 @@ export const webinarBatches: WebinarBatch[] = [
     buttonLabel: <span>Register <span className="line-through">₹499</span> Free!</span>,
     buttonTextColor: 'text-white',
     buttonHref: 'https://learn.humainlearning.ai/event/1063?autojoin=1',
-	campaign: 'Masterclass12-7'
+	campaign: 'Masterclass15-7'
   },
 ];
 
