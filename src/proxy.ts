@@ -11,7 +11,7 @@ export function proxy(request: NextRequest) {
 
 	let country : string
 
-	country = request.headers.get('x-vercel-ip-country') || 'ae'
+	country = request.headers.get('x-vercel-ip-country') || 'in'
 
 	country = country.toLowerCase()
 
