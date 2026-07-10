@@ -43,7 +43,7 @@ export default function Founder() {
 
             {/* Bottom outline stats image */}
             <img
-              src="/assets/ae_humain_champs/founderimage.png"
+              src="/assets/ae_humain_champs/fondersection.png"
               alt="Manit Jain Stats"
               className="mt-10 w-full max-w-[480px] h-auto object-contain"
             />

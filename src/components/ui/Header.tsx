@@ -7,26 +7,26 @@ import { usePathname, useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 // import { addDoc, collection, getFirestore } from 'firebase/firestore';
 // import { app } from '@/app/lib/firebase'; // adjust path as needed
-import { getCookie } from 'cookies-next';
 
-const ct = getCookie('country');
+
+
 const ROUTES = [
 
   {
 	name: 'About',
-	href: `/${ct}#about`,
+	href: `#about`,
   },
   {
 	name: 'Technologies',
-	href: `/${ct}#ai-starter-pack`,
+	href: `#ai-starter-pack`,
   },
   {
 	name: 'Discover',
-	href: `/${ct}#why-humain`,
+	href: `#why-humain`,
   },
   {
 	name: 'FAQs',
-	href: `/${ct}#faqs`,
+	href: `#faqs`,
   },
 ];
 

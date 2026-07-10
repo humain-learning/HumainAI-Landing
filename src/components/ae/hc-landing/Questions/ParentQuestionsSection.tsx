@@ -29,7 +29,7 @@ const faqs = [
   {
     id: 6,
     question: 'Which AI tools will my child learn?',
-    answer: "Students work with 10+ tools across the camp including ChatGPT, Gemini, NoteBook LM, Canva AI, Heygen, N8N and more. The exact toolkit is updated each cohort to reflect the latest available tools.",
+    answer: "Students work with 15+ tools across the camp including ChatGPT, Gemini, NoteBook LM, Canva AI, Heygen, N8N and more. The exact toolkit is updated each cohort to reflect the latest available tools.",
   },
   {
     id: 7,

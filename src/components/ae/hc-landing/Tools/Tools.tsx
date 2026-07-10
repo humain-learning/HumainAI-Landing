@@ -27,7 +27,7 @@ export const Tools = () => {
 				<hr className="w-1/2 md:w-1/4 lg:w-1/8 border-t-3 border-white mx-6 mt-2" />
 
                 <h1 className="text-3xl md:text-5xl font-semibold py-6 text-center">
-                    <span className="text-white">10+ AI Tools Your Child Will Master</span>
+                    <span className="text-white">15+ AI Tools Your Child Will Master</span>
 					<br />
 					
                 </h1>

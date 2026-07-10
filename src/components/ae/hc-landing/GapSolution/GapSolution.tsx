@@ -134,7 +134,7 @@ export default function GapSolution() {
             <div className="space-y-2.5">
               <div className="h-[3px] w-12 rounded-full bg-sage" />
               <span className="block font-display text-xs font-extrabold tracking-widest text-[#5e714e]">
-                THE HUMAN SOLUTION
+                THE HUMAIN SOLUTION
               </span>
             </div>
 
@@ -167,7 +167,7 @@ export default function GapSolution() {
                 <CheckCircleIcon />
                 <div className="flex flex-col">
                   <span className="font-display text-base font-bold text-charcoal">
-                    10+ real tools mastered{' '}
+                    15+ real tools mastered{' '}
                     <span className="font-sans text-sm font-normal text-charcoal/60">
                       ChatGPT, Gemini, NoteBook LM, Canva AI, Heygen, N8N and more.
                     </span>
@@ -195,7 +195,7 @@ export default function GapSolution() {
                   <span className="font-display text-base font-bold text-charcoal">
                     E- Cell IIT Kharagpur certificate{' '}
                     <span className="font-sans text-sm font-normal text-charcoal/60">
-                      LinkedIn-shareable, from one of India's premier engineering institutes.
+                       from one of India's premier engineering institutes.
                     </span>
                   </span>
                 </div>

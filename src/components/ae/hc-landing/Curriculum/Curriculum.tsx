@@ -85,7 +85,7 @@ export default function Curriculum() {
             THE CURRICULUM
           </span>
           <h2 className="font-display text-3xl font-extrabold leading-tight text-charcoal sm:text-4xl md:text-5xl max-w-4xl">
-            6 modules. 9 live sessions. 1 working AI project.
+            6 modules. 8 live sessions. 1 working AI project.
           </h2>
           <p className="font-sans text-sm md:text-base text-charcoal/80 max-w-2xl">
             Every module builds toward a single capstone: your child's personalised AI

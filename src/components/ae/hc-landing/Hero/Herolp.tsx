@@ -128,7 +128,7 @@ export default function Herolp({basePrice}: HeroProps) {
 
 				{/* Subheading Description */}
 				<p className="font-sans text-base md:text-lg leading-relaxed text-charcoal/80 max-w-2xl">
-				Humain Champs is a live, instructor-led AI learning course for students in the UAE, culminating in a hackathon project certified by E-Cell IIT Kharagpur. Real AI tools like ChatGPT & Gemini, and a Harvard-pedigree 
+				Humain Champs is a live, instructor-led AI learning course for students in the UAE, culminating in a hackathon project certified by E-Cell IIT Kharagpur. Learn 15+ AI tools, and a Harvard-pedigree 
 				founder. No coding needed.
 				</p>
 
@@ -171,7 +171,7 @@ export default function Herolp({basePrice}: HeroProps) {
 				<div className="space-y-3 pt-2">
 				<div className="flex items-start gap-2.5 text-sm md:text-base text-charcoal/70">
 					<CheckIcon />
-					<span>Rated 4.5★ by 200+ parents · Small batches</span>
+					<span>Rated 5★ by 200+ parents · Small batches</span>
 				</div>
 				</div>
 

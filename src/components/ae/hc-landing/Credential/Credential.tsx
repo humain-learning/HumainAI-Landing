@@ -58,7 +58,7 @@ export default function Credential() {
               <div className="flex items-start gap-3.5">
                 <GreenCheckCircle />
                 <p className="font-sans text-sm md:text-[15px] leading-relaxed text-charcoal/80">
-                  <span className="font-bold text-charcoal">10+ real tools mastered</span> ChatGPT, Gemini, NoteBook LM, Canva AI, Heygen, N8N and more.
+                  <span className="font-bold text-charcoal">15+ real tools mastered</span> ChatGPT, Gemini, NoteBook LM, Canva AI, Heygen, N8N and more.
                 </p>
               </div>
 
@@ -111,7 +111,7 @@ export default function Credential() {
               {/* Solid elegant black photo frame housing the Certificate image */}
               <div className="relative border-[12px] border-[#1d1d1f] bg-[#1d1d1f] rounded-2xl shadow-2xl overflow-hidden hover:scale-[1.01] transition duration-300 w-full h-full flex items-center justify-center">
                 <img
-                  src="/assets/Website Assets/Certificate-new.png"
+                  src="/assets/ae_humain_champs/Certificate-new.png"
                   alt="E- Cell IIT Kharagpur AI Hackathon Certificate Mockup"
                   className="w-full h-full object-cover rounded-[2px]"
                 />

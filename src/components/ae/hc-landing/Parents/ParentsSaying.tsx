@@ -95,7 +95,7 @@ export default function ParentsSaying() {
           </h2>
           <div className="bg-[#fafaf9] border border-gray-150 px-4 py-2 rounded-2xl shadow-sm inline-block select-none mt-2 relative z-10">
             <p className="font-sans text-[13px] sm:text-[13.5px] font-semibold text-charcoal/90">
-              Rated <span className="text-terracotta font-extrabold">4.5/5</span> based on <span className="font-bold">200+</span> parent reviews.
+              Rated <span className="text-terracotta font-extrabold">5/5</span> based on <span className="font-bold">200+</span> parent reviews.
               Here's what families around the world experienced.
             </p>
           </div>
