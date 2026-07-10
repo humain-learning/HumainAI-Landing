@@ -1,5 +1,5 @@
 'use client';
-
+import { getCookie } from 'cookies-next';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import PhoneInput from 'react-phone-number-input';
@@ -7,6 +7,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { hcLeadSchema } from '@/lib/schemas/crmLead';
 import 'react-phone-number-input/style.css'
+import { CountryCode } from 'libphonenumber-js/mobile';
 
 
 type LeadFormValues = z.input<typeof hcLeadSchema>;
@@ -57,7 +58,9 @@ export default function LeadForm({
 		mode: 'all',
 		reValidateMode: 'onChange',
 	});
-
+	let ct = getCookie('country') || "in";
+	ct = typeof ct === 'string' ? ct : "in";
+	ct = ct.toUpperCase();
 	return (
 		<div className="relative mx-auto w-full  scrollbar-none">
 			<h1 className="text-2xl font-bold text-charcoal mb-4">{heading}</h1>
@@ -137,7 +140,7 @@ export default function LeadForm({
 							control={control}
 							render={({ field }) => (
 								<PhoneInput
-									defaultCountry="IN"
+									defaultCountry={ct as CountryCode}
 									international
 									countryCallingCodeEditable={true}
 									value={field.value || undefined}

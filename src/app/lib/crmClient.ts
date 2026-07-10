@@ -6,15 +6,22 @@ import { cookies } from 'next/headers';
 type TemplateId = number;
 
 export function getCRMCredentials() {
-	// const baseUrl = process.env.LOCAL_APP_URL;
-	// const key = process.env.LOCAL_CRM_KEY;
-	// const secret = process.env.LOCAL_CRM_SECRET;
-	const baseUrl = process.env.FRAPPE_BASE_URL;
-	const key = process.env.FRAPPE_API_KEY;
-	const secret = process.env.FRAPPE_API_SECRET;
+	let baseUrl: string | undefined;
+	let key: string | undefined;
+	let secret: string | undefined;
+	if (process.env.MODE === 'prod') {
+		baseUrl = process.env.FRAPPE_BASE_URL;
+		key = process.env.FRAPPE_API_KEY;
+		secret = process.env.FRAPPE_API_SECRET;
+	} else {
+		baseUrl = process.env.LOCAL_APP_URL;
+		key = process.env.LOCAL_CRM_KEY;
+		secret = process.env.LOCAL_CRM_SECRET;
+	}
+
 
 	if (!baseUrl || !key || !secret) {
-		throw new Error('Environment Variables Set to Dev Defaults');
+		throw new Error('Environment Variables Missing');
 	}
 
 	return {

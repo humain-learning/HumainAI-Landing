@@ -92,7 +92,7 @@ export default function LeadForm({
 						)}
 					</label>
 
-					<label className="grid gap-1.5 text-[12px] font-semibold text-charcoal">
+					{/* <label className="grid gap-1.5 text-[12px] font-semibold text-charcoal">
 						Last Name
 						<input
 							{...register('lastName')}
@@ -104,7 +104,7 @@ export default function LeadForm({
 						{errors.lastName?.message && (
 							<span className="text-[11px] text-red-600">{errors.lastName.message}</span>
 						)}
-					</label>
+					</label> */}
 				</div>
 
 				
