@@ -74,7 +74,7 @@ export async function getBatchDetailsOfTemplate(templateId: TemplateId) {
 		start_date: getTodayIstDateString(),
 	});
 
-	
+
 	const url = `${baseUrl}/api/method/humain_learning.humain_learning.api.web.batch_details_of_template?${params}`;
 
 	const response = await fetch(url, {
@@ -183,7 +183,7 @@ export async function submitLead(values: unknown, teacher: boolean) {
 
 	const result = await response.json();
 	const cookieStore = await cookies();
-	cookieStore.set('leadId', result.message.leadId, { path: '/' });
+	cookieStore.set('leadId', result.message.leadId, { path: '/' , maxAge: 60 * 60 * 24 * 30 });
 
 	return result.message;
 }

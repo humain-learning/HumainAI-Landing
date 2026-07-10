@@ -220,7 +220,7 @@ export const CheckOutV2 = ({templateDetails, availableBatches, billingDetails}: 
 				return
 			}
 			if (leadId != data.message.leadId) {
-				setCookie("leadId", data.message.leadId);
+				setCookie("leadId", data.message.leadId, {maxAge: 60 * 60 * 24 * 30, path: '/'});
 			}
 
 			const order = data.message.order;
@@ -246,7 +246,7 @@ export const CheckOutV2 = ({templateDetails, availableBatches, billingDetails}: 
 				},
 				
 				callback_url:
-					'https://humainlearning.ai/checkout/confirmation?' +
+					window.location.origin +
 					new URLSearchParams({
 						receipt: order.receipt,
 						batchName: selectedBatch?.name ?? '',

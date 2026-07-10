@@ -29,6 +29,7 @@ export function proxy(request: NextRequest) {
 		name: 'country',
 		value: country.toLowerCase(),
 		path: '/',
+		maxAge: 60 * 60 * 24 * 30, // 30 days
 	})
 	
 	// Loop through parameters and store any that exist in the URL
@@ -36,9 +37,10 @@ export function proxy(request: NextRequest) {
 		const value = searchParams.get(param)
 		if (value) {
 		response.cookies.set({
-			name: ('custom_'+param), 
-			value: value, 
-			path: '/', 
+				name: ('custom_'+param), 
+				value: value, 
+				path: '/',
+				maxAge: 60 * 60 * 24 * 30, // 30 days
 			})
 		}
 	})
