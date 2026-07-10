@@ -8,23 +8,25 @@ import toast from 'react-hot-toast';
 // import { addDoc, collection, getFirestore } from 'firebase/firestore';
 // import { app } from '@/app/lib/firebase'; // adjust path as needed
 
+
+
 const ROUTES = [
 
   {
 	name: 'About',
-	href: '/#about',
+	href: `#about`,
   },
   {
 	name: 'Technologies',
-	href: '/#ai-starter-pack',
+	href: `#ai-starter-pack`,
   },
   {
 	name: 'Discover',
-	href: '/#why-humain',
+	href: `#why-humain`,
   },
   {
 	name: 'FAQs',
-	href: '/#faqs',
+	href: `#faqs`,
   },
 ];
 
