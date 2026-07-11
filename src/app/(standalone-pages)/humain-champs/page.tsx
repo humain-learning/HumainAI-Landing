@@ -14,6 +14,7 @@ import ParentQuestionsSection from "@/components/hc-landing/Questions/ParentQues
 import BottomCTA from "@/components/hc-landing/BottomCTA/BottomCTA";
 import { Tools } from "@/components/hc-landing/Tools/Tools";
 import { getBatchDetailsOfTemplate, getCurrentActiveDiscount, getBasePrice } from "@/app/lib/crmClient";
+import { Batches } from 'components/hc-landing/ChooseBatch/data';
 
 export default async function HumainChampsLanding() {
 
@@ -27,7 +28,7 @@ export default async function HumainChampsLanding() {
 			message: []
 		}
 	}
-	const batches = batchesData.message
+	const batches = Batches
 
 	try {
 		var discountData = await getCurrentActiveDiscount(template_id);
