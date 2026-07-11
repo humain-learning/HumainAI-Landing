@@ -39,6 +39,7 @@ export default async function HumainChampsV2() {
 
 	// const batches = Array.isArray(batchesData?.message) ? batchesData.message : [];
 	const batches = Batches;
+	const discountMessage = discountData?.message;
 	return (
 		<>
 		<Hero />
@@ -50,7 +51,7 @@ export default async function HumainChampsV2() {
 		<StudentCreations/>
 		<Instructors/>
 		{batches.length > 0 && (
-			<ChooseBatch Batches={batches} discountData={discountData.message} />
+			<ChooseBatch Batches={batches} discountData={discountMessage} />
 		)}
 		<Founder />
 		<Parents />

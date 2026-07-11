@@ -81,7 +81,6 @@ export async function getBatchDetailsOfTemplate(templateId: TemplateId) {
 		headers: {
 			Authorization: authHeader,
 		},
-		cache: 'no-store',
 	});
 
 	const data = await response.json();
