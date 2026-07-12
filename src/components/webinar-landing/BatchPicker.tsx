@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { webinarBatches } from './data/batches';
+import { webinarBatches, isBatchRegistrationClosed } from './data/batches';
 import LeadForm from 'components/forms/hcForm';
 import { PopupFormModal } from 'ui/PopupFormModal';
 import { useState } from 'react';
@@ -75,10 +75,11 @@ export default function BatchPicker() {
 
 							<button
 								onClick={() => onClick(batch)}
-								className="mt-6 block w-full rounded-lg py-3 text-center font-semibold text-white"
+								className="mt-6 block w-full rounded-lg py-3 text-center font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60"
 								style={{ backgroundColor: batch.accent }}
+								disabled={isBatchRegistrationClosed(batch)}
 							>
-								{batch.buttonLabel}
+								{isBatchRegistrationClosed(batch) ? 'Registrations Closed' : batch.buttonLabel}
 							</button>
 						</div>
 					</div>

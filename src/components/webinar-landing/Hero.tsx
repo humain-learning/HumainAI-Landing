@@ -7,7 +7,7 @@ import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import { PopupFormModal } from 'ui/PopupFormModal';
 import LeadForm from 'components/forms/hcForm';
-import { getCountdown, getUrgencyText, isRegistrationClosed } from './data/batches';
+import { getCountdown, getUrgencyText } from './data/batches';
 
 const mapping: Record<string, React.ReactNode> = {
   aspiration: (
@@ -44,7 +44,6 @@ export default function Hero() {
 	const [title, setTitle] = useState<React.ReactNode>(mapping['aspiration']);
 	const [showModal, setShowModal] = useState(false);
 	const [submitError, setSubmitError] = useState('');
-	const [registrationClosed, setRegistrationClosed] = useState(false);
 	const [countdown, setCountdown] = useState(() => ({
 	  days: 0,
 	  hours: 0,
@@ -59,7 +58,6 @@ export default function Hero() {
 	const utm_term = searchParams.get('utm_term');
 	setTitle(mapping[utm_term as keyof typeof mapping] ?? mapping['aspiration']);
 
-	setRegistrationClosed(isRegistrationClosed());
 	setCountdown(getCountdown());
 	setUrgencyText(getUrgencyText());
 
@@ -125,11 +123,8 @@ export default function Hero() {
 			<button 
 			  onClick={handleEnrollClick}
 			  className="inline-flex items-center justify-center font-display font-extrabold bg-[#E7A572] text-white px-10 py-[18px] text-[1.05rem] rounded-md shadow-[0_4px_22px_rgba(231,165,114,0.35)] transition-all hover:bg-[#C97D49] hover:-translate-y-[1px] hover:shadow-[0_6px_28px_rgba(231,165,114,0.45)]"
-			disabled={registrationClosed}
 			>
-			  {registrationClosed
-				? 'Registrations Closed'
-				: <span className="inline-flex items-center gap-2"><span>RESERVE MY SEAT</span><span className="text-[0.9rem] font-medium line-through text-white/70">₹499</span><span className="text-[0.95rem] font-semibold">Free!</span></span>}
+			  <span className="inline-flex items-center gap-2"><span>RESERVE MY SEAT</span><span className="text-[0.9rem] font-medium line-through text-white/70">₹499</span><span className="text-[0.95rem] font-semibold">Free!</span></span>
 			</button>
 			{/* <div className="flex items-center gap-2 rounded-full bg-[#FDF3EB] px-3 py-2">
 			  <Image src="/assets/webinar/Whatsapp_icon.png" alt="WhatsApp" width={20} height={20} className="h-5 w-5" />

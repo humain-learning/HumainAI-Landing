@@ -11,6 +11,7 @@ export type WebinarBatch = {
   buttonTextColor: string;
   buttonHref: string;
   campaign: string;
+  closesAt?: Date;
 };
 
 export const webinarBatches: WebinarBatch[] = [
@@ -29,7 +30,8 @@ export const webinarBatches: WebinarBatch[] = [
     buttonLabel: <span>Register <span className="line-through">₹499</span> Free!</span>,
     buttonTextColor: 'text-white',
     buttonHref: 'https://learn.humainlearning.ai/event/1063?autojoin=1',
-	campaign: 'Masterclass12-7'
+	campaign: 'Masterclass12-7',
+	closesAt: new Date(Date.UTC(2026, 6, 12, 5, 30, 0)), // 11:00 AM IST, 12 July 2026
   },
   {
     id: 2,
@@ -46,7 +48,8 @@ export const webinarBatches: WebinarBatch[] = [
     buttonLabel: <span>Register <span className="line-through">₹499</span> Free!</span>,
     buttonTextColor: 'text-white',
     buttonHref: 'https://learn.humainlearning.ai/event/1063?autojoin=1',
-	campaign: 'Masterclass15-7'
+	campaign: 'Masterclass15-7',
+	closesAt: new Date(Date.UTC(2026, 6, 15, 12, 30, 0)), // 6:00 PM IST, 15 July 2026
   },
 ];
 
@@ -69,6 +72,10 @@ function getNextBatchStart(now = Date.now()) {
 export function isRegistrationClosed(now = Date.now()) {
   const cutoff = getNextBatchStart(now).getTime() - 2 * 60 * 60 * 1000;
   return now >= cutoff;
+}
+
+export function isBatchRegistrationClosed(batch: WebinarBatch, now = Date.now()) {
+  return batch.closesAt ? now >= batch.closesAt.getTime() : false;
 }
 
 export type Countdown = {

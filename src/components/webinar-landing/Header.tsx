@@ -7,13 +7,11 @@ import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import { PopupFormModal } from 'ui/PopupFormModal';
 import LeadForm from 'components/forms/hcForm';
-import { isRegistrationClosed } from './data/batches';
 
 export default function Header() {
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const [submitError, setSubmitError] = useState('');
-  const [registrationClosed] = useState(() => isRegistrationClosed(Date.now()));
 
   const handleEnrollClick = () => {
     const section = document.getElementById('batch-picker');
@@ -74,9 +72,9 @@ export default function Header() {
           <button
             onClick={handleEnrollClick}
             className="inline-flex items-center gap-2 font-display font-extrabold border-none cursor-pointer rounded-md transition-all duration-150 hover:-translate-y-[1px] bg-[#E7A572] text-white px-7 py-3.5 text-[0.9rem] shadow-[0_2px_14px_rgba(231,165,114,0.3)] hover:bg-[#C97D49] hover:shadow-[0_4px_20px_rgba(231,165,114,0.4)]"
-            disabled={registrationClosed}
           >
-        {registrationClosed ? 'Registrations Closed' : 'Reserve My Seat'}          </button>
+            Reserve My Seat
+          </button>
         </div>
       </nav>
       <PopupFormModal isOpen={showModal} onClose={() => setShowModal(false)}>
