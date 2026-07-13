@@ -15,6 +15,7 @@ import Script from 'next/script';
 type BatchList = {
 	id: number,
 	name: string,
+	start_date: string,
 	itinerary: ItineraryItem[]
 }
 type BillingDetails = {
@@ -250,7 +251,7 @@ export const CheckOutV2 = ({templateDetails, availableBatches, billingDetails}: 
 					new URLSearchParams({
 						receipt: order.receipt,
 						batchName: selectedBatch?.name ?? '',
-						startDate: selectedBatch?.itinerary[1].date ?? '',
+						startDate: selectedBatch?.start_date?? '',
 						courseName: templateDetails.courseName ?? '',
 					}).toString(),				
 

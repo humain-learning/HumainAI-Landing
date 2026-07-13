@@ -196,6 +196,7 @@ export async function getBillingDetails(leadId: string) {
 		headers: {
 			Authorization: authHeader,
 		},
+		cache: 'no-store',
 	})
 
 	const data = await response.json();

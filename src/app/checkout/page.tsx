@@ -26,7 +26,7 @@ export default async function CheckOutPage({
 		batchesData = { message: [] }
 	}
 	const batches = batchesData.message;
-
+	console.log("Batches:", batches)
 	let courseData;
 
 	try {
