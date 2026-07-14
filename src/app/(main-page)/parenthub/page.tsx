@@ -105,7 +105,7 @@ export default function ParentHub() {
       <BoardExamsPH />
       <AICoursesForDaughtersPH />
       <TestimonialsPH />
-      <DownloadsPH />
+      {/* <DownloadsPH /> */}
       <FAQPH />
       <FinalBannerPH />
     </>

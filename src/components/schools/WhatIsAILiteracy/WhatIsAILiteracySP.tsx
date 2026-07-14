@@ -28,9 +28,6 @@ export default function WhatIsAILiteracySP() {
             future-ready AI skills across the school.
           </motion.p>
 
-          <SPButton href="/book-a-demo" variant="terracotta">
-            Start Your School&apos;s AI Literacy Journey
-          </SPButton>
         </div>
 
         <motion.div

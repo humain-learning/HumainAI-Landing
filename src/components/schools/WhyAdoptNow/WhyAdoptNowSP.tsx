@@ -60,7 +60,7 @@ export default function WhyAdoptNowSP() {
               ))}
             </div>
 
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
@@ -69,7 +69,7 @@ export default function WhyAdoptNowSP() {
             >
               <ArrowLink href="/schools/nep-2020-aligned-ai-curriculum">See the NEP 2020 aligned AI curriculum</ArrowLink>
               <ArrowLink href="/schools/ncf-2023-ai-curriculum">See the NCF 2023 AI curriculum</ArrowLink>
-            </motion.div>
+            </motion.div> */}
           </div>
 
           <motion.div

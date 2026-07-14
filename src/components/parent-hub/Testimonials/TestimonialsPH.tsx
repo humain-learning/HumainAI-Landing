@@ -57,22 +57,6 @@ export default function TestimonialsPH() {
               Lifted verbatim. Each parent is real and has agreed to be named.
             </motion.p>
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            <Link
-              href="/parents/humain-learning-ai-reviews"
-              className="inline-flex items-center text-[#aac191] font-semibold hover:text-terracotta transition-colors group text-sm whitespace-nowrap"
-            >
-              Read all reviews
-              <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </Link>
-          </motion.div>
         </div>
 
         {/* Masonry grid */}

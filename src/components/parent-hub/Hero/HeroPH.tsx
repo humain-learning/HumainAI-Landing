@@ -60,9 +60,8 @@ export default function HeroPH() {
                   Get the free Parents Guide (12 pages)
                 </motion.button>
               </Link> */}
-              <Link href="/humain-champs" className="w-full sm:w-auto inline-block">
                 <PrimaryButton text="Enroll in Humain champs" target="/humain-champs"/>
-              </Link>
+              
             </div>
           
           </div>

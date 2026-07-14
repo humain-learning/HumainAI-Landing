@@ -71,12 +71,12 @@ export default function SchoolsPage() {
       <WhatIsAILiteracySP />
       <WhyAdoptNowSP />
       <LearnerOutcomesSP />
-      <CurriculumMappingSP />
+      {/* <CurriculumMappingSP /> */}
       <DPDPComplianceSP />
       <EngagementModelSP />
       <TeacherCertificationSP />
-      <PricingModelSP />
-      <FAQSchoolsSP />
+      {/* <PricingModelSP /> */}
+      {/* <FAQSchoolsSP /> */}
       <FinalBannerSP />
     </>
   );

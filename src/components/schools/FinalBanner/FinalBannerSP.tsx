@@ -18,7 +18,7 @@ export default function FinalBannerSP() {
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.55, type: 'spring', stiffness: 100 }}
           whileHover={{ scale: 1.01 }}
-          className="rounded-[2rem] bg-sage p-10 text-center text-white shadow-xl shadow-sage/25 md:p-14"
+          className="rounded-[2rem] bg-sage p-10 text-center text-white shadow-xl shadow-sage/25 md:p-14 w-full"
         >
           <h2 className="font-display mb-4 text-3xl font-black leading-tight tracking-tight md:text-4xl">
             Prepare Your School for the AI Era

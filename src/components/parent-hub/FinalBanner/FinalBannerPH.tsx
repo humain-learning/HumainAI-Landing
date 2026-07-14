@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import Link from 'next/link';
-
+import SecondaryButton from 'ui/SecondaryButton';
 export default function FinalBannerPH() {
   return (
     <section className="relative w-full bg-[#aac191] py-12 md:py-16 border-t border-[#e6e6e6] overflow-hidden">
@@ -30,22 +30,9 @@ export default function FinalBannerPH() {
           transition={{ delay: 0.1 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
         >
-          <Link 
-            href="https://pages.razorpay.com/humainchamps"
-            target="_blank"
-            className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full bg-terracotta text-white font-sans font-bold text-lg shadow-lg shadow-terracotta/30 hover:bg-[#d6925c] hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
-          >
-            Enroll in Humain Champs
-          </Link>
+          <SecondaryButton text="Enroll in Humain champs" target="/humain-champs" />
           
-          <Link 
-            href="/resources/parents-guide"
-            className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full bg-transparent border-2 border-white/30 text-white font-sans font-bold text-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300"
-          >
-            Download the free Parents Guide to AI
-          </Link>
         </motion.div>
-        
       </div>
     </section>
   );

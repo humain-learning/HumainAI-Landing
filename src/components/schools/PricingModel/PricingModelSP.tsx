@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { MotionHeading, SPButton } from '../shared/SchoolsMotion';
 import { sp } from '../shared/schoolsTheme';
+import PrimaryButton from 'ui/PrimaryButton';
 
 const bands = [
   { size: 'Small school' },
@@ -15,7 +16,7 @@ const bands = [
 export default function PricingModelSP() {
   return (
     <section id="pricing" className={`relative w-full py-16 md:py-24 ${sp.section} ${sp.sectionAlt}`}>
-      <div className="mx-auto w-full max-w-4xl px-6 md:px-12 lg:px-16">
+      <div className="mx-auto w-full justify-center max-w-4xl px-6 md:px-12 lg:px-16">
         <MotionHeading className="font-display mb-4 text-center text-3xl font-extrabold leading-[1.15] tracking-tight text-charcoal md:text-4xl lg:text-[42px]">
           Institutional pricing and how to begin
         </MotionHeading>
@@ -27,7 +28,7 @@ export default function PricingModelSP() {
           transition={{ delay: 0.1 }}
           className="mb-10 text-center font-sans text-lg leading-relaxed text-charcoal/80"
         >
-          Pricing is tailored to your school&apos;s size, curriculum, and implementation requirements.
+          Pricing is tailored to your school's size, curriculum, and implementation requirements.
         </motion.p>
 
         <motion.div
@@ -68,11 +69,9 @@ export default function PricingModelSP() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ delay: 0.3 }}
-          className="text-center"
+          className="text-center w-fit justify-center flex"
         >
-          <SPButton href="/schools/pricing-and-demo" variant="sage">
-            See schools pricing and request a demo
-          </SPButton>
+          <PrimaryButton text="Request a demo" target="#request-demo" />
         </motion.div>
       </div>
     </section>

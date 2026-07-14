@@ -50,39 +50,10 @@ export default function FiveQuestionsPH() {
                 </motion.div>
               ))}
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-            >
-              <Link
-                href="/resources/parents-guide"
-                className="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-[#aac191] text-white font-sans font-semibold text-xl shadow-lg shadow-[#aac191]/30 hover:bg-[#96b17c] hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
-              >
-                Get the free Parents Guide to AI (12 pages)
-              </Link>
-            </motion.div>
           </div>
 
           {/* Right: explanation */}
           <div className="space-y-4">
-            
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="rounded-2xl bg-terracotta/10 border border-terracotta/20 p-5"
-            >
-              <div className="font-display text-[20px] font-extrabold tracking-wider text-terracotta uppercase mb-2">In the free Parents Guide</div>
-              <p className="font-sans text-lg text-charcoal/80 leading-relaxed">
-                The full version of these five questions, with conversation prompts for each, is in the free 12-page Parents Guide to AI. No email gate. PDF downloads on submit.
-              </p>
-            </motion.div>
-
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
