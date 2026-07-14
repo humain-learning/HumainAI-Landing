@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import Link from 'next/link';
-
+import PrimaryButton from 'ui/PrimaryButton';
 const CheckIcon = () => (
   <svg className="h-4 w-4 text-sage shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -51,7 +51,7 @@ export default function HeroPH() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-start gap-3 pt-1">
-              <Link href="/resources/parents-guide" className="w-full sm:w-auto inline-block">
+              {/* <Link href="/resources/parents-guide" className="w-full sm:w-auto inline-block">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -59,15 +59,9 @@ export default function HeroPH() {
                 >
                   Get the free Parents Guide (12 pages)
                 </motion.button>
-              </Link>
-              <Link href="https://pages.razorpay.com/humainchamps" target="_blank" className="w-full sm:w-auto inline-block">
-                <motion.button
-                  whileHover={{ scale: 1.02, backgroundColor: '#f3f6f1' }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full sm:w-auto flex cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-sage bg-white py-3.5 px-6 font-display text-sm font-bold text-[#aac191] transition-all duration-300 hover:border-[#9ab081]"
-                >
-                  Enroll in Humain Champs
-                </motion.button>
+              </Link> */}
+              <Link href="/humain-champs" className="w-full sm:w-auto inline-block">
+                <PrimaryButton text="Enroll in Humain champs" target="/humain-champs"/>
               </Link>
             </div>
           

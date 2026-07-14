@@ -94,22 +94,6 @@ export default function WillAIReplaceJobPH() {
               depending on it. That is what the Humain framework calls future readiness, built into every age band.
             </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              <Link
-                href="/parents/ai-future-readiness"
-                className="inline-flex items-center text-sage font-semibold hover:text-terracotta transition-colors group text-sm"
-              >
-                Read more on AI future readiness
-                <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
-            </motion.div>
           </div>
 
         </div>

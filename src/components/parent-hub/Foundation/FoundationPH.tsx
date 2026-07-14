@@ -129,9 +129,7 @@ export default function FoundationPH() {
 
             {/* Stat card */}
             <motion.a
-              href="https://humainlearning.ai/framework"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/framework"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

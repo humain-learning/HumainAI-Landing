@@ -76,7 +76,7 @@ export default function FrameworkPH() {
             className="font-sans text-base md:text-lg text-charcoal/70"
           >
             Each pillar in one sentence and what it means for your child at home. Full 32-page framework at{' '}
-            <Link href="https://humainlearning.ai/framework" target="_blank" className="text-[#aac191] font-semibold hover:text-terracotta underline">
+            <Link href="/framework" className="text-[#aac191] font-semibold hover:text-terracotta underline">
               humainlearning.ai/framework
             </Link>.
           </motion.p>

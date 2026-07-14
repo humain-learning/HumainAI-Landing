@@ -48,24 +48,7 @@ export default function ShouldChildLearnAIPH() {
               question it, and what a machine cannot do for her. A child who starts early carries an advantage a
               child who waits does not.
             </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              <Link
-                href="/parents/should-my-child-learn-ai"
-                className="inline-flex items-center text-[#aac191] font-semibold hover:text-terracotta transition-colors group text-sm"
-              >
-                Read the full answer
-                <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
-            </motion.div>
-          </div>
+         </div>
 
           {/* Right: visual reasons why */}
           <div className="space-y-15">
