@@ -151,8 +151,7 @@ export default function TakeHome() {
 
       <div className="mt-6 flex justify-center">
         <a
-          href="https://learn.humainlearning.ai/event/1082"
-		  target="_blank"
+          href="#reserve-now"
           className="rounded-full bg-[#E7A572] px-8 py-3.5 font-display font-extrabold text-white transition-colors hover:bg-[#C97D49]"
         >
           Claim My Seat + All Bonuses

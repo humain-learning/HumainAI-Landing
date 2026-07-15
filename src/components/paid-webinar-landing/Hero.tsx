@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import { PopupFormModal } from 'ui/PopupFormModal';
@@ -39,39 +38,34 @@ const mapping: Record<string, React.ReactNode> = {
 };
 
 export default function Hero() {
-	const router = useRouter();
-	const [urgencyText, setUrgencyText] = useState('');
-	const [title, setTitle] = useState<React.ReactNode>(mapping['aspiration']);
-	const [showModal, setShowModal] = useState(false);
-	const [submitError, setSubmitError] = useState('');
-	const [registrationClosed, setRegistrationClosed] = useState(false);
-	const [countdown, setCountdown] = useState(() => ({
-	days: 0,
-	hours: 0,
-	minutes: 0,
-	seconds: 0,
-	isLive: false,
-	}));
+	const sectionRef = useRef<HTMLElement>(null);
+	const hasMounted = useRef(false);
+	const [isJumping, setIsJumping] = useState(false);
 
 	useEffect(() => {
-		// Safe to access window here — client only
-		const searchParams = new URLSearchParams(window.location.search);
-		const utm_term = searchParams.get('utm_term');
-		setTitle(mapping[utm_term as keyof typeof mapping] ?? mapping['aspiration']);
+		const node = sectionRef.current;
+		if (!node) return;
 
-		setRegistrationClosed(isRegistrationClosed());
-		setCountdown(getCountdown());
-		setUrgencyText(getUrgencyText());
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				if (!hasMounted.current) {
+					hasMounted.current = true;
+					return;
+				}
+				if (entry.isIntersecting) {
+					setIsJumping(true);
+					window.setTimeout(() => setIsJumping(false), 700);
+				}
+			},
+			{ threshold: 0.6 }
+		);
 
-		const timer = window.setInterval(() => {
-		setCountdown(getCountdown());
-		}, 1000);
-
-		return () => window.clearInterval(timer);
+		observer.observe(node);
+		return () => observer.disconnect();
 	}, []);
 
 	return (
-		<section className="relative overflow-hidden bg-white pt-[150px] pb-16 px-5 md:px-16 flex items-center min-h-[80vh]">
+		<section id="reserve-now" ref={sectionRef} className="relative overflow-hidden bg-white pt-[150px] pb-16 px-5 md:px-16 flex items-center min-h-[80vh] scroll-mt-[111px]">
 			{/* Geometric accent rings */}
 			<div className="absolute rounded-full border border-[#E7A572]/15 pointer-events-none w-[560px] h-[560px] -top-[200px] -right-[160px]"></div>
 			<div className="absolute rounded-full border border-[#E7A572]/15 pointer-events-none w-[320px] h-[320px] top-[40px] right-[70px]"></div>
@@ -116,7 +110,10 @@ export default function Hero() {
 					</div>
 					
 					<div className="flex flex-wrap items-center gap-[18px]">
-						<a href="https://learn.humainlearning.ai/event/1063?autojoin=1" target="_blank" rel="noopener noreferrer" className="items-center justify-center font-bold bg-[#E7A572] text-white px-10 py-[18px] text-[1.05rem] rounded-md shadow-[0_4px_22px_rgba(231,165,114,0.35)] transition-all hover:bg-[#C97D49] hover:-translate-y-[1px] hover:shadow-[0_6px_28px_rgba(231,165,114,0.45)]">
+						<a
+							href="#reserve-now"
+							className={`items-center justify-center font-bold bg-[#E7A572] text-white px-10 py-[18px] text-[1.05rem] rounded-md shadow-[0_4px_22px_rgba(231,165,114,0.35)] transition-all hover:bg-[#C97D49] hover:-translate-y-[1px] hover:shadow-[0_6px_28px_rgba(231,165,114,0.45)]${isJumping ? ' animate-cta-pulse' : ''}`}
+						>
 							<span>Reserve My Seat <span className="line-through text-grey"> ₹499 </span>₹199</span>
 						</a>
 					</div>
@@ -125,12 +122,7 @@ export default function Hero() {
 				{/* Right column */}
 				<div className="relative z-10 flex flex-col items-center justify-center lg:self-end">
 					<div className="relative mx-auto w-full max-w-[600px]">
-						<motion.div
-						initial={{ opacity: 0, scale: 0.95 }}
-						animate={{ opacity: 1, scale: 1 }}
-						transition={{ duration: 0.8, ease: 'easeOut' }}
-						className="relative w-full overflow-hidden "
-						>
+						<div className="relative w-full overflow-hidden">
 						<Image
 							src="/assets/webinar/hero_family.png"
 							alt="Family using AI together"
@@ -139,16 +131,11 @@ export default function Hero() {
 							className="aspect-square w-full object-cover"
 							priority
 						/>
-						</motion.div>
+						</div>
 
-						<motion.div
-						initial={{ scale: 0, rotate: -15 }}
-						animate={{ scale: 1, rotate: 0 }}
-						transition={{ delay: 0.4, type: 'spring', stiffness: 120, damping: 15 }}
-						className="absolute bottom-[2%] left-[-2%] z-20 flex h-[130px] w-[26%] min-w-[110px] max-w-[130px] items-center justify-center rounded-tl-full rounded-tr-full rounded-br-full rounded-bl-none bg-[#AAC191] shadow-[0_8px_24px_rgba(0,0,0,0.12)]"
-						>
+						<div className="absolute bottom-[2%] left-[-2%] z-20 flex h-[130px] w-[26%] min-w-[110px] max-w-[130px] items-center justify-center rounded-tl-full rounded-tr-full rounded-br-full rounded-bl-none bg-[#AAC191] shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
 						<Image src="/assets/webinar/photo_icon.png" alt="Photo" width={96} height={96} className="h-20 w-20 object-cover" />
-						</motion.div>
+						</div>
 					</div>
 				</div>
 			</div>

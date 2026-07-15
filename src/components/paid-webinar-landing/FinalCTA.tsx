@@ -28,8 +28,7 @@ export default function FinalCTA() {
           </p>
 
           <a
-            href="https://learn.humainlearning.ai/event/1082"
-			target="_blank"
+            href="#reserve-now"
             className="mt-6 self-start rounded-full bg-white px-8 py-4 font-display font-extrabold text-[#333333]"
           >
             RESERVE MY SEAT - <s className="text-[#888888]">₹499</s>{' '}

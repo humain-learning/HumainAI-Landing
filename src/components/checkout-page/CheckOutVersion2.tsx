@@ -59,7 +59,7 @@ export const CheckOutV2 = ({templateDetails, availableBatches, billingDetails}: 
 		mode: 'onChange',
 		reValidateMode: 'onChange',
 	})
-
+	console.log("Billing Details", billingDetails)
 	const seatCount = useWatch({
 		control: form.control,
 		name: 'seatCount',

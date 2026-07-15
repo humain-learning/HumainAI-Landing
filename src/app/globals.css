@@ -38,6 +38,15 @@
     transform: translateY(calc(-100% - var(--gap)));
     }
   }
+  --animate-cta-pulse: cta-pulse 0.7s ease-in-out;
+  @keyframes cta-pulse {
+  0%, 100% {
+    transform: scale(1);
+    }
+  50% {
+    transform: scale(1.05);
+    }
+  }
 }
 
 body {

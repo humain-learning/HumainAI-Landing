@@ -18,9 +18,17 @@ const ROUTES: NavRoute[] = [
 		name: 'Home',
 		href: '/',
 	},
+	// {
+	// 	name: 'Framework',
+	// 	href: '/framework',
+	// },
 	{
-		name: 'Framework',
-		href: '/framework',
+		name: 'Student Course',
+		href: '/courses/students/humain-champs'
+	},
+	{
+		name: 'Educator Course',
+		href: '/courses/students/humain-educators'
 	},
 	{
 		name: 'For Schools',

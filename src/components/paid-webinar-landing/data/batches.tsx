@@ -47,10 +47,10 @@ function getNextBatchStart(now = Date.now()) {
   return upcomingBatch ?? batchStarts[batchStarts.length - 1];
 }
 
-export function isRegistrationClosed(now = Date.now()) {
-  const cutoff = getNextBatchStart(now).getTime() - 2 * 60 * 60 * 1000;
-  return now >= cutoff;
-}
+// export function isRegistrationClosed(now = Date.now()) {
+//   const cutoff = getNextBatchStart(now).getTime() - 2 * 60 * 60 * 1000;
+//   return now >= cutoff;
+// }
 
 export type Countdown = {
   days: number;

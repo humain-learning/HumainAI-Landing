@@ -40,38 +40,38 @@ const mapping: Record<string, React.ReactNode> = {
 
 export default function Hero() {
 	const router = useRouter();
-	const [urgencyText, setUrgencyText] = useState('');
-	const [title, setTitle] = useState<React.ReactNode>(mapping['aspiration']);
-	const [showModal, setShowModal] = useState(false);
-	const [submitError, setSubmitError] = useState('');
-	const [countdown, setCountdown] = useState(() => ({
-	  days: 0,
-	  hours: 0,
-	  minutes: 0,
-	  seconds: 0,
-	  isLive: false,
-	}));
+	// const [urgencyText, setUrgencyText] = useState('');
+	// const [title, setTitle] = useState<React.ReactNode>(mapping['aspiration']);
+	// const [showModal, setShowModal] = useState(false);
+	// const [submitError, setSubmitError] = useState('');
+	// const [countdown, setCountdown] = useState(() => ({
+	//   days: 0,
+	//   hours: 0,
+	//   minutes: 0,
+	//   seconds: 0,
+	//   isLive: false,
+	// }));
 
-  useEffect(() => {
-	// Safe to access window here — client only
-	const searchParams = new URLSearchParams(window.location.search);
-	const utm_term = searchParams.get('utm_term');
-	setTitle(mapping[utm_term as keyof typeof mapping] ?? mapping['aspiration']);
+	// useEffect(() => {
+	// 	// Safe to access window here — client only
+	// 	const searchParams = new URLSearchParams(window.location.search);
+	// 	const utm_term = searchParams.get('utm_term');
+	// 	setTitle(mapping[utm_term as keyof typeof mapping] ?? mapping['aspiration']);
 
-	setCountdown(getCountdown());
-	setUrgencyText(getUrgencyText());
+	// 	setCountdown(getCountdown());
+	// 	setUrgencyText(getUrgencyText());
 
-	const timer = window.setInterval(() => {
-	  setCountdown(getCountdown());
-	}, 1000);
+	// 	const timer = window.setInterval(() => {
+	// 	setCountdown(getCountdown());
+	// 	}, 1000);
 
-	return () => window.clearInterval(timer);
-  }, []);
+	// 	return () => window.clearInterval(timer);
+	// }, []);
 
-  const handleEnrollClick = () => {
-	const section = document.getElementById('batch-picker');
-	section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+	const handleEnrollClick = () => {
+		const section = document.getElementById('batch-picker');
+		section?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	};
 
   return (
 	<>

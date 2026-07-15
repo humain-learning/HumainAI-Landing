@@ -51,7 +51,7 @@ export default function HeroSP() {
 				transition={{ duration: 0.55, delay: 0.2 }}
 				className="flex flex-col items-center justify-center gap-1 sm:flex-row lg:justify-start"
 			>
-			<PrimaryButton text="Request a demo" target="/schools/request-demo" />
+			<PrimaryButton text="Request a demo" target="https://calendar.app.google/7kysSyWQNC3eUcLVA" newTab />
 			</motion.div>
 			</div>
 

@@ -26,7 +26,7 @@ export default function FinalBannerSP() {
           <p className="mx-auto mb-8 max-w-2xl font-sans text-lg text-white/85">
             Equip students and teachers with the skills needed for an AI-driven future.
           </p>
-          <SPButton href="/book-a-demo" variant="terracotta" size="lg">
+          <SPButton href="https://calendar.app.google/7kysSyWQNC3eUcLVA" target='_blank' variant="terracotta" size="lg">
             Book a School Demo
           </SPButton>
         </motion.div>

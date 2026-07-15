@@ -73,18 +73,20 @@ export function SPButton({
   variant = 'sage',
   className = '',
   size = 'md',
+  target = "_blank"
 }: {
   href: string;
   children: React.ReactNode;
   variant?: ButtonVariant;
   className?: string;
   size?: 'sm' | 'md' | 'lg';
+  target?: "_blank"
 }) {
   const sizeClass =
     size === 'lg' ? 'px-8 py-4 text-lg' : size === 'sm' ? 'px-6 py-3 text-sm' : 'px-8 py-4 text-base';
 
   return (
-    <Link href={href} className={className}>
+    <Link href={href} className={className} target={target}>
       <motion.span
         whileHover={{ y: -2, scale: 1.02 }}
         whileTap={{ scale: 0.98 }}

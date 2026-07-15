@@ -88,7 +88,7 @@ export default function Herolp({basePrice}: HeroProps) {
 	};
 
 	return (
-		<section className="relative w-full overflow-hidden bg-white pt-12 md:pt-20 lg:pt-24">
+		<section className="relative w-full overflow-hidden bg-white pt-10">
 		{/* Background soft glow elements */}
 		{/* <div className="absolute top-0 right-0 -z-10 h-[500px] w-[500px] rounded-full bg-sage/5 blur-[120px]" /> */}
 		{/* <div className="absolute bottom-0 left-0 -z-10 h-[600px] w-[600px] rounded-full bg-terracotta/5 blur-[150px]" /> */}
