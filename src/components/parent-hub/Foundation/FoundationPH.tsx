@@ -128,14 +128,14 @@ export default function FoundationPH() {
             })}
 
             {/* Stat card */}
-            <motion.a
-              href="/framework"
+            <motion.div
+
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              whileHover={{ scale: 1.02, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)" }}
-              className="col-span-2 rounded-2xl bg-[#aac191] px-5 py-4 flex items-center justify-between cursor-pointer hover:shadow-lg transition-all duration-300"
+            //   whileHover={{ scale: 1.02, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)" }}
+              className="col-span-2 rounded-2xl bg-[#aac191] px-5 py-4 flex items-center justify-between"
             >
               <div>
                 <div className="font-display text-2xl font-extrabold text-white">6 Pillars</div>
@@ -145,7 +145,7 @@ export default function FoundationPH() {
                 <div className="font-display text-lg font-extrabold text-[#d9e3d0]">Class 8–12</div>
                 <div className="font-sans text-sm text-white/60 mt-0.5">India-first, NEP 2020 aligned</div>
               </div>
-            </motion.a>
+            </motion.div>
           </div>
         </div>
 

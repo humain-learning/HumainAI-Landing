@@ -6,11 +6,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const questions = [
-  { q: 'Does my child know that AI is a probability machine, not a brain?', pillar: 'Pillar 1' },
-  { q: 'Does my child verify what AI tells them before they trust it?', pillar: 'Pillar 1–2' },
-  { q: 'Does my child know what to never share with an AI tool?', pillar: 'Pillar 2' },
-  { q: 'Does my child use AI to think harder, not less?', pillar: 'Pillar 3' },
-  { q: 'Does my child know which capacities AI cannot do for them?', pillar: 'Pillar 6' },
+  { q: 'Does my child know that AI is a probability machine, not a brain?', pillar: '' },
+  { q: 'Does my child verify what AI tells them before they trust it?', pillar: '' },
+  { q: 'Does my child know what to never share with an AI tool?', pillar: '' },
+  { q: 'Does my child use AI to think harder, not less?', pillar: '' },
+  { q: 'Does my child know which capacities AI cannot do for them?', pillar: '' },
 ];
 
 export default function FiveQuestionsPH() {
