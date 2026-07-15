@@ -6,7 +6,7 @@ import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import { PopupFormModal } from 'ui/PopupFormModal';
 import LeadForm from 'components/forms/hcForm';
-import { getCountdown, getUrgencyText, isRegistrationClosed } from './data/batches';
+import { getCountdown, getUrgencyText } from './data/batches';
 
 const mapping: Record<string, React.ReactNode> = {
   aspiration: (
@@ -41,7 +41,6 @@ export default function Hero() {
 	const sectionRef = useRef<HTMLElement>(null);
 	const hasMounted = useRef(false);
 	const [isJumping, setIsJumping] = useState(false);
-
 	useEffect(() => {
 		const node = sectionRef.current;
 		if (!node) return;
@@ -111,7 +110,8 @@ export default function Hero() {
 					
 					<div className="flex flex-wrap items-center gap-[18px]">
 						<a
-							href="#reserve-now"
+							href="https://learn.humainlearning.ai/event/1082"
+							target="_blank"
 							className={`items-center justify-center font-bold bg-[#E7A572] text-white px-10 py-[18px] text-[1.05rem] rounded-md shadow-[0_4px_22px_rgba(231,165,114,0.35)] transition-all hover:bg-[#C97D49] hover:-translate-y-[1px] hover:shadow-[0_6px_28px_rgba(231,165,114,0.45)]${isJumping ? ' animate-cta-pulse' : ''}`}
 						>
 							<span>Reserve My Seat <span className="line-through text-grey"> ₹499 </span>₹199</span>

@@ -5,14 +5,14 @@ import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import { PopupFormModal } from 'ui/PopupFormModal';
 import LeadForm from 'components/forms/hcForm';
-import { isRegistrationClosed } from './data/batches';
+import { isRegistrationClosed } from '@/utils/helpers';
 
 export default function CTABand() {
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const [submitError, setSubmitError] = useState('');
-  const [registrationClosed] = useState(() => isRegistrationClosed());
-
+  const [registrationClosed] = useState(() => isRegistrationClosed(new Date("2026-07-18T12:30:00Z"))); // Set the registration close date here
+	console.log('Registration Closed:', registrationClosed);
   const handleEnrollClick = () => {
       setShowModal(true);
   };

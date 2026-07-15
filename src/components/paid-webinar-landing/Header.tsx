@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { isRegistrationClosed } from '@/utils/helpers';
 
 export default function Header() {
-	const registrationClosed = isRegistrationClosed(new Date('2026-07-14T11:20:00Z'));
+	const registrationClosed = isRegistrationClosed(new Date('2026-07-18T12:30:00Z'));
 	return (
 		<>
 	{/* Orange announcement strip */}
