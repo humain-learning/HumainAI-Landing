@@ -58,6 +58,7 @@ export const secondSessionStart = new Date(Date.UTC(2026, 6, 14, 12, 30, 0)); //
 export const thirdSessionStart = new Date(Date.UTC(2026, 6, 15, 12, 30, 0)); // 15 July 6:00 PM IST
 export const lastSessionEnd = new Date(Date.UTC(2026, 6, 15, 12, 30, 0)); // 15 July 6:00 PM IST
 
+
 const batchStarts = [
   firstSessionStart,
   secondSessionStart,

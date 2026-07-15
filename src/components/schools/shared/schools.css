@@ -1,0 +1,85 @@
+@keyframes sp-float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-14px) scale(1.02);
+  }
+}
+
+@keyframes sp-pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  70% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+@keyframes sp-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.schools-blob {
+  animation: sp-float 9s ease-in-out infinite;
+}
+
+.schools-blob-delayed {
+  animation: sp-float 11s ease-in-out infinite;
+  animation-delay: -3s;
+}
+
+.schools-pulse-ring {
+  position: relative;
+}
+
+.schools-pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  border: 2px solid #aac191;
+  animation: sp-pulse-ring 2.5s ease-out infinite;
+}
+
+.schools-shimmer {
+  background: linear-gradient(
+    90deg,
+    #e6e6e6 0%,
+    #ffffff 40%,
+    #e6e6e6 80%
+  );
+  background-size: 200% 100%;
+  animation: sp-shimmer 3s ease-in-out infinite;
+}
+
+.schools-nav-link {
+  position: relative;
+}
+
+.schools-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #aac191;
+  transition: width 0.25s ease;
+}
+
+.schools-nav-link:hover::after {
+  width: 100%;
+}

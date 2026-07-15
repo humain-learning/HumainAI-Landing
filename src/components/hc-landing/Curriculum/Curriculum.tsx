@@ -4,10 +4,12 @@ import React, { useRef, useState } from 'react';
 import { VideoCard } from '@/components/ui/VideoCard';
 import { usePxCalculator } from '@/hooks/usePxCalculator';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Mousewheel } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import "swiper/swiper.css";
 import { SwipeProgress } from "@/components/ui/SwipeProgress";
 import { modulesData } from './data';
+
 
 // Dynamically construct MODULES_DATA by merging the official aiRoadmapVideos database with local structural content
 const SLIDE_WIDTH_CLASS = "w-[80vw] md:w-[30vw]";
@@ -49,7 +51,7 @@ const renderModuleSlides = () => (
 				{mod.tools.map((tool) => (
 				<span
 					key={tool}
-					className="px-3 py-1 text-[10px] font-display font-extrabold tracking-wider bg-[#f8f9fa] border border-sage/30 text-[#5e714e] rounded-full"
+					className="px-3 py-1 text-[10px] font-display font-extrabold tracking-wider bg-[#f8f9fa] border border-sage/30 text-sage rounded-full"
 				>
 					{tool}
 				</span>
@@ -81,7 +83,7 @@ export default function Curriculum() {
         {/* Centered Title Area */}
         <div className="flex flex-col items-center space-y-3.5 mb-16 text-center">
           <div className="h-[3px] w-12 bg-sage rounded-full" />
-          <span className="font-display text-xs font-extrabold tracking-widest text-[#5e714e]">
+          <span className="font-display text-xs font-extrabold tracking-widest text-sage">
             THE CURRICULUM
           </span>
           <h2 className="font-display text-3xl font-extrabold leading-tight text-charcoal sm:text-4xl md:text-5xl max-w-4xl">
@@ -96,11 +98,15 @@ export default function Curriculum() {
         {/* Carousel Snapping Viewport */}
         <div className="w-full">
 			<Swiper
+				modules={[Mousewheel]}
 				spaceBetween={20}
 				slidesPerView='auto'
 				loop={false}
-				slidesOffsetBefore={pxCount} 
+				slidesOffsetBefore={pxCount}
 				slidesOffsetAfter={pxCount}
+				touchEventsTarget='container'
+				simulateTouch={true}
+				mousewheel={{ forceToAxis: true, releaseOnEdges: true }}
 				onSwiper={(swiper: SwiperType) => setActiveIndex(swiper.activeIndex)}
 				onSlideChange={(swiper: SwiperType) => setActiveIndex(swiper.activeIndex)}
 			>

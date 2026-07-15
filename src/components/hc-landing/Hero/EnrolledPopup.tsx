@@ -18,7 +18,7 @@ type Batch = {
 
 const MOCK_ENROLLMENTS: Enrollment[] = [
   { name: 'Ajay G.', batch: 'enrolled in the Evening Batch', city: '- Ahmedabad', initial: 'A', color: 'bg-[#7c2d12]' },
-  { name: 'Aryan M.', batch: 'enrolled in the Morning Batch', city: '- Mumbai', initial: 'A', color: 'bg-[#5e714e]' },
+  { name: 'Aryan M.', batch: 'enrolled in the Morning Batch', city: '- Mumbai', initial: 'A', color: 'bg-sage' },
   { name: 'Riya S.', batch: 'enrolled in the Evening Batch', city: '- Bengaluru', initial: 'R', color: 'bg-[#b45309]' },
   { name: 'Kabir K.', batch: 'enrolled in the Afternoon Batch', city: '- New Delhi', initial: 'K', color: 'bg-[#1e3a8a]' },
   { name: 'Diya N.', batch: 'enrolled in the Evening Batch', city: '- Pune', initial: 'D', color: 'bg-[#6b21a8]' },
@@ -81,7 +81,7 @@ export function EnrolledPopup() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.95 }}
           transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-          className="fixed bottom-[110px] left-4 md:bottom-24 md:left-6 z-[10010] flex items-center gap-3.5 rounded-2xl border border-[#ece4df] bg-white p-3.5 pr-8 shadow-xl shadow-charcoal/10 border-l-[4px] border-l-[#5e714e] max-w-[280px] md:max-w-[320px] pointer-events-auto"
+          className="fixed bottom-[110px] left-4 md:bottom-24 md:left-6 z-[10010] flex items-center gap-3.5 rounded-2xl border border-[#ece4df] bg-white p-3.5 pr-8 shadow-xl shadow-charcoal/10 border-l-[4px] border-l-sage max-w-[280px] md:max-w-[320px] pointer-events-auto"
         >
           {/* Close Button */}
           <button

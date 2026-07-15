@@ -86,7 +86,7 @@ export default function ParentsSaying() {
         <div className="flex flex-col items-center space-y-3.5 mb-16 text-center relative w-full">
           <div className="h-[3px] w-12 bg-sage rounded-full" />
           <div className="inline-block rounded-full border border-sage/60 px-3.5 py-1 text-center bg-white shadow-sm select-none">
-            <span className="font-display text-[10.5px] font-extrabold tracking-wider text-[#5e714e] uppercase">
+            <span className="font-display text-[10.5px] font-extrabold tracking-wider text-sage uppercase">
               PARENT REVIEWS
             </span>
           </div>
