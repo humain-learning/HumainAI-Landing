@@ -20,13 +20,13 @@ export const WhoWeAre = () => {
                     </h1>
 
                     <div className="items-center flex">
-                        <Link href="/#about" passHref>
+                        {/* <Link href="/#about" passHref>
                             <PrimaryButton
                                 text="Know More"
                                 target="_self"
                                 buttonClassName=""
                             />
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
                 <hr className="w-1/2 md:w-1/4 lg:w-1/8 border-t-4 border-terracotta mx-auto md:mx-6 pb-10" />
@@ -53,9 +53,6 @@ export const WhoWeAre = () => {
                     </div>
                 ))}
             </div>
-            
-            
-
         </div>
     );
 };

@@ -52,7 +52,7 @@ export default async function HumainChampsLanding() {
 
 
 	return (
-		<>
+		<div>
 			{/* <Headerlp basePrice={basePrice}/> */}
 			<Herolp basePrice={basePrice}/>
 			<GapSolution />
@@ -69,6 +69,6 @@ export default async function HumainChampsLanding() {
 			<ParentQuestionsSection />
 			<BottomCTA targetTime={new Date('2026-06-06T00:00:00').getTime()} basePrice={basePrice} />
 			{/* <Band targetTime={new Date('2026-06-06T00:00:00').getTime()} /> */}
-		</>
+		</div>
 	)
 }

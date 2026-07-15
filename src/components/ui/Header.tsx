@@ -28,7 +28,7 @@ const ROUTES: NavRoute[] = [
 	},
 	{
 		name: 'Educator Course',
-		href: '/courses/students/humain-educators'
+		href: '/courses/educators/humain-educators'
 	},
 	{
 		name: 'For Schools',

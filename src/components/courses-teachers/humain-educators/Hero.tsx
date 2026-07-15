@@ -100,10 +100,10 @@ export const Hero = ({ discountData }: HeroProps) => {
 			</div>
 			{/* Larger screens version */}
 			<div className="hidden md:flex flex-col md:flex-row items-center justify-center w-full">
-				<img 
+				{/* <img 
 					src='/assets/Website Assets/Bubble.svg' 
-					className="absolute bottom-0 right-0 z-1 h-auto w-[43vw] object-contain" 
-				/>
+					className="absolute bottom-0 right-0 z-0 h-auto w-[43vw] object-contain" 
+				/> */}
 				<div className="relative w-full md:w-[90vw] flex flex-col md:flex-row items-center justify-center mx-auto">
 					<div className="flex flex-col w-full md:w-[45vw] px-6 z-10">
 						<div className="flex flex-col items-center md:items-start gap-6">
