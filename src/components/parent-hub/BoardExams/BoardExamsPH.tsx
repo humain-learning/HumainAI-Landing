@@ -32,9 +32,9 @@ export default function BoardExamsPH() {
             >
               <div className="font-display text-[10px] font-extrabold tracking-wider text-[#aac191] uppercase mb-2">Direct Answer</div>
               <p className="font-sans text-base md:text-lg text-charcoal/80 font-medium leading-relaxed">
-                Used well, AI makes board prep harder, not easier. The right use of AI for a Class 10 or Class 12
-                board student is to generate tougher practice, mark her answers against the rubric, and find the
-                gaps. Not to write the answers.
+                Used well, AI doesn't make board prep easier. It makes it more effective. 
+                The right use of AI for a Class 10 or Class 12 board student is to generate tougher practice questions, mark their answers against the rubric,
+                 and expose the gaps, not to write the answers for them.
               </p>
             </motion.aside>
 

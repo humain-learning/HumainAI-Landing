@@ -19,8 +19,8 @@ const steps = [
   },
   {
     step: 'Step 3',
-    title: 'Teacher Training',
-    desc: 'Train teachers and coordinators before launching the programme for students.',
+    title: 'Implementation',
+    desc: 'Launch the programme in classrooms with ongoing support from the Humain team.',
   },
 ];
 

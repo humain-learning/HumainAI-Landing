@@ -28,13 +28,13 @@ export default function FrameworkPH() {
     {
       label: 'PILLAR 04',
       title: 'Creating with AI',
-      content: 'Make images, videos, voices, and projects with Midjourney, Canva AI, and ElevenLabs. Human-first: she writes the brief, makes the creative decisions. AI-second: it is the tool, not the author.',
+      content: 'Make images, videos, voices, and projects with ELAI.IO, HEYGEN, NOTEBOOKLM. Human-first: they write the brief, make the creative decisions. AI-second: it is the tool, not the author.',
       color: '#e7a572',
     },
     {
       label: 'PILLAR 05',
       title: 'Agents & Automation',
-      content: 'From Class 8 onwards, build AI agents. By the end of Humain Champs she has a personal AI agent that drills her on her syllabus, summarises chapters, and sends a study briefing every morning. She keeps it forever.',
+      content: 'From Class 8 onwards, build AI agents. By the end of Humain Champs they have a personal AI agent that drills them on their syllabus, summarises chapters, and sends a study briefing every morning. They keep it forever.',
       color: '#aac191',
     },
     {
@@ -150,19 +150,7 @@ export default function FrameworkPH() {
                   {pillar.content}
                 </p>
                 
-                {/* Click hint */}
-                <motion.div 
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ 
-                    opacity: selectedPillar === index ? 1 : 0, 
-                    height: selectedPillar === index ? 'auto' : 0 
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="mt-3 pt-3 border-t transition-all overflow-hidden"
-                  style={{ borderColor: `${pillar.color}30` }}
-                >
-                  <p className="font-sans text-sm text-charcoal/60 font-semibold" style={{ color: pillar.color }}>✓ Selected</p>
-                </motion.div>
+                {/* Removed click hint */}
               </div>
             </motion.div>
           ))}

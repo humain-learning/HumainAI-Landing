@@ -9,8 +9,8 @@ const faqs = [
     a: 'The OECD AI Literacy Framework suggests starting at age 8. We start at Class 8, which is the foundational age for structured AI literacy. Below Class 8, the conversation on AI belongs at home, and our free Parents Guide is built to support that. From Class 8 onwards, students can reliably distinguish prediction from fact, train their own classifiers, and build projects that meet CBSE or ICSE practical-exam standards.',
   },
   {
-    q: 'What if my child uses AI to do her homework?',
-    a: 'She will. The question is whether she does it consciously, with your knowledge, and within rules you have agreed. We do not recommend banning AI for homework. We recommend agreeing rules and reviewing them weekly. The section on this page (What to allow, what to push back on) gives a starting list. Print it. Put it on the fridge.',
+    q: 'What if my children uses AI to do their homework?',
+    a: 'They will. The question is whether they do it consciously, with your knowledge, and within rules you have agreed. We do not recommend banning AI for homework. We recommend agreeing rules and reviewing them weekly. The section on this page (What to allow, what to push back on) gives a starting list. Print it. Put it on the fridge.',
   },
   {
     q: 'Should I let my child use AI tools like ChatGPT?',
@@ -18,11 +18,11 @@ const faqs = [
   },
   {
     q: 'How do I talk to my child about AI?',
-    a: 'Start by asking. Not telling. Ask her what AI she uses, where she uses it, and what she trusts it for. The first conversation is listening. The second conversation is the five questions from the parent checklist section of this page. The third conversation is agreeing rules together',
+    a: 'Start by asking. Not telling. Ask them what AI they use, where they use it, and what they trust it for. The first conversation is listening. The second conversation is the five questions from the parent checklist section of this page. The third conversation is agreeing rules together.',
   },
   {
     q: 'What if I do not understand AI myself?',
-    a: 'That is fine. You do not need to understand AI to teach your child to use it well. You need to be in the room while she learns and ask her good questions now and then. Humain teaches the framework, your child uses the tools. You do not need to be present for every session, but you should be kept in the loop with a quick weekly check-in.',
+    a: 'That is fine. You do not need to understand AI to teach your child to use it well. You need to be in the room while they learn and ask them good questions now and then. Humain teaches the framework, your child uses the tools. You do not need to be present for every session, but you should be kept in the loop with a quick weekly check-in. ',
   },
 ];
 
@@ -53,7 +53,7 @@ export default function FAQPH() {
                 transition={{ delay: 0.1 }}
                 className="font-display text-3xl md:text-4xl font-extrabold leading-[1.15] tracking-tight text-charcoal mb-4"
               >
-                AI for kids in India: 10 questions Indian parents ask, answered
+                AI for kids in India: 5 questions Indian parents ask, answered
               </motion.h2>
             </div>
           </div>

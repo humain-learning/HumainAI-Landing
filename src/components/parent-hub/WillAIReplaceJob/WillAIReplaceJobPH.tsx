@@ -61,7 +61,7 @@ export default function WillAIReplaceJobPH() {
               viewport={{ once: true }}
               className="font-display text-3xl md:text-4xl lg:text-[42px] font-extrabold leading-[1.15] tracking-tight text-charcoal mb-6"
             >
-              AI future readiness for your child: will AI replace her job, and how to prepare
+              AI future readiness for your child: will AI replace their job, and how to prepare
             </motion.h2>
 
             <motion.aside

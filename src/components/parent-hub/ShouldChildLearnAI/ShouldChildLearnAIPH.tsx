@@ -31,8 +31,7 @@ export default function ShouldChildLearnAIPH() {
             >
               <div className="font-display text-[10px] font-extrabold tracking-wider text-terracotta uppercase mb-2">Direct Answer</div>
               <p className="font-sans text-base md:text-lg text-charcoal/80 font-medium leading-relaxed">
-                Yes. Your child should learn AI, the way she learned to read. AI literacy is now a basic skill, not an optional one. The question is not whether, but how and when.
-              </p>
+                Yes. Your child should learn AI the way they learned to read. AI literacy is now a basic skill, not an optional one. It's no longer a question of whether to teach it, but how and when.              </p>
             </motion.aside>
 
             <motion.p
@@ -42,21 +41,19 @@ export default function ShouldChildLearnAIPH() {
               transition={{ delay: 0.2 }}
               className="font-sans text-base md:text-lg text-charcoal/70 leading-relaxed mb-5"
             >
-              The honest answer is yes, and it has little to do with whether your child wants to be an engineer. By the
-              time your child finishes Class 12, AI will sit inside almost every job, course, and exam she meets.
-              Learning AI is not about coding. It is about judgement: knowing when to trust an answer, when to
-              question it, and what a machine cannot do for her. A child who starts early carries an advantage a
-              child who waits does not.
+              The honest answer is yes, and it has little to do with whether your child wants to be an engineer. 
+              By the time your child finishes Class 12, AI will sit inside almost every job, course, and exam they encounter. Learning AI is not about coding.
+              It is about judgement: knowing when to trust an answer, when to question it, and what a machine cannot do for them. An early start builds an edge that's hard to catch up on later 
             </motion.p>
          </div>
 
           {/* Right: visual reasons why */}
           <div className="space-y-15">
             {[
-              { icon: 'graduation', title: 'Every career', text: 'By Class 12, AI sits inside almost every job, course, and exam she meets.' },
+              { icon: 'graduation', title: 'Every career', text: 'By class 12, AI sits inside almost every job, course, and exam they meet.' },
               { icon: 'balance', title: 'Judgement over tools', text: 'It is not about coding. It is knowing when to trust an answer, when to question it.' },
               { icon: 'clock', title: 'Start early', text: 'A child who starts early carries an advantage a child who waits does not.' },
-              { icon: 'checklist', title: 'Free first step', text: 'If still deciding, start with the free Parents Guide and decide for yourself.' },
+              // { icon: 'checklist', title: 'Free first step', text: 'If still deciding, start with the free Parents Guide and decide for yourself.' },
             ].map((item, i) => {
               const getIcon = (iconType: string) => {
                 switch(iconType) {

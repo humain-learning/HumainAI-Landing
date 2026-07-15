@@ -6,7 +6,7 @@ import { motion } from 'motion/react';
 const tableData = [
   {
     allow: 'Using NotebookLM to summarise a chapter, then comparing the summary to the textbook',
-    pushback: 'Using AI to write a board-exam essay and submitting it as her own',
+    pushback: 'Using AI to write a board-exam essay and submitting it as their own',
     allowHint: 'Verification teaches critical thinking',
     pushbackHint: 'Academic dishonesty violates trust',
   },
@@ -29,8 +29,8 @@ const tableData = [
     pushbackHint: 'No learning happens passively',
   },
   {
-    allow: 'Talking to AI about a homework concept she did not understand',
-    pushback: 'Asking AI to do her homework while she does something else',
+    allow: 'Talking to AI about a homework concept they did not understand',
+    pushback: 'Asking AI to do their homework while they do something else',
     allowHint: 'AI as tutor clarifies confusion',
     pushbackHint: 'Engagement required for learning',
   },
@@ -72,7 +72,7 @@ export default function RulesToAllowPH() {
             className="font-sans text-base md:text-lg text-charcoal/80 leading-relaxed"
           >
             A short, practical list of decisions you will have to make. Each comes from real conversations Humain
-            has had with Indian parents in Delhi NCR, Mumbai, Bengaluru, Pune, and Chennai. None is final.
+            has had with Indian parents in Delhi NCR, Mumbai, Bengaluru, Pune, and Chennai.
           </motion.p>
         </div>
 
