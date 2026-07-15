@@ -64,7 +64,7 @@ export default function LeadForm({
 	return (
 		<div className="relative mx-auto w-full  scrollbar-none">
 			<h1 className="text-2xl font-bold text-charcoal mb-4">{heading}</h1>
-			
+			<span>{subHeading}</span>
 			<form
 				className="mt-6 grid gap-4"
 				onSubmit={handleSubmit(async (values) => {

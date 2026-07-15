@@ -161,7 +161,7 @@ export default function TakeHome() {
           }}
           className="rounded-full bg-[#E7A572] px-8 py-3.5 font-display font-extrabold text-white transition-colors hover:bg-[#C97D49]"
         >
-          Claim My Seat + All Bonuses → ₹199
+          Claim My Seat + All Bonuses
         </button>
       </div>
     </section>

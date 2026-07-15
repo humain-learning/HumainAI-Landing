@@ -36,7 +36,7 @@ export default function FinalCTA() {
             className="mt-6 self-start rounded-full bg-white px-8 py-4 font-display font-extrabold text-[#333333]"
           >
             RESERVE MY SEAT - <s className="text-[#888888]">₹499</s>{' '}
-            <span className="text-[#C97D49]">₹199</span>
+            <span className="text-[#C97D49]">₹0</span>
           </button>
 
           <p className="mt-3 text-sm font-semibold text-white/80">

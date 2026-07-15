@@ -1,0 +1,126 @@
+export const Batches = [
+	{
+		name: 'Late July Batch',
+		start_date: '20th July',
+		limited_seats: true,
+		sold_out: false,
+		itinerary: [
+			{
+				date: '19th July',
+				day: 'Sun',
+				timing: '7PM-9PM',
+				session: 'Orientation',
+			},
+			{
+				date: '20th & 21st July',
+				day: 'Mon & Tue',
+				timing: '7PM-9PM',
+				session: 'Module 1',
+			},
+			{
+				date: '23rd & 24th July',
+				day: 'Thu & Fri',
+				timing: '7PM-9PM',
+				session: 'Module 2',
+			},
+			{
+				date: '27th & 28th July',
+				day: 'Mon & Tue',
+				timing: '7PM-9PM',
+				session: 'Module 3',
+			},
+			{
+				date: '30th & 31st July',
+				day: 'Thu & Fri',
+				timing: '7PM-9PM',
+				session: 'Module 4',
+			},
+			{
+				date: '3rd & 4th Aug',
+				day: 'Mon & Tue',
+				timing: '7PM-9PM',
+				session: 'Module 5',
+			},
+			{
+				date: '6th & 7th Aug',
+				day: 'Thu & Fri',
+				timing: '7PM-9PM',
+				session: 'Module 6',
+			},
+			{
+				date: 'TBD',
+				day: '',
+				timing: 'Agreed Upon By Learners',
+				session: 'Doubt Clearing',
+			},
+			{
+				date: 'TBD',
+				day: '',
+				timing: 'Agreed Upon By Learners',
+				session: 'Graduation',
+			},
+		],
+	},
+	{
+		name: 'Early August Batch',
+		start_date: '1st August',
+		limited_seats: false,
+		sold_out: false,
+		itinerary: [
+			{
+				date: '31st July',
+				day: 'Fri',
+				timing: '4PM-6PM',
+				session: 'Orientation',
+			},
+			{
+				date: '1st August',
+				day: 'Sat',
+				timing: '4PM-6PM',
+				session: 'Module 1',
+			},
+			{
+				date: '2nd August',
+				day: 'Sun',
+				timing: '4PM-6PM',
+				session: 'Module 2',
+			},
+			{
+				date: '8th August',
+				day: 'Sat',
+				timing: '4PM-6PM',
+				session: 'Module 3',
+			},
+			{
+				date: '9th August',
+				day: 'Sun',
+				timing: '4PM-6PM',
+				session: 'Module 4',
+			},
+			{
+				date: '15th August',
+				day: 'Sat',
+				timing: '4PM-6PM',
+				session: 'Module 5',
+			},
+			{
+				date: '16th August',
+				day: 'Sun',
+				timing: '4PM-6PM',
+				session: 'Module 6',
+			},
+			{
+				date: '22nd August',
+				day: 'Sat',
+				timing: 'Agreed Upon By Learners',
+				session: 'Doubt Clearing',
+			},
+			{
+				date: '29th August',
+				day: 'Sat',
+				timing: 'Agreed Upon By Learners',
+				session: 'Graduation',
+			},
+		],
+	},
+];

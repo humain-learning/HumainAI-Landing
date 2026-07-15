@@ -1,48 +1,55 @@
+import type { ReactNode } from 'react';
 export type WebinarBatch = {
   id: number;
   accent: string;
   label: [string, string];
-  title: string;
+  title?: string;
   date: string;
   time: string;
   bullets: string[];
-  buttonLabel: string;
+  buttonLabel: ReactNode;
   buttonTextColor: string;
   buttonHref: string;
+  campaign: string;
+  closesAt?: Date;
 };
 
 export const webinarBatches: WebinarBatch[] = [
   {
     id: 1,
     accent: '#AAC191',
-    label: ['OPTION 1', 'WEEKEND IMMERSIVE'],
-    title: 'One Power Session',
-    date: 'Sun 12 July',
+    label: ['OPTION 1', 'WEEKEND'],
+    // title: 'One Power Session',
+    date: 'Sun, 12 July',
     time: '11:00 AM – 1:00 PM',
     bullets: [
       'Create and Learn with AI in one immersive sitting',
       'Perfect for busy school weeks',
       'Parents can join for the full experience',
     ],
-    buttonLabel: 'Choose My Batch → ₹199',
+    buttonLabel: <span>Register <span className="line-through">₹499</span> Free!</span>,
     buttonTextColor: 'text-white',
     buttonHref: 'https://learn.humainlearning.ai/event/1063?autojoin=1',
+	campaign: 'Masterclass12-7',
+	closesAt: new Date(Date.UTC(2026, 6, 12, 5, 30, 0)), // 11:00 AM IST, 12 July 2026
   },
   {
     id: 2,
     accent: '#E7A572',
-    label: ['OPTION 2', 'WEEKDAY SPLIT'],
-    title: 'Two Evening Sessions',
-    date: 'Tue 14 July + Wed 15 July',
-    time: '6:00 PM – 7:00 PM (both days)',
+    label: ['OPTION 2', 'WEEKDAY'],
+    // title: 'One Power Session',
+    date: 'Wed, 15 July',
+    time: '6:00 PM – 8:00 PM',
     bullets: [
-      'Day 1: Create with AI — build your family tribute video',
-      'Day 2: Learn with AI — the smart study system',
-      'Easy 1-hour sittings after school',
+      'Create and Learn with AI in one immersive sitting',
+      'Perfect for an after school session',
+      'Parents can join for the full experience',
     ],
-    buttonLabel: 'Choose My Batch → ₹199',
+    buttonLabel: <span>Register <span className="line-through">₹499</span> Free!</span>,
     buttonTextColor: 'text-white',
-    buttonHref: 'https://learn.humainlearning.ai/event/1059?autojoin=1',
+    buttonHref: 'https://learn.humainlearning.ai/event/1063?autojoin=1',
+	campaign: 'Masterclass15-7',
+	closesAt: new Date(Date.UTC(2026, 6, 15, 12, 30, 0)), // 6:00 PM IST, 15 July 2026
   },
 ];
 
@@ -66,6 +73,10 @@ function getNextBatchStart(now = Date.now()) {
 export function isRegistrationClosed(now = Date.now()) {
   const cutoff = getNextBatchStart(now).getTime() - 2 * 60 * 60 * 1000;
   return now >= cutoff;
+}
+
+export function isBatchRegistrationClosed(batch: WebinarBatch, now = Date.now()) {
+  return batch.closesAt ? now >= batch.closesAt.getTime() : false;
 }
 
 export type Countdown = {

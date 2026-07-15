@@ -1,21 +1,18 @@
 import React from 'react';
-import Header from '@/components/webinar-landing/Header';
-import Hero from '@/components/webinar-landing/Hero';
-import GoldenRule from '@/components/webinar-landing/GoldenRule';
-import TrustBar from '@/components/webinar-landing/TrustBar';
-import Problem from '@/components/webinar-landing/Problem';
-import BatchPicker from '@/components/webinar-landing/BatchPicker';
-import Tools from '@/components/webinar-landing/Tools';
-import Agenda from '@/components/webinar-landing/Agenda';
-import Audience from '@/components/webinar-landing/Audience';
-import Parents from '@/components/webinar-landing/Parents';
-import CTABand from '@/components/webinar-landing/CTABand';
-import FAQ from '@/components/webinar-landing/FAQ';
-import FinalCTA from '@/components/webinar-landing/FinalCTA';
-import TakeHome from '@/components/webinar-landing/TakeHome';
-import Testimonials from '@/components/webinar-landing/Testimonials';
+import Header from '@/components/paid-webinar-landing/Header';
+import Hero from '@/components/paid-webinar-landing/Hero';
+import GoldenRule from '@/components/paid-webinar-landing/GoldenRule';
+import TrustBar from '@/components/paid-webinar-landing/TrustBar';
+import Problem from '@/components/paid-webinar-landing/Problem';
+import BatchPicker from '@/components/paid-webinar-landing/BatchPicker';
+import Agenda from '@/components/paid-webinar-landing/Agenda';
+import Audience from '@/components/paid-webinar-landing/Audience';
+import FAQ from '@/components/paid-webinar-landing/FAQ';
+import FinalCTA from '@/components/paid-webinar-landing/FinalCTA';
+import TakeHome from '@/components/paid-webinar-landing/TakeHome';
+import Testimonials from '@/components/paid-webinar-landing/Testimonials';
 import InstructorsCollage from '@/components/hc-landing/Instructors/InstructorsCollage';
-import { faqs } from '@/components/webinar-landing/data/faq';
+import { faqs } from '@/components/paid-webinar-landing/data/faq';
 
 
 export const metadata = {
@@ -127,7 +124,7 @@ export default function WebinarStandalonePage() {
       <TrustBar />
       <Problem />
       <Agenda />
-      <BatchPicker />
+      {/* <BatchPicker /> */}
       
       <GoldenRule />
       <TakeHome />

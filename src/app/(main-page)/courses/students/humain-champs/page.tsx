@@ -12,6 +12,7 @@ import { getBatchDetailsOfTemplate, getCurrentActiveDiscount } from "@/app/lib/c
 import { Parents } from "components/courses-students/humain-champs-v2/Parents/Parents";
 import { ContactUs } from "components/courses-students/humain-champs-v2/ContactUs/ContactUs";
 import { Founder } from "components/courses-students/humain-champs-v2/Founder/Founder";
+import { Batches } from 'components/hc-landing/ChooseBatch/data';
 
 // Force dynamic rendering: batches + discount data are fetched per-request from the
 // admin API. Static prerendering breaks `npm run build` in environments where the
@@ -36,7 +37,9 @@ export default async function HumainChampsV2() {
 		console.warn('humain-champs: admin API unavailable, rendering without batch picker', err);
 	}
 
-	const batches = Array.isArray(batchesData?.message) ? batchesData.message : [];
+	// const batches = Array.isArray(batchesData?.message) ? batchesData.message : [];
+	const batches = Batches;
+	const discountMessage = discountData?.message;
 	return (
 		<>
 		<Hero />
@@ -48,7 +51,7 @@ export default async function HumainChampsV2() {
 		<StudentCreations/>
 		<Instructors/>
 		{batches.length > 0 && (
-			<ChooseBatch Batches={batches} discountData={discountData.message} />
+			<ChooseBatch Batches={batches} discountData={discountMessage} />
 		)}
 		<Founder />
 		<Parents />

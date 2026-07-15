@@ -2,7 +2,7 @@ export const instructors = [
 	{
 		id: 1,
 		name: "Rashmi Bhaskaran",
-		image: "/assets/HCV2/images/Instructor 3.png",
+		image: "/assets/HCV2/images/Instructor 3.jpg",
 		description: "Rashmi is a multi-disciplinary educator and lifelong learner specializing in Makerspace pedagogy, design thinking, and digital literacy, driven by a deep curiosity about the mechanics of human cognition. She bridges the gap between engineering logic and classroom creativity to design future-ready environments where students evolve into critical thinkers and problem-solvers. With 20 years in the workforce and a background spanning electrical engineering, software coding, corporate supply chain, and a Post Graduate Diploma in Learning and Teaching, she has successfully established and facilitated state-of-the-art Makerspace labs and library programs across leading international schools in India. Now, her work centers on fostering digital fluency and AI literacy, leveraging her certifications in Generative AI to integrate emerging technologies into the curriculum. As a steadfast optimist, she is dedicated to evolving the educational landscape, drawing energy from the unique ways children think to create learning experiences that are as dynamic as the world they will inherit."
 	},
 	{

@@ -12,7 +12,7 @@ export const takeHomeItems = [
     icon: 'toolkit',
     title: 'The AI Study Toolkit',
     description: 'Step-by-step guide to the 6 tools — setup, prompts and safe-use checklists',
-    price: '₹499',
+    price: '₹599',
     image: '/assets/webinar/takehome/TheAIStudy.png',
   },
   {
@@ -20,7 +20,7 @@ export const takeHomeItems = [
     icon: 'document',
     title: '50 Topper Prompts',
     description: 'Copy-paste prompts toppers use for revision, notes, essays and exam prep',
-    price: '₹499',
+    price: '₹599',
     image: '/assets/webinar/takehome/50topper.png',
   },
   {
@@ -28,7 +28,7 @@ export const takeHomeItems = [
     icon: 'book',
     title: 'The AI Parenting Guide',
     description: "How to guide (not police) your child's AI use — rules, red flags and conversation starters",
-    price: '₹499',
+    price: '₹599',
     image: '/assets/webinar/takehome/theAIParentingGuide.png',
   },
   {
@@ -36,17 +36,17 @@ export const takeHomeItems = [
     icon: 'briefcase',
     title: 'Future Careers in AI',
     description: 'The careers report for Grades 8–12 — streams, skills and how to start early',
-    price: '₹499',
+    price: '₹599',
     image: '/assets/webinar/takehome/Futurecareer.png',
   },
-  {
-    id: 'replay-access',
-    icon: 'play',
-    title: 'Session recording — Forever access',
-    description: 'Rewatch every demo, plus all materials, forever',
-    price: '₹499',
-    image: '/assets/webinar/takehome/sessionrecording.png',
-  },
+  // {
+  //   id: 'replay-access',
+  //   icon: 'play',
+  //   title: 'Session recording — Forever access',
+  //   description: 'Rewatch every demo, plus all materials, forever',
+  //   price: '₹499',
+  //   image: '/assets/webinar/takehome/sessionrecording.png',
+  // },
   // {
   //   id: 'certificate-of-completion',
   //   icon: 'certificate',
@@ -58,6 +58,6 @@ export const takeHomeItems = [
 ];
 
 export const takeHomeTotals = {
-  totalValue: '₹3,194',
-  todayPrice: '₹199',
+  totalValue: '₹3,095',
+  todayPrice: '₹0',
 };

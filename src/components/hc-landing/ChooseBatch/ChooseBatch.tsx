@@ -1,6 +1,5 @@
 'use client';
-
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 
 type ItineraryItem = {
     date: string;
@@ -108,7 +107,7 @@ export const ChooseBatch = ({ Batches, discountData }: ChooseBatchProps) => {
                                             <tbody>
                                                 {batch.itinerary.map((item, i) => (
                                                     <tr key={i} className="border-b border-gray-200 md:border-none">
-														<td className="font-semibold py-1 md:py-2 text-left">{item.date}, {item.day}</td>
+														<td className="font-semibold py-1 md:py-2 text-left">{item.date}</td>
 														<td className="py-1 md:py-2">{item.timing}</td>
 														<td className="py-1 md:py-2 text-right">{item.session}</td>
 													</tr>

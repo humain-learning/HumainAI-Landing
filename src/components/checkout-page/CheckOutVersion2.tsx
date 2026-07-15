@@ -15,6 +15,7 @@ import Script from 'next/script';
 type BatchList = {
 	id: number,
 	name: string,
+	start_date: string,
 	itinerary: ItineraryItem[]
 }
 type BillingDetails = {
@@ -250,7 +251,7 @@ export const CheckOutV2 = ({templateDetails, availableBatches, billingDetails}: 
 					new URLSearchParams({
 						receipt: order.receipt,
 						batchName: selectedBatch?.name ?? '',
-						startDate: selectedBatch?.itinerary[1].date ?? '',
+						startDate: selectedBatch?.start_date?? '',
 						courseName: templateDetails.courseName ?? '',
 					}).toString(),				
 
@@ -462,7 +463,7 @@ export const CheckOutV2 = ({templateDetails, availableBatches, billingDetails}: 
 										
 										
 									</div>
-									{selectedBatch && (
+									{/* {selectedBatch && (
 											<div className="mt-4 rounded-xl border border-slate-200 p-4 mx-auto">
 												<h3 className="mb-3 font-semibold text-center">
 													Batch Schedule
@@ -491,7 +492,7 @@ export const CheckOutV2 = ({templateDetails, availableBatches, billingDetails}: 
 												</table>
 												</div>
 											</div>
-										)}
+										)} */}
 								</div>
 								<h1 className="mb-4 text-xl font-semibold text-slate-900">
 									Learner Details
