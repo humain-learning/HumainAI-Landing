@@ -28,7 +28,8 @@ export default async function HumainChampsLanding() {
 			message: []
 		}
 	}
-	const batches = Batches
+	const batches = batchesData.message
+	// const batches = Batches
 
 	try {
 		var discountData = await getCurrentActiveDiscount(template_id);
