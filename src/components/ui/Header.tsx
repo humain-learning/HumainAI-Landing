@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { MenuIcon, X } from 'lucide-react';
 import { cn } from '@/utils';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import toast from 'react-hot-toast';
 // import { addDoc, collection, getFirestore } from 'firebase/firestore';
 // import { app } from '@/app/lib/firebase'; // adjust path as needed
@@ -357,6 +357,7 @@ const NavbarSidebar = ({
 	const [showModal, setShowModal] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const router = useRouter();
+	const pathname = usePathname();
 	const handleSubmit = async (user: {
 		firstName: string;
 		lastName: string;
@@ -420,22 +421,30 @@ const NavbarSidebar = ({
 			</Link>
 
 			<div className="hidden items-center gap-2 md:flex">
-				{ROUTES.map((route, i) => (
-					<Link
-						key={route.name}
-						href={route.href}
-						className="group flex cursor-pointer items-center gap-1 px-3 py-2 text-base"
-					>
-					<span
-						className={cn(
-						'relative inline-block after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-0 after:-translate-x-1/2 after:transition-all after:duration-500 group-hover:after:w-full',
-						i % 2 === 0 ? 'after:bg-[#aac291]' : 'after:bg-[#e8a772]'
-						)}
-					>
-						{route.name}
-					</span>
-					</Link>
-				))}
+				{ROUTES.map((route, i) => {
+					const isActive =
+						route.href === '/'
+							? pathname === '/'
+							: pathname === route.href || pathname?.startsWith(`${route.href}/`);
+
+					return (
+						<Link
+							key={route.name}
+							href={route.href}
+							className="group flex cursor-pointer items-center gap-1 px-3 py-2 text-base"
+						>
+						<span
+							className={cn(
+							'relative inline-block after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-0 after:-translate-x-1/2 after:transition-all after:duration-500 group-hover:after:w-full active:after:w-full',
+							i % 2 === 0 ? 'after:bg-[#aac291]' : 'after:bg-[#e8a772]',
+							isActive && 'after:w-full'
+							)}
+						>
+							{route.name}
+						</span>
+						</Link>
+					);
+				})}
 			</div>
 
 			{/* Explore more */}
