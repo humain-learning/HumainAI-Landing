@@ -22,11 +22,11 @@ const ENTITY_FAQ = [
       <div>
         HumainChamps is for Indian students in Class 8-12 (age 13+). HumainEducators is for working school teachers.
         School-side institutional partnerships route through the{' '}
-        <Link className="text-secondary-color underline underline-offset-4" href="/for-schools">
+        <Link className="text-secondary-color underline underline-offset-4" href="/schools">
           for-schools page
         </Link>
         . Parents start at{' '}
-        <Link className="text-secondary-color underline underline-offset-4" href="/for-parents">
+        <Link className="text-secondary-color underline underline-offset-4" href="/parenthub">
           for-parents
         </Link>
         ; teachers and direct enrollers can also self-enrol from the HumainEducators course page.
