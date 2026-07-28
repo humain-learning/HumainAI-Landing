@@ -298,7 +298,7 @@ const NavbarSidebar = ({
 	return (
 		<div
 		className={cn(
-			'fixed inset-0 z-50 transform bg-white transition-transform duration-300 ease-in-out md:hidden',
+			'fixed inset-0 z-50 transform bg-white transition-transform duration-300 ease-in-out lg:hidden',
 			className,
 			isOpen ? 'translate-x-0' : 'translate-x-full'
 		)}
@@ -450,7 +450,7 @@ const NavbarSidebar = ({
 			{/* Explore more */}
 			<button
 				type="button"
-				className="hidden items-center gap-2 rounded-full border-2 py-1 pr-1 pl-4 md:flex"
+				className="hidden items-center gap-2 rounded-full border-2 py-1 pr-1 pl-4 lg:flex"
 				onClick={() => {
 				setShowModal(true);
 				document.body.style.overflow = 'hidden';
@@ -467,7 +467,7 @@ const NavbarSidebar = ({
 			</button>
 			<button
 				onClick={() => setIsSidebarOpen(true)}
-				className="m-0 inline-flex rounded-lg border border-black p-1.5 outline-0 hover:border-black md:hidden"
+				className="m-0 inline-flex rounded-lg border border-black p-1.5 outline-0 hover:border-black lg:hidden"
 			>
 				<MenuIcon />
 			</button>

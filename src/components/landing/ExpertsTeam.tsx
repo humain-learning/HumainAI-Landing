@@ -7,35 +7,31 @@ const EXPERTS_LIST = [
   {
     name: 'Manit jain',
     role: 'Co-founder',
-    profileImg: 'e1.png',
+    profileImg: 'homepage/Experts/Manit.png',
     bio: 'Co-founder, Heritage Group of Schools \n Pioneered Experiential Learning in India \n M.Ed, Harvard University',
   },
   {
     name: 'Smriti Jain',
     role: 'Co-founder',
-    profileImg: 'e2.png',
+    profileImg: 'homepage/Experts/Smriti.png',
     bio: 'Co-founder, I Am A Teacher \nSpearheaded India’s first practice based teacher education model \nM.Ed, Harvard University',
   },
   {
     name: 'Dr. Tapaswini Sahu',
     role: 'Academic Director',
-    profileImg: 'e3.png',
+    profileImg: 'homepage/Experts/Tapaswini.png',
     bio: 'Recognised leader in curriculum design, assessment and teacher development \nPhD. Educational Psychology, JNU \nM.Phil, Cambridge University',
   },
   {
-    name: 'Rambabu Kondru',
-    role: 'COO',
-    profileImg: 'e4.png',
-    bio: 'Business development & strategy expert \nPassionate about the education sector of India \nPGDM, IIM Calcutta',
+    name: 'Amit Yadav',
+    role: 'CEO',
+    profileImg: 'homepage/Experts/amit_yadav.png',
+    bio: 'Mission-driven education leader with deep experience in building nationwide school engagement ecosystems. Led the outreach and partnerships behind the National Road Safety Mission.',
   },
   {
     name: 'Ankur Dahiya',
     role: 'Program Head',
-<<<<<<< Updated upstream
-    profileImg: 'e5.png',
-=======
-    profileImg: 'homepage/Experts/Ankur.png',
->>>>>>> Stashed changes
+    profileImg: 'homepage/Experts/ankur.png',
     bio: 'DTU graduate \nshaping the future of education by driving AI-powered innovations that empower schools, teachers, and learners.',
   },
 //   {
@@ -60,8 +56,7 @@ const ExpertsTeam = () => {
       </h3>
 
       <div className="">
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-2 lg:grid-cols-6">
-          {EXPERTS_LIST?.map((item, idx) => (
+         <div className="grid grid-cols-2 gap-6 md:grid-cols-2 lg:flex lg:flex-wrap lg:justify-center lg:gap-8">          {EXPERTS_LIST?.map((item, idx) => (
             <div
               className={cn(
                 'group col-span-1 space-y-3 cursor-pointer',
