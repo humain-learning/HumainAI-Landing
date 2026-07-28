@@ -1,153 +1,155 @@
 'use client';
+import { useState } from 'react';
 import PrimaryButton from 'ui/PrimaryButton';
-import SecondaryButton from 'ui/SecondaryButton';
-import { motion } from 'motion/react';
-import Marquee from 'react-fast-marquee';
-import 'swiper/swiper.css';
-// import 'swiper/css/autoplay';
+import SkeletalButton from 'ui/SkeletalButton';
+import ExploreModal from './ExploreModal';
 
-const SLIDER = [
+const TRUST_ITEMS = [
   {
-    title: 'Use AI to Accelerate Learning',
-    img: 'ai.svg',
-    description:
-      'Discover how to use AI tools to accelerate your learning, research, and creative projects while developing critical thinking skills',
+    id: 1,
+    titleParts: [{ text: 'E-Cell, IIT Kharagpur' }],
+    subtitle: 'AI Hackathon in collaboration',
+    icon: (
+      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M7 17l10-10" />
+        <path d="M8 7h8v8" />
+      </svg>
+    ),
   },
   {
-    title: 'Build Confidence in Responsible AI Use',
-    img: 'ai-use.svg',
-    description:
-      'Learn the ethics and best practices of AI usage. Understand when to use AI, when not to, and how to maintain your authentic voice.',
+    id: 2,
+    titleParts: [
+      { text: 'NEP 2020', href: 'https://www.education.gov.in/nep/about-nep' },
+      { text: ' · ' },
+      { text: 'NCF 2023', href: 'https://ncert.nic.in/pdf/NCFSE-2023-August_2023.pdf' },
+      { text: ' · ' },
+      { text: 'CBSE', href: 'https://cbseacademic.nic.in/skill-education.html' },
+    ],
+    subtitle: 'Board-aligned curriculum',
+    icon: (
+      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" />
+        <path d="M12 8v8" />
+        <path d="M8.5 10.5h7" />
+      </svg>
+    ),
   },
   {
-    title: 'Become a Future-Ready Leader',
-    img: 'group.svg',
-    description:
-      'Prepare for careers in technology, innovation, and leadership. Build a portfolio that showcases your unique Human-AI collaboration skills.',
+    id: 3,
+    titleParts: [
+      { text: 'UNESCO', href: 'https://www.unesco.org/en/artificial-intelligence' },
+      { text: ' · ' },
+      { text: 'OECD', href: 'https://www.oecd.org/en/about/projects/future-of-education-and-skills-2030.html' },
+      { text: ' · ' },
+      { text: 'EU', href: 'https://education.ec.europa.eu/focus-topics/digital-education/actions/plan' },
+    ],
+    subtitle: 'Adapted from global frameworks',
+    icon: (
+      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18" />
+        <path d="M12 3a15 15 0 0 1 0 18" />
+        <path d="M12 3a15 15 0 0 0 0 18" />
+      </svg>
+    ),
   },
   {
-    title: 'Maintain Human Elements in AI Era',
-    img: 'ml.svg',
-    description:
-      'Strengthen your creativity, emotional intelligence, and critical thinking. Learn to be irreplaceably human in an AI-driven world',
+    id: 4,
+    titleParts: [{ text: 'DPDP Act 2023', href: 'https://www.meity.gov.in/content/digital-personal-data-protection-act-2023' }],
+    subtitle: 'Data handling designed against it',
+    icon: (
+      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <rect x="5" y="11" width="14" height="8" rx="2" />
+        <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+      </svg>
+    ),
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: -100 },
-  show: { opacity: 1, y: 0 },
-};
-
-const cardVariants2 = {
-  hidden: { opacity: 0, x: -100 },
-  show: { opacity: 1, x: 0 },
-};
-
 const Intro = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleExploreClick = () => {
+    setIsModalOpen(true);
+  };
+
   return (
-    <div className="mx-auto w-full max-w-7xl space-y-16 px-6 py-16 md:space-y-24 md:px-0 md:py-24">
-      <div className="flex flex-col-reverse items-center justify-between gap-10 md:flex-row md:gap-10">
-        {/* Left Container */}
-        <div className="max-w-2xl md:space-y-5">
-          <div className="h-full min-h-[180px] w-full max-w-[525px]">
-            {/* text-[64px] leading-[59.5px] font-semibold tracking-[-1.28px] */}
-            <h1 className="max-w-[450px] text-3xl leading-[50px] font-semibold tracking-[-0.8px] sm:text-5xl md:text-[64px] md:leading-[59.5px] md:tracking-[-1.28px]">
-              Where the AI Future Learns to Stay Human
-              {/* <TyperwriterText /> */}
+    <>
+      <section className="mx-auto w-full max-w-7xl space-y-10 px-6 py-16 md:space-y-12 md:px-8 md:py-24">
+      <div className="grid grid-cols-1 gap-6 lg:gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+        <div className="order-2 flex max-w-2xl flex-col items-center text-center lg:order-1 lg:items-start lg:text-left">
+          <div className="max-w-[620px]">
+            <h1 className="font-display max-w-[620px] text-3xl font-extrabold leading-[42px] tracking-[-0.8px] sm:text-4xl sm:leading-[46px] lg:text-[64px] lg:leading-[59.5px] lg:tracking-[-1.28px]">
+              Where the AI Future Learns to Stay{' '}
+              <span className="text-[#E7A572]">Human</span>
             </h1>
           </div>
-          <div className="space-y-3">
-            <p className="hero-subhead text-xl font-medium text-[#00000099]">
-              An AI literacy course for Grade 8-12 students and teachers in India. Live small-batch cohorts that teach young Indians to think clearly with AI, not around it.
-            </p>
-            <p className="text-base text-[#4E5255]">
-              Built on the six-pillar Humain AI Literacy Framework.
-            </p>
-          </div>
-          <div className="flex w-full flex-col items-center gap-3 pt-4 md:flex-row">
-            <PrimaryButton text="For Students" target='/courses/students/humain-champs' />
-            <SecondaryButton text="For Educators" target='/courses/educators/humain-educators' />
+
+          <p className="hero-subhead mt-4 text-xl font-medium text-[#00000099]">
+            Live AI literacy courses for school students, educators, and schools — built on the six-pillar Humain AI Literacy Framework. Learn to think critically, create responsibly, and use AI with confidence.
+          </p>
+
+          <div className="mt-6 flex w-full flex-col items-center gap-3 lg:flex-row">
+            <PrimaryButton
+              text="Explore Now"
+              target=""
+              onClick={handleExploreClick}
+              buttonClassName="w-full max-w-[320px] justify-center lg:w-auto lg:max-w-none cursor-pointer"
+            />
+
+            <SkeletalButton
+              text="Explore Our Framework"
+              target="/frameworkNew"
+              buttonClassName="w-full max-w-[320px] justify-center lg:w-auto lg:max-w-none"
+            />
           </div>
         </div>
-        {/* Right Container */}
 
-        <motion.div
-          className="relative flex w-full justify-center"
-          initial="hidden"
-          animate="show"
-          transition={{ staggerChildren: 0.3, delayChildren: 0.2 }}
-        >
+        <div className="order-1 relative flex w-full justify-center lg:order-2 lg:justify-start">
           <img
-            className="h-full w-full max-w-[320px] object-contain"
-            src="/assets/logo/humain-brain.png"
+            className="h-auto w-full max-w-[220px] sm:max-w-[280px] lg:max-w-[420px] object-contain"
+            src="/assets/images/homepage/Intro.png"
             alt="Humain Learning brand mark: the human-AI brain illustration."
           />
-          {/* <motion.div
-            variants={cardVariants2}
-            transition={{ duration: 0.8, ease: 'easeInOut' }}
-            className="bg-primary-color relative min-h-[180px] rounded-3xl p-4 md:min-h-[320px] md:p-6"
-          >
-            <h6 className="w-[40%] text-lg font-semibold text-white sm:w-[70%] sm:text-xl md:w-[40%] md:text-2xl">
-            Trusted by 500+ students and growing, making learning deep, joyful, and future-ready
-            </h6>
-          </motion.div>
 
-          <motion.div
-            className="absolute -top-4 -right-2 md:-top-1/6 md:right-6"
-            variants={cardVariants}
-            transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.4 }}
-          >
-            <div
-              className="h-[250px] w-[200px] rounded-xl px-3 py-3 md:h-[400px] md:w-[300px]"
-              style={{
-                backgroundImage: "url('assets/images/humain-learning.png')",
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-              }}
-            >
-              <div className="flex w-fit items-center gap-1 rounded-full bg-white px-3 py-0.5">
-                <img alt="" src="/assets/icons/green-star.svg" />
-                <p>Humain Learning</p>
+        </div>
+      </div>
+
+      <div className="mt-10 border-t border-[#E6E6E6] pt-6">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-4">
+          {TRUST_ITEMS.map((item) => (
+            <div key={item.id} className="flex items-start gap-3">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#E7A572] text-white">
+                {item.icon}
+              </div>
+              <div className="min-w-0">
+                <div className="text-[13px] font-bold leading-snug text-[#333333]">
+                  {item.titleParts.map((part, index) =>
+                    part.href ? (
+                      <a
+                        key={`${item.id}-${part.text}-${index}`}
+                        href={part.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-colors hover:text-[#E7A572] hover:underline"
+                      >
+                        {part.text}
+                      </a>
+                    ) : (
+                      <span key={`${item.id}-${part.text}-${index}`}>{part.text}</span>
+                    )
+                  )}
+                </div>
+                <div className="text-xs leading-snug text-[#333333]/60">{item.subtitle}</div>
               </div>
             </div>
-          </motion.div> */}
-        </motion.div>
+          ))}
+        </div>
       </div>
-      {/* Slider */}
-      <div className="relative">
-        <Marquee
-          // pauseOnHover
-          className="relative mx-auto h-full min-h-[150px] w-full gap-8"
-          gradient={true}
-          gradientColor="#FDF6F1"
-          gradientWidth={10}
-        >
-          <div className="flex items-center gap-8">
-            {SLIDER?.map((s, i) => (
-              <div
-                key={i}
-                className={`${i % 2 !== 0 ? 'bg-secondary-color' : 'bg-primary-color'} relative h-[118px] w-[379px] cursor-pointer rounded-2xl`}
-              >
-                <div className="border-gradient border-gradient absolute top-3 left-3 flex h-full w-full items-center gap-4 rounded-2xl px-4 backdrop-blur-md">
-                  <div className="-mt-2 flex h-fit min-h-12 min-w-12 items-center justify-center rounded-full bg-white">
-                    <img
-                      className="min-w-8"
-                      src={`/assets/icons/${s?.img}`}
-                      alt=""
-                    />
-                  </div>
-                  <div className="-mt-2 space-y-1 text-white">
-                    <div className="text-xl font-semibold">{s?.title}</div>
-                    {/* <div className="text-xs">{s?.description}</div> */}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Marquee>
-      </div>
-    </div>
+    </section>
+
+    <ExploreModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
   );
 };
 

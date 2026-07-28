@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion } from 'motion/react';
 import { EnrolledPopup } from './EnrolledPopup';
 import LeadForm from '@/components/forms/hcForm';
 import { PopupFormModal } from 'components/ui/PopupFormModal';
@@ -136,21 +135,19 @@ export default function Herolp({basePrice}: HeroProps) {
 				{/* Buttons Group */}
 				<div className="flex flex-col md:flex-row sm:items-center text-sm gap-4 pt-2 ">
 					{/* Enroll Now Button */}
-					<motion.button
-					type="button"
-					onClick={handleEnrollClick}
-						whileHover={{ scale: 1.02 }}
-						whileTap={{ scale: 0.98 }}
+					<button
+						type="button"
+						onClick={handleEnrollClick}
 						className="group flex cursor-pointer items-center justify-between gap-3 rounded-full bg-terracotta py-2 pr-2 pl-6 text-white shadow-md shadow-terracotta/20 transition-all duration-300 hover:bg-[#df935c] hover:shadow-lg hover:shadow-terracotta/30"
 					>
 						<span className="font-display text-base font-bold tracking-wide whitespace-nowrap">Enroll Now</span>
 						<span className="rounded-full bg-white px-4 py-2 font-display text-sm font-extrabold text-terracotta border border-terracotta/10">
 							{(basePrice + (basePrice * 0.18)).toLocaleString('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 })}
 						</span>
-					</motion.button>
+					</button>
 
 					{/* Request Callback Button */}
-					<motion.button
+					<button
 						onClick={() => {
 							setActionable('Direct Sale');
 							setHeading('Request a Callback');
@@ -160,12 +157,10 @@ export default function Herolp({basePrice}: HeroProps) {
 							setSource('Testing');
 							setDestination('/submission-received');
 						}}
-						whileHover={{ scale: 1.02, backgroundColor: '#f3f6f1' }}
-						whileTap={{ scale: 0.98 }}
 						className="flex cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-sage bg-white py-3.5 px-6 font-display text-base font-bold text-sage transition-all duration-300 hover:border-[#9ab081]"
 					>
 						Request a Callback
-					</motion.button>
+					</button>
 				</div>
 
 				{/* Highlights bullet points */}
@@ -186,27 +181,18 @@ export default function Herolp({basePrice}: HeroProps) {
 				<div className="relative w-full max-w-[480px]">
 				
 				{/* Main Parents Image */}
-				<motion.div
-					initial={{ opacity: 0, scale: 0.95 }}
-					animate={{ opacity: 1, scale: 1 }}
-					transition={{ duration: 0.8, ease: 'easeOut' }}
-					className="relative w-full"
-				>
+				<div className="relative w-full">
 					<img
-					src="/assets/images/parentslp.png"
-					alt="Family studying AI together"
-					className="w-full h-auto object-contain drop-shadow-xl"
+						src="/assets/images/parentslp.png"
+						alt="Family studying AI together"
+						className="w-full h-auto object-contain drop-shadow-xl"
 					/>
-				</motion.div>
+				</div>
 
 				{/* Floating Leaf Brain Logo Badge (Top-Right) */}
-				<motion.img
+				<img
 					src="/assets/images/leaflp.png"
 					alt="AI Leaf Badge"
-					initial={{ scale: 0, rotate: -15 }}
-					animate={{ scale: 1, rotate: 0 }}
-					transition={{ delay: 0.5, type: 'spring', stiffness: 120, damping: 15 }}
-					whileHover={{ scale: 1.05 }}
 					className="absolute -top-[1%] -right-[1%] w-[32%] z-10 drop-shadow-lg cursor-pointer"
 				/>
 
@@ -216,24 +202,17 @@ export default function Herolp({basePrice}: HeroProps) {
 					viewBox="0 0 100 100" 
 					preserveAspectRatio="none"
 				>
-					<motion.path
+					<path
 					d="M -2.8 63.3 L -2.8 80.3"
 					fill="none"
 					stroke="#5e714e"
 					strokeWidth="1.2"
 					strokeOpacity="0.45"
-					initial={{ pathLength: 0 }}
-					animate={{ pathLength: 1 }}
-					transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
 					/>
 				</svg>
 
 				{/* Floating green text badges */}
-				<motion.div
-					initial={{ opacity: 0, x: -20 }}
-					animate={{ opacity: 1, x: 0 }}
-					transition={{ delay: 0.6, type: 'spring', stiffness: 100 }}
-					whileHover={{ scale: 1.05, y: -2 }}
+				<div
 					className="absolute top-[61%] left-[-7%] z-20 flex items-center gap-1.5 rounded-full border border-[#aac191]/50 bg-white/95 px-3 py-1.5 shadow-md shadow-sage/5 backdrop-blur-sm cursor-default"
 				>
 					<div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sage">
@@ -244,13 +223,9 @@ export default function Herolp({basePrice}: HeroProps) {
 					<span className="font-display text-[9.5px] font-extrabold tracking-wider text-sage whitespace-nowrap">
 					NO CODING NEEDED
 					</span>
-				</motion.div>
+				</div>
 
-				<motion.div
-					initial={{ opacity: 0, x: -20 }}
-					animate={{ opacity: 1, x: 0 }}
-					transition={{ delay: 0.7, type: 'spring', stiffness: 100 }}
-					whileHover={{ scale: 1.05, y: -2 }}
+				<div
 					className="absolute top-[69.5%] left-[-7%] z-20 flex items-center gap-1.5 rounded-full border border-[#aac191]/50 bg-white/95 px-3 py-1.5 shadow-md shadow-sage/5 backdrop-blur-sm cursor-default"
 				>
 					<div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sage">
@@ -261,13 +236,9 @@ export default function Herolp({basePrice}: HeroProps) {
 					<span className="font-display text-[9.5px] font-extrabold tracking-wider text-sage whitespace-nowrap">
 					LIVE CLASSES
 					</span>
-				</motion.div>
+				</div>
 
-				<motion.div
-					initial={{ opacity: 0, x: -20 }}
-					animate={{ opacity: 1, x: 0 }}
-					transition={{ delay: 0.8, type: 'spring', stiffness: 100 }}
-					whileHover={{ scale: 1.05, y: -2 }}
+				<div
 					className="absolute top-[78%] left-[-7%] z-20 flex items-center gap-1.5 rounded-full border border-[#aac191]/50 bg-white/95 px-3 py-1.5 shadow-md shadow-sage/5 backdrop-blur-sm cursor-default"
 				>
 					<div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sage">
@@ -278,7 +249,7 @@ export default function Herolp({basePrice}: HeroProps) {
 					<span className="font-display text-[9.5px] font-extrabold tracking-wider text-sage whitespace-nowrap">
 					IIT CERTIFICATE
 					</span>
-				</motion.div>
+				</div>
 
 				</div>
 			</div>

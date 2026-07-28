@@ -1,6 +1,5 @@
 import Header from 'ui/Header';
-import Footer from 'ui/Footer';
-
+// import Footer from 'ui/Footer';
 export default function MainPageLayout({
 	children,
 }: Readonly<{
@@ -10,7 +9,7 @@ export default function MainPageLayout({
 		<div className="overflow-x-hidden relative">
 			<Header />
 			{children}
-			<Footer />
+			{/* <Footer/> */}
 		</div>
 	);
 }

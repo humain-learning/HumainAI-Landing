@@ -1,16 +1,20 @@
 import Intro from './Intro';
+import MoreThanCourse from './MoreThanCourse';
 import AiStarter from './AiStarter';
 // import ProductShowcase from './ProductShowcase';
 import ExpertsTeam from './ExpertsTeam';
 import Testimonial from './Testimonial';
 import FAQLists from './FAQLists';
+import BlogInsights from './BlogInsights/BlogInsights';
 import AIFramework from './AIFramework';
 import WhyHumain from './WhyHumain';
 import WhoAreWeCard from './WhoAreWeCard';
 import OurPurpose from './OurPurpose';
 
-import PillarsOfTheFramework from './PillarsOfTheFramework';
+import PillarsOfTheFramework from './PillarsOfTheFramework/PillarsOfTheFramework';
+import Programmes from './Programmes';
 import RecognitionAlignment from './RecognitionAlignment';
+import CtaFooter from './CtaFooter';
 import Header from 'ui/Header';
 
 // import ProductShowcase from './ProductShowcase';
@@ -29,22 +33,26 @@ const LandingPage = () => {
         alt=""
       />
       <Intro />
-      <OurPurpose />
+      <MoreThanCourse />
+      {/* <OurPurpose /> */}
       
-      <WhoAreWeCard />
-      <AIFramework />
+      {/* <WhoAreWeCard />
+      <AIFramework /> */}
       <PillarsOfTheFramework />
-      <AiStarter />
+      <Programmes />
+      {/* <AiStarter /> */}
       {/* <AIJourney /> */}
       {/* <IITGrowth /> */}
       {/* <AiStatsSection /> */}
       {/* <AiLearnPack /> */}
       {/* <ProductShowcase /> */}
-      <WhyHumain />
-      <RecognitionAlignment />
-      <ExpertsTeam />
+      {/* <WhyHumain />
+      <RecognitionAlignment /> */}
       <Testimonial />
+      <ExpertsTeam />
+      {/* <BlogInsights /> */}
       <FAQLists />
+      <CtaFooter />
       {/* <Footer /> */}
     </div>
   );

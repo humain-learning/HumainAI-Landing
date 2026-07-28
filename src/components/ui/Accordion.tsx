@@ -52,7 +52,7 @@ const Accordion: React.FC<AccordionProps> = ({
           <div
             key={idx}
             className={cn(
-              'relative overflow-hidden rounded-2xl',
+              'relative overflow-hidden rounded-xl',
               isCustomTabColor
                 ? isOpen
                   ? openedTabColor
@@ -64,28 +64,30 @@ const Accordion: React.FC<AccordionProps> = ({
           >
             <button
               type="button"
-              className={`${!isOpen ? 'py-4' : ''} flex w-full cursor-pointer items-center justify-between px-4 pt-4 pl-8 transition-all duration-300 ease-in-out focus:outline-none`}
+              className={`${!isOpen ? 'py-4' : ''} flex w-full cursor-pointer items-center justify-between px-4 pt-4 pl-4 pr-4 transition-all duration-300 ease-in-out focus:outline-none`}
               onClick={() => handleToggle(idx)}
               aria-expanded={isOpen}
               aria-controls={`accordion-content-${idx}`}
             >
-              <span className="text-left text-lg font-medium">
+              <span className="text-left text-lg font-semibold text-[#011813]">
                 {item.title}
               </span>
               {showArrows && (
-                <svg
-                  className={`h-5 min-w-5 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
+                <span className="ml-3 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#EAF2E4] text-[#4B6B4D]">
+                  <svg
+                    className={`h-4 w-4 transform transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 5v14M5 12h14"
+                    />
+                  </svg>
+                </span>
               )}
             </button>
 
@@ -98,16 +100,11 @@ const Accordion: React.FC<AccordionProps> = ({
                 {item.content}
               </div>
             </div>
-            <div
-              className={cn(
-                'absolute top-2 bottom-2 left-3 w-1 rounded-2xl bg-white',
-                sideIndicatiorClassName,
-                isOpen ? 'h-11/12' : ''
-              )}
-            />
-            {showDivider && (
-              <div className={cn('h-[0.5px] w-full', dividerClassName)} />
-            )}
+            {sideIndicatiorClassName && sideIndicatiorClassName !== 'hidden' ? (
+              <div
+                className={cn('absolute top-2 bottom-2 left-3 w-1 rounded-2xl bg-white', sideIndicatiorClassName)}
+              />
+            ) : null}
           </div>
         );
       })}
