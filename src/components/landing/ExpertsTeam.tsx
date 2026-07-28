@@ -31,7 +31,11 @@ const EXPERTS_LIST = [
   {
     name: 'Ankur Dahiya',
     role: 'Program Head',
+<<<<<<< Updated upstream
     profileImg: 'e5.png',
+=======
+    profileImg: 'homepage/Experts/Ankur.png',
+>>>>>>> Stashed changes
     bio: 'DTU graduate \nshaping the future of education by driving AI-powered innovations that empower schools, teachers, and learners.',
   },
 //   {
