@@ -1,4 +1,7 @@
-import Accordion from 'ui/Accordion';
+'use client';
+
+import React, { useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import Link from 'next/link';
 
 const ENTITY_FAQ = [
@@ -31,32 +34,15 @@ const ENTITY_FAQ = [
     ),
   },
   {
-    title: 'What makes a paid AI literacy course different from free YouTube and ChatGPT?',
+    title: 'Do students need any coding experience?',
     content: (
       <div>
-        Free resources teach what a tool does; a structured course teaches a framework that applies to every new tool
-        that ships next year. The Humain six-pillar framework spans foundations, learning, studying, creating, agents
-        and automation, and ethics and safety; a child who has worked through it can pick up any new AI model and
-        judge it. The{' '}
-        <Link className="text-secondary-color underline underline-offset-4" href="/for-parents">
-          for-parents page
-        </Link>{' '}
-        covers the full free-vs-paid comparison, including completion rates and the honest disqualifier for parents
-        whose child has already finished a self-paced course.
+        No—students do not need any coding experience to join. The courses are designed for beginners, with step-by-step
+        guidance, practical examples, and hands-on activities that build confidence from the first session onward.
       </div>
     ),
   },
-  {
-    title: 'Will the course make my child more reliant on AI or less?',
-    content: (
-      <div>
-        Less, if the framework lands. Pillars 1 and 6 (Foundations and Ethics) teach a child when not to reach for the
-        model. Pillars 2 and 3 (Learning and Studying) teach them how to keep their own thinking visible while using
-        it. The signal that the framework has landed: your child starts catching the model&rsquo;s mistakes without
-        being asked.
-      </div>
-    ),
-  },
+  
   {
     title: 'How do I get on a call with you?',
     content: (
@@ -90,48 +76,87 @@ const ENTITY_FAQ = [
 ];
 
 const FAQLists = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
   return (
-    <section id="faqs">
-      <div className="mx-auto w-full max-w-7xl px-6 pt-10 pb-16 text-[#011813] md:px-0">
-        <div className="flex flex-col items-start justify-between gap-6 lg:flex-row">
-          {/* Left container */}
-          <div className="w-full max-w-xl space-y-6">
-            <div>
-              <h2 className="text-3xl font-semibold">Frequently Asked Questions</h2>
-              <p className="mt-3 text-base text-[#4E5255]">
-                The most common questions about Humain Learning. For deeper parent and school questions, see the{' '}
-                <Link className="text-secondary-color underline underline-offset-4" href="/for-parents">
-                  for parents
-                </Link>{' '}
-                and{' '}
-                <Link className="text-secondary-color underline underline-offset-4" href="/for-schools">
-                  for schools
-                </Link>{' '}
-                pages.
-              </p>
-            </div>
-          </div>
-          {/* right container */}
-          <div className="w-full max-w-xl">
-            <div
-              className="h-full space-y-3 rounded-2xl border border-[#E0E0E0] p-4"
-              style={{
-                background:
-                  'radial-gradient(circle at top right ,rgba(250, 210, 178, 1) 0%, rgba(255, 255, 255, 1) 100%)',
-              }}
-            >
-              <Accordion
-                items={ENTITY_FAQ}
-                className="space-y-4"
-                isCustomTabColor
-                openedTabColor="bg-transparent"
-                closedTabColor="bg-transparent"
-                sideIndicatiorClassName="bg-[#E9A772] w-1 h-8 top-4 bottom-3"
-                showArrows
-                showDivider
-                dividerClassName="bg-[#AAC191]"
-              />
-            </div>
+    <section id="faqs" className="bg-[#F8F1E6]">
+      <div className="mx-auto w-full max-w-5xl px-6 py-16 text-[#011813] md:px-8 lg:px-0">
+        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#C97D49]">
+            QUESTIONS, ANSWERED
+          </p>
+          <div className="mt-3 h-px w-16 bg-[#C97D49]" />
+          <h2 className="mt-4 text-4xl font-black tracking-[-0.02em] text-[#011813] sm:text-5xl">
+            AI Literacy Course FAQ
+          </h2>
+        </div>
+
+        <div className="mx-auto mt-10 w-full max-w-3xl">
+          <div className="space-y-3">
+            {ENTITY_FAQ.map((faq, idx) => {
+              const isOpen = openIndex === idx;
+
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.04 * idx }}
+                  className="overflow-hidden rounded-xl bg-white shadow-sm"
+                >
+                  <button
+                    type="button"
+                    className="flex w-full items-center justify-between px-4 py-4 text-left"
+                    onClick={() => setOpenIndex(isOpen ? null : idx)}
+                    aria-expanded={isOpen}
+                    aria-controls={`landing-faq-content-${idx}`}
+                  >
+                    <span className="pr-4 text-left text-lg font-semibold text-[#011813]">
+                      {faq.title}
+                    </span>
+                    <span
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
+                        isOpen
+                          ? 'rotate-45 bg-[#E9A772] text-white'
+                          : 'bg-[#EAF2E4] text-[#4B6B4D]'
+                      }`}
+                    >
+                      <svg
+                        className="h-4 w-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 5v14M5 12h14"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        id={`landing-faq-content-${idx}`}
+                        key="content"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+                      >
+                        <div className="border-t border-[#f0f0f0] px-4 pb-4 pt-4 text-left text-base leading-relaxed text-[#4B4B4B]">
+                          {faq.content}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>

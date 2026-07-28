@@ -1,8 +1,22 @@
 'use client';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { CircleUserRound } from 'lucide-react';
 
-const LIST = [
+type StudentTestimonial = {
+  name: string;
+  class: string;
+  school: string;
+  city: string;
+  desc: string;
+};
+
+type ParentTestimonial = {
+  name: string;
+  subDesc: string;
+  desc: string;
+};
+
+const LIST: StudentTestimonial[] = [
   {
     name: 'Aniisha',
     class: '11th',
@@ -94,7 +108,7 @@ I actually use tools beyond ChatGPT to study now and I am able to create 50–60
 
 // Parent Testimonials
 
-const PARENT_LIST = [
+const PARENT_LIST: ParentTestimonial[] = [
   {
     name: 'Nitin',
     subDesc: '(Parent of Aradhya)',
@@ -126,6 +140,8 @@ The structured modules and creative exercises made the experience meaningful and
 
 const Testimonial = () => {
   const [activeTab, setActiveTab] = useState('parents');
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const currentTestimonials = activeTab === 'students' ? LIST : PARENT_LIST;
 
   return (
     <div className="mx-auto w-full max-w-7xl space-y-6 px-6 pt-10 pb-14 text-[#011813] md:px-0 lg:space-y-[50px]">
@@ -168,13 +184,12 @@ const Testimonial = () => {
             />
           </motion.div>
         </div> */}
-        <div className="flex flex-col items-start gap-6 lg:flex-row lg:flex-wrap">
+        <div className="hidden md:grid md:grid-cols-1 md:gap-6 lg:grid-cols-3 lg:items-stretch">
           {activeTab === 'students' &&
-            LIST?.map((item, idx) => (
+            LIST?.map((item: StudentTestimonial, idx) => (
               <div
                 key={idx}
-                className="h-full min-h-[275px] w-full cursor-pointer rounded-2xl border border-[#E0E0E0] bg-white p-4 transition-all duration-300 ease-in hover:scale-105 lg:w-[32%]"
-              >
+                className="h-full min-h-[275px] w-full cursor-pointer rounded-2xl border border-[#E0E0E0] bg-white p-4 transition-all duration-300 ease-in hover:scale-105"              >
                 <div className="items-cet flex gap-2">
                   <div className="flex h-[50px] w-[50px] items-center justify-center">
                     <CircleUserRound size={30} color="#4E5255" />
@@ -208,11 +223,10 @@ const Testimonial = () => {
               </div>
             ))}
           {activeTab === 'parents' &&
-            PARENT_LIST?.map((item, idx) => (
+            PARENT_LIST?.map((item: ParentTestimonial, idx) => (
               <div
                 key={idx}
-                className="h-full min-h-[275px] w-full cursor-pointer rounded-2xl border border-[#E0E0E0] bg-white p-4 transition-all duration-300 ease-in hover:scale-105 lg:w-[32%]"
-              >
+                className="h-full min-h-[275px] w-full cursor-pointer rounded-2xl border border-[#E0E0E0] bg-white p-4 transition-all duration-300 ease-in hover:scale-105"              >
                 <div className="flex items-center gap-2">
                   <div className="flex h-[40px] w-[50px] items-center justify-center">
                     <CircleUserRound size={30} color="#4E5255" />
@@ -235,6 +249,110 @@ const Testimonial = () => {
                 </h5>
               </div>
             ))}
+        </div>
+
+        <div className="md:hidden">
+          <div
+            ref={scrollRef}
+            className="flex items-stretch gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 -mx-6 px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:{display:none}"
+          >
+            {currentTestimonials.map((item: StudentTestimonial | ParentTestimonial, idx) => (
+              <div
+                key={idx}
+                className="snap-start shrink-0 w-[85%] min-h-[275px] cursor-pointer rounded-2xl border border-[#E0E0E0] bg-white p-4 transition-all duration-300 ease-in hover:scale-105"              >
+                {activeTab === 'students' ? (
+                  <>
+                    <div className="items-cet flex gap-2">
+                      <div className="flex h-[50px] w-[50px] items-center justify-center">
+                        <CircleUserRound size={30} color="#4E5255" />
+                      </div>
+                      <div>
+                        <h6 className="space-x-0.5 text-base text-black">
+                          {item.name}
+                          {(item as StudentTestimonial).class && (
+                            <span className="pl-1 text-xs text-[#4E5255]">{(item as StudentTestimonial).class}</span>
+                          )}
+                        </h6>
+                        {(item as StudentTestimonial).school && (
+                          <p className="text-sm text-[#4E5255]">{(item as StudentTestimonial).school}</p>
+                        )}
+                        {(item as StudentTestimonial).city && (
+                          <p className="text-xs text-[#4E5255]">{(item as StudentTestimonial).city}</p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="my-4 h-[1px] w-full bg-[#E0E0E0]" />
+
+                    <div className="">
+                      <img src="/assets/icons/stars.svg" className="" />
+                    </div>
+                    <h5 className="pt-4 text-base font-normal whitespace-pre-line text-black">
+                      {item.desc}
+                    </h5>
+                  </>
+                ) : (
+                  <>
+                    <div className="flex items-center gap-2">
+                      <div className="flex h-[40px] w-[50px] items-center justify-center">
+                        <CircleUserRound size={30} color="#4E5255" />
+                      </div>
+                      <div>
+                        <h6 className="space-x-0.5 text-base text-black">{item.name}</h6>
+                        <p className="text-sm text-[#4E5255]">{(item as ParentTestimonial).subDesc}</p>
+                      </div>
+                    </div>
+
+                    <div className="my-4 h-[1px] w-full bg-[#E0E0E0]" />
+
+                    <div className="">
+                      <img src="/assets/icons/stars.svg" className="" />
+                    </div>
+                    <h5 className="pt-4 text-base font-normal whitespace-pre-line text-black">
+                      {item.desc}
+                    </h5>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 flex justify-center gap-3">
+            <button
+              type="button"
+              onClick={() => scrollRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#C97D49]/40 text-[#C97D49]"
+              aria-label="Scroll left"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                className="h-4 w-4"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#C97D49]/40 text-[#C97D49]"
+              aria-label="Scroll right"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                className="h-4 w-4"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>
