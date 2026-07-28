@@ -31,7 +31,7 @@ const EXPERTS_LIST = [
   {
     name: 'Ankur Dahiya',
     role: 'Program Head',
-    profileImg: 'homepage/Experts/ankur.png',
+    profileImg: 'homepage/Experts/Ankur.png',
     bio: 'DTU graduate \nshaping the future of education by driving AI-powered innovations that empower schools, teachers, and learners.',
   },
 //   {
