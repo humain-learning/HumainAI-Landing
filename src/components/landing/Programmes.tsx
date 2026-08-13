@@ -28,18 +28,18 @@ const programmes = [
     buttonBg: '#E7A572',
     buttonTextColor: '#FFFFFF',
   },
-  // {
-  //   id: 3,
-  //   eyebrow: 'FOR SCHOOLS',
-  //   eyebrowColor: '#2F4A34',
-  //   title: 'AI Clubs & Teacher Trainings',
-  //   description:
-  //     'Bring AI education inside your school. A year-long AI club for Grades 3–12 with weekly classes, monthly challenges, and an annual E-Cell IIT Kharagpur certified hackathon — plus trainings to upskill your entire staff.',
-  //   buttonText: 'Partner with Humain',
-  //   buttonHref: '/schools',
-  //   buttonBg: '#2F4A34',
-  //   buttonTextColor: '#FFFFFF',
-  // },
+  {
+    id: 3,
+    eyebrow: 'FOR SCHOOLS',
+    eyebrowColor: '#2F4A34',
+    title: 'AI Clubs & Teacher Trainings',
+    description:
+      'Bring AI education inside your school. A year-long AI club for Grades 3–12 with weekly classes, monthly challenges, and an annual E-Cell IIT Kharagpur certified hackathon — plus trainings to upskill your entire staff.',
+    buttonText: 'Partner with Humain',
+    buttonHref: '/AIClub',
+    buttonBg: '#2F4A34',
+    buttonTextColor: '#FFFFFF',
+  },
 ];
 
 const trustItems = [
@@ -136,7 +136,7 @@ const Programmes = () => {
               ) : null}
 
               {card.id === 3 ? (
-                <SkeletalButton
+                <PrimaryButton
                   text={card.buttonText}
                   target={card.buttonHref}
                   //buttonClassName="w-full justify-between font-display text-sm font-bold"

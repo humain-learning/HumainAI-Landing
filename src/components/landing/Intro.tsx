@@ -9,12 +9,7 @@ const TRUST_ITEMS = [
     id: 1,
     titleParts: [{ text: 'E-Cell, IIT Kharagpur' }],
     subtitle: 'AI Hackathon in collaboration',
-    icon: (
-      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M7 17l10-10" />
-        <path d="M8 7h8v8" />
-      </svg>
-    ),
+    icon: '/assets/images/homepage/Intropage/IIT.png',
   },
   {
     id: 2,
@@ -26,13 +21,7 @@ const TRUST_ITEMS = [
       { text: 'CBSE', href: 'https://cbseacademic.nic.in/skill-education.html' },
     ],
     subtitle: 'Board-aligned curriculum',
-    icon: (
-      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" />
-        <path d="M12 8v8" />
-        <path d="M8.5 10.5h7" />
-      </svg>
-    ),
+    icon: '/assets/images/homepage/Intropage/NEP.png',
   },
   {
     id: 3,
@@ -44,25 +33,13 @@ const TRUST_ITEMS = [
       { text: 'EU', href: 'https://education.ec.europa.eu/focus-topics/digital-education/actions/plan' },
     ],
     subtitle: 'Adapted from global frameworks',
-    icon: (
-      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="9" />
-        <path d="M3 12h18" />
-        <path d="M12 3a15 15 0 0 1 0 18" />
-        <path d="M12 3a15 15 0 0 0 0 18" />
-      </svg>
-    ),
+    icon: '/assets/images/homepage/Intropage/UNESCO.png',
   },
   {
     id: 4,
     titleParts: [{ text: 'DPDP Act 2023', href: 'https://www.meity.gov.in/content/digital-personal-data-protection-act-2023' }],
     subtitle: 'Data handling designed against it',
-    icon: (
-      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="5" y="11" width="14" height="8" rx="2" />
-        <path d="M8 11V8a4 4 0 0 1 8 0v3" />
-      </svg>
-    ),
+    icon: '/assets/images/homepage/Intropage/DPDP.png',
   },
 ];
 
@@ -119,8 +96,8 @@ const Intro = () => {
         <div className="grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-4">
           {TRUST_ITEMS.map((item) => (
             <div key={item.id} className="flex items-start gap-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#E7A572] text-white">
-                {item.icon}
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#E7A572] text-white overflow-hidden">
+                <img src={item.icon} alt="" className="h-9 w-9 object-contain" />
               </div>
               <div className="min-w-0">
                 <div className="text-[13px] font-bold leading-snug text-[#333333]">
