@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function FrameworkNewPage() {
   return (
     <>
-      <FrameworkHeader />
+      {/* <FrameworkHeader /> */}
       <FrameworkHero />
       <FrameworkWhatIsIt />
       <PillarsOfTheFramework />
