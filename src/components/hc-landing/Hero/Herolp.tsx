@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { EnrolledPopup } from './EnrolledPopup';
+// import { EnrolledPopup } from './EnrolledPopup';
 import LeadForm from '@/components/forms/hcForm';
 import { PopupFormModal } from 'components/ui/PopupFormModal';
 import { getCookie } from 'cookies-next';
@@ -102,7 +102,7 @@ export default function Herolp({basePrice}: HeroProps) {
 				<div className="flex flex-wrap gap-2.5">
 				<span className="flex items-center gap-1.5 rounded-full bg-[#aac1911a] px-3.5 py-1.5 text-xs font-semibold tracking-wider text-sage">
 					<span className="h-1.5 w-1.5 rounded-full bg-sage" />
-					E-CELL IIT-K CERTIFIED
+					CERTIFIED COURSES
 				</span>
 				<span className="flex items-center gap-1.5 rounded-full bg-[#aac1911a] px-3.5 py-1.5 text-xs font-semibold tracking-wider text-sage">
 					<span className="h-1.5 w-1.5 rounded-full bg-sage" />
@@ -127,8 +127,7 @@ export default function Herolp({basePrice}: HeroProps) {
 
 				{/* Subheading Description */}
 				<p className="font-sans text-base md:text-lg leading-relaxed text-charcoal/80 max-w-2xl">
-				Humain Champs is India's most credible AI learning course. Live online classes with a hackathon certified by E-Cell 
-				IIT Kharagpur, real AI tools like ChatGPT & Gemini, and a Harvard-pedigree 
+				Humain Champs is India's most credible AI learning course. Live online classes with a Humain Learning Certificate, real AI tools like ChatGPT & Gemini, and a Harvard-pedigree 
 				founder. No coding needed.
 				</p>
 
@@ -247,7 +246,7 @@ export default function Herolp({basePrice}: HeroProps) {
 					</svg>
 					</div>
 					<span className="font-display text-[9.5px] font-extrabold tracking-wider text-sage whitespace-nowrap">
-					IIT CERTIFICATE
+					CERTIFIED COURSES
 					</span>
 				</div>
 
@@ -273,7 +272,7 @@ export default function Herolp({basePrice}: HeroProps) {
 			/>
 		</PopupFormModal>
 
-		{!showModal && <EnrolledPopup />}
+		{/* {!showModal && <EnrolledPopup />} */}
 		</section>
 	);
 }

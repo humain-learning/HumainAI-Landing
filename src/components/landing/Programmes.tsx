@@ -10,7 +10,7 @@ const programmes = [
     price: '',
     title: 'Humain Champs',
     description:
-      'A live online AI course where students go from zero to building their own AI agent. 15 hours across 8 sessions and six modules, with an E-Cell IIT Kharagpur certificate. No coding needed.',
+      'A live online AI course where students go from zero to building their own AI agent. 15 hours across 8 sessions and six modules, with Humain learning certificate. No coding needed.',
     buttonText: 'Explore Humain Champs',
     buttonHref: '/courses/students/humain-champs',
     buttonBg: '#AAC191',
@@ -34,7 +34,7 @@ const programmes = [
     eyebrowColor: '#2F4A34',
     title: 'AI Clubs & Teacher Trainings',
     description:
-      'Bring AI education inside your school. A year-long AI club for Grades 3–12 with weekly classes, monthly challenges, and an annual E-Cell IIT Kharagpur certified hackathon — plus trainings to upskill your entire staff.',
+      'Bring AI education inside your school. A year-long AI club for Grades 3–12 with weekly classes, monthly challenges, with Humain Learning Certificate — plus trainings to upskill your entire staff.',
     buttonText: 'Partner with Humain',
     buttonHref: '/AIClub',
     buttonBg: '#2F4A34',
@@ -65,7 +65,7 @@ const trustItems = [
     dot: '#AAC191',
     text: (
       <>
-        AI Hackathons in collaboration with <strong>E-Cell, IIT Kharagpur</strong>.
+        For students & teachers <strong>Certified Courses</strong>.
       </>
     ),
   },

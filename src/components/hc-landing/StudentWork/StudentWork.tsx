@@ -114,10 +114,7 @@ export default function StudentWork() {
                 </div>
 
                 {/* 2. Badge & Title */}
-                <div className="space-y-1 pt-1 px-1">
-                  <span className="block font-display text-[11px] font-extrabold tracking-wider text-[#ffd3b4] uppercase">
-                    E- Cell IIT HACKATHON SUBMISSION
-                  </span>
+                <div className="space-y-1 pt-1 px-1"> 
                   <h3 className="font-display text-xl font-extrabold !text-white tracking-tight">
                     {video.name}
                   </h3>
@@ -129,12 +126,12 @@ export default function StudentWork() {
                 </p>
 
                 {/* 4. Outcome Badge Info */}
-                <div className="flex items-start gap-2.5 pt-4 pb-1 px-1 mt-auto border-t border-white/10">
+                {/* <div className="flex items-start gap-2.5 pt-4 pb-1 px-1 mt-auto border-t border-white/10">
                   <SuccessBadgeIcon />
                   <span className="font-sans text-[12.5px] font-semibold !text-white/90">
-                    ✓ E-CELL IIT KHARAGPUR HACKATHON PITCHED
+                    
                   </span>
-                </div>
+                </div> */}
 
                 </div>
               </SwiperSlide>

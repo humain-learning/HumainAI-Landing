@@ -27,7 +27,7 @@ const FRAMEWORK_FAQ = [
   },
   {
     title: 'How does Humain Champs use it?',
-    content: 'Humain Champs is the live implementation of the framework for school students and teachers, certified by E-Cell IIT Kharagpur.',
+    content: 'Humain Champs is the live implementation of the framework for school students and teachers.',
   },
 ];
 

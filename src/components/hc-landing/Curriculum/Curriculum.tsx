@@ -91,7 +91,7 @@ export default function Curriculum() {
           </h2>
           <p className="font-sans text-sm md:text-base text-charcoal/80 max-w-2xl">
             Every module builds toward a single capstone: your child's personalised AI
-            Study Agent, submitted to the E- Cell IIT Kharagpur Hackathon.
+            Study Agent.
           </p>
         </div>
 

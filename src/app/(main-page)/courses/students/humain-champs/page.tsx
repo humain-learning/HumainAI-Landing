@@ -60,7 +60,7 @@ export default async function HumainChampsLanding() {
 			<Tools />
 			<Curriculum />
 			<StudentWork />
-			<Credential />
+			{/* <Credential /> */}
 			<InstructorsCollage />
 			<Founder />
 			<ParentsSaying />

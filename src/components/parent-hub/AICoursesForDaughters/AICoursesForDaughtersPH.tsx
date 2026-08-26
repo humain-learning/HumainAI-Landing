@@ -10,7 +10,6 @@ const highlights = [
   'Build a personalised AI project or AI agent.',
   'Hands-on experience with leading AI tools.',
   'Small, interactive batches for personalised attention.',
-  'E-Cell IIT Kharagpur participation certificate.',
 ];
 
 export default function AICoursesForDaughtersPH() {

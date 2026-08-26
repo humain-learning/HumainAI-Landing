@@ -71,7 +71,7 @@ export const modulesData = [
         code: "Module 06",
         title: "Build your AI Study Agent",
 		tools: ['ALL TOOLKITS'],
-	    description: 'Polishing the personalized AI Study Agent, compiling the roadmap documentation, and pitching their final project to the E-Cell IIT Kharagpur panel.',
-		outcome: 'E-Cell IIT Kharagpur Nationally Recognized Certification',
+	    description: 'Polishing the personalized AI Study Agent, compiling the roadmap documentation.',
+		outcome: 'Certified Courses for students and teachers ',
     }
 ];

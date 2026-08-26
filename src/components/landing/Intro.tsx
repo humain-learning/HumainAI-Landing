@@ -7,8 +7,8 @@ import ExploreModal from './ExploreModal';
 const TRUST_ITEMS = [
   {
     id: 1,
-    titleParts: [{ text: 'E-Cell, IIT Kharagpur' }],
-    subtitle: 'AI Hackathon in collaboration',
+    titleParts: [{ text: 'Certified Courses' }],
+    subtitle: 'For teachers & students',
     icon: '/assets/images/homepage/Intropage/IIT.png',
   },
   {

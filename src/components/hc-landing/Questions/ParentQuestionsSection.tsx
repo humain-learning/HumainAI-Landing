@@ -9,7 +9,7 @@ const faqs = [
   {
     id: 2,
     question: 'What exactly will my child build during the camp?',
-    answer: " Throughout the course, students will create multiple projects such as presentations, websites, applications, songs, images etc. They also complete an AI project submitted to a hackathon organized by E-Cell IIT Kharagpur.",
+    answer: " Throughout the course, students will create multiple projects such as presentations, websites, applications, songs, images etc. They also complete an AI project.",
   },
   {
     id: 3,
@@ -23,41 +23,36 @@ const faqs = [
   },
   {
     id: 5,
-    question: 'What is the E-CELL IIT Kharagpur certificate?',
-    answer: "Students who successfully submit their AI project to the E-Cell IIT Kharagpur Hackathon receive an official participation/completion certificate from E-Cell, the entrepreneurship cell of IIT Kharagpur — one of India's premier engineering institutions.",
-  },
-  {
-    id: 6,
     question: 'Which AI tools will my child learn?',
     answer: "Students work with 10+ tools across the camp including ChatGPT, Gemini, NoteBook LM, Canva AI, Heygen, N8N and more. The exact toolkit is updated each cohort to reflect the latest available tools.",
   },
   {
-    id: 7,
+    id: 6,
     question: 'Are classes live or pre-recorded?',
     answer: "All Humain Champs sessions are live and interactive — not pre-recorded videos. Students interact with instructors in real time and get immediate feedback on their work.",
   },
   {
-    id: 8,
+    id: 7,
     question: 'What happens after the camp ends?',
     answer: "Students get access to the Humain Alumni community on WhatsApp. Advanced cohorts for deeper AI engineering are available for those who want to continue.",
   },
   {
-    id: 9,
+    id: 8,
     question: 'We can learn these courses for free, then why should we join this course?',
     answer: "While free courses are available on platforms like YouTube and Instagram, we are not just another tech company offering generic lessons. Backed by a 25+ year legacy in education, our experienced educators deliver a carefully curated curriculum designed specifically for children of grade 8–12.",
   },
   {
-    id: 10,
+    id: 9,
     question: 'Do we need to purchase these tools taught in the course as well or will you provide them for free?',
     answer: "All the tools taught in the sessions, can be used by students free of cost and they don't have to purchase them.",
   },
   {
-    id: 11,
+    id: 10,
     question: 'Can I get a demo class before enrolling my child?',
     answer: "No, we don't provide a demo class, but we have one class full refund policy which means if you are not satisfied after the first session, we will issue a full refund — no questions asked. Cancellations after first session are non-refundable.",
   },
   {
-    id: 12,
+    id: 11,
     question: 'My child knows all these tools already, what is diffwerent about this course then?',
     answer: "This course focuses on applying these tools in real-world scenarios and building comprehensive AI projects, rather than just learning the tools in isolation.",
   },
