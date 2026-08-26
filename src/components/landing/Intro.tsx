@@ -76,7 +76,7 @@ const Intro = () => {
 
             <SkeletalButton
               text="Explore Our Framework"
-              target="/frameworkNew"
+              target="/framework"
               buttonClassName="w-full max-w-[320px] justify-center lg:w-auto lg:max-w-none"
             />
           </div>

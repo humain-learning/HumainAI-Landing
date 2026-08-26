@@ -50,7 +50,7 @@ const RESOURCE_ITEMS: NavRoute[] = [
 	},
 	{
 		name: 'Framework',
-		href: '/frameworkNew',
+		href: '/framework',
 	},
 	];
 

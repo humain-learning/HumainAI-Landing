@@ -24,7 +24,7 @@ export default function MoreThanCourse() {
 
           <SecondaryButton
             text="Explore Our Framework"
-            target="/frameworkNew"
+            target="/framework"
             buttonClassName="mt-6 w-fit font-display font-bold"
           />
         </div>
