@@ -3,6 +3,7 @@ import Herolp from "@/components/hc-landing/Hero/Herolp";
 import GapSolution from "@/components/hc-landing/GapSolution/GapSolution";
 import Toolkit from "@/components/hc-landing/Toolkit/Toolkit";
 import Curriculum from "@/components/hc-landing/Curriculum/Curriculum";
+import QuillBotPerk from "@/components/hc-landing/QuillBotPerk/QuillBotPerk";
 import StudentWork from "@/components/hc-landing/StudentWork/StudentWork";
 import Credential from "@/components/hc-landing/Credential/Credential";
 import InstructorsCollage from "@/components/hc-landing/Instructors/InstructorsCollage";
@@ -58,6 +59,7 @@ export default async function HumainChampsLanding() {
 			<Herolp basePrice={basePrice}/>
 			<GapSolution />
 			<Tools />
+			<QuillBotPerk />
 			<Curriculum />
 			<StudentWork />
 			{/* <Credential /> */}

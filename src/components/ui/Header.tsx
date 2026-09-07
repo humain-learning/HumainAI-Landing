@@ -630,7 +630,11 @@ const NavbarSidebar = ({
 							className={cn(
 							'relative inline-flex items-center gap-1 after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-0 after:-translate-x-1/2 after:transition-all after:duration-500 group-hover:after:w-full active:after:w-full',
 							'after:bg-[#aac291]',
-							isResourcesOpen && 'after:w-full'
+							(isResourcesOpen ||
+								RESOURCE_ITEMS.some(
+									(item) => pathname === item.href || pathname?.startsWith(`${item.href}/`)
+								)) &&
+								'after:w-full'
 							)}
 						>
 							Resources

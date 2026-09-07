@@ -102,7 +102,7 @@ export default function Herolp({basePrice}: HeroProps) {
 				<div className="flex flex-wrap gap-2.5">
 				<span className="flex items-center gap-1.5 rounded-full bg-[#aac1911a] px-3.5 py-1.5 text-xs font-semibold tracking-wider text-sage">
 					<span className="h-1.5 w-1.5 rounded-full bg-sage" />
-					CERTIFIED COURSES
+					CERTIFIED COURSE
 				</span>
 				<span className="flex items-center gap-1.5 rounded-full bg-[#aac1911a] px-3.5 py-1.5 text-xs font-semibold tracking-wider text-sage">
 					<span className="h-1.5 w-1.5 rounded-full bg-sage" />
