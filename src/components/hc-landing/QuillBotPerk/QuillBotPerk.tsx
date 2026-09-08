@@ -50,12 +50,12 @@ const QuillBotPerk = () => {
 
             {/* Heading */}
             <h2 className="font-display text-3xl font-extrabold leading-tight text-terracotta md:text-3xl lg:text-3xl xl:text-4xl text-center md:text-left">
-              6 months of QuillBot Premium
+              6 months of Quillbot Premium
             </h2>
 
             {/* Description */}
             <p className="text-base leading-relaxed text-gray-600 md:text-sm lg:text-base xl:text-lg text-center md:text-left">
-              Every enrolled student gets QuillBot Premium free for six months, at no extra cost — and keeps it long after the course ends.
+              Every enrolled student gets Quillbot Premium free for six months, at no extra cost — and keeps it long after the course ends.
             </p>
 
             {/* Features Grid */}
@@ -87,7 +87,7 @@ const QuillBotPerk = () => {
                 rel="noopener noreferrer"
                 className="bg-terracotta group flex w-fit cursor-pointer items-center gap-2 rounded-full py-1 pr-1 pl-4 text-white transition-colors hover:opacity-90"
               >
-                <div className="whitespace-nowrap font-medium">Explore QuillBot</div>
+                <div className="whitespace-nowrap font-medium">Explore Quillbot</div>
                 <div className="group-hover:bg-sage flex h-9 w-9 items-center justify-center rounded-full bg-white transition-colors duration-300">
                   <Image
                     src="/assets/images/studentcourse/quillbot.png"
