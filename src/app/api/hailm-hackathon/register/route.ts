@@ -1,6 +1,7 @@
+import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import { getAttribution } from '@/app/lib/attribution';
-import { callHailm } from '@/app/lib/hailmHackathon';
+import { callHailm, HAILM_TOKEN_COOKIE } from '@/app/lib/hailmHackathon';
 import { hailmRegisterSchema } from '@/lib/schemas/hailmHackathon';
 
 // _server_messages is a JSON array of JSON-encoded {message} objects, possibly containing HTML.
@@ -39,6 +40,18 @@ export async function POST(req: Request) {
 				frappeServerMessage(result.raw?._server_messages) ??
 				"We couldn't start your registration. Please try again in a minute.";
 			return NextResponse.json({ error }, { status: result.status >= 400 ? result.status : 400 });
+		}
+
+		// The Razorpay Payment Page redirects back to one fixed URL, so the confirmation page
+		// can't be told whose registration it is. Remember it in a first-party cookie instead.
+		if (message.token) {
+			(await cookies()).set(HAILM_TOKEN_COOKIE, message.token, {
+				httpOnly: true,
+				sameSite: 'lax', // sent on the top-level redirect back from Razorpay
+				secure: process.env.NODE_ENV === 'production',
+				path: '/',
+				maxAge: 60 * 60 * 24 * 90,
+			});
 		}
 		return NextResponse.json(message);
 	} catch (error) {

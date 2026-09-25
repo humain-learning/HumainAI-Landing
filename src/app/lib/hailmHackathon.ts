@@ -3,6 +3,12 @@ import { getCRMCredentials } from './crmClient';
 
 const METHOD = 'humain_learning.hailm_hackathon.api';
 
+/** Holds the registration token so the confirmation page works after Razorpay's redirect. */
+export const HAILM_TOKEN_COOKIE = 'hh_reg';
+
+// Tokens are 32-char hex hashes from Frappe; reject anything else before it reaches the backend.
+export const isHailmToken = (token: string) => /^[a-f0-9]{16,64}$/i.test(token);
+
 export type HailmOffer = {
 	active: boolean;
 	amount: number | null;

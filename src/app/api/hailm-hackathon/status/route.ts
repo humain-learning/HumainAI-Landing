@@ -1,11 +1,14 @@
+import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
-import { callHailm } from '@/app/lib/hailmHackathon';
+import { callHailm, HAILM_TOKEN_COOKIE, isHailmToken } from '@/app/lib/hailmHackathon';
 
 export async function GET(req: Request) {
-	const token = new URL(req.url).searchParams.get('token') ?? '';
-	// Tokens are 32-char hex hashes from Frappe; reject anything else before it reaches the backend.
-	if (!/^[a-f0-9]{16,64}$/i.test(token)) {
-		return NextResponse.json({ error: 'Invalid link.' }, { status: 400 });
+	// From the link (?token=…) if present, else the cookie set at registration — the Razorpay
+	// Payment Page redirects back without our token.
+	const fromQuery = new URL(req.url).searchParams.get('token');
+	const token = fromQuery || (await cookies()).get(HAILM_TOKEN_COOKIE)?.value || '';
+	if (!isHailmToken(token)) {
+		return NextResponse.json({ error: 'Registration not found.' }, { status: 404 });
 	}
 
 	try {

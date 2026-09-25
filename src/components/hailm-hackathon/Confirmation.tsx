@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import s from './hailm.module.css';
 
 type Status = {
-	status: 'unpaid' | 'paid' | 'failed';
+	status: 'unpaid' | 'paid';
 	firstName?: string;
 	code?: string | null;
 	codeStatus?: 'Pending' | 'Generated' | 'Failed';
@@ -35,9 +35,7 @@ export default function Confirmation({ token }: { token: string }) {
 				if (stop) return;
 				setData(body);
 				const settled =
-					body.status === 'failed' ||
-					res.status === 404 ||
-					(body.status === 'paid' && (body.code || body.codeStatus === 'Failed'));
+					res.status === 404 || (body.status === 'paid' && (body.code || body.codeStatus === 'Failed'));
 				if (settled) return;
 			} catch {
 				/* transient — keep polling */
@@ -76,18 +74,6 @@ export default function Confirmation({ token }: { token: string }) {
 					This link looks incomplete. If you&apos;ve paid, your code is on its way to your WhatsApp. Otherwise,{' '}
 					<Link href='/hailm-hackathon#register'>register here</Link>.
 				</p>
-			</>
-		);
-	} else if (data?.status === 'failed') {
-		body = (
-			<>
-				<h1 className={s.confirmTitle}>Your payment didn&apos;t go through</h1>
-				<p className={s.confirmBody}>
-					No registration was completed. You can try again with the same number — your details are saved.
-				</p>
-				<Link className={s.btn} href='/hailm-hackathon#register'>
-					Try again
-				</Link>
 			</>
 		);
 	} else if (data?.status === 'paid') {
@@ -141,6 +127,11 @@ export default function Confirmation({ token }: { token: string }) {
 						? 'This is taking longer than usual. If money was debited, you’re covered — your code will arrive on WhatsApp once Razorpay confirms. You can safely close this page.'
 						: 'This usually takes a few seconds. Please keep this page open.'}
 				</p>
+				{timedOut ? (
+					<p className={s.confirmBody}>
+						Haven&apos;t paid yet? <Link href='/hailm-hackathon#register'>Go back and register</Link>.
+					</p>
+				) : null}
 			</>
 		);
 	}

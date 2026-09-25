@@ -1,14 +1,9 @@
 'use client';
 
-import Script from 'next/script';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { hailmRegisterSchema } from '@/lib/schemas/hailmHackathon';
 import s from './hailm.module.css';
-
-// Typed locally rather than via `declare global`, so the existing checkout's Window typing is untouched.
-type RazorpayCtor = new (options: Record<string, unknown>) => { open: () => void; on: (e: string, cb: () => void) => void };
-const getRazorpay = () => (window as unknown as { Razorpay?: RazorpayCtor }).Razorpay;
 
 type Props = { amount: number | null; active: boolean };
 
@@ -52,13 +47,6 @@ export default function RegistrationForm({ amount, active }: Props) {
 			return;
 		}
 		setErrors({});
-
-		const Razorpay = getRazorpay();
-		if (!Razorpay) {
-			setFormError('The payment window is still loading. Please try again in a moment.');
-			return;
-		}
-
 		setBusy(true);
 		try {
 			const res = await fetch('/api/hailm-hackathon/register', {
@@ -69,52 +57,30 @@ export default function RegistrationForm({ amount, active }: Props) {
 			const data = await res.json();
 			if (!res.ok) {
 				setFormError(data.error ?? 'Something went wrong. Please try again.');
+				setBusy(false);
 				return;
 			}
 
-			// This number has already paid — don't charge twice, just show their code.
+			// This number has already paid — don't send them to pay again, just show their code.
 			if (data.status === 'paid') {
 				goToConfirmation(data.token);
 				return;
 			}
 
-			const rzp = new Razorpay({
-				key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-				order_id: data.order.id,
-				amount: data.order.amount,
-				currency: data.order.currency,
-				name: 'Humain Learning',
-				description: 'HAILM Hackathon + 1 State + 1 National Olympiad',
-				image: '/assets/hailm-hackathon/hailm-seal.png',
-				prefill: { name: data.prefill.name, contact: data.prefill.contact },
-				notes: { registration: data.registration },
-				theme: { color: '#243358' },
-				// Payment is confirmed server-side by the signed Razorpay webhook; the confirmation
-				// page polls for it. This handler only moves the student along.
-				handler: () => goToConfirmation(data.token),
-				modal: {
-					ondismiss: () => {
-						setBusy(false);
-						setFormError('Payment was not completed. You can try again — your details are saved.');
-					},
-				},
-			});
-			rzp.on('payment.failed', () => {
-				setFormError('That payment did not go through. No money was taken for a failed attempt — please try again.');
-			});
-			rzp.open();
+			// Hand off to the hosted Razorpay Payment Page, prefilled with name, phone and
+			// registration id. Payment is confirmed by Razorpay's signed webhook, not by the browser.
+			window.location.assign(data.paymentUrl);
+			// busy stays on while the browser leaves the page
 		} catch {
 			setFormError("We couldn't reach our servers. Check your connection and try again.");
-		} finally {
 			setBusy(false);
 		}
 	}
 
 	return (
 		<div className={s.formCard} id='register'>
-			<Script src='https://checkout.razorpay.com/v1/checkout.js' strategy='lazyOnload' />
 			<h3 className={s.formTitle}>Register for the HAILM Hackathon</h3>
-			<p className={s.formSub}>Two details, then secure payment on Razorpay.</p>
+			<p className={s.formSub}>Two details, then you&apos;ll pay securely on Razorpay.</p>
 
 			<form onSubmit={onSubmit} noValidate>
 				{formError ? (
@@ -184,7 +150,7 @@ export default function RegistrationForm({ amount, active }: Props) {
 				</div>
 
 				<button type='submit' className={s.formBtn} disabled={busy}>
-					{busy ? 'Opening secure payment…' : `Pay ${inr(amount)} & register`}
+					{busy ? 'Taking you to Razorpay…' : `Continue to pay ${inr(amount)}`}
 				</button>
 				<p className={s.fine}>
 					Hackathon access in Delhi + 1 State + 1 National Olympiad included in this amount. Payments are processed
