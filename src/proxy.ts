@@ -5,6 +5,8 @@ import { getLocaleRoute } from '@/lib/utils'
 // Define the standard UTM parameters to look for
 const UTM_PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
 
+const LOCALE_EXEMPT_PREFIXES = ['/hailm-hackathon']
+
 export function proxy(request: NextRequest) {
 	const { searchParams, pathname } = request.nextUrl
 	let response: NextResponse
@@ -15,7 +17,10 @@ export function proxy(request: NextRequest) {
 
 	country = country.toLowerCase()
 
-	const localizedPath = getLocaleRoute(pathname, country)
+	// Pages that exist in one locale only. Without this, a UAE visitor to /hailm-hackathon is
+	// redirected to /ae/hailm-hackathon, which doesn't exist.
+	const localeExempt = LOCALE_EXEMPT_PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`))
+	const localizedPath = localeExempt ? pathname : getLocaleRoute(pathname, country)
 
 	if (localizedPath !== pathname) {
 		const url = request.nextUrl.clone()

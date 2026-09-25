@@ -5,7 +5,7 @@ module.exports = {
   generateRobotsTxt: true,
 
   // Exclude from sitemap.xml
-  exclude: ["/api/*", "/testing/*", "/thank-you", "/404", "/500"],
+  exclude: ["/api/*", "/testing/*", "/thank-you", "/404", "/500", "/hailm-hackathon/confirmation"],
 
   // Ensure important course landing pages are always present.
   additionalPaths: async (config) => {
