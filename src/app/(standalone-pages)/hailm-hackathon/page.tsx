@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import { ChevronDown } from 'lucide-react';
 import { getHailmHackathonOffer } from '@/app/lib/hailmHackathon';
 import RegistrationForm from '@/components/hailm-hackathon/RegistrationForm';
 import StickyCta from '@/components/hailm-hackathon/StickyCta';
-import { fraunces, interTight } from '@/components/hailm-hackathon/fonts';
-import s from '@/components/hailm-hackathon/hailm.module.css';
 
 // Price comes from Frappe on every request, so a change in site_config shows up without a deploy.
 export const dynamic = 'force-dynamic';
@@ -18,21 +17,62 @@ export const metadata: Metadata = {
 		title: 'HAILM Hackathon in Delhi | Humain Learning presents HAILM',
 		description: 'Hackathon access in Delhi + 1 State + 1 National AI Olympiad for Humain Champs students.',
 		url: 'https://www.humainlearning.ai/hailm-hackathon',
-		images: [{ url: '/assets/hailm-hackathon/olympiad-hero.jpg', width: 1917, height: 640 }],
+		images: [{ url: '/assets/HCV2/images/hero_family.png', width: 1024, height: 768 }],
 	},
 };
 
 const inr = (n: number) => `₹${n.toLocaleString('en-IN', { maximumFractionDigits: 2 })}`;
 
-function Tick() {
+function Chip({ children }: { children: React.ReactNode }) {
 	return (
-		<span className={s.tick} aria-hidden='true'>
-			<svg width='12' height='12' viewBox='0 0 12 12' fill='none'>
-				<path d='M2.5 6.2 4.9 8.6 9.5 3.6' stroke='currentColor' strokeWidth='1.8' strokeLinecap='round' strokeLinejoin='round' />
-			</svg>
+		<span className="flex items-center gap-1.5 rounded-full bg-[#aac1911a] px-3.5 py-1.5 text-xs font-semibold tracking-wider text-sage">
+			<span className="h-1.5 w-1.5 rounded-full bg-sage" />
+			{children}
 		</span>
 	);
 }
+
+function CheckIcon({ className = 'h-4 w-4' }: { className?: string }) {
+	return (
+		<svg className={`${className} shrink-0 text-sage`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+			<path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+		</svg>
+	);
+}
+
+const INCLUDED = [
+	{ label: 'Access to the HAILM Hackathon in Delhi', meta: '21 Nov 2026' },
+	{ label: '1 State Level AI Olympiad', meta: '4 or 11 Oct' },
+	{ label: '1 National Level AI Olympiad', meta: '18 or 25 Oct' },
+];
+
+const TIMELINE = [
+	{
+		kicker: 'Round 1',
+		title: 'State Level AI Olympiad',
+		body: 'Compete with thousands of students taking the same first step, and show what you’ve learned about AI.',
+		dates: ['4 Oct 2026', '11 Oct 2026'],
+	},
+	{
+		kicker: 'Round 2',
+		title: 'National Level AI Olympiad',
+		body: 'Open to every registered student, with no State qualification needed. This is where the competition sharpens.',
+		dates: ['18 Oct 2026', '25 Oct 2026'],
+	},
+	{
+		kicker: 'The big day',
+		title: 'HAILM Hackathon, Delhi',
+		body: 'A live, in-person hackathon where young AI talent from across India builds, competes and celebrates together.',
+		dates: ['21 Nov 2026 · Delhi'],
+	},
+];
+
+const STEPS = [
+	{ title: 'Register and pay', body: 'Enter the student’s name and WhatsApp number, then pay securely on Razorpay.' },
+	{ title: 'Get your code on WhatsApp', body: 'A single-use HAILM Olympiad access code arrives on your WhatsApp right after payment.' },
+	{ title: 'Redeem it on HAILM', body: 'Use the code when registering for the Olympiad. Your State and National rounds are fully covered.' },
+	{ title: 'Compete, then Delhi', body: 'Sit your State and National Olympiads in October, then meet us at the hackathon on 21 November.' },
+];
 
 const FAQ = [
 	{
@@ -70,155 +110,165 @@ export default async function HailmHackathonPage() {
 	const price = offer.active && offer.amount ? inr(offer.amount) : null;
 
 	return (
-		<main className={`${fraunces.variable} ${interTight.variable} ${s.page}`}>
+		<main className="bg-white">
 			{/* Humain Learning presents HAILM */}
-			<header className={s.presents}>
-				<div className={`${s.wrap} ${s.presentsInner}`}>
-					<div className={s.presentsBrand}>
-						<Image className={s.hlLogo} src='/assets/logo/brain-logo.png' alt='Humain Learning' width={81} height={34} priority />
-						<span className={s.presentsWord}>presents</span>
+			<header className="border-b border-[#eeeeee] bg-white">
+				<div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-3 px-6 py-3 md:px-12 lg:px-16">
+					<div className="flex items-center gap-2.5">
+						<Image src="/assets/logo/brain-logo.png" alt="Humain Learning" width={112} height={36} priority className="h-8 w-auto" />
+						<span className="font-sans text-xs font-medium text-charcoal/50">presents</span>
 					</div>
-					<div className={s.presentsBrand}>
-						<span className={s.hailmName}>
-							Humain AI Literacy Mission
-							<span>India&apos;s own AI Literacy Mission</span>
+					<div className="flex items-center gap-2 text-right">
+						<span className="hidden font-sans text-[11px] leading-tight text-charcoal/50 sm:block">
+							India&apos;s own AI Literacy Mission
 						</span>
-						<Image className={s.seal} src='/assets/hailm-hackathon/hailm-seal.png' alt='HAILM' width={38} height={38} priority />
+						<Image src="/assets/hailm-hackathon/hailm-seal.png" alt="HAILM" width={30} height={30} className="h-7 w-7 shrink-0" />
 					</div>
 				</div>
 			</header>
 
-			<section className={s.hero}>
-				<Image className={s.heroImage} src='/assets/hailm-hackathon/olympiad-hero.jpg' alt='' fill priority sizes='100vw' />
-				<div className={`${s.wrap} ${s.heroInner}`}>
-					<div>
-						<span className={s.eyebrow}>For Humain Champs students</span>
-						<h1 className={s.heroTitle}>
-							Build with AI, on a <em>national stage</em> in Delhi.
-						</h1>
-						<p className={s.heroLede}>
-							The Humain AI Literacy Mission Hackathon brings India&apos;s strongest young AI talent to one stage in
-							Delhi on 21 November 2026. One registration gets you there, plus a State and a National AI Olympiad
-							along the way.
-						</p>
-					</div>
+			<section className="relative w-full overflow-hidden bg-white pt-10 pb-14 md:pt-14">
+				<div className="mx-auto w-full max-w-7xl px-6 md:px-12 lg:px-16">
+					<div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
+						<div className="flex flex-col space-y-6 md:space-y-8 lg:col-span-7">
+							<div className="flex flex-wrap gap-2.5">
+								<Chip>FOR HUMAIN CHAMPS STUDENTS</Chip>
+								<Chip>DELHI · 21 NOV 2026</Chip>
+							</div>
 
-					<aside className={s.priceCard} aria-label='What your registration includes'>
-						{price ? (
-							<>
-								<div className={s.priceLabel}>One registration, all inclusive</div>
-								<div className={s.price}>{price}</div>
-								<div className={s.priceNote}>incl. GST</div>
-							</>
-						) : (
-							<div className={s.priceLabel}>Registrations opening soon</div>
-						)}
-						<ul className={s.includedList}>
-							<li>
-								<Tick />
-								<span>
-									<b>Access to the HAILM Hackathon in Delhi</b> · 21 Nov 2026
+							<h1 className="font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-charcoal sm:text-5xl md:text-[52px]">
+								Build with AI, on a
+								<span className="relative inline-block text-terracotta underline decoration-4"> national stage</span> in
+								Delhi.
+							</h1>
+
+							<p className="max-w-2xl font-sans text-base leading-relaxed text-charcoal/80 md:text-lg">
+								The Humain AI Literacy Mission Hackathon brings India&apos;s strongest young AI talent to one stage in
+								Delhi. One registration gets your Humain Champs student there, plus a State and a National AI Olympiad
+								along the way.
+							</p>
+
+							<div className="space-y-3 pt-2">
+								{INCLUDED.map((item) => (
+									<div key={item.label} className="flex items-start gap-2.5 text-sm text-charcoal/70 md:text-base">
+										<CheckIcon />
+										<span>
+											<b className="text-charcoal">{item.label}</b> · {item.meta}
+										</span>
+									</div>
+								))}
+							</div>
+
+							<a
+								href="#register"
+								className="group flex w-fit items-center justify-between gap-3 rounded-full bg-terracotta py-2 pr-2 pl-6 text-white shadow-md shadow-terracotta/20 transition-all duration-300 hover:bg-[#df935c] hover:shadow-lg hover:shadow-terracotta/30"
+							>
+								<span className="font-display text-base font-bold tracking-wide whitespace-nowrap">
+									{price ? 'Register now' : 'See how it works'}
 								</span>
-							</li>
-							<li>
-								<Tick />
-								<span>
-									<b>1 State Level AI Olympiad</b> · 4 or 11 Oct
-								</span>
-							</li>
-							<li>
-								<Tick />
-								<span>
-									<b>1 National Level AI Olympiad</b> · 18 or 25 Oct
-								</span>
-							</li>
-						</ul>
-						<p className={s.includedAll}>All three are included in this amount.</p>
-						<a className={s.btn} href='#register'>
-							{price ? `Register for ${price}` : 'See how it works'}
-						</a>
-					</aside>
+								{price ? (
+									<span className="rounded-full border border-terracotta/10 bg-white px-4 py-2 font-display text-sm font-extrabold text-terracotta">
+										{price}
+									</span>
+								) : null}
+							</a>
+						</div>
+
+						<div className="relative flex justify-center lg:col-span-5">
+							<div className="relative w-full max-w-[420px]">
+								<Image
+									src="/assets/HCV2/images/hero_family.png"
+									alt="Humain Champs student building with AI"
+									width={1024}
+									height={1024}
+									priority
+									className="h-auto w-full object-contain drop-shadow-xl"
+								/>
+								<div className="absolute top-[8%] -right-[4%] z-10 flex items-center gap-1.5 rounded-full border border-[#aac191]/50 bg-white/95 px-3 py-1.5 shadow-md shadow-sage/5 backdrop-blur-sm">
+									<div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sage">
+										<CheckIcon className="h-2.5 w-2.5 text-white" />
+									</div>
+									<span className="font-display text-[9.5px] font-extrabold tracking-wider whitespace-nowrap text-sage">
+										ALL 3 INCLUDED
+									</span>
+								</div>
+								<div className="absolute top-[20%] -left-[4%] z-10 flex items-center gap-1.5 rounded-full border border-[#aac191]/50 bg-white/95 px-3 py-1.5 shadow-md shadow-sage/5 backdrop-blur-sm">
+									<div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sage">
+										<CheckIcon className="h-2.5 w-2.5 text-white" />
+									</div>
+									<span className="font-display text-[9.5px] font-extrabold tracking-wider whitespace-nowrap text-sage">
+										ONE-TIME PAYMENT
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</section>
 
-			<section className={s.section}>
-				<div className={s.wrap}>
-					<div className={s.sectionHead}>
-						<span className={s.sectionEyebrow}>What&apos;s included</span>
-						<h2 className={s.h2}>
-							Three stages, <em>one registration.</em>
+			{price ? (
+				<section className="bg-[#f9f8f4] py-4">
+					<div className="mx-auto flex w-full max-w-7xl items-center justify-center gap-2 px-6 text-center md:px-12 lg:px-16">
+						<span className="font-sans text-sm text-charcoal/70">One registration, all inclusive:</span>
+						<span className="font-display text-lg font-extrabold text-charcoal">{price}</span>
+						<span className="font-sans text-xs text-charcoal/50">incl. GST</span>
+					</div>
+				</section>
+			) : null}
+
+			<section className="bg-white py-16 md:py-20">
+				<div className="mx-auto w-full max-w-7xl px-6 md:px-12 lg:px-16">
+					<div className="mx-auto max-w-2xl text-center">
+						<span className="text-xs font-semibold tracking-wider text-sage uppercase">What&apos;s included</span>
+						<h2 className="mt-2 font-display text-3xl font-extrabold text-charcoal sm:text-4xl">
+							Three stages, <span className="text-terracotta">one registration.</span>
 						</h2>
-						<p className={s.lead}>
-							State and National are independent rounds, so you sit both regardless of how the first one goes. The
-							season ends together, on one stage in Delhi.
+						<p className="mt-4 font-sans text-base leading-relaxed text-charcoal/70">
+							State and National are independent rounds, so your student sits both regardless of how the first one
+							goes. The season ends together, on one stage in Delhi.
 						</p>
 					</div>
-					<div className={s.cards}>
-						<article className={s.card}>
-							<span className={s.cardKicker}>Round 1</span>
-							<h3 className={s.cardTitle}>State Level AI Olympiad</h3>
-							<p className={s.cardBody}>
-								Compete with thousands of students taking the same first step, and show what you&apos;ve learned about
-								AI.
-							</p>
-							<div className={s.dates}>
-								<span className={s.date}>4 Oct 2026</span>
-								<span className={s.date}>11 Oct 2026</span>
-							</div>
-						</article>
-						<article className={s.card}>
-							<span className={s.cardKicker}>Round 2</span>
-							<h3 className={s.cardTitle}>National Level AI Olympiad</h3>
-							<p className={s.cardBody}>
-								Open to every registered student, with no State qualification needed. This is where the competition
-								sharpens.
-							</p>
-							<div className={s.dates}>
-								<span className={s.date}>18 Oct 2026</span>
-								<span className={s.date}>25 Oct 2026</span>
-							</div>
-						</article>
-						<article className={s.card}>
-							<span className={s.cardKicker}>The big day</span>
-							<h3 className={s.cardTitle}>HAILM Hackathon, Delhi</h3>
-							<p className={s.cardBody}>
-								A live, in-person hackathon where young AI talent from across India builds, competes and celebrates
-								together.
-							</p>
-							<div className={s.dates}>
-								<span className={s.date}>21 Nov 2026 · Delhi</span>
-							</div>
-						</article>
+					<div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+						{TIMELINE.map((item) => (
+							<article
+								key={item.title}
+								className="flex flex-col gap-3 rounded-2xl border border-[#eeeeee] bg-white p-6 shadow-sm shadow-charcoal/[0.03]"
+							>
+								<span className="text-xs font-semibold tracking-wider text-terracotta uppercase">{item.kicker}</span>
+								<h3 className="font-display text-xl font-bold text-charcoal">{item.title}</h3>
+								<p className="font-sans text-sm leading-relaxed text-charcoal/70">{item.body}</p>
+								<div className="mt-auto flex flex-wrap gap-2 pt-2">
+									{item.dates.map((d) => (
+										<span key={d} className="rounded-full bg-sage/10 px-3 py-1 text-xs font-semibold text-sage">
+											{d}
+										</span>
+									))}
+								</div>
+							</article>
+						))}
 					</div>
 				</div>
 			</section>
 
-			<section className={s.section} style={{ paddingTop: 0 }}>
-				<div className={s.wrap}>
-					<div className={s.sectionHead}>
-						<span className={s.sectionEyebrow}>How it works</span>
-						<h2 className={s.h2}>From this page to the Delhi stage.</h2>
+			<section className="bg-[#f9f8f4] py-16 md:py-20">
+				<div className="mx-auto w-full max-w-7xl px-6 md:px-12 lg:px-16">
+					<div className="mx-auto max-w-2xl text-center">
+						<span className="text-xs font-semibold tracking-wider text-sage uppercase">How it works</span>
+						<h2 className="mt-2 font-display text-3xl font-extrabold text-charcoal sm:text-4xl">
+							From this page to the Delhi stage.
+						</h2>
 					</div>
-					<ol className={s.steps}>
-						<li className={s.step}>
-							<h3 className={s.stepTitle}>Register and pay</h3>
-							<p className={s.stepBody}>Enter the student&apos;s name and WhatsApp number, then pay securely on Razorpay.</p>
-						</li>
-						<li className={s.step}>
-							<h3 className={s.stepTitle}>Get your code on WhatsApp</h3>
-							<p className={s.stepBody}>A single-use HAILM Olympiad access code arrives on your WhatsApp right after payment.</p>
-						</li>
-						<li className={s.step}>
-							<h3 className={s.stepTitle}>Redeem it on HAILM</h3>
-							<p className={s.stepBody}>Use the code when registering for the Olympiad. Your State and National rounds are fully covered.</p>
-						</li>
-						<li className={s.step}>
-							<h3 className={s.stepTitle}>Compete, then Delhi</h3>
-							<p className={s.stepBody}>Sit your State and National Olympiads in October, then meet us at the hackathon on 21 November.</p>
-						</li>
+					<ol className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+						{STEPS.map((step, i) => (
+							<li key={step.title} className="relative rounded-2xl bg-white p-6 shadow-sm shadow-charcoal/[0.03]">
+								<span className="font-display text-3xl font-extrabold text-sage/30">{String(i + 1).padStart(2, '0')}</span>
+								<h3 className="mt-2 font-display text-base font-bold text-charcoal">{step.title}</h3>
+								<p className="mt-1 font-sans text-sm leading-relaxed text-charcoal/70">{step.body}</p>
+							</li>
+						))}
 					</ol>
-					<p className={s.deadline}>
-						<span aria-hidden='true'>⏳</span>
+					<p className="mt-8 flex items-center justify-center gap-2 rounded-xl bg-terracotta/10 px-5 py-3 text-center font-sans text-sm text-charcoal">
+						<span aria-hidden="true">⏳</span>
 						<span>
 							<strong>Use your code by 7 October 2026.</strong> Registration for the last State Olympiad date (11 Oct)
 							closes then.
@@ -227,14 +277,14 @@ export default async function HailmHackathonPage() {
 				</div>
 			</section>
 
-			<section className={s.formBand}>
-				<div className={`${s.wrap} ${s.formGrid}`}>
+			<section id="register" className="scroll-mt-20 bg-white py-16 md:py-20">
+				<div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-start gap-10 px-6 md:px-12 lg:grid-cols-2 lg:gap-16 lg:px-16">
 					<div>
-						<span className={s.eyebrow}>Register</span>
-						<h2 className={s.h2}>
-							Your seat starts with <em>one form.</em>
+						<span className="text-xs font-semibold tracking-wider text-sage uppercase">Register</span>
+						<h2 className="mt-2 font-display text-3xl font-extrabold text-charcoal sm:text-4xl">
+							Your seat starts with <span className="text-terracotta">one form.</span>
 						</h2>
-						<p className={s.lead}>
+						<p className="mt-4 max-w-md font-sans text-base leading-relaxed text-charcoal/70">
 							Just the student&apos;s name and a WhatsApp number. Everything else, from your Olympiad access code to
 							hackathon logistics, comes to you on WhatsApp.
 						</p>
@@ -243,17 +293,24 @@ export default async function HailmHackathonPage() {
 				</div>
 			</section>
 
-			<section className={s.section}>
-				<div className={s.wrap}>
-					<div className={s.sectionHead}>
-						<span className={s.sectionEyebrow}>Questions</span>
-						<h2 className={s.h2}>Frequently asked</h2>
+			<section className="bg-[#f9f8f4] py-16 md:py-20">
+				<div className="mx-auto w-full max-w-7xl px-6 md:px-12 lg:px-16">
+					<div className="mx-auto max-w-2xl text-center">
+						<span className="text-xs font-semibold tracking-wider text-sage uppercase">Questions</span>
+						<h2 className="mt-2 font-display text-3xl font-extrabold text-charcoal sm:text-4xl">Frequently asked</h2>
 					</div>
-					<div className={s.faq}>
+					<div className="mx-auto mt-10 max-w-3xl">
 						{FAQ.map(({ q, a }) => (
-							<details key={q} className={s.faqItem}>
-								<summary>{q}</summary>
-								<p>{a}</p>
+							<details key={q} className="group border-b border-sage/30 py-4">
+								<summary className="flex w-full cursor-pointer touch-manipulation list-none items-center justify-between gap-4 text-left [&::-webkit-details-marker]:hidden">
+									<span className="font-display text-sm font-semibold text-charcoal sm:text-base">{q}</span>
+									<ChevronDown
+										aria-hidden="true"
+										className="h-4 w-4 shrink-0 text-sage transition-transform duration-300 group-open:rotate-180"
+										strokeWidth={2.2}
+									/>
+								</summary>
+								<p className="mt-3 font-sans text-sm leading-relaxed text-charcoal/70">{a}</p>
 							</details>
 						))}
 					</div>

@@ -3,13 +3,17 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { hailmRegisterSchema } from '@/lib/schemas/hailmHackathon';
-import s from './hailm.module.css';
 
 type Props = { amount: number | null; active: boolean };
 
 type FieldErrors = { fullName?: string; mobile?: string };
 
 const inr = (n: number) => `₹${n.toLocaleString('en-IN', { maximumFractionDigits: 2 })}`;
+
+const inputClass =
+	'h-11 rounded-[10px] border border-[#dddddd] px-3 text-sm font-normal outline-none transition focus:border-sage focus:ring-2 focus:ring-sage/20';
+const labelClass = 'grid gap-1.5 text-[12px] font-semibold text-charcoal';
+const errorClass = 'text-[11px] text-red-600';
 
 export default function RegistrationForm({ amount, active }: Props) {
 	const router = useRouter();
@@ -21,9 +25,9 @@ export default function RegistrationForm({ amount, active }: Props) {
 
 	if (!active || !amount) {
 		return (
-			<div className={s.formCard} id='register'>
-				<h3 className={s.formTitle}>Registrations open soon</h3>
-				<p className={s.closed}>
+			<div id="register" className="rounded-2xl border border-[#eeeeee] bg-[#f9f8f4] p-6 sm:p-8">
+				<h3 className="font-display text-xl font-bold text-charcoal">Registrations open soon</h3>
+				<p className="mt-2 font-sans text-sm leading-relaxed text-charcoal/70">
 					We&apos;re finalising the details. Check back shortly, or ask your Humain Champs instructor for the
 					registration link.
 				</p>
@@ -78,81 +82,83 @@ export default function RegistrationForm({ amount, active }: Props) {
 	}
 
 	return (
-		<div className={s.formCard} id='register'>
-			<h3 className={s.formTitle}>Register for the HAILM Hackathon</h3>
-			<p className={s.formSub}>Two details, then you&apos;ll pay securely on Razorpay.</p>
+		<div id="register" className="rounded-2xl border border-[#eeeeee] bg-white p-6 shadow-sm shadow-charcoal/[0.03] sm:p-8">
+			<h3 className="font-display text-xl font-bold text-charcoal">Register for the HAILM Hackathon</h3>
+			<p className="mt-1 font-sans text-sm text-charcoal/60">Two details, then you&apos;ll pay securely on Razorpay.</p>
 
-			<form onSubmit={onSubmit} noValidate>
+			<form onSubmit={onSubmit} noValidate className="mt-6 grid gap-4">
 				{formError ? (
-					<div className={s.formError} role='alert'>
+					<div role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">
 						{formError}
 					</div>
 				) : null}
 
-				<div className={s.field}>
-					<label className={s.label} htmlFor='hh-name'>
-						Student&apos;s full name
-					</label>
+				<label className={labelClass} htmlFor="hh-name">
+					Student&apos;s full name
 					<input
-						id='hh-name'
-						name='fullName'
-						className={s.input}
-						autoComplete='name'
-						placeholder='e.g. Aarav Sharma'
+						id="hh-name"
+						name="fullName"
+						className={inputClass}
+						autoComplete="name"
+						placeholder="e.g. Aarav Sharma"
 						value={fullName}
 						onChange={(e) => setFullName(e.target.value)}
 						aria-invalid={Boolean(errors.fullName)}
 						aria-describedby={errors.fullName ? 'hh-name-err' : undefined}
 					/>
 					{errors.fullName ? (
-						<span id='hh-name-err' className={s.fieldError}>
+						<span id="hh-name-err" className={errorClass}>
 							{errors.fullName}
 						</span>
 					) : null}
-				</div>
+				</label>
 
-				<div className={s.field}>
-					<label className={s.label} htmlFor='hh-mobile'>
-						WhatsApp number
-					</label>
-					<div className={s.phoneRow}>
-						<span className={s.phonePrefix} aria-hidden='true'>
+				<label className={labelClass} htmlFor="hh-mobile">
+					WhatsApp number
+					<div className="flex h-11 items-stretch overflow-hidden rounded-[10px] border border-[#dddddd] bg-white transition focus-within:border-sage focus-within:ring-2 focus-within:ring-sage/20">
+						<span className="flex items-center border-r border-[#dddddd] bg-[#fafafa] px-3 text-sm font-normal text-charcoal/60" aria-hidden="true">
 							+91
 						</span>
 						<input
-							id='hh-mobile'
-							name='mobile'
-							className={s.phoneInput}
-							type='tel'
-							inputMode='numeric'
-							autoComplete='tel-national'
-							placeholder='98765 43210'
+							id="hh-mobile"
+							name="mobile"
+							className="min-w-0 flex-1 border-0 px-3 text-sm font-normal outline-none"
+							type="tel"
+							inputMode="numeric"
+							autoComplete="tel-national"
+							placeholder="98765 43210"
 							maxLength={14}
 							value={mobile}
 							onChange={(e) => setMobile(e.target.value.replace(/[^\d\s]/g, ''))}
 							aria-invalid={Boolean(errors.mobile)}
-							aria-describedby='hh-mobile-hint'
+							aria-describedby="hh-mobile-hint"
 						/>
 					</div>
-					{errors.mobile ? <span className={s.fieldError}>{errors.mobile}</span> : null}
-					<p id='hh-mobile-hint' className={s.hint}>
-						<span aria-hidden='true'>✓</span>
+					{errors.mobile ? <span className={errorClass}>{errors.mobile}</span> : null}
+					<p id="hh-mobile-hint" className="flex items-start gap-1.5 text-[11px] font-normal text-charcoal/60">
+						<span aria-hidden="true" className="text-sage">
+							✓
+						</span>
 						<span>
-							Please give the <b>correct WhatsApp number</b>. Your Olympiad access code and all hackathon details
-							will be sent here.
+							Please give the <b className="text-charcoal">correct WhatsApp number</b>. Your Olympiad access code and
+							all hackathon details will be sent here.
 						</span>
 					</p>
-				</div>
+				</label>
 
-				<div className={s.payLine}>
+				<div className="flex items-center justify-between rounded-xl bg-sage/10 px-4 py-3 font-sans text-sm text-charcoal">
 					<span>Total, incl. GST</span>
-					<b>{inr(amount)}</b>
+					<b className="font-display">{inr(amount)}</b>
 				</div>
 
-				<button type='submit' className={s.formBtn} disabled={busy}>
+				<button
+					type="submit"
+					disabled={busy}
+					className="flex items-center justify-center rounded-full bg-terracotta py-3.5 font-display text-base font-bold text-white shadow-md shadow-terracotta/20 transition-all duration-300 hover:bg-[#df935c] hover:shadow-lg hover:shadow-terracotta/30 disabled:cursor-not-allowed disabled:opacity-60"
+				>
 					{busy ? 'Taking you to Razorpay…' : `Continue to pay ${inr(amount)}`}
 				</button>
-				<p className={s.fine}>
+				<p className="text-center text-[11px] font-normal text-charcoal/50">
 					Hackathon access in Delhi + 1 State + 1 National Olympiad included in this amount. Payments are processed
 					securely by Razorpay.
 				</p>
